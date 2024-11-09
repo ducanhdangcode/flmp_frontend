@@ -1,0 +1,7 @@
+div div button:hover {
+    transform: translateY(-0.25em);
+}
+
+main {
+    width: 100%;
+}

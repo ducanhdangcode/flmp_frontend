@@ -1,0 +1,7 @@
+form input::placeholder {
+    color: white;
+}
+
+form input:focus {
+    outline-width: 0;
+}
