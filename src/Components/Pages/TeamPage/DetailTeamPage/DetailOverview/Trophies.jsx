@@ -14,7 +14,7 @@ import ConferenceCup from '/FLMP/flmp_frontend/src/Image/Trophies/conferenceCup.
 
 import { FaCircle } from 'react-icons/fa';
 import WebFont from 'webfontloader';
-import { ListTeams } from '../../../../../APIService/TeamService';
+// import { ListTeams } from '../../../../../APIService/TeamService';
 
 
 const Trophies = ({teamId, teamList}) => {
