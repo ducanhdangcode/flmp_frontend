@@ -36,7 +36,7 @@ const Stadium = ({teamId, teamList}) => {
 
     const Stadiums = [EtihadStadium, OldTraffordStadium, LiverpoolStadium, ArsenalStadium, ChelseaStadium, TottenhamStadium, NewcastleStadium, AstonVillaStadium, BrightonStadium, BrentfordStadium, CrystalPalaceStadium, EvertonStadium, FulhamStadium, LeicesterCityStadium, IpswichTownStadium, SouthamptonStadium, WesthamStadium, WolverhamptonStadium];
   return (
-    <div className = "relative" style = {{bottom: "35rem"}}>
+    <div className = "absolute" style = {{top: "54rem"}}>
       <p className = "text-2xl font-ubuntu font-bold relative" style = {{left: "2rem", bottom: "0.2rem"}}>STADIUM</p>
       <div className = "flex">
         <img src = {Stadiums[teamId - 1]} alt = "" className = "relative" style = {{width: "35rem", height: "20rem", left: "2rem", top: "1rem", borderRadius: "12px"}}/>

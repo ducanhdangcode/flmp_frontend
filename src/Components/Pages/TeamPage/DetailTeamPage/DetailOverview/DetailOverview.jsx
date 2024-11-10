@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { Suspense } from 'react';
 import WebFont from 'webfontloader';
 import { ListTeams } from '../../../../../APIService/TeamService';
-import ReactPlayer from 'react-player';
 import { FaCircle } from 'react-icons/fa';
+import ReactPlayer from 'react-player';
 
 import Stadium from './Stadium';
 import Kit from './Kit';
 import Chairman from './Chairman';
 import Trophies from './Trophies';
+import TeamVideo from './TeamVideo';
 
 const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideos, teamVideoTitles, teamKits, teamChairman}) => {
     const [storedTeamLogo, setStoredTeamLogo] = useState(teamLogo);
@@ -22,8 +24,6 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
 
     useEffect(() => {
         setupActiveTeam();
-        console.log(teamVideos);
-        console.log(teamVideoTitles);
     }, [])
 
     useEffect(() => {
@@ -47,13 +47,10 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
         ListTeams().then((response) => {
             setTeamList(response.data);
             console.log(response.data);
-
-            console.log("Name: ");
-            console.log(teamId)
         }).catch(err => console.error(err));
     }
   return (
-    <div>
+    <>
       <div className = "relative w-full" style = {{top: "0rem", height: "23rem", backgroundColor: "#a6a5a4"}}>
             <img src = {storedTeamLogo} alt = "" className = "relative" style = {{width: `${detailLogoWidth}rem`, height: `${detailLogoHeight}rem`, top: `${detailLogoTop}rem`, left: `${detailLogoLeft}rem`}}/>
             {teamList.length > 0 && <p className = "relative font-roboto font-bold" style = {{left: "22rem", bottom: "8.5rem", fontSize: "6rem"}}>{teamList[teamId - 1]?.name.toUpperCase()}</p>}
@@ -76,52 +73,14 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
             </div>
         </div>
         <div className = "w-full" style = {{backgroundColor: "#d1cec7", height: "127rem", borderTop: "2px solid gray"}}>
-            <div className = "relative float-right" style = {{left: "55rem", top: "2rem"}}>
-                {teamList.length > 0 && <p className = "font-roboto text-2xl font-semibold" style = {{color: teamList[teamId - 1]?.color}}>{`${teamList[teamId - 1]?.name.toUpperCase()} VIDEOS`}</p>}
-                <div className = "relative" style = {{top: "1rem"}}>
-                    <ReactPlayer 
-                        url = {teamVideos[0]}
-                        width = "25%"
-                        height = "25%"
-                        playing = {true}
-                        controls = {true}
-                        muted = {true}
-                        style = {{border: "5px solid gray", borderRadius: "10px"}}
-                    />
-                    <p className = "relative font-roboto text-lg font-bold" style = {{width: "25%", top: "0.5rem"}}>{teamVideoTitles.first}</p>
-                </div>
-                <div className = "relative" style = {{top: "3rem"}}>
-                    <ReactPlayer 
-                        url = {teamVideos[1]}
-                        width = "25%"
-                        height = "25%"
-                        playing = {true}
-                        controls = {true}
-                        muted = {true}
-                        style = {{border: "5px solid gray", borderRadius: "10px"}}
-                    />
-                    <p className = "relative font-roboto text-lg font-bold" style = {{width: "25%", top: "0.5rem"}}>{teamVideoTitles.second}</p>
-                </div>
-                <div className = "relative" style = {{top: "5rem"}}>
-                    <ReactPlayer 
-                        url = {teamVideos[2]}
-                        width = "25%"
-                        height = "25%"
-                        playing = {true}
-                        controls = {true}
-                        muted = {true}
-                        style = {{border: "5px solid gray", borderRadius: "10px"}}
-                    />
-                    <p className = "relative font-roboto text-lg font-bold" style = {{width: "25%", top: "0.5rem"}}>{teamVideoTitles.third}</p>
-                </div>
-            </div>
+            <TeamVideo teamId={teamId} teamList={teamList} teamVideos={teamVideos} teamVideoTitles={teamVideoTitles}/>
             <Trophies teamId = {teamId} teamList={teamList}/>
             <Stadium teamId = {teamId} teamList={teamList}/>
             <Kit teamId={teamId} teamList={teamList} teamKits = {teamKits}/>
             <Chairman teamId={teamId} teamList={teamList} teamChairman={teamChairman} />
         </div>
-    </div>
-  )
+    </>
+    )
 }
 
 export default DetailOverview

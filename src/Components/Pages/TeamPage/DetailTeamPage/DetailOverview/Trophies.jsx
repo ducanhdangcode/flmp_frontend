@@ -23,7 +23,7 @@ const Trophies = ({teamId, teamList}) => {
     const RightPositionCircle = [1.8, 0.5, 0, 0.5, 0.5, 0.2, 1.8, 1.2, 0.5, 0.9, 0];
     const WidthCup = [8, 8, 8, 8, 8, 5, 8]
     const TopCup = [0.5, 0, 0, 0.6, 0, 0.6, 0, 0.5, 0.2, -0.3]
-    const TopTrophies = [45,45,47,49,46.5,45,45,43.5,45,47,47,45,42,45,40,45,45,45,45];
+    const TopTrophies = [0,0,43,43,43,43,40,39.5,45,47,47,45,42,45,40,45,45,45,45];
 
     useEffect(() => {
         WebFont.load({
@@ -34,9 +34,9 @@ const Trophies = ({teamId, teamList}) => {
     })
 
   return (
-    <div className = "relative block" style = {{bottom: "0rem", width: "75rem"}}>
-        <p className = "text-2xl font-ubuntu font-bold relative" style = {{left: "2rem", top: "1.5rem"}}>TROPHIES WON</p>
-        <div className = "flex ml-2 relative" style = {{flexFlow: "row wrap", width: "75rem", bottom: `${TopTrophies[teamId-1]}rem`}}>
+    <div className = "absolute block" style = {{left: "0rem", width: "75rem", top: "25rem"}}>
+        <p className = "text-2xl font-ubuntu font-bold relative" style = {{left: "2rem"}}>TROPHIES WON</p>
+        <div className = "flex ml-2 relative" style = {{flexFlow: "row wrap", width: "75rem", bottom: "0rem"}}>
             {teamList[teamId-1]?.trophies.map((trophie, index) => {
                 if (trophie > 0) {
                     return <div className='flex mr-2 mt-8' >

@@ -235,7 +235,7 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   ];
 
   const ManCityVideoTitles = {
-    "first": "EXTENDED HIGHLIGHTS | MAN CITY 1 - 0 SOUTHAMPTON | Early HAALAND goal earns three points!",
+    "first": "HIGHLIGHTS | BRIGHTON 2-1 CITY | Haaland, Pedro & O’Riley Goals | Premier League",
     "second": "Smiley Tattoo Mystery & UFC Fighter!? Ederson Finally Speaks!", 
     "third": "HIGHLIGHTS! Man City 5-0 Sparta Prague | Haaland wonder goal as super City hit five!"
   }
@@ -249,8 +249,8 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   ];
 
   const ManUnitedVideoTitles = {
-    "first": "Hojlund & Garnacho Complete COMEBACK! | Man Utd 2-1 Brentford",
-    "second": "Defeat In The Capital | West Ham 2-1 Man Utd",
+    "first": "WHAT A PERFORMANCE! 🤩 | Southampton 0-3 United",
+    "second": "Leny Yoro Returns To Team Training! 👊",
     "third": "De Ligt x Mazraoui Meet Football Leadership, See Old Trafford + MORE!",
   };
 
@@ -259,7 +259,7 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const LiverpoolVideos = [LiverpoolVideo1, LiverpoolVideo2, LiverpoolVideo3];
 
   const LiverpoolVideoTitles = {
-    "first": "BRILLIANT Gakpo Double & Diaz Goal! Brighton 2-3 Liverpool | Carabao Cup Highlights", 
+    "first": "Luis Diaz HAT-TRICK! Liverpool 4-0 Bayer Leverkusen | Champions League Highlights", 
     "second": "INSIDE: Arsenal 2-2 Liverpool | BEST view of action-packed draw", 
     "third": "Nunez Goal the Difference in Germany! | RB Leipzig 0-1 Liverpool | UEFA Champions League Highlights"
   }
@@ -269,9 +269,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const ArsenalVideos = [ArsenalVideo1, ArsenalVideo2, ArsenalVideo3];
 
   const ArsenalVideoTitles = {
-    "first": "LIMBERING UP FOR LIVERPOOL! | INSIDE TRAINING | The Gunners prepare for Premier League clash in N5",
-    "second": "NWANERI WITH A WORLDIE! | Preston vS Arsenal (0-3) | Carabao Cup | Jesus, Nwaneri, Havertz", 
-    "third": "EXTENDED HIGHLIGHTS | Arsenal vs Liverpool (2-2) | Saka scores his 50th Premier League goal!"
+    "first": "NWANERI WITH A WORLDIE! | Preston vs Arsenal (0-3) | Carabao Cup | Jesus, Nwaneri, Havertz",
+    "second": "HIGHLIGHTS | Inter Milan vs Arsenal (1-0) | Champions League", 
+    "third": "INSIDE TRAINING | Preparing for Preston North End in the Carabao Cup"
   }
 
   const ArsenalKits = [ArsenalKit1, ArsenalKit2, ArsenalKit3];
@@ -280,8 +280,8 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   
   const ChelseaVideoTitles = {
     "first": "Newcastle 2-0 Chelsea | HIGHLIGHTS - Extended | Carabao Cup 24/25", 
-    "second": "Liverpool 2-1 Chelsea | HIGHLIGHTS - Extended | Premier League 2024/25",
-    "third": "Chelsea 1-1 Nottingham Forest | MADUEKE levels in Forest deadlock | HIGHLIGHTS - Extended | PL 24/25",
+    "second": "Chelsea 8-0 FC Noah | BLUES crush Noah! | HIGHLIGHTS | UEFA Europa Conference League 24/25",
+    "third": "Newcastle 2-0 Chelsea | HIGHLIGHTS - Extended | Carabao Cup 24/25",
   }
 
   const ChelseaKits = [ChelseaKit1, ChelseaKit2, ChelseaKit3];
@@ -290,18 +290,18 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const TottenhamVideoTitles = {
     "first": "Tottenham Hotspur 2-1 Man City | Carabao Cup Highlights | Werner and Sarr send Spurs into quarters", 
-    "second": "Heung-Min Son and Richarlison return to Tottenham Hotspur training", 
-    "third": "Crystal Palace 1-0 Tottenham Hotspur // PREMIER LEAGUE HIGHLIGHTS",
+    "second": "Galatasaray 3-2 Tottenham Hotspur | Europa League Highlights", 
+    "third": "Tottenham Hotspur 4-1 Aston Villa | Extended Premier League Highlights",
   }
 
   const TottenhamKits = [TottenhamKit1, TottenhamKit2, TottenhamKit3];
 
-  const NewcastleVideos = [NewcastleVideo1, NewcastleVideo2, NewcastleVideo3];
+  const NewcastleVideos = [NewcastleVideo1];
 
   const NewcastleVideoTitles = {
-    "first": "Newcastle United 1 Arsenal 0 | EXTENDED Premier League Highlights", 
-    "second": "Newcastle United 2 Chelsea 0 | EXTENDED Carabao Cup Highlights", 
-    "third": "PRESS CONFERENCE | Eddie Howe pre-Arsenal (H)"
+    "first": "Newcastle United 2 Chelsea 0 | EXTENDED Carabao Cup Highlights", 
+    "second": "Eddie Howes Newcastle United | The Story So Far", 
+    "third": "EVERY ANGLE Alexander Isak's Winner Against Arsenal"
   }
 
   const NewcastleKits = [NewcastleKit1, NewcastleKit2, NewcastleKit3];
@@ -309,9 +309,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const AstonVillaVideos = [AstonVillaVideo1, AstonVillaVideo2, AstonVillaVideo3];
 
   const AstonVillaVideoTitles = {
-    "first": "HIGHLIGHTS | Aston Villa 1-1 Bournemouth", 
-    "second": "McGINN & DURAN ON TARGET | Aston Villa 2-0 Bologna", 
-    "third": "JHON DURAN SCREAMER 🔥 | Aston Villa 3-2 Everton"
+    "first": "BITESIZE HIGHLIGHTS | Club Brugge v Aston Villa", 
+    "second": "POST MATCH | Unai Emery on defeat to Liverpool", 
+    "third": "The best in the world for a reason 💫 | Emi Martínez"
   }
 
   const AstonVillaKits = [AstonVillaKit1, AstonVillaKit2, AstonVillaKit3];
@@ -319,9 +319,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const BrightonVideos = [BrightonVideo1, BrightonVideo2, BrightonVideo3];
 
   const BrightonVideoTitles = {
-    "first": "HIGHLIGHTS | Liverpool v Brighton | Premier League", 
-    "second": "POST-MATCH | Hurzeler And Kadioglu React To Liverpool Loss", 
-    "third": "HIGHLIGHTS | Brighton v Wolves | Premier League"
+    "first": "POST-MATCH | Hurzeler, Pedro & O'Riley | Brighton v Man City", 
+    "second": "EXTENDED HIGHLIGHTS | Liverpool v Brighton | Premier League", 
+    "third": "Arsenal Post-Match | Vidosic And Losada React To Defeat On The Road"
   }
 
   const BrightonKits = [BrightonKit1, BrightonKit2, BrightonKit3];
@@ -329,9 +329,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const BrentfordVideos = [BrentfordVideo1, BrentfordVideo2, BrentfordVideo3];
 
   const BrentfordVideoTitles = {
-    "first": "FLEKKEN HEROICS in the Carabao Cup! | INSIDE BRENTFORD EP.5", 
-    "second": "Wissa and Mbeumo on target AGAIN 🤩🤯 | Brentford 4-3 Ipswich Town | Premier League Highlights",
-    "third": "Mbeumo strikes early again 🤯 | Brentford 1-1 West Ham United | Premier League Highlights" 
+    "first": "YOANE WISSA AT THE DOUBLE 🇨🇩💪 | Brentford 3-2 AFC Bournemouth | Premier League Highlights", 
+    "second": "Janelt scores in derby defeat | Fulham 2-1 Brentford | Premier League Highlights",
+    "third": "CRAZY late scenes against Ipswich 🤯 Featuring Wissa, Mbeumo + Thomas Frank 🗯 INSIDE BRENTFORD EP.4" 
   }
 
   const BrentfordKits = [BrentfordKit1, BrentfordKit2, BrentfordKit3];
@@ -339,9 +339,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const CrystalPalaceVideos = [CrystalPalaceVideo1, CrystalPalaceVideo2, CrystalPalaceVideo3];
 
   const CrystalPalaceVideoTitles = {
-    "first": "DAICHI KAMADA SCORES WINNER!!! 🇯🇵🚀 | EFL Cup Match Action: Aston Villa 1-2 Crystal Palace", 
-    "second": "CHALOBAH & GUÉHI SCORE 🎯🔥 | Premier League Highlights: Wolves 2-2 Crystal Palace",
-    "third": "Premier League Highlights: Nottingham Forest 1-0 Crystal Palace"
+    "first": "MATCH HIGHLIGHTS | Crystal Palace 0-2 Fulham | Premier League", 
+    "second": "IT'S A DISGRACE! | Maxence Lacroix wins October Player of The Month",
+    "third": "Selhurst Park - the OLDEST PROFESSIONAL LEAGUE CLUB stadium on 16mm film | This is our church"
   }
 
   const CrystalPalaceKits = [CrystalPalaceKit1, CrystalPalaceKit2, CrystalPalaceKit3];
@@ -349,9 +349,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const EvertonVideos = [EvertonVideo1, EvertonVideo2, EvertonVideo3];
 
   const EvertonVideoTitles = {
-    "first": "SOUTHAMPTON 1-0 EVERTON | Premier League highlights", 
-    "second": "Liverpool U21s 0-2 Everton U21s | Premier League 2 highlights", 
-    "third": "EVERTON 1-1 FULHAM | Premier League highlights"
+    "first": "WEST HAM V EVERTON | Sean Dyche's press conference | GW11", 
+    "second": "EXTENDED HIGHLIGHTS: IPSWICH TOWN 0-2 EVERTON", 
+    "third": "LANDMARK MOMENT AS GRASS GROWS 🌱 | Update from Everton Stadium"
   }
 
   const EvertonKits = [EvertonKit1, EvertonKit2, EvertonKit3];
@@ -359,9 +359,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const FulhamVideos = [FulhamVideo1, FulhamVideo2, FulhamVideo3];
 
   const FulhamVideoTitles = {
-    "first": "HIGHLIGHTS | Fulham 2-1 Brentford | Late Derby Day Drama 🔥", 
-    "second": "HIGHLIGHTS | Everton 1-1 Fulham", 
-    "third": "HIGHLIGHTS | Fulham 1-3 Aston Villa | Not Our Day At CC"
+    "first": "EXTENDED HIGHLIGHTS | Crystal Palace 0-2 Fulham | Back-To-Back 😄", 
+    "second": "EXTENDED HIGHLIGHTS | Fulham 2-1 Brentford | Wilson Magic Seals Win 🏴󠁧󠁢󠁷󠁬󠁳󠁿", 
+    "third": "ALL ANGLES | Harry Wilson Heroics Against Brentford"
   }
 
   const FulhamKits = [FulhamKit1, FulhamKit2, FulhamKit3];
@@ -369,9 +369,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const LeicesterCityVideos = [LeicesterCityVideo1, LeicesterCityVideo2, LeicesterCityVideo3];
 
   const LeicesterCityVideoTitles = {
-    "first": "Disappointing Defeat 😑 | Leicester City 1 Nottingham Forest 3", 
-    "second": "CRAZIEST COMEBACK EVER! 🤩 | Southampton 2 Leicester City 3", 
-    "third": "Facundo FIRES WINNER! 🔥 | Leicester City 1 AFC Bournemouth 0"
+    "first": "Old Trafford Assessment 🔜 | Steve Cooper Speaks Pre- Man Utd", 
+    "second": "Crazy Moment! 😃 | Jordan Ayew After Scoring Late At Ipswich Town", 
+    "third": "Ricardo Pereira & Odsonne Édouard At The African Caribbean Centre! 🤩 | Love Our Community"
   }
 
   const LeicesterCityKits = [LeicesterCityKit1, LeicesterCityKit2, LeicesterCityKit3];
@@ -379,9 +379,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const IpswichTownVideos = [IpswichVideo1, IpswichVideo2, IpswichVideo3];
 
   const IpswichTownVideoTitles = {
-    "first": "HIGHLIGHTS | SOUTHAMPTON 1 TOWN 1", 
-    "second": "HIGHLIGHTS | TOWN 2 VILLA 2", 
-    "third": "HIGHLIGHTS | TOWN 0 LIVERPOOL 2"
+    "first": "HIGHLIGHTS | TOWN 0 EVERTON 2", 
+    "second": "MARK ASHTON AND KIERAN McKENNA INTERVIEW", 
+    "third": "HIGHLIGHTS | TOWN 2 VILLA 2"
   }
 
   const IpswichTownKits = [IpswichKit1, IpswichKit2, IpswichKit3];
@@ -389,9 +389,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const SouthamptonVideos = [SouthamptonVideo1, SouthamptonVideo2, SouthamptonVideo3];
 
   const SouthamptonVideoTitles = {
-    "first": "HIGHLIGHTS: Manchester City 1-0 Southampton | Premier League", 
-    "second": "HIGHLIGHTS: Southampton 1-0 Everton | Premier League", 
-    "third": "HIGHLIGHTS: Southampton 3-2 Stoke City | Carabao Cup"
+    "first": "PRESS CONFERENCE: Martin on Wolves trip | Premier League", 
+    "second": "HIGHLIGHTS: Southampton 3-2 Stoke City | Carabao Cup", 
+    "third": "EXTENDED HIGHLIGHTS: Southampton 2-3 Leicester City | Premier League"
   }
 
   const SouthamptonKits = [SouthamptonKit1, SouthamptonKit2, SouthamptonKit3];
@@ -399,9 +399,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const WesthamVideos = [WesthamVideo1, WesthamVideo2, WesthamVideo3];
 
   const WesthamVideoTitles = {
-    "first": "Nottingham Forest 3-0 West Ham | Premier League Highlights", 
-    "second": "West Ham 2-1 Manchester United | Late Penalty Secures The Three Points! | Premier League Highlights", 
-    "third": "Tottenham Hotspur 4-1 West Ham | Premier League Highlights"
+    "first": "West Ham 0-0 Everton | Premier League Highlights", 
+    "second": "It Was A Tough Game | West Ham 0-0 Everton | Emerson Palmieri | Post Match Reaction", 
+    "third": "Extended Highlights | Nottingham Forest 3-0 West Ham | Premier League"
   }
 
   const WesthamKits = [WesthamKit1, WesthamKit2, WesthamKit3];
@@ -409,9 +409,9 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const WolverhamptonVideos = [WolverhamptonVideo1, WolverhamptonVideo2, WolverhamptonVideo3];
 
   const WolverhamptonVideoTitles = {
-    "first": "Points shared with Palace | Wolves 2-2 Crystal Palace | Highlights", 
-    "second": "Cunha seals comeback in stoppage time! | Brighton & Hove Albion 2-2 Wolves | Highlights", 
-    "third": "A bad defeat | Brentford 5-3 Wolves | Highlights"
+    "first": "Hwang back in training, Semedo wins Player of the Month and Foundation gala dinner", 
+    "second": "Pedro Neto stunner, Raul Jimenez comeback goal and Joao Gomes debut strike against Southampton!", 
+    "third": "Podence, Ait-Nouri and Adama! | Wolves' top goals against Crystal Palace"
   }
 
   const WolverhamptonKits = [WolverhamptonKit1, WolverhamptonKit2, WolverhamptonKit3];
