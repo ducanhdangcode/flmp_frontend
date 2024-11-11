@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
 
-const TeamVideo = ({teamId, teamList, teamVideos, teamVideoTitles}) => {
+const TeamVideo = ({teamId, teamList, teamVideoTitles}) => {
   return (
-    <div className = "absolute z-100" style = {{left: "73rem", top: "25rem", width: "30%"}}>
+    <div className = "absolute z-100" style = {{left: "71rem", top: "25rem", width: "30%"}}>
         {teamList.length > 0 ? <p className = "font-roboto text-2xl font-semibold relative" style = {{color: teamList[teamId - 1]?.color}}>{`${teamList[teamId - 1]?.name.toUpperCase()} VIDEOS`}</p> 
         : <p className = "font-roboto text-2xl font-semibold" style = {{color: teamList[teamId - 1]?.color}}>Cannot load the content!</p> }
         <div className = "relative" style = {{top: "1rem"}}>

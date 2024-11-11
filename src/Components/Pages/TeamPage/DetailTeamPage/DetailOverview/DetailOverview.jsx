@@ -11,7 +11,7 @@ import Chairman from './Chairman';
 import Trophies from './Trophies';
 import TeamVideo from './TeamVideo';
 
-const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideos, teamVideoTitles, teamKits, teamChairman}) => {
+const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideoTitles, teamKits, teamChairman}) => {
     const [storedTeamLogo, setStoredTeamLogo] = useState(teamLogo);
     const [teamList, setTeamList] = useState([]);
 
@@ -73,7 +73,7 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
             </div>
         </div>
         <div className = "w-full" style = {{backgroundColor: "#d1cec7", height: "127rem", borderTop: "2px solid gray"}}>
-            <TeamVideo teamId={teamId} teamList={teamList} teamVideos={teamVideos} teamVideoTitles={teamVideoTitles}/>
+            <TeamVideo teamId={teamId} teamList={teamList} teamVideoTitles={teamVideoTitles}/>
             <Trophies teamId = {teamId} teamList={teamList}/>
             <Stadium teamId = {teamId} teamList={teamList}/>
             <Kit teamId={teamId} teamList={teamList} teamKits = {teamKits}/>

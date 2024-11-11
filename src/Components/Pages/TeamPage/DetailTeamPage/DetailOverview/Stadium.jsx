@@ -19,6 +19,8 @@ import IpswichTownStadium from '/FLMP/flmp_frontend/src/Image/Stadium/ipswichTow
 import SouthamptonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/southamptonStadium.jpg';
 import WesthamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/westhamStadium.jpg';
 import WolverhamptonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/wolverhamptonStadium.jpg';
+import BournemouthStadium from '/FLMP/flmp_frontend/src/Image/Stadium/bournemouthStadium.jpg';
+import NottinghamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/nottinghamStadium.jpg';
 
 import { RiArmchairFill } from 'react-icons/ri';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -34,7 +36,7 @@ const Stadium = ({teamId, teamList}) => {
         })
     })
 
-    const Stadiums = [EtihadStadium, OldTraffordStadium, LiverpoolStadium, ArsenalStadium, ChelseaStadium, TottenhamStadium, NewcastleStadium, AstonVillaStadium, BrightonStadium, BrentfordStadium, CrystalPalaceStadium, EvertonStadium, FulhamStadium, LeicesterCityStadium, IpswichTownStadium, SouthamptonStadium, WesthamStadium, WolverhamptonStadium];
+    const Stadiums = [EtihadStadium, OldTraffordStadium, LiverpoolStadium, ArsenalStadium, ChelseaStadium, TottenhamStadium, NewcastleStadium, AstonVillaStadium, BrightonStadium, BrentfordStadium, CrystalPalaceStadium, EvertonStadium, FulhamStadium, LeicesterCityStadium, IpswichTownStadium, SouthamptonStadium, WesthamStadium, WolverhamptonStadium, BournemouthStadium, NottinghamStadium];
   return (
     <div className = "absolute" style = {{top: "54rem"}}>
       <p className = "text-2xl font-ubuntu font-bold relative" style = {{left: "2rem", bottom: "0.2rem"}}>STADIUM</p>

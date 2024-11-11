@@ -28,78 +28,6 @@ import NottinghamForestLogo from '/FLMP/flmp_frontend/src/Image/EPL/nottinghamFo
 import TotthenhamLogoWhite from '/FLMP/flmp_frontend/src/Image/EPL/tottenhamLogoWhite.png';
 import LiverpoolLogoWhite from '/FLMP/flmp_frontend/src/Image/EPL/liverpoolLogoWhite.png';
 
-// import video
-import ManCityVideo1 from './Video/ManchesterCity/ManCityVideo1.mp4';
-import ManCityVideo2 from './Video/ManchesterCity/ManCityVideo2.mp4';
-import ManCityVideo3 from './Video/ManchesterCity/ManCityVideo3.mp4';
-
-import ManUnitedVideo1 from './Video/ManchesterUnited/ManUnitedVideo1.mp4';
-import ManUnitedVideo2 from './Video/ManchesterUnited/ManUnitedVideo2.mp4';
-import ManUnitedVideo3 from './Video/ManchesterUnited/ManUnitedVideo3.mp4';
-
-import LiverpoolVideo1 from './Video/Liverpool/LiverpoolVideo1.mp4';
-import LiverpoolVideo2 from './Video/Liverpool/LiverpoolVideo2.mp4';
-import LiverpoolVideo3 from './Video/Liverpool/LiverpoolVideo3.mp4';
-
-import ArsenalVideo1 from './Video/Arsenal/arsenalNewVideo1.mp4';
-import ArsenalVideo2 from './Video/Arsenal/ArsenalVideo2.mp4';
-import ArsenalVideo3 from './Video/Arsenal/ArsenalVideo3.mp4';
-
-import ChelseaVideo1 from './Video/Chelsea/ChelseaVideo1.mp4';
-import ChelseaVideo2 from './Video/Chelsea/ChelseaVideo2.mp4';
-import ChelseaVideo3 from './Video/Chelsea/ChelseaVideo3.mp4';
-
-import TottenhamVideo1 from './Video/Tottenham/TottenhamVideo1.mp4';
-import TottenhamVideo2 from './Video/Tottenham/TottenhamVideo2.mp4';
-import TottenhamVideo3 from './Video/Tottenham/TottenhamVideo3.mp4';
-
-import NewcastleVideo1 from './Video/Newcastle/NewcastleVideo1.mp4';
-import NewcastleVideo2 from './Video/Newcastle/NewcastleVideo2.mp4';
-import NewcastleVideo3 from './Video/Newcastle/NewcastleVideo3.mp4';
-
-import AstonVillaVideo1 from './Video/AstonVilla/AstonVillaVideo1.mp4';
-import AstonVillaVideo2 from './Video/AstonVilla/AstonVillaVideo2.mp4';
-import AstonVillaVideo3 from './Video/AstonVilla/AstonVillaVideo3.mp4';
-
-import BrightonVideo1 from './Video/Brighton/BrightonVideo1.mp4';
-import BrightonVideo2 from './Video/Brighton/BrightonVideo2.mp4';
-import BrightonVideo3 from './Video/Brighton/BrightonVideo3.mp4';
-
-import BrentfordVideo1 from './Video/Brentford/BrentfordVideo1.mp4';
-import BrentfordVideo2 from './Video/Brentford/BrentfordVideo2.mp4';
-import BrentfordVideo3 from './Video/Brentford/BrentfordVideo3.mp4';
-
-import CrystalPalaceVideo1 from './Video/CrystalPalace/CrystalPalaceVideo1.mp4';
-import CrystalPalaceVideo2 from './Video/CrystalPalace/CrystalPalaceVideo2.mp4';
-import CrystalPalaceVideo3 from './Video/CrystalPalace/CrystalPalaceVideo1.mp4';
-
-import EvertonVideo1 from './Video/Everton/EvertonVideo1.mp4';
-import EvertonVideo2 from './Video/Everton/EvertonVideo2.mp4';
-import EvertonVideo3 from './Video/Everton/EvertonVideo3.mp4';
-
-import FulhamVideo1 from './Video/Fulham/FulhamVideo1.mp4';
-import FulhamVideo2 from './Video/Fulham/FulhamVideo2.mp4';
-import FulhamVideo3 from './Video/Fulham/FulhamVideo3.mp4';
-
-import LeicesterCityVideo1 from './Video/Leicester/LeicesterVideo1.mp4';
-import LeicesterCityVideo2 from './Video/Leicester/LeicesterVideo2.mp4';
-import LeicesterCityVideo3 from './Video/Leicester/LeicesterVideo3.mp4';
-
-import IpswichVideo1 from './Video/IpswichTown/IpswichTownVideo2.mp4';
-import IpswichVideo2 from './Video/IpswichTown/IpswichTownVideo1.mp4';
-import IpswichVideo3 from './Video/IpswichTown/IpswichTownVideo3.mp4';
-
-import SouthamptonVideo1 from './Video/Southampton/SouthamptonVideo1.mp4';
-import SouthamptonVideo2 from './Video/Southampton/SouthamptonVideo2.mp4';
-import SouthamptonVideo3 from './Video/Southampton/SouthamptonVideo3.mp4';
-
-import WesthamVideo1 from './Video/WestHam/WesthamVideo1.mp4';
-import WesthamVideo2 from './Video/WestHam/WesthamVideo2.mp4';
-import WesthamVideo3 from './Video/WestHam/WesthamVideo3.mp4';
-
-import WolverhamptonVideo2 from './Video/Wolverhampton/WolverhamptonVideo1.mp4';
-import WolverhamptonVideo1 from './Video/Wolverhampton/WolverhamptonVideo2.mp4';
-import WolverhamptonVideo3 from './Video/Wolverhampton/WolverhamptonVideo3.mp4';
 
 // import kit
 import ManCityKit1 from '../../../Image/Kit/ManchesterCity/manCityKit1.png';
@@ -174,6 +102,14 @@ import WolverhamptonKit1 from '../../../Image/Kit/Wolverhampton/wolverhamptonKit
 import WolverhamptonKit2 from '../../../Image/Kit/Wolverhampton/wolverhamptonKit2.png';
 import WolverhamptonKit3 from '../../../Image/Kit/Wolverhampton/wolverhamptonKit3.png';
 
+import BournemouthKit1 from '../../../Image/Kit/Bournemouth/bournemouthKit1.png';
+import BournemouthKit2 from '../../../Image/Kit/Bournemouth/bournemouthKit2.png';
+import BournemouthKit3 from '../../../Image/Kit/Bournemouth/bournemouthKit3.png';
+
+import NottinghamKit1 from '../../../Image/Kit/NottinghamForest/nottinghamKit1.png';
+import NottinghamKit2 from '../../../Image/Kit/NottinghamForest/nottinghamKit2.png';
+import NottinghamKit3 from '../../../Image/Kit/NottinghamForest/nottinghamKit3.png';
+
 // import chairman
 import ManCityChairman from '../../../Image/Chairman/ManchesterCity/manCityChairman.png';
 import ManUnitedChairman from '../../../Image/Chairman/ManchesterUnited/ManUnitedChairman.png';
@@ -193,13 +129,15 @@ import IpswichChairman from '../../../Image/Chairman/IpswichTown/ipswichTownChai
 import SouthamptonChairman from '../../../Image/Chairman/Southampton/southamptonChairman.jpg';
 import WesthamChairman from '../../../Image/Chairman/Westham/westhamChairman.jpg';
 import WolverhamptonChairman from '../../../Image/Chairman/Wolverhampton/wolverhampronChairman.jpg';
+import BournemouthChairman from '../../../Image/Chairman/Bournemouth/bournemouthChairman.jpg';
+import NottinghamChairman from '../../../Image/Chairman/NottinghamForest/nottinghamChairman.jpg';
 
 import TeamCard from './TeamCard';
 
 import AOS from 'aos';
 import { Link } from 'react-router-dom';
 
-const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom, setupTeamVideos, setupTeamVideoTitles, setupTeamKits, setupTeamChairman}) => {
+const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom, setupTeamVideoTitles, setupTeamKits, setupTeamChairman}) => {
   
   useEffect(() => {
     AOS.init({
@@ -228,12 +166,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   const BournemouthId = 19;
   const NottinghamForestId = 20;
 
-  const ManCityVideos = [
-    ManCityVideo1,
-    ManCityVideo2,
-    ManCityVideo3,
-  ];
-
   const ManCityVideoTitles = {
     "first": "HIGHLIGHTS | BRIGHTON 2-1 CITY | Haaland, Pedro & O’Riley Goals | Premier League",
     "second": "Smiley Tattoo Mystery & UFC Fighter!? Ederson Finally Speaks!", 
@@ -241,12 +173,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const ManCityKits = [ManCityKit1, ManCityKit2, ManCityKit3];
-
-  const ManUnitedVideos = [
-    ManUnitedVideo1,
-    ManUnitedVideo2, 
-    ManUnitedVideo3
-  ];
 
   const ManUnitedVideoTitles = {
     "first": "WHAT A PERFORMANCE! 🤩 | Southampton 0-3 United",
@@ -256,8 +182,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const ManUnitedKits = [ManUnitedKit1, ManUnitedKit2, ManUnitedKit3];
 
-  const LiverpoolVideos = [LiverpoolVideo1, LiverpoolVideo2, LiverpoolVideo3];
-
   const LiverpoolVideoTitles = {
     "first": "Luis Diaz HAT-TRICK! Liverpool 4-0 Bayer Leverkusen | Champions League Highlights", 
     "second": "INSIDE: Arsenal 2-2 Liverpool | BEST view of action-packed draw", 
@@ -266,8 +190,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const LiverpoolKits = [LiverpoolKit1, LiverpoolKit2, LiverpoolKit3];
 
-  const ArsenalVideos = [ArsenalVideo1, ArsenalVideo2, ArsenalVideo3];
-
   const ArsenalVideoTitles = {
     "first": "NWANERI WITH A WORLDIE! | Preston vs Arsenal (0-3) | Carabao Cup | Jesus, Nwaneri, Havertz",
     "second": "HIGHLIGHTS | Inter Milan vs Arsenal (1-0) | Champions League", 
@@ -275,8 +197,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const ArsenalKits = [ArsenalKit1, ArsenalKit2, ArsenalKit3];
-
-  const ChelseaVideos = [ChelseaVideo1, ChelseaVideo2, ChelseaVideo3];
   
   const ChelseaVideoTitles = {
     "first": "Newcastle 2-0 Chelsea | HIGHLIGHTS - Extended | Carabao Cup 24/25", 
@@ -286,8 +206,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const ChelseaKits = [ChelseaKit1, ChelseaKit2, ChelseaKit3];
 
-  const TottenhamVideos = [TottenhamVideo1, TottenhamVideo2, TottenhamVideo3];
-
   const TottenhamVideoTitles = {
     "first": "Tottenham Hotspur 2-1 Man City | Carabao Cup Highlights | Werner and Sarr send Spurs into quarters", 
     "second": "Galatasaray 3-2 Tottenham Hotspur | Europa League Highlights", 
@@ -295,8 +213,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const TottenhamKits = [TottenhamKit1, TottenhamKit2, TottenhamKit3];
-
-  const NewcastleVideos = [NewcastleVideo1];
 
   const NewcastleVideoTitles = {
     "first": "Newcastle United 2 Chelsea 0 | EXTENDED Carabao Cup Highlights", 
@@ -306,8 +222,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const NewcastleKits = [NewcastleKit1, NewcastleKit2, NewcastleKit3];
 
-  const AstonVillaVideos = [AstonVillaVideo1, AstonVillaVideo2, AstonVillaVideo3];
-
   const AstonVillaVideoTitles = {
     "first": "BITESIZE HIGHLIGHTS | Club Brugge v Aston Villa", 
     "second": "POST MATCH | Unai Emery on defeat to Liverpool", 
@@ -315,8 +229,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const AstonVillaKits = [AstonVillaKit1, AstonVillaKit2, AstonVillaKit3];
-
-  const BrightonVideos = [BrightonVideo1, BrightonVideo2, BrightonVideo3];
 
   const BrightonVideoTitles = {
     "first": "POST-MATCH | Hurzeler, Pedro & O'Riley | Brighton v Man City", 
@@ -326,8 +238,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const BrightonKits = [BrightonKit1, BrightonKit2, BrightonKit3];
 
-  const BrentfordVideos = [BrentfordVideo1, BrentfordVideo2, BrentfordVideo3];
-
   const BrentfordVideoTitles = {
     "first": "YOANE WISSA AT THE DOUBLE 🇨🇩💪 | Brentford 3-2 AFC Bournemouth | Premier League Highlights", 
     "second": "Janelt scores in derby defeat | Fulham 2-1 Brentford | Premier League Highlights",
@@ -335,8 +245,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const BrentfordKits = [BrentfordKit1, BrentfordKit2, BrentfordKit3];
-
-  const CrystalPalaceVideos = [CrystalPalaceVideo1, CrystalPalaceVideo2, CrystalPalaceVideo3];
 
   const CrystalPalaceVideoTitles = {
     "first": "MATCH HIGHLIGHTS | Crystal Palace 0-2 Fulham | Premier League", 
@@ -346,8 +254,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const CrystalPalaceKits = [CrystalPalaceKit1, CrystalPalaceKit2, CrystalPalaceKit3];
 
-  const EvertonVideos = [EvertonVideo1, EvertonVideo2, EvertonVideo3];
-
   const EvertonVideoTitles = {
     "first": "WEST HAM V EVERTON | Sean Dyche's press conference | GW11", 
     "second": "EXTENDED HIGHLIGHTS: IPSWICH TOWN 0-2 EVERTON", 
@@ -355,8 +261,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const EvertonKits = [EvertonKit1, EvertonKit2, EvertonKit3];
-
-  const FulhamVideos = [FulhamVideo1, FulhamVideo2, FulhamVideo3];
 
   const FulhamVideoTitles = {
     "first": "EXTENDED HIGHLIGHTS | Crystal Palace 0-2 Fulham | Back-To-Back 😄", 
@@ -366,8 +270,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const FulhamKits = [FulhamKit1, FulhamKit2, FulhamKit3];
 
-  const LeicesterCityVideos = [LeicesterCityVideo1, LeicesterCityVideo2, LeicesterCityVideo3];
-
   const LeicesterCityVideoTitles = {
     "first": "Old Trafford Assessment 🔜 | Steve Cooper Speaks Pre- Man Utd", 
     "second": "Crazy Moment! 😃 | Jordan Ayew After Scoring Late At Ipswich Town", 
@@ -375,8 +277,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const LeicesterCityKits = [LeicesterCityKit1, LeicesterCityKit2, LeicesterCityKit3];
-
-  const IpswichTownVideos = [IpswichVideo1, IpswichVideo2, IpswichVideo3];
 
   const IpswichTownVideoTitles = {
     "first": "HIGHLIGHTS | TOWN 0 EVERTON 2", 
@@ -386,8 +286,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const IpswichTownKits = [IpswichKit1, IpswichKit2, IpswichKit3];
 
-  const SouthamptonVideos = [SouthamptonVideo1, SouthamptonVideo2, SouthamptonVideo3];
-
   const SouthamptonVideoTitles = {
     "first": "PRESS CONFERENCE: Martin on Wolves trip | Premier League", 
     "second": "HIGHLIGHTS: Southampton 3-2 Stoke City | Carabao Cup", 
@@ -395,8 +293,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
   }
 
   const SouthamptonKits = [SouthamptonKit1, SouthamptonKit2, SouthamptonKit3];
-
-  const WesthamVideos = [WesthamVideo1, WesthamVideo2, WesthamVideo3];
 
   const WesthamVideoTitles = {
     "first": "West Ham 0-0 Everton | Premier League Highlights", 
@@ -406,17 +302,31 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
 
   const WesthamKits = [WesthamKit1, WesthamKit2, WesthamKit3];
 
-  const WolverhamptonVideos = [WolverhamptonVideo1, WolverhamptonVideo2, WolverhamptonVideo3];
-
   const WolverhamptonVideoTitles = {
     "first": "Hwang back in training, Semedo wins Player of the Month and Foundation gala dinner", 
     "second": "Pedro Neto stunner, Raul Jimenez comeback goal and Joao Gomes debut strike against Southampton!", 
-    "third": "Podence, Ait-Nouri and Adama! | Wolves' top goals against Crystal Palace"
+    "third": "Podence, Ait-Nouri and Adama! | Wolves top goals against Crystal Palace"
   }
 
   const WolverhamptonKits = [WolverhamptonKit1, WolverhamptonKit2, WolverhamptonKit3];
 
-  const handleClick = (id, logo, height, width, top, left, nameBottom, videos, titles, kits, chairman) => {
+  const BournemouthVideoTitles = {
+    "first": "Kluivert scores another set piece goal in defeat | Brentford 3-2 AFC Bournemouth", 
+    "second": "Cherries END Man City's 32-game unbeaten run | AFC Bournemouth 2-1 Manchester City", 
+    "third": "Press conference: Andoni on chances against Man City, Travers form and injury news on Ouattara"
+  }
+
+  const BournemouthKits = [BournemouthKit1, BournemouthKit2, BournemouthKit3];
+
+  const NottinghamForestTitles = {
+    "first": "Forest 1-3 Newcastle United | Premier League Highlights", 
+    "second": "Nuno Espírito Santo Press Conference 🎙️ | Forest vs Newcastle United | Premier League", 
+    "third": "Up to THIRD! 🔥 | Forest 3-0 West Ham | Extended Highlights | Premier League"
+  }
+
+  const NottinghamKits = [NottinghamKit1, NottinghamKit2, NottinghamKit3];
+
+  const handleClick = (id, logo, height, width, top, left, nameBottom, titles, kits, chairman) => {
     setupTeamLogo(logo);
     setupTeamId(id);
     setupDetailLogoHeight(height);
@@ -424,7 +334,6 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
     setupDetailLogoTop(top);
     setupDetailLogoLeft(left);
     setupDetailNameBottom(nameBottom);
-    setupTeamVideos(videos);
     setupTeamVideoTitles(titles);
     setupTeamKits(kits);
     setupTeamChairman(chairman);
@@ -436,85 +345,85 @@ const ListTeamEPL = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamL
           <img src = {colorTheme === lightColor ? EPLLogo : EPLLogoWhite} alt = "Premier League Logo" className = {colorTheme === lightColor ? "w-72 h-32 relative" : "w-96 h-64 relative"} style = {{left: "4rem", top: "2rem"}}/>
           <div className = {colorTheme === lightColor ? "relative top-16 flex" : "relative top-0 flex"} style = {{flexFlow: "row wrap"}}>
             <Link to = "/team/manchester-city">
-              <TeamCard TeamLogo = {ManchesterCityLogo} TeamName = {"Manchester City"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#05c1f0"} hoverImage={EPLPattern} hoverTeamLogo = {ManchesterCityLogo} hoverStyle = {{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ManchesterCityId, ManchesterCityLogo, 14, 22, 3, 2, 2.5, ManCityVideos, ManCityVideoTitles, ManCityKits, ManCityChairman)}/>
+              <TeamCard TeamLogo = {ManchesterCityLogo} TeamName = {"Manchester City"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#05c1f0"} hoverImage={EPLPattern} hoverTeamLogo = {ManchesterCityLogo} hoverStyle = {{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ManchesterCityId, ManchesterCityLogo, 14, 22, 3, 2, 2.5, ManCityVideoTitles, ManCityKits, ManCityChairman)}/>
             </Link>
 
             <Link to = "/team/manchester-united">
-              <TeamCard TeamLogo = {ManchesterUnitedLogo} TeamName = {"Manchester United"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage = {EPLPattern} hoverTeamLogo = {ManchesterUnitedLogo} hoverStyle = {{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ManchesterUnitedId, ManchesterUnitedLogo, 14, 22, 3, 2, 2.5, ManUnitedVideos, ManUnitedVideoTitles, ManUnitedKits, ManUnitedChairman)}/>
+              <TeamCard TeamLogo = {ManchesterUnitedLogo} TeamName = {"Manchester United"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage = {EPLPattern} hoverTeamLogo = {ManchesterUnitedLogo} hoverStyle = {{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ManchesterUnitedId, ManchesterUnitedLogo, 14, 22, 3, 2, 2.5, ManUnitedVideoTitles, ManUnitedKits, ManUnitedChairman)}/>
             </Link>
 
             <Link to = "/team/liverpool">
-              <TeamCard TeamLogo = {LiverpoolLogo} TeamName = {"Liverpool"} addStyle={{top: "0.5rem", right: "0.8rem", height: "5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage = {EPLPattern} hoverTeamLogo={LiverpoolLogoWhite} hoverStyle = {{bottom: "0.5rem", right: "1rem", height: "7rem", width: "8.5rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(LiverpoolId, LiverpoolLogo, 14, 22, 3, 2, 2.5, LiverpoolVideos, LiverpoolVideoTitles, LiverpoolKits, LiverpoolChairman)}/>
+              <TeamCard TeamLogo = {LiverpoolLogo} TeamName = {"Liverpool"} addStyle={{top: "0.5rem", right: "0.8rem", height: "5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage = {EPLPattern} hoverTeamLogo={LiverpoolLogoWhite} hoverStyle = {{bottom: "0.5rem", right: "1rem", height: "7rem", width: "8.5rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(LiverpoolId, LiverpoolLogo, 14, 22, 3, 2, 2.5, LiverpoolVideoTitles, LiverpoolKits, LiverpoolChairman)}/>
             </Link>
 
             <Link to = "/team/arsenal">
-              <TeamCard TeamLogo = {ArsenalLogo} TeamName = {"Arsenal"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage = {EPLPattern} hoverTeamLogo={ArsenalLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ArsenalId, ArsenalLogo, 14, 22, 3, 2, 2.5, ArsenalVideos, ArsenalVideoTitles, ArsenalKits, ArsenalChairman)}/>
+              <TeamCard TeamLogo = {ArsenalLogo} TeamName = {"Arsenal"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage = {EPLPattern} hoverTeamLogo={ArsenalLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ArsenalId, ArsenalLogo, 14, 22, 3, 2, 2.5, ArsenalVideoTitles, ArsenalKits, ArsenalChairman)}/>
             </Link>
 
             <Link to = "/team/chelsea">
-              <TeamCard TeamLogo = {ChelseaLogo} TeamName = {"Chelsea"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#0026ff"} hoverImage = {EPLPattern} hoverTeamLogo={ChelseaLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ChelseaId, ChelseaLogo, 14, 22, 3, 2, 2.5, ChelseaVideos, ChelseaVideoTitles, ChelseaKits, ChelseaChairman)}/>
+              <TeamCard TeamLogo = {ChelseaLogo} TeamName = {"Chelsea"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#0026ff"} hoverImage = {EPLPattern} hoverTeamLogo={ChelseaLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(ChelseaId, ChelseaLogo, 14, 22, 3, 2, 2.5, ChelseaVideoTitles, ChelseaKits, ChelseaChairman)}/>
             </Link>
 
             <Link to = "/team/tottenham-hotspur">
-              <TeamCard TeamLogo = {TottenhamLogo} TeamName = {"Tottenham"} addStyle={{top: "1rem", left: "0.5rem", height: "4.2rem", width: "5rem"}} addStyleText = {{left: "1.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#07155c"} hoverImage = {EPLPattern} hoverTeamLogo={TotthenhamLogoWhite} hoverStyle={{top: "0rem", right: "0.5rem", height: "6rem", width: "7rem"}} hoverStyleText={{right: "0.3rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(TottenhamId, TottenhamLogo, 14, 18, 3, 4, 2.5, TottenhamVideos, TottenhamVideoTitles, TottenhamKits, TottenhamChairman)}/>
+              <TeamCard TeamLogo = {TottenhamLogo} TeamName = {"Tottenham"} addStyle={{top: "1rem", left: "0.5rem", height: "4.2rem", width: "5rem"}} addStyleText = {{left: "1.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#07155c"} hoverImage = {EPLPattern} hoverTeamLogo={TotthenhamLogoWhite} hoverStyle={{top: "0rem", right: "0.5rem", height: "6rem", width: "7rem"}} hoverStyleText={{right: "0.3rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(TottenhamId, TottenhamLogo, 14, 18, 3, 4, 2.5, TottenhamVideoTitles, TottenhamKits, TottenhamChairman)}/>
             </Link>
 
             <Link to = "/team/newcastle-united">
-              <TeamCard TeamLogo = {NewcastleLogo} TeamName = {"Newcastle"} addStyle={{top: "0.8rem", left: "0.5rem", height: "4.5rem", width: "5rem"}} addStyleText = {{left: "1.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#41434d"} hoverImage = {EPLPattern} hoverTeamLogo={NewcastleLogo} hoverStyle = {{top: "0.8rem", left: "0.5rem", height: "4.5rem", width: "5rem"}} hoverStyleText={{left: "1.5rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(NewCastleId, NewcastleLogo, 14, 14, 3, 6, 2.5, NewcastleVideos, NewcastleVideoTitles, NewcastleKits, NewcastleChairman)}/>
+              <TeamCard TeamLogo = {NewcastleLogo} TeamName = {"Newcastle"} addStyle={{top: "0.8rem", left: "0.5rem", height: "4.5rem", width: "5rem"}} addStyleText = {{left: "1.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#41434d"} hoverImage = {EPLPattern} hoverTeamLogo={NewcastleLogo} hoverStyle = {{top: "0.8rem", left: "0.5rem", height: "4.5rem", width: "5rem"}} hoverStyleText={{left: "1.5rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(NewCastleId, NewcastleLogo, 14, 14, 3, 6, 2.5, NewcastleVideoTitles, NewcastleKits, NewcastleChairman)}/>
             </Link>
 
             <Link to = "/team/aston-villa">
-              <TeamCard TeamLogo = {AstonVillaLogo} TeamName = {"Aston Villa"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#9e184d"} hoverImage = {EPLPattern} hoverTeamLogo={AstonVillaLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(AstonVillaId, AstonVillaLogo, 14, 22, 3, 2, 2.5, AstonVillaVideos, AstonVillaVideoTitles, AstonVillaKits, AstonVillaChairman)}/>
+              <TeamCard TeamLogo = {AstonVillaLogo} TeamName = {"Aston Villa"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#9e184d"} hoverImage = {EPLPattern} hoverTeamLogo={AstonVillaLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(AstonVillaId, AstonVillaLogo, 14, 22, 3, 2, 2.5, AstonVillaVideoTitles, AstonVillaKits, AstonVillaChairman)}/>
             </Link>
 
             <Link to = "/team/brighton">
-              <TeamCard TeamLogo = {BrightonLogo} TeamName = {"Brighton & Hove Albion"} addStyle={{top: "0rem", right: "1.5rem", height: "6rem", width: "9rem"}} addStyleText = {{right: "2.5rem", top: "0.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#4478c7"} hoverImage={EPLPattern} hoverTeamLogo={BrightonLogo} hoverStyle={{top: "0rem", right: "1.5rem", height: "6rem", width: "9rem"}} hoverStyleText={{right: "2.5rem", top: "0.8rem", color: "white"}} handleClick={() => handleClick(BrightonId, BrightonLogo, 14, 22, 3, 2, 2.5, BrightonVideos, BrightonVideoTitles, BrightonKits, BrightonChairman)}/>
+              <TeamCard TeamLogo = {BrightonLogo} TeamName = {"Brighton & Hove Albion"} addStyle={{top: "0rem", right: "1.5rem", height: "6rem", width: "9rem"}} addStyleText = {{right: "2.5rem", top: "0.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#4478c7"} hoverImage={EPLPattern} hoverTeamLogo={BrightonLogo} hoverStyle={{top: "0rem", right: "1.5rem", height: "6rem", width: "9rem"}} hoverStyleText={{right: "2.5rem", top: "0.8rem", color: "white"}} handleClick={() => handleClick(BrightonId, BrightonLogo, 14, 22, 3, 2, 2.5, BrightonVideoTitles, BrightonKits, BrightonChairman)}/>
             </Link>
 
             <Link to = "/team/brentford">
-              <TeamCard TeamLogo = {BrentfordLogo} TeamName = {"Brentford"} addStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} addStyleText = {{left: "2.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage={EPLPattern} hoverTeamLogo={BrentfordLogo} hoverStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} hoverStyleText={{left: "2.5rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(BrentfordId, BrentfordLogo, 14, 14, 3, 6, 2.5, BrentfordVideos, BrentfordVideoTitles, BrentfordKits, BrentfordChairman)}/>
+              <TeamCard TeamLogo = {BrentfordLogo} TeamName = {"Brentford"} addStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} addStyleText = {{left: "2.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#f23f48"} hoverImage={EPLPattern} hoverTeamLogo={BrentfordLogo} hoverStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} hoverStyleText={{left: "2.5rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(BrentfordId, BrentfordLogo, 14, 14, 3, 6, 2.5, BrentfordVideoTitles, BrentfordKits, BrentfordChairman)}/>
             </Link>
 
             <Link to = "/team/crystal-palace">
-              <TeamCard TeamLogo = {CrystalPalaceLogo} TeamName = "Crystal Palace" addStyle={{top: "0.9rem", left: "1rem", height: "4rem", width: "4rem"}} addStyleText = {{left: "2.2rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#4478c7"} hoverImage={EPLPattern} hoverTeamLogo={CrystalPalaceLogo} hoverStyle={{top: "0.9rem", left: "1rem", height: "4rem", width: "4rem"}} hoverStyleText={{left: "2.2rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(CrystalPalaceId, CrystalPalaceLogo, 14, 14, 3, 6, 2.5, CrystalPalaceVideos, CrystalPalaceVideoTitles, CrystalPalaceKits, CrystalPalaceChairman)}/>
+              <TeamCard TeamLogo = {CrystalPalaceLogo} TeamName = "Crystal Palace" addStyle={{top: "0.9rem", left: "1rem", height: "4rem", width: "4rem"}} addStyleText = {{left: "2.2rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#4478c7"} hoverImage={EPLPattern} hoverTeamLogo={CrystalPalaceLogo} hoverStyle={{top: "0.9rem", left: "1rem", height: "4rem", width: "4rem"}} hoverStyleText={{left: "2.2rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(CrystalPalaceId, CrystalPalaceLogo, 14, 14, 3, 6, 2.5, CrystalPalaceVideoTitles, CrystalPalaceKits, CrystalPalaceChairman)}/>
             </Link>
 
             <Link to = "/team/everton">
               <TeamCard TeamLogo = {EvertonLogo} TeamName = {"Everton"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#0026ff"} hoverImage={EPLPattern} hoverTeamLogo={EvertonLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => {
-                handleClick(EvertonId, EvertonLogo, 14, 23, 3, 2, 2.5, EvertonVideos, EvertonVideoTitles, EvertonKits, EvertonChairman)
+                handleClick(EvertonId, EvertonLogo, 14, 23, 3, 2, 2.5, EvertonVideoTitles, EvertonKits, EvertonChairman)
               }}/>
             </Link>
 
             <Link to = "/team/fulham">
-              <TeamCard TeamLogo = {FulhamLogo} TeamName = {"Fulham"} addStyle={{top: "1.2rem", left: "0.8rem", height: "4rem", width: "4.5rem"}} addStyleText = {{left: "2rem", top: "2rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#686a6e"} hoverImage={EPLPattern} hoverTeamLogo={FulhamLogo} hoverStyle={{top: "1.2rem", left: "0.8rem", height: "4rem", width: "4.5rem"}} hoverStyleText={{left: "2rem", top: "2rem", color: "white"}} handleClick={() => handleClick(FulhamId, FulhamLogo, 14, 16, 3, 5, 2.5, FulhamVideos, FulhamVideoTitles, FulhamKits, FulhamChairman)}/>
+              <TeamCard TeamLogo = {FulhamLogo} TeamName = {"Fulham"} addStyle={{top: "1.2rem", left: "0.8rem", height: "4rem", width: "4.5rem"}} addStyleText = {{left: "2rem", top: "2rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#686a6e"} hoverImage={EPLPattern} hoverTeamLogo={FulhamLogo} hoverStyle={{top: "1.2rem", left: "0.8rem", height: "4rem", width: "4.5rem"}} hoverStyleText={{left: "2rem", top: "2rem", color: "white"}} handleClick={() => handleClick(FulhamId, FulhamLogo, 14, 16, 3, 5, 2.5, FulhamVideoTitles, FulhamKits, FulhamChairman)}/>
             </Link>
 
             <Link to = "/team/leicester-city">
-              <TeamCard TeamLogo = {LeicesterCityLogo} TeamName = {"Leicester City"} addStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} addStyleText = {{left: "2.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#4478c7"} hoverImage={EPLPattern} hoverTeamLogo={LeicesterCityLogo} hoverStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} hoverStyleText={{left: "2.5rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(LeicesterCityId, LeicesterCityLogo, 14, 14, 3, 6, 2.5, LeicesterCityVideos, LeicesterCityVideoTitles, LeicesterCityKits, LeicesterCityChairman)}/>
+              <TeamCard TeamLogo = {LeicesterCityLogo} TeamName = {"Leicester City"} addStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} addStyleText = {{left: "2.5rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#4478c7"} hoverImage={EPLPattern} hoverTeamLogo={LeicesterCityLogo} hoverStyle={{top: "1rem", left: "1rem", height: "4rem", width: "4rem"}} hoverStyleText={{left: "2.5rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(LeicesterCityId, LeicesterCityLogo, 14, 14, 3, 6, 2.5, LeicesterCityVideoTitles, LeicesterCityKits, LeicesterCityChairman)}/>
             </Link>
 
             <Link to = "/team/ispwich-town">
-              <TeamCard TeamLogo = {IspwichTownLogo} TeamName = {"Ispwich Town"} addStyle={{top: "1rem", left: "1rem", height: "4.5rem", width: "4rem"}} addStyleText = {{left: "2.2rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#0026ff"} hoverImage={EPLPattern} hoverTeamLogo={IspwichTownLogo} hoverStyle={{top: "1rem", left: "1rem", height: "4.5rem", width: "4rem"}} hoverStyleText={{left: "2.2rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(IspwichTownId, IspwichTownLogo, 14, 14, 3, 6, 2.5, IpswichTownVideos, IpswichTownVideoTitles, IpswichTownKits, IpswichChairman)}/>
+              <TeamCard TeamLogo = {IspwichTownLogo} TeamName = {"Ispwich Town"} addStyle={{top: "1rem", left: "1rem", height: "4.5rem", width: "4rem"}} addStyleText = {{left: "2.2rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#0026ff"} hoverImage={EPLPattern} hoverTeamLogo={IspwichTownLogo} hoverStyle={{top: "1rem", left: "1rem", height: "4.5rem", width: "4rem"}} hoverStyleText={{left: "2.2rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(IspwichTownId, IspwichTownLogo, 14, 14, 3, 6, 2.5, IpswichTownVideoTitles, IpswichTownKits, IpswichChairman)}/>
             </Link>
 
             <Link to = "/team/southampton">
-              <TeamCard TeamLogo = {SouthamptonLogo} TeamName = {"Southampton"} addStyle={{top: "0.8rem", right: "1.6rem", height: "4.3rem", width: "9.5rem"}} addStyleText = {{right: "3rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#f23f48"} hoverImage={EPLPattern} hoverTeamLogo={SouthamptonLogo} hoverStyle={{top: "0.8rem", right: "1.6rem", height: "4.3rem", width: "9.5rem"}} hoverStyleText={{right: "3rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(SouthamptonId, SouthamptonLogo, 14, 22, 3, 2, 2.5, SouthamptonVideos, SouthamptonVideoTitles, SouthamptonKits, SouthamptonChairman)}/>
+              <TeamCard TeamLogo = {SouthamptonLogo} TeamName = {"Southampton"} addStyle={{top: "0.8rem", right: "1.6rem", height: "4.3rem", width: "9.5rem"}} addStyleText = {{right: "3rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#f23f48"} hoverImage={EPLPattern} hoverTeamLogo={SouthamptonLogo} hoverStyle={{top: "0.8rem", right: "1.6rem", height: "4.3rem", width: "9.5rem"}} hoverStyleText={{right: "3rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(SouthamptonId, SouthamptonLogo, 14, 22, 3, 2, 2.5, SouthamptonVideoTitles, SouthamptonKits, SouthamptonChairman)}/>
             </Link>
 
             <Link to = "/team/west-ham">
-              <TeamCard TeamLogo = {WesthamLogo} TeamName = {"West Ham United"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#9e184d"} hoverImage={EPLPattern} hoverTeamLogo={WesthamLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(WestHamId, WesthamLogo, 14, 23, 3, 2, 2.5, WesthamVideos, WesthamVideoTitles, WesthamKits, WesthamChairman)}/>
+              <TeamCard TeamLogo = {WesthamLogo} TeamName = {"West Ham United"} addStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} addStyleText = {{right: "1.5rem", top: "1.7rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#9e184d"} hoverImage={EPLPattern} hoverTeamLogo={WesthamLogo} hoverStyle={{top: "0.8rem", right: "1rem", height: "4.5rem", width: "8rem"}} hoverStyleText={{right: "1.5rem", top: "1.7rem", color: "white"}} handleClick={() => handleClick(WestHamId, WesthamLogo, 14, 23, 3, 2, 2.5, WesthamVideoTitles, WesthamKits, WesthamChairman)}/>
             </Link>
 
             <Link to = "/team/wolverhampton-wanderers">
-              <TeamCard TeamLogo = {WolverhamptonLogo} TeamName = {"Wolverhampton Wanderers"} addStyle={{top: "1rem", left: "0.7rem", height: "4rem", width: "4.5rem"}} addStyleText = {{left: "1.8rem", top: "0.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#e67f09"} hoverImage={EPLPattern} hoverTeamLogo={WolverhamptonLogo} hoverStyle={{top: "1rem", left: "0.7rem", height: "4rem", width: "4.5rem"}} hoverStyleText={{left: "1.8rem", top: "0.8rem", color: "white"}} handleClick={() => handleClick(WolverhamptonId, WolverhamptonLogo, 14, 14, 3, 6, 2.5, WolverhamptonVideos, WolverhamptonVideoTitles, WolverhamptonKits, WolverhamptonChairman)}/>
+              <TeamCard TeamLogo = {WolverhamptonLogo} TeamName = {"Wolverhampton Wanderers"} addStyle={{top: "1rem", left: "0.7rem", height: "4rem", width: "4.5rem"}} addStyleText = {{left: "1.8rem", top: "0.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#e67f09"} hoverImage={EPLPattern} hoverTeamLogo={WolverhamptonLogo} hoverStyle={{top: "1rem", left: "0.7rem", height: "4rem", width: "4.5rem"}} hoverStyleText={{left: "1.8rem", top: "0.8rem", color: "white"}} handleClick={() => handleClick(WolverhamptonId, WolverhamptonLogo, 14, 14, 3, 6, 2.5, WolverhamptonVideoTitles, WolverhamptonKits, WolverhamptonChairman)}/>
             </Link>
 
             <Link to = "/team/bournemouth">
-              <TeamCard TeamLogo = {BournemouthLogo} TeamName = {"Bournemouth"} addStyle={{top: "1.2rem", left: "1.5rem", height: "4rem", width: "3.5rem"}} addStyleText = {{left: "3rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#9c1017"} hoverImage={EPLPattern} hoverTeamLogo={BournemouthLogo} hoverStyle={{top: "1.2rem", left: "1.5rem", height: "4rem", width: "3.5rem"}} hoverStyleText={{left: "3rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(BournemouthId, BournemouthLogo, 14, 14, 3, 6, 2.5)}/>
+              <TeamCard TeamLogo = {BournemouthLogo} TeamName = {"Bournemouth"} addStyle={{top: "1.2rem", left: "1.5rem", height: "4rem", width: "3.5rem"}} addStyleText = {{left: "3rem", top: "1.8rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#9c1017"} hoverImage={EPLPattern} hoverTeamLogo={BournemouthLogo} hoverStyle={{top: "1.2rem", left: "1.5rem", height: "4rem", width: "3.5rem"}} hoverStyleText={{left: "3rem", top: "1.8rem", color: "white"}} handleClick={() => handleClick(BournemouthId, BournemouthLogo, 14, 14, 3, 6, 2.5, BournemouthVideoTitles, BournemouthKits, BournemouthChairman)}/>
             </Link>
 
             <Link to = "/team/nottingham-forest">
-              <TeamCard TeamLogo = {NottinghamForestLogo} TeamName = {"Nottingham Forest"} addStyle={{top: "0.6rem", right: "1rem", height: "4.5rem", width: "9rem"}} addStyleText = {{right: "2.2rem", top: "0.9rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#f23f48"} hoverImage={EPLPattern} hoverTeamLogo={NottinghamForestLogo} hoverStyle={{top: "0.6rem", right: "1rem", height: "4.5rem", width: "9rem"}} hoverStyleText={{right: "2.2rem", top: "0.9rem", color: "white"}} handleClick={() => handleClick(NottinghamForestId, NottinghamForestLogo, 14, 22, 3, 2, 2.5)}/>
+              <TeamCard TeamLogo = {NottinghamForestLogo} TeamName = {"Nottingham Forest"} addStyle={{top: "0.6rem", right: "1rem", height: "4.5rem", width: "9rem"}} addStyleText = {{right: "2.2rem", top: "0.9rem"}} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#f23f48"} hoverImage={EPLPattern} hoverTeamLogo={NottinghamForestLogo} hoverStyle={{top: "0.6rem", right: "1rem", height: "4.5rem", width: "9rem"}} hoverStyleText={{right: "2.2rem", top: "0.9rem", color: "white"}} handleClick={() => handleClick(NottinghamForestId, NottinghamForestLogo, 14, 22, 3, 2, 2.5, NottinghamForestTitles, NottinghamKits, NottinghamChairman)}/>
             </Link>
           </div>
       </div>

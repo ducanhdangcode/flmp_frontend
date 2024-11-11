@@ -22,7 +22,7 @@ import AOS from 'aos';
 
 import { FaArrowRight } from 'react-icons/fa';
 
-const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom, setupTeamVideos, setupTeamVideoTitles, setupTeamKits, setupTeamChairman}) => {
+const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom, setupTeamVideoTitles, setupTeamKits, setupTeamChairman}) => {
   const slideShowImages = [PremierLeagueBackground, LaligaBackground, BundesligaBackground, SerieABackground, Ligue1Background, LigaPortugalBackground];
   const [slideShowIndex, setSlideShowIndex] = useState(0);
   const slideShowLength = slideShowImages.length -1;
@@ -69,7 +69,7 @@ const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, se
         <FaArrowAltCircleLeft className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", color: "gray"}} onClick = {toPreviousSlide}/>
         <FaArrowAltCircleRight className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", right: "1rem", color: "gray"}} onClick = {toNextSlide}/>
       </div>
-      <ListTeamEPL colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideos = {setupTeamVideos} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+      <ListTeamEPL colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
       <ListTeamLaLiga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
       <ListTeamBundesliga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
       <ListTeamLigue1 colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
