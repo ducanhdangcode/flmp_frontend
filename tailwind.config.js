@@ -14,7 +14,8 @@ module.exports = {
       'ubuntu': ['Ubuntu'],
       'changa': ['Changa'],
       'lilita-one': ['Lilita One'],
-      'agdasima': ['Agdasima']
+      'agdasima': ['Agdasima'], 
+      'space-grotesk': ['Space Grotesk']
     }, boxShadow: {
       'blue-shadow': '0 0.5em 0.5em -0.4em blue',
       'yellow-shadow': '0 0.5em 0.5em -0.4em yellow', 

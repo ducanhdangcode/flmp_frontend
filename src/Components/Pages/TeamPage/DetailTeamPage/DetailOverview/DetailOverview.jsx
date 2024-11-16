@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Suspense } from 'react';
 import WebFont from 'webfontloader';
-import { ListTeams } from '../../../../../APIService/TeamService';
-import { FaCircle } from 'react-icons/fa';
-import ReactPlayer from 'react-player';
+import { ListTeams, UpdateTeam } from '../../../../../APIService/TeamService';
+import { FaStar } from 'react-icons/fa6';
 
 import Stadium from './Stadium';
 import Kit from './Kit';
 import Chairman from './Chairman';
 import Trophies from './Trophies';
 import TeamVideo from './TeamVideo';
+import { listUsers, updateUser } from '../../../../../APIService/UserService.';
 
-const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideoTitles, teamKits, teamChairman}) => {
+const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideoTitles, teamKits, teamChairman, recentId}) => {
     const [storedTeamLogo, setStoredTeamLogo] = useState(teamLogo);
     const [teamList, setTeamList] = useState([]);
 
@@ -22,9 +21,17 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
     const [checkSelectNews, setCheckSelectNews] = useState("");
     const [checkSelectSquad, setCheckSelectSquad] = useState("");
 
+    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorite-team')));
+    const [userlist, setUserlist] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem('favorite-team', JSON.stringify(favorites));
+    }, [favorites])
+
     useEffect(() => {
         setupActiveTeam();
-    }, [])
+    }, [teamList])
+
 
     useEffect(() => {
         WebFont.load({
@@ -33,6 +40,12 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
             }
         })
     })
+
+    useEffect(() => {
+        listUsers().then((response) => {
+            setUserlist(response.data);
+        })
+    }, [])
 
     const setupSelectedBar = (overviewChoice, fixturesChoice, resultChoice, newsChoice, squadChoice) => {
         setCheckSelectOverview(overviewChoice);
@@ -46,8 +59,81 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
     const setupActiveTeam = () => {
         ListTeams().then((response) => {
             setTeamList(response.data);
-            console.log(response.data);
         }).catch(err => console.error(err));
+    }
+
+    const handleAddFavoriteTeams = () => {
+        setFavorites([...favorites, teamId])
+        let updatedUser = {
+            username: userlist[recentId-1]?.username, 
+            password: userlist[recentId-1]?.password,
+            email: userlist[recentId-1]?.email,
+            firstname: userlist[recentId-1]?.firstname, 
+            lastname: userlist[recentId-1]?.lastname, 
+            avatar: userlist[recentId-1]?.avatar, 
+            favoriteTeams: [...favorites, teamId]
+        }
+        updateUser(recentId, updatedUser).then((response) => {
+            // console.log(response.data);
+        })
+        console.log("favorites: " + favorites);
+
+        let updatedTeam = {
+            logo: teamList[teamId-1]?.logo, 
+            name: teamList[teamId-1]?.name, 
+            color: teamList[teamId-1]?.color, 
+            trophies: teamList[teamId-1]?.trophies, 
+            stadium: teamList[teamId-1]?.stadium, 
+            kitColors: teamList[teamId-1]?.kitColors, 
+            chairmanName: teamList[teamId-1]?.chairmanName, 
+            chairmanDescription: teamList[teamId-1]?.chairmanDescription, 
+            videoLinks: teamList[teamId-1]?.videoLinks, 
+            favoriteState: "favorite", 
+            stadiumTotalSeat: teamList[teamId-1]?.stadiumTotalSeat, 
+            stadiumOpenDate: teamList[teamId-1]?.stadiumOpenDate, 
+            stadiumLocation: teamList[teamId-1]?.stadiumLocation, 
+            stadiumCost: teamList[teamId-1]?.stadiumCost
+        }
+        UpdateTeam(teamId, updatedTeam).then((res) => {
+
+        })
+    }
+
+    const handleRemoveFavoriteTeam = () => {
+        setFavorites((prev) => prev.filter((item) => item !== teamId));
+        let updatedUser = {
+            username: userlist[recentId-1]?.username, 
+            password: userlist[recentId-1]?.password,
+            email: userlist[recentId-1]?.email,
+            firstname: userlist[recentId-1]?.firstname, 
+            lastname: userlist[recentId-1]?.lastname, 
+            avatar: userlist[recentId-1]?.avatar, 
+            favoriteTeams: favorites.filter(item => item !== teamId)
+        }
+        updateUser(recentId, updatedUser).then((response) => {
+            // console.log(response.data);
+        })
+        console.log("favorites: " + favorites);
+
+        let updatedTeam = {
+            logo: teamList[teamId-1]?.logo, 
+            name: teamList[teamId-1]?.name, 
+            color: teamList[teamId-1]?.color, 
+            trophies: teamList[teamId-1]?.trophies, 
+            stadium: teamList[teamId-1]?.stadium, 
+            kitColors: teamList[teamId-1]?.kitColors, 
+            chairmanName: teamList[teamId-1]?.chairmanName, 
+            chairmanDescription: teamList[teamId-1]?.chairmanDescription, 
+            videoLinks: teamList[teamId-1]?.videoLinks, 
+            favoriteState: "unfavorite", 
+            stadiumTotalSeat: teamList[teamId-1]?.stadiumTotalSeat, 
+            stadiumOpenDate: teamList[teamId-1]?.stadiumOpenDate, 
+            stadiumLocation: teamList[teamId-1]?.stadiumLocation, 
+            stadiumCost: teamList[teamId-1]?.stadiumCost
+        }
+        UpdateTeam(teamId, updatedTeam).then((res) => {
+
+        })
     }
   return (
     <>
@@ -70,6 +156,16 @@ const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, de
                 <div className = {!checkSelectSquad ? "text-center font-ubuntu text-xl hover:border-b-4 hover: border-b-black hover:cursor-pointer" : "text-center font-ubuntu text-xl border-b-4 border-b-blue-600 hover:cursor-pointer"} style = {{width: "10rem", height: "2.5rem"}} onClick = {() => setupSelectedBar("", "", "", "", "true")}>
                     <p>Squad</p>
                 </div>
+            </div>
+            <div className = "absolute z-10" style = {{top: "17rem", left: "80rem"}}>
+                {teamList[teamId-1]?.favoriteState === "unfavorite" ? <button className = "rounded-2xl bg-white" style = {{width: "13rem", height: "4rem", borderWidth: "4px", borderColor: teamList[teamId-1]?.color}} onClick = {handleAddFavoriteTeams}>
+                    <span><FaStar className = "relative top-3 left-2" style = {{width: "2.2rem", height: "2.2rem"}}/></span>
+                    <span className = "text-3xl font-ubuntu relative" style = {{bottom: "1.8rem", left: "1rem", color: teamList[teamId-1]?.color}}>Favorite</span>
+                </button> : 
+                <button className = "rounded-2xl bg-white" style = {{width: "13rem", height: "4rem", borderWidth: "4px", borderColor: teamList[teamId-1]?.color}} onClick={handleRemoveFavoriteTeam}>
+                    <span><FaStar className = "relative top-3 left-2" style = {{width: "2.2rem", height: "2.2rem"}}/></span>
+                    <span className = "text-3xl font-ubuntu relative" style = {{bottom: "1.8rem", left: "1rem", color: teamList[teamId-1]?.color}}>Unfavorite</span>
+                </button>}
             </div>
         </div>
         <div className = "w-full" style = {{backgroundColor: "#d1cec7", height: "127rem", borderTop: "2px solid gray"}}>

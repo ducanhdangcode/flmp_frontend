@@ -11,6 +11,7 @@ import WebFont from 'webfontloader';
 import UserProfile from './Components/Pages/UserProfilePage/UserProfile';
 import Team from './Components/Pages/TeamPage/Team';
 import DetailTeam from './Components/Pages/TeamPage/DetailTeam';
+import { updateUser } from './APIService/UserService.';
 
 function App() {
   const lightColor = "#e9f2eb";
@@ -49,7 +50,6 @@ function App() {
   // team chairman
   const [teamChairman, setTeamChairman] = useState(localStorage.getItem('team-chairman'));
 
-
   useEffect(() => {
     WebFont.load({
       google: {
@@ -78,7 +78,7 @@ function App() {
     localStorage.setItem('detail-name-bottom', detailNameBottom);
     localStorage.setItem('team-video-title', JSON.stringify(teamVideoTitles));
     localStorage.setItem('team-kits', JSON.stringify(teamKits));
-    localStorage.setItem('team-chairman', teamChairman)
+    localStorage.setItem('team-chairman', teamChairman);
   }, [colorTheme, loginState, recentUsername, recentPassword, mainUserImage, recentFirstname, recentLastname, recentEmail, recentAvatar, recentId, teamLogo, teamId, detailLogoHeight, detailLogoWidth, detailLogoLeft, detailLogoTop, detailNameBottom, teamVideoTitles, teamKits, teamChairman])
 
   const handleChangeUserDropdown = () => {
@@ -190,7 +190,6 @@ function App() {
 
   const setupTeamVideoTitles = (titles) => {
     setTeamVideoTitles(titles);
-    // localStorage.setItem('team-video-title', JSON.stringify(teamVideoTitles));
   } 
 
   const setupTeamKits = (kits) => {
@@ -215,11 +214,11 @@ function App() {
 
           <Route path = "/register" element = {<Register />} />
 
-          <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail}/>} />
+          <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
 
           <Route path = "/team" element = {<Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>} />
 
-          <Route path = "/team/:team_name" element = {<DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} teamVideoTitles = {teamVideoTitles} teamKits = {teamKits} teamChairman = {teamChairman}/>}/>
+          <Route path = "/team/:team_name" element = {<DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} teamVideoTitles = {teamVideoTitles} teamKits = {teamKits} teamChairman = {teamChairman} recentId = {recentId}/>}/>
         </Routes>
       </div>
       <Footer />

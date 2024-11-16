@@ -6,7 +6,7 @@ import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import UserFavorite from './UserFavorite';
 
-const UserProfile = ({recentUsername, recentPassword, mainUserImage, onChangeMainUserImage, setupRecentUsername, recentFirstname, recentLastname, recentEmail, recentAvatar, recentId, setupRecentAvatar, colorTheme, lightColor, darkColor, setupRecentFirstname, setupRecentLastname, setupRecentEmail}) => {
+const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recentFirstname, recentLastname, recentEmail, recentAvatar, setupRecentAvatar, colorTheme, lightColor, darkColor, setupRecentFirstname, setupRecentLastname, setupRecentEmail}) => {
     // navigate
     const navigate = useNavigate();
 
@@ -108,13 +108,13 @@ const UserProfile = ({recentUsername, recentPassword, mainUserImage, onChangeMai
 
         for (let i = 0; i < userList.length; ++i) {
             if (userId === userList[i].id) {
-                setStoredUsername(userList[i].username);
-                setUsername(userList[i].username);
-                setFirstname(userList[i].firstname);
-                setLastname(userList[i].lastname);
-                setEmail(userList[i].email);
-                setStoredEmail(userList[i].email);
-                setUserId(userList[i].id);
+                setStoredUsername(userList[i]?.username);
+                setUsername(userList[i]?.username);
+                setFirstname(userList[i]?.firstname);
+                setLastname(userList[i]?.lastname);
+                setEmail(userList[i]?.email);
+                setStoredEmail(userList[i]?.email);
+                setUserId(userList[i]?.id);
             }
         }
     }
@@ -198,7 +198,7 @@ const UserProfile = ({recentUsername, recentPassword, mainUserImage, onChangeMai
     const onSubmitEdit = (e) => {
         if (!checkDuplicateUser(username) && !checkEmptyUsername(username) && checkValidEmail(email)) {
             e.preventDefault();
-            let updatedUser = {username, password, email, firstname, lastname, avatar}
+            let updatedUser = {username, password, email, firstname, lastname, avatar};
                 updateUser(userId, updatedUser).then((response) => {
                     console.log(response.data);
                     navigate("/user-profile");
@@ -343,7 +343,7 @@ const UserProfile = ({recentUsername, recentPassword, mainUserImage, onChangeMai
         </div>
       </div>
       <div className = {colorTheme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "50rem", height: "64rem", backgroundColor: colorTheme === lightColor ? "#f5efed" : "#343a78", bottom: "40rem", left: "40rem"}} onClick = {onHandleDisable}>
-            <UserFavorite colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+            <UserFavorite colorTheme = {colorTheme} lightColor = {lightColor} userList = {userList} userId = {userId}/>
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ import { listUsers } from '../../../APIService/UserService.';
 import { PiWarningOctagonFill } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
 
-const LoginContent = ({colorTheme, lightColor, darkColor, loginState, onHandleLoginStateSuccess, onHandleLoginStateFailed, setupRecentUsername, setupRecentPassword, setupRecentFirstname, setupRecentLastname, setupRecentEmail, setupRecentAvatar, setupRecentId}) => {
+const LoginContent = ({colorTheme, lightColor, darkColor, loginState, onHandleLoginStateSuccess, onHandleLoginStateFailed, setupRecentUsername, setupRecentPassword, setupRecentFirstname, setupRecentLastname, setupRecentEmail, setupRecentAvatar, setupRecentId, setupFavoriteTeams}) => {
   const [usernamePlaceholder, setUsernamePlaceholder] = useState("Username");
   const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
   const [username, setUsername] = useState("");
@@ -56,6 +56,7 @@ const LoginContent = ({colorTheme, lightColor, darkColor, loginState, onHandleLo
       setupRecentEmail(userList[i].email);
       setupRecentAvatar(userList[i].avatar);
       setupRecentId(userList[i].id);
+      setupFavoriteTeams(userList[i]?.favoriteTeams);
     }
   }
   }
