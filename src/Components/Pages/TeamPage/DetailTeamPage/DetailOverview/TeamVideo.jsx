@@ -3,9 +3,9 @@ import ReactPlayer from 'react-player'
 
 const TeamVideo = ({teamId, teamList, teamVideoTitles}) => {
   return (
-    <div className = "absolute z-100" style = {{left: "71rem", top: "25rem", width: "30%"}}>
-        {teamList.length > 0 ? <p className = "font-roboto text-2xl font-semibold relative" style = {{color: teamList[teamId - 1]?.color}}>{`${teamList[teamId - 1]?.name.toUpperCase()} VIDEOS`}</p> 
-        : <p className = "font-roboto text-2xl font-semibold" style = {{color: teamList[teamId - 1]?.color}}>Cannot load the content!</p> }
+    <div className = "absolute z-10" style = {{left: "73.5rem", top: "25rem", width: "30%"}}>
+        {teamList.length > 0 ? <p className = "font-roboto text-2xl font-bold relative" style = {{color: teamList[teamId - 1]?.color}}>{`${teamList[teamId - 1]?.name.toUpperCase()} VIDEOS`}</p> 
+        : <p className = "font-roboto text-2xl font-bold" style = {{color: teamList[teamId - 1]?.color}}>Cannot load the content!</p> }
         <div className = "relative" style = {{top: "1rem"}}>
             <ReactPlayer 
                 url = {teamList[teamId-1]?.videoLinks[0]}
@@ -25,7 +25,7 @@ const TeamVideo = ({teamId, teamList, teamVideoTitles}) => {
                     }
                 }}
             />
-            <p className = "relative font-roboto text-lg font-bold" style = {{width: "65%", top: "0.5rem"}}>{teamVideoTitles.first}</p>
+            <p className = "relative font-roboto text-lg font-bold text-white" style = {{width: "65%", top: "0.5rem"}}>{teamVideoTitles.first}</p>
         </div>
         <div className = "relative" style = {{top: "3rem"}}>
             <ReactPlayer 
@@ -46,7 +46,7 @@ const TeamVideo = ({teamId, teamList, teamVideoTitles}) => {
                     }
                 }}
             />
-            <p className = "relative font-roboto text-lg font-bold" style = {{width: "65%", top: "0.5rem"}}>{teamVideoTitles.second}</p>
+            <p className = "relative font-roboto text-lg font-bold text-white" style = {{width: "65%", top: "0.5rem"}}>{teamVideoTitles.second}</p>
         </div>
         <div className = "relative" style = {{top: "5rem"}}>
             <ReactPlayer 
@@ -67,7 +67,7 @@ const TeamVideo = ({teamId, teamList, teamVideoTitles}) => {
                     }
                 }}
             />
-            <p className = "relative font-roboto text-lg font-bold" style = {{width: "65%", top: "0.5rem"}}>{teamVideoTitles.third}</p>
+            <p className = "relative font-roboto text-lg font-bold text-white" style = {{width: "65%", top: "0.5rem"}}>{teamVideoTitles.third}</p>
         </div>
     </div>
   )

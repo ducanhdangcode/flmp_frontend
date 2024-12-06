@@ -22,7 +22,7 @@ const Footer = () => {
         })
     })
   return (
-    <footer className = "w-full h-full overflow-y-hidden overflow-x-clip relative top-24" style = {{backgroundColor: "#041a36"}}>
+    <div className = "w-full overflow-y-hidden overflow-x-clip relative" style = {{backgroundColor: "#041a36", height: "75rem"}}>
         <div className = "mb-0">
             <div>
                 <img src = {WebLogo} alt = "Web Logo" className = "h-28 w-40 ml-40 mt-8 pt-8"/>
@@ -100,7 +100,7 @@ const Footer = () => {
                 <p className = "text-xl text-white font-titilium"><span>&copy;</span>All right reserved 2024</p>
             </div>
         </div>
-    </footer>
+    </div>
   )
 }
 

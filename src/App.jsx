@@ -201,12 +201,12 @@ function App() {
   }
 
   return (
-    <div className = "relative w-screen top-0 overflow-x-clip" style = {{height: "160vh"}}>
+    <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden" style = {{maxHeight: "400rem"}}>
       <Helmet>
         <style>{`body {background-color: ${colorTheme};}`}</style>
       </Helmet>
       <Navbar colorTheme = {colorTheme} onHandleChangeTheme = {onHandleChangeTheme} lightColor = {lightColor} darkColor = {darkColor} loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar}/>
-      <div>
+      <div className = "" style = {{maxHeight: "400rem"}}>
         <Routes>
           <Route path = "/login" element = {<LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> }/>
 

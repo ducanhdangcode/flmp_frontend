@@ -15,7 +15,9 @@ module.exports = {
       'changa': ['Changa'],
       'lilita-one': ['Lilita One'],
       'agdasima': ['Agdasima'], 
-      'space-grotesk': ['Space Grotesk']
+      'space-grotesk': ['Space Grotesk'], 
+      'noticia-text': ['Noticia Text'],
+      'alfa': ['Alfa Slab One']
     }, boxShadow: {
       'blue-shadow': '0 0.5em 0.5em -0.4em blue',
       'yellow-shadow': '0 0.5em 0.5em -0.4em yellow', 
