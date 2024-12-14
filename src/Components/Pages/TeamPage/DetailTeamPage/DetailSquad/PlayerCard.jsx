@@ -23,7 +23,7 @@ const PlayerCard = ({teamId, teamList, player, statisticTitle1, statisticTitle2,
         <div className = "block bg-[#edebca] rounded-bl-[11px] rounded-br-[11px]" style = {{height: "9rem"}}>
             <div className = "relative" style = {{left: "1rem", top: "0.5rem"}}>
               <div className = "relative" style = {{left: "0rem", bottom: "0rem"}}>
-                  <p className = "text-[1.4rem] font-alfa font-bold relative text-[#3d032a]">{name}</p>
+                  <p className = "text-[1.3rem] font-alfa font-bold relative text-[#3d032a]">{name}</p>
                   <div className = "flex">
                   <p className = "text-lg font-noticia-text font-bold relative" style = {{bottom: "0.2rem"}}>{`#${shirtNumber}`}</p>
                   <p className = "text-lg font-noticia-text relative" style = {{bottom: "0.2rem", left: "0.5rem"}}>{position}</p>

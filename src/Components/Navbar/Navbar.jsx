@@ -63,12 +63,16 @@ const Navbar = ({colorTheme, onHandleChangeTheme, lightColor, darkColor, loginSt
                     (<Link to = "/login">
                         {colorTheme === lightColor ? <FaUserAlt className = "w-10 h-10 mt-7 relative" style = {{color: "black", left: "20rem"}}/> : <FaUserAlt className = "w-10 h-10 mt-7 relative" style = {{color: "white", left: "20rem"}}/>}
                     </Link>) : 
-                        (<img src = {JSON.parse(recentAvatar)} alt = "User Logo" className = "w-12 h-12 border-yellow-600 mt-6 hover:cursor-pointer relative" style = {{borderRadius: "50%", borderWidth: "3px", left: "20rem"}} onClick = {handleChangeUserDropdown} onMouse/>)
+                        (<img src = {JSON.parse(recentAvatar)} alt = "User Logo" className = "w-12 h-12 border-yellow-600 mt-6 hover:cursor-pointer absolute right-[14.2rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown} onMouse/>)
                 }
-                {displayUserDropdown === true && (colorTheme === lightColor ? <div className = "absolute bg-red-600" style = {{width: "1.5rem", height: "0.25rem", right: "15.65rem", top: "5rem", borderRadius: "20%"}}></div> : <div className = "absolute bg-red-600" style = {{width: "1.5rem", height: "0.25rem", right: "15.5rem", top: "5rem", borderRadius: "20%"}}></div>)}
+                {displayUserDropdown === true &&
+                    <div className = "absolute bg-red-600 w-[1.5rem] h-[0.25rem] right-[14.85rem] top-[5rem] rounded-[20%]"></div>
+                }
                 {displayUserDropdown === true && <UserDropdown disableLoginState = {disableLoginState} disableDropdown = {disableDropdown}/>}
-                {colorTheme === lightColor && <FaMoon className = "w-9 h-9 mt-8 hover:cursor-pointer relative" style = {{color: "black", left: "25rem"}} onClick = {onHandleChangeTheme}/>}
-                {colorTheme === darkColor && <FaSun className = "w-9 h-9 mt-8 hover:cursor-pointer relative" style = {{color: "white", left: "25rem"}} onClick = {onHandleChangeTheme}/>}
+                {colorTheme === darkColor ?
+                    <FaSun className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[5rem]" style = {{color: "white"}} onClick = {onHandleChangeTheme}/> : 
+                    <FaMoon className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[5rem]" style = {{color: "black"}} onClick = {onHandleChangeTheme}/>
+                }
             </div>
         </nav>
     </header>

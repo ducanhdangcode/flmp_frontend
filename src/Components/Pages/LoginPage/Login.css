@@ -1,7 +1,14 @@
-form input::placeholder {
-    color: white;
-}
+
 
 form input:focus {
     outline-width: 0;
+}
+
+#blurImage {
+    filter: blur(0.5px); /* Adjust the blur radius */
+    -webkit-filter: blur(0.5px); /* For better compatibility */
+}
+
+#login_input::placeholder {
+    color: #ebc94e;
 }

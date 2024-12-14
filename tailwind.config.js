@@ -23,8 +23,8 @@ module.exports = {
       'yellow-shadow': '0 0.5em 0.5em -0.4em yellow', 
       'red-shadow': '0 0.5em 0.5em -0.4em red',
       'green-shadow': '0 0.5em 0.5em -0.4em green',
-      'gray-shadow': '0.4rem 0.4rem #918d8c',
-      'dark-shadow': '0.4rem 0.4rem #747ab8',
+      'gray-shadow': '0.4rem 0.4rem 0.5rem #918d8c',
+      'dark-shadow': '0.4rem 0.4rem 0.3rem #747ab8',
       'ease-blue-shadow': '0.2rem 0.2rem 0.5rem #10a1c9',
     }, fontSize: {
       'xs': '.75rem',
@@ -39,6 +39,9 @@ module.exports = {
         '5xl': '3rem',
         '6xl': '4rem',
        '7xl': '5rem',
+    }, 
+    backgroundImage: {
+      loginBackground: 'url("https://images.unsplash.com/photo-1430232324554-8f4aebd06683?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vdGJhbGwlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D")'
     }
   },
   plugins: [],

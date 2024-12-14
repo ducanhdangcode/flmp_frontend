@@ -221,7 +221,9 @@ function App() {
           <Route path = "/team/:team_name" element = {<DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} teamVideoTitles = {teamVideoTitles} teamKits = {teamKits} teamChairman = {teamChairman} recentId = {recentId}/>}/>
         </Routes>
       </div>
-      <Footer />
+      <div className = "mt-[4rem]">
+        <Footer />
+      </div>
     </div>
   )
 }
