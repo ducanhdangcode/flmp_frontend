@@ -1,26 +1,8 @@
 import React, { useEffect, useState } from 'react'
-
-import UCLCupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/uclCup.png';
-import EPLCupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/premierLeagueCup.png';
-import FACupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/EFLCup.png';
-import CarabaoCupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/carabaoCup.png';
-import ClubWorldCupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/clubWorldCupLogo.png';
-import CommunityShieldCupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/communityShieldCup.png';
-import UefaSuperCupLogo from '/FLMP/flmp_frontend/src/Image/Trophies/uefaSuperCupFinal.png';
-import EuropaLeagueLogo from '/FLMP/flmp_frontend/src/Image/Trophies/europaLeagueCup.png';
-import InterContinentalLogo from '/FLMP/flmp_frontend/src/Image/Trophies/InterContinental.png';
-import EFL2Cup from '/FLMP/flmp_frontend/src/Image/Trophies/efl2CupFinal.png';
-import ConferenceCup from '/FLMP/flmp_frontend/src/Image/Trophies/conferenceCup.png';
-
-import { FaCircle } from 'react-icons/fa';
 import WebFont from 'webfontloader';
-import { ListTeams } from '../../../../../APIService/TeamService';
 
 
 const Trophies = ({teamId, teamList}) => {
-
-    const TrophiesList = [UCLCupLogo, EPLCupLogo, FACupLogo, CarabaoCupLogo, CommunityShieldCupLogo, UefaSuperCupLogo, ClubWorldCupLogo, EuropaLeagueLogo, InterContinentalLogo, EFL2Cup, ConferenceCup]
-
     const PremierLeagueTeamTrophies = [
         "UEFA Champions League", 
         "Premier League", 
@@ -32,6 +14,19 @@ const Trophies = ({teamId, teamList}) => {
         "Europa League", 
         "Inter Continental Cup",
         "EFL Championship Cup",
+        "UEFA Conference Cup"
+    ]
+
+    const LaLigaTeamTrophies = [
+        "UEFA Champions League", 
+        "La Liga Cup", 
+        "Spanish Cup Winner", 
+        "Spanish Super Cup Winner", 
+        "UEFA Super Cup", 
+        "Club World Cup", 
+        "Europa League", 
+        "Inter Continental Cup",
+        "La Liga 2 Cup",
         "UEFA Conference Cup"
     ]
 
@@ -65,6 +60,32 @@ const Trophies = ({teamId, teamList}) => {
                     {PremierLeagueTeamTrophies.map((trophy, index) => {
                         if (index >= 6) {
                             return <div className = {index % 2 !== 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid white"}}>
+                                <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
+                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
+                            </div>
+                        }
+                    })}
+                </div>
+            </div>
+        }
+
+        {(teamId >= 21 && teamId <= 40) && 
+            <div className = "flex">
+                <div className = "block relative bottom-[0.5rem] left-[0rem] w-[35.35rem]">
+                    {LaLigaTeamTrophies.map((trophy, index) => {
+                        if (index < 6) {
+                            return <div className = {index % 2 === 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid black", borderRight: "1px solid black"}}>
+                                <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
+                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
+                            </div>
+                        }
+                    })}
+                </div>
+
+                <div className = "block relative bottom-[0.5rem] left-[0rem] w-[34.85rem]">
+                    {LaLigaTeamTrophies.map((trophy, index) => {
+                        if (index >= 6) {
+                            return <div className = {index % 2 !== 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid black"}}>
                                 <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
                                 <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
                             </div>

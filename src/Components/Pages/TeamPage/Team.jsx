@@ -70,10 +70,15 @@ const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, se
         <FaArrowAltCircleRight className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", right: "1rem", color: "gray"}} onClick = {toNextSlide}/>
       </div>
       <ListTeamEPL colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
-      <ListTeamLaLiga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+
+      <ListTeamLaLiga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+
       <ListTeamBundesliga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+
       <ListTeamLigue1 colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+
       <ListTeamSerieA colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+
       <div className = "relative float-right" style = {{top: "45rem", right: "8rem"}} data-aos = "fade-left">
         <p className = {colorTheme === lightColor ? "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out" : "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out text-white"} onMouseEnter = {() => setHoverSeeMoreTeam(true)} onMouseLeave = {() => setHoverSeeMoreTeam(false)}>See more teams</p>
         {hoverSeeMoreTeam === true && <FaArrowRight className = "w-8 h-8 relative" style = {colorTheme === lightColor ? {bottom: "2.2rem", left: "12rem"} : {bottom: "2.2rem", left: "12rem", color: "white"}}/>}

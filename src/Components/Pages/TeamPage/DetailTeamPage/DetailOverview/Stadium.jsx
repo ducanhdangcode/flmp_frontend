@@ -22,6 +22,9 @@ import WolverhamptonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/wolverha
 import BournemouthStadium from '/FLMP/flmp_frontend/src/Image/Stadium/bournemouthStadium.jpg';
 import NottinghamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/nottinghamStadium.jpg';
 
+// la liga stadium
+import RealMadridStadium from '../../../../../Image/Stadium/LaLiga/RealMadridStadium.jpg';
+
 import { RiArmchairFill } from 'react-icons/ri';
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaCalendarAlt } from 'react-icons/fa';
@@ -37,14 +40,21 @@ const Stadium = ({teamId, teamList}) => {
         })
     }, [])
 
-    const Stadiums = [EtihadStadium, OldTraffordStadium, LiverpoolStadium, ArsenalStadium, ChelseaStadium, TottenhamStadium, NewcastleStadium, AstonVillaStadium, BrightonStadium, BrentfordStadium, CrystalPalaceStadium, EvertonStadium, FulhamStadium, LeicesterCityStadium, IpswichTownStadium, SouthamptonStadium, WesthamStadium, WolverhamptonStadium, BournemouthStadium, NottinghamStadium];
+    const EPLStadiums = [EtihadStadium, OldTraffordStadium, LiverpoolStadium, ArsenalStadium, ChelseaStadium, TottenhamStadium, NewcastleStadium, AstonVillaStadium, BrightonStadium, BrentfordStadium, CrystalPalaceStadium, EvertonStadium, FulhamStadium, LeicesterCityStadium, IpswichTownStadium, SouthamptonStadium, WesthamStadium, WolverhamptonStadium, BournemouthStadium, NottinghamStadium];
+
+    const LaLigaStadiums = [RealMadridStadium];
   return (
     <div className = "absolute top-[47.9rem]">
       <div className = "bg-[#000B58] w-[70.2rem] h-[3rem]">
         <p className = "text-2xl font-ubuntu font-bold relative text-[white] left-[2rem] top-[0.3rem]">STADIUM</p>
       </div>
       <div className = "flex relative top-[0rem]">
-        <img src = {Stadiums[teamId - 1]} alt = "" className = "relative w-[38rem] h-[27.6rem]" style = {{top: "0rem"}}/>
+        {(teamId >= 1 && teamId <= 20) && 
+            <img src = {EPLStadiums[teamId - 1]} alt = "" className = "relative w-[38rem] h-[27.6rem]" style = {{top: "0rem"}}/>
+        }
+        {(teamId >= 21 && teamId <= 40) && 
+            <img src = {LaLigaStadiums[teamId - 21]} alt = "" className = "relative w-[38rem] h-[27.6rem]" style = {{top: "0rem"}}/>
+        }
         <div className = "block bg-green-500 relative h-[27.6rem] w-[32.2rem] top-[0rem]">
             <div className = "relative left-[0rem] top-[0rem]">
                 <div className = "bg-[white] left-[0rem] relative h-[5.52rem] text-center">

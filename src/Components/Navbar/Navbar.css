@@ -18,14 +18,11 @@ li p:hover::after {
     width: 100%;}
 
 nav div input:focus {
-    border: 1px solid black;
-    box-shadow: 2px 2px 2px 2px #e8c607;
     outline-width: 0;
 }
 
 nav div input::placeholder {
-    font-family: 'Kanit';
-    padding-left: 10px;
+    font-family: "Roboto Condensed";
     font-size: 18px;
-    font-style: italic;
+    color: black;
 }
