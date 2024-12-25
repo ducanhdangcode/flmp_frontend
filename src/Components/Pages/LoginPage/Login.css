@@ -10,5 +10,5 @@ form input:focus {
 }
 
 #login_input::placeholder {
-    color: #ebc94e;
+    color: black;
 }
