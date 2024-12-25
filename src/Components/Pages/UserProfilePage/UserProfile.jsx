@@ -5,8 +5,12 @@ import CropUserImage from '../CropImage/CropUserImage/CropUserImage';
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import UserFavorite from './UserFavorite';
+import { useThemeContext } from '../../../Context/ThemeContext';
 
-const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recentFirstname, recentLastname, recentEmail, recentAvatar, setupRecentAvatar, colorTheme, lightColor, darkColor, setupRecentFirstname, setupRecentLastname, setupRecentEmail}) => {
+const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recentFirstname, recentLastname, recentEmail, recentAvatar, setupRecentAvatar, setupRecentFirstname, setupRecentLastname, setupRecentEmail}) => {
+    // contex for theme
+    const {theme, lightColor, darkColor, setTheme} = useThemeContext();
+
     // navigate
     const navigate = useNavigate();
 
@@ -267,10 +271,10 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
     }
 
   return (
-    <div className = "w-full relative top-24" style = {{height: "74rem", backgroundColor: colorTheme === lightColor ?  "#c4bab9" : "#0a0f3b"}}>
-      <div className = {colorTheme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "30rem", height: "45rem", backgroundColor: colorTheme === lightColor ? "#f5efed" : "#343a78", left: "5rem", top: "15rem"}}>
+    <div className = "w-full relative top-24" style = {{height: "74rem", backgroundColor: theme === lightColor ?  "#c4bab9" : "#0a0f3b"}}>
+      <div className = {theme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "30rem", height: "45rem", backgroundColor: theme === lightColor ? "#f5efed" : "#343a78", left: "5rem", top: "15rem"}}>
         <img src = {JSON.parse(avatar)} alt = "User Icon" className = "w-20 h-20 relative" style = {{borderRadius: "50%", left: "12.5rem", top: "2rem", borderWidth: "3px", borderColor: "red"}}/>
-        <button className = {colorTheme === lightColor ? "font-ubuntu font-xl relative font-bold underline" : "font-ubuntu font-xl relative font-bold underline text-white"} style = {{top: "3rem", left: "10.7rem"}} onClick = {onClickInputChange}>Change user image</button>
+        <button className = {theme === lightColor ? "font-ubuntu font-xl relative font-bold underline" : "font-ubuntu font-xl relative font-bold underline text-white"} style = {{top: "3rem", left: "10.7rem"}} onClick = {onClickInputChange}>Change user image</button>
         <input 
             type = "file"
             name = "image"
@@ -282,13 +286,13 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
             <CropUserImage image = {image} onCropDone = {onCropDone} onCropCancel = {onCropCancel}/>
         }
         <div className = "relative" style = {{top: "5rem"}}>
-            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "6.8rem", top: "0.1rem", color: colorTheme === lightColor ? "black" : "white"}} onClick = {handleInitEditUsername}/>
-            <p className = {colorTheme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-semibold text-xl relative left-4 text-white"}>Username</p>
+            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "6.8rem", top: "0.1rem", color: theme === lightColor ? "black" : "white"}} onClick = {handleInitEditUsername}/>
+            <p className = {theme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-semibold text-xl relative left-4 text-white"}>Username</p>
             {editUsername === true ?  <form onSubmit = {(e) => e.preventDefault()}>
-                    <input type = "text" placeholder = "Type your new username" onChange = {(e) => setUsername(e.target.value)} className = {colorTheme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99", borderWidth: (usernameDuplicateError || usernameEmptyError) && "2px", borderColor: (usernameDuplicateError || usernameEmptyError) && "#c92516"}}/>
+                    <input type = "text" placeholder = "Type your new username" onChange = {(e) => setUsername(e.target.value)} className = {theme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99", borderWidth: (usernameDuplicateError || usernameEmptyError) && "2px", borderColor: (usernameDuplicateError || usernameEmptyError) && "#c92516"}}/>
                 </form> : 
-                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99"}}>
-                <p className = {colorTheme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{username}</p>
+                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99"}}>
+                <p className = {theme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{username}</p>
             </div>
             }
             {usernameDuplicateError === true && <p className = "relative text-red-500 text-lg font-roboto" style = {{top: "0.5rem", left: "0.7rem"}}>{usernameDuplicateErrorCode}</p>}
@@ -296,40 +300,40 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
         </div>
 
         <div className = "relative" style = {{top: "6.5rem"}}>
-            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "6.8rem", top: "0.1rem", color: colorTheme === darkColor && "white"}} onClick = {() => setEditFirstname(true)}/>
-            <p className = {colorTheme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-semibold text-xl relative left-4 text-white"}>Firstname</p>
+            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "6.8rem", top: "0.1rem", color: theme === darkColor && "white"}} onClick = {() => setEditFirstname(true)}/>
+            <p className = {theme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-semibold text-xl relative left-4 text-white"}>Firstname</p>
             {editFirstname ===true ? 
                 <form onSubmit = {(e) => e.preventDefault()}>
-                    <input type = "text" placeholder = "Type your new firstname" onChange = {(e) => setFirstname(e.target.value)} className = {colorTheme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99"}}/>
+                    <input type = "text" placeholder = "Type your new firstname" onChange = {(e) => setFirstname(e.target.value)} className = {theme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99"}}/>
                 </form> : 
-                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99"}}>
-                    <p className = {colorTheme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{firstname}</p>
+                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99"}}>
+                    <p className = {theme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{firstname}</p>
                 </div>
             }
         </div>
 
         <div className = "relative" style = {{top: "8rem"}}>
-            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "6.8rem", top: "0.1rem", color: colorTheme === darkColor && "white"}} onClick = {() => setEditLastname(true)}/>
-            <p className = {colorTheme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-bold text-xl relative left-4 text-white"}>Lastname</p>
+            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "6.8rem", top: "0.1rem", color: theme === darkColor && "white"}} onClick = {() => setEditLastname(true)}/>
+            <p className = {theme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-bold text-xl relative left-4 text-white"}>Lastname</p>
             {editLastname ? 
                 <form onSubmit = {(e) => e.preventDefault()}>
-                    <input type = "text" placeholder = "Type your new lastname" onChange = {(e) => setLastname(e.target.value)} className = {colorTheme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99"}}/>
+                    <input type = "text" placeholder = "Type your new lastname" onChange = {(e) => setLastname(e.target.value)} className = {theme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99"}}/>
                 </form> :
-                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99"}}>
-                    <p className = {colorTheme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{lastname}</p>
+                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99"}}>
+                    <p className = {theme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{lastname}</p>
                 </div>
             }
         </div>
 
         <div className = "relative" style = {{top: "9.5rem"}}>
-            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "4.5rem", color: colorTheme === darkColor && "white"}} onClick = {() => setEditEmail(true)}/>
-            <p className = {colorTheme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-bold text-xl relative left-4 text-white"}>Email</p>
+            <FaEdit className = "absolute w-6 h-6 hover:cursor-pointer z-10" style = {{left: "4.5rem", color: theme === darkColor && "white"}} onClick = {() => setEditEmail(true)}/>
+            <p className = {theme === lightColor ? "font-roboto font-bold text-xl relative left-4" : "font-roboto font-bold text-xl relative left-4 text-white"}>Email</p>
             {editEmail ? 
                 <form onSubmit = {(e) => e.preventDefault()}>
-                    <input type = "text" placeholder = "Type your new email" onChange = {(e) => setEmail(e.target.value)} className = {colorTheme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99", borderWidth: emailInvalidError && "2px", borderColor: emailInvalidError && "#c92516"}}/>
+                    <input type = "text" placeholder = "Type your new email" onChange = {(e) => setEmail(e.target.value)} className = {theme === lightColor ? "rounded-xl relative top-1 left-2" : "rounded-xl relative top-1 left-2 text-white"} style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99", borderWidth: emailInvalidError && "2px", borderColor: emailInvalidError && "#c92516"}}/>
                 </form> : 
-                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: colorTheme === lightColor ? "#c9c2bf" : "#343d99"}}>
-                    <p className = {colorTheme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{email}</p>
+                <div className = "rounded-xl relative top-1 left-2" style = {{width: "28rem", height: "3rem", backgroundColor: theme === lightColor ? "#c9c2bf" : "#343d99"}}>
+                    <p className = {theme === lightColor ? "text-xl text-center relative font-ubuntu font-bold" : "text-xl text-center relative font-ubuntu font-bold text-white"} style = {{top: "0.4rem"}}>{email}</p>
                 </div>
             }
             {emailInvalidError && <p className = "relative text-red-500 text-lg font-roboto" style = {{top: "0.5rem", left: "0.7rem"}}>{emailInvalidErrorCode}</p>}
@@ -342,8 +346,8 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
             </div>
         </div>
       </div>
-      <div className = {colorTheme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "50rem", height: "64rem", backgroundColor: colorTheme === lightColor ? "#f5efed" : "#343a78", bottom: "40rem", left: "40rem"}} onClick = {onHandleDisable}>
-            <UserFavorite colorTheme = {colorTheme} lightColor = {lightColor} userList = {userList} userId = {userId}/>
+      <div className = {theme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "50rem", height: "64rem", backgroundColor: theme === lightColor ? "#f5efed" : "#343a78", bottom: "40rem", left: "40rem"}} onClick = {onHandleDisable}>
+            <UserFavorite theme = {theme} lightColor = {lightColor} userList = {userList} userId = {userId}/>
       </div>
     </div>
   )

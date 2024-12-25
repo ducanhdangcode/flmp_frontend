@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import appLogo from './logo-no-background.png';
 import darkAppLogo from './darkLogoNobg.png';
-import SpaceBackground from './space-bg.jpg';
 import './Navbar.css';
 import WebFont from 'webfontloader';
 import { FaSearch } from 'react-icons/fa';
-import {FaUserAlt} from 'react-icons/fa';
 import { FaSun } from 'react-icons/fa';
 import {FaMoon} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import UserDropdown from '../Dropdowns/UserDropdown/UserDropdown';
+import { useThemeContext } from '../../Context/ThemeContext';
 
-const Navbar = ({colorTheme, onHandleChangeTheme, lightColor, darkColor, loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar}) => {
+const Navbar = ({onHandleChangeTheme, loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar}) => {
 
     const darkNavBarStyle = "bg-white border-gray-200 dark:bg-gray-900 max-h-24 fixed z-30 w-full";
-    const lightNavBarStyle = "bg-white border-gray-200 dark:bg-white max-h-24 fixed z-30 w-full"
+    const lightNavBarStyle = "bg-white border-gray-200 dark:bg-white max-h-24 fixed z-30 w-full";
+
+    const {theme, darkColor, lightColor, setTheme} = useThemeContext();
+
     useEffect(() => {
         WebFont.load({
             google: {
@@ -24,31 +26,31 @@ const Navbar = ({colorTheme, onHandleChangeTheme, lightColor, darkColor, loginSt
     }, [])
   return (
     <header>
-        <nav className = {colorTheme === lightColor ? lightNavBarStyle : darkNavBarStyle}>
+        <nav className = {theme === lightColor ? lightNavBarStyle : darkNavBarStyle}>
             <div className = "flex">
                 {/* logo */}
                 <Link to = "/">
-                    <img className = "w-44 h-20 ml-5 mt-2 mb-2 inline-block" src = {colorTheme === darkColor ? appLogo : darkAppLogo} alt = "FLMP Logo"/>
+                    <img className = "w-44 h-20 ml-5 mt-2 mb-2 inline-block" src = {theme === darkColor ? appLogo : darkAppLogo} alt = "FLMP Logo"/>
                 </Link>
                 {/* options */}
                 <div>
                     <ul>
                         <Link to = "/team">
                             <li className = "float-left relative left-10">
-                                {colorTheme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 font-roboto">TEAMS</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">TEAMS</p>}
+                                {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 font-roboto">TEAMS</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">TEAMS</p>}
                             </li>
                         </Link>
                         <li className = "float-left relative left-20">
-                            {colorTheme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100">LEAGUES</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">LEAGUES</p>}
+                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100">LEAGUES</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">LEAGUES</p>}
                         </li>
                         <li className = "float-left relative" style = {{left: "7.5rem"}}>
-                            {colorTheme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100">TRANSFER MARKET</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">TRANSFER MARKET</p>}
+                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100">TRANSFER MARKET</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">TRANSFER MARKET</p>}
                         </li>
                         <li className = "float-left relative" style = {{left: "10rem"}}>
-                            {colorTheme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 ">STATISTICS</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100 ">STATISTICS</p>}
+                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 ">STATISTICS</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100 ">STATISTICS</p>}
                         </li>
                         <li className = "float-left relative" style = {{left: "12.5rem"}}>
-                            {colorTheme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 ">ABOUT US</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100 ">ABOUT US</p>}
+                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 ">ABOUT US</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100 ">ABOUT US</p>}
                         </li>
                     </ul>
                 </div>
@@ -71,12 +73,12 @@ const Navbar = ({colorTheme, onHandleChangeTheme, lightColor, darkColor, loginSt
                         <div className = "flex mt-[2rem] ml-[0.5rem]">
                             <div>
                                 <Link to = "/login">
-                                    <p className = {`font-roboto text-xl font-bold ${colorTheme === lightColor ? "" : "text-white"}`}>Login</p>
+                                    <p className = {`font-roboto text-xl font-bold ${theme === lightColor ? "" : "text-white"}`}>Login</p>
                                 </Link>
                             </div>
                             <div>
                                 <Link to = "/register">
-                                    <p className = {`font-roboto text-xl font-bold ml-[2.5rem] ${colorTheme === lightColor ? "" : "text-white"}`}>Register</p>
+                                    <p className = {`font-roboto text-xl font-bold ml-[2.5rem] ${theme === lightColor ? "" : "text-white"}`}>Register</p>
                                 </Link>
                             </div>
                         </div>
@@ -89,12 +91,26 @@ const Navbar = ({colorTheme, onHandleChangeTheme, lightColor, darkColor, loginSt
                 }
 
                 {/* login dropdown */}
-                {displayUserDropdown === true && <UserDropdown disableLoginState = {disableLoginState} disableDropdown = {disableDropdown}/>}
+                {displayUserDropdown === true && 
+                    <div className = "absolute z-10 top-[7rem] right-[11rem]">
+                        <UserDropdown 
+                            disableLoginState = {disableLoginState} 
+                            disableDropdown = {disableDropdown}
+                            recentAvatar = {JSON.parse(recentAvatar)}
+                        />
+                    </div>
+                }
 
                 {/* change theme button */}
-                {colorTheme === darkColor ?
-                    <FaSun className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[3rem]" style = {{color: "white"}} onClick = {onHandleChangeTheme}/> : 
-                    <FaMoon className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[3rem]" style = {{color: "black"}} onClick = {onHandleChangeTheme}/>
+                {theme === darkColor ?
+                    <FaSun className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[3rem]" style = {{color: "white"}} onClick = {() => {
+                        setTheme(lightColor);
+                        localStorage.setItem("theme", lightColor);
+                    }}/> : 
+                    <FaMoon className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[3rem]" style = {{color: "black"}} onClick = {() => {
+                        setTheme(darkColor);
+                        localStorage.setItem("theme", darkColor);
+                    }}/>
                 }
             </div>
         </nav>

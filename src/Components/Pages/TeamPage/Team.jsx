@@ -21,12 +21,16 @@ import ListTeamSerieA from './ListTeamSerieA';
 import AOS from 'aos';
 
 import { FaArrowRight } from 'react-icons/fa';
+import { useThemeContext } from '../../../Context/ThemeContext';
 
-const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom, setupTeamVideoTitles, setupTeamKits, setupTeamChairman}) => {
+const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom, setupTeamVideoTitles, setupTeamKits, setupTeamChairman}) => {
   const slideShowImages = [PremierLeagueBackground, LaligaBackground, BundesligaBackground, SerieABackground, Ligue1Background, LigaPortugalBackground];
   const [slideShowIndex, setSlideShowIndex] = useState(0);
   const slideShowLength = slideShowImages.length -1;
   const [hoverSeeMoreTeam, setHoverSeeMoreTeam] = useState(false);
+
+  // context for theme
+  const {theme, lightColor, darkColor} = useThemeContext();
   
   useEffect(() => {
     AOS.init({
@@ -59,7 +63,7 @@ const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, se
     setSlideShowIndex(slideShowIndex === 0 ? slideShowLength : slideShowIndex - 1);
   }
   return (
-    <div className = "w-full relative top-24" style = {{height: "400rem", backgroundColor: colorTheme === lightColor ? "#eaebe8" : darkColor}}>
+    <div className = "w-full relative top-24" style = {{height: "400rem", backgroundColor: theme === lightColor ? "#eaebe8" : darkColor}}>
       <div>
         {slideShowImages.map((path, index) => {
             return slideShowIndex === index && (
@@ -69,19 +73,19 @@ const Team = ({colorTheme, lightColor, darkColor, setupTeamId, setupTeamLogo, se
         <FaArrowAltCircleLeft className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", color: "gray"}} onClick = {toPreviousSlide}/>
         <FaArrowAltCircleRight className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", right: "1rem", color: "gray"}} onClick = {toNextSlide}/>
       </div>
-      <ListTeamEPL colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+      <ListTeamEPL theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
 
-      <ListTeamLaLiga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+      <ListTeamLaLiga theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
 
-      <ListTeamBundesliga colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+      <ListTeamBundesliga theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
 
-      <ListTeamLigue1 colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+      <ListTeamLigue1 theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
 
-      <ListTeamSerieA colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor}/>
+      <ListTeamSerieA theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
 
       <div className = "relative float-right" style = {{top: "45rem", right: "8rem"}} data-aos = "fade-left">
-        <p className = {colorTheme === lightColor ? "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out" : "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out text-white"} onMouseEnter = {() => setHoverSeeMoreTeam(true)} onMouseLeave = {() => setHoverSeeMoreTeam(false)}>See more teams</p>
-        {hoverSeeMoreTeam === true && <FaArrowRight className = "w-8 h-8 relative" style = {colorTheme === lightColor ? {bottom: "2.2rem", left: "12rem"} : {bottom: "2.2rem", left: "12rem", color: "white"}}/>}
+        <p className = {theme === lightColor ? "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out" : "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out text-white"} onMouseEnter = {() => setHoverSeeMoreTeam(true)} onMouseLeave = {() => setHoverSeeMoreTeam(false)}>See more teams</p>
+        {hoverSeeMoreTeam === true && <FaArrowRight className = "w-8 h-8 relative" style = {theme === lightColor ? {bottom: "2.2rem", left: "12rem"} : {bottom: "2.2rem", left: "12rem", color: "white"}}/>}
       </div>
     </div>
   )
