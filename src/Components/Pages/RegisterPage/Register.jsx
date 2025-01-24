@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import DarkBackground from './dark-background-login.jpg';
-import LogoAppLight from './logo-no-background.png';
+import RegisterBackground from './backgroundLogin.jpg';
 import { Link, useNavigate } from 'react-router-dom';
-import { PiWarningOctagonFill } from 'react-icons/pi';
+import RegisterBoxBackground from './backgroundRegisterBox.jpg';
 import WebFont from 'webfontloader';
 import './Register.css';
 import { createUser } from '../../../APIService/UserService.';
+import { PiWarningOctagonFill } from 'react-icons/pi';
 
 const Register = () => {
     // placeholder 
@@ -116,6 +116,7 @@ const Register = () => {
 
     const onHandleCheckBox = (e) => {
         checkbox ? setCheckbox(false) : setCheckbox(true);
+        setCheckboxError("");
     }
 
     // submit
@@ -172,128 +173,170 @@ const Register = () => {
     })
   return (
     <form onSubmit = {(e) => e.preventDefault()}>
-        <div className = "w-full overflow-x-clip overflow-y-clip" style = {{height: "80rem", backgroundImage: `url(${DarkBackground})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 80rem"}}>
-            <img src = {LogoAppLight} alt = "Logo App" className = "h-44 opacity-100 relative" style = {{left: "8rem", top: "29.5rem"}}/>
-            <div className = "backdrop-blur-lg bg-white/30 float-right relative rounded-xl" style = {{width: "42rem", height: "68rem", right: "6rem", bottom: "4rem"}}>
-                <p className = "text-center text-5xl relative top-4 right-1 font-bold font-changa text-white">Register</p>
+        <div className = "w-full overflow-x-clip overflow-y-clip h-[65rem]">
+            {/* background image */}
+            <img src = {RegisterBackground} alt = "" className = "absolute left-0 top-0 w-[100vw] h-full"/>
 
-                <div>
-                    <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "1.5rem"}}>Lastname</label>
-                    <input 
-                        type = "text"
-                        placeholder = {lastnamePlaceholder}
-                        className = {!lastnameError ? "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu" : "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu border-2 border-red-600"}
-                        style = {{left: "0.5rem", top: "1.8rem", borderWidth: "1px", width: "40rem"}}
-                        onFocus = {onFocusLastname}
-                        onBlur = {() => setLastnamePlaceholder("Type your lastname")}
-                        value = {lastname}
-                        onChange = {onHandleChangeLastname}
-                    />
-                    {lastnameError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "2.3rem", right: "2rem", color: "#f0323c"}}/>}
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "2rem", left: "1rem"}}>{lastnameError}</p>
-
-                <div>
-                    <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "3rem"}}>Firstname</label>
-                    <input 
-                        type = "text"
-                        placeholder = {firstnamePlaceholder}
-                        className = {!lastnameError ? "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu" : "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu border-2 border-red-600"}
-                        style = {{left: "0.5rem", top: "3.3rem", borderWidth: "1px", width: "40rem"}}
-                        onFocus = {onFocusFirstname}
-                        onBlur = {() => setFirstnamePlaceholder("Type your firstname")}
-                        value = {firstname}
-                        onChange = {onHandleChangeFirstname}
-                    />
-                    {firstnameError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "3.8rem", right: "2rem", color: "#f0323c"}}/>}
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "3.5rem", left: "1rem"}}>{firstnameError}</p>
-
-                <div>
-                    <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "4.5rem"}}>Username</label>
-                    <input 
-                        type = "text"
-                        placeholder = {usernamePlaceholder}
-                        className = {!usernameError ? "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu" : "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu border-2 border-red-600"}
-                        style = {{left: "0.5rem", top: "5rem", borderWidth: "1px", width: "40rem"}}
-                        onFocus = {onFocusUsername}
-                        onBlur = {() => setUsernamePlaceholder("Type your username")}
-                        value = {username}
-                        onChange = {onHandleChangeUsername}
-                    />
-                    {usernameError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "5.5rem", right: "2rem", color: "#f0323c"}}/>}
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "5.2rem", left: "1rem"}}>{usernameError}</p>
-
-                <div className = "mt-2">
-                    <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "5.5rem"}}>E-mail</label>
-                    <input 
-                        type = "text"
-                        placeholder = {emailPlaceholder}
-                        className = {!emailError ? "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu" : "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu border-2 border-red-600"}
-                        style = {{left: "0.5rem", top: "5.8rem", borderWidth: "1px", width: "40rem"}}
-                        onFocus = {onFocusEmail}
-                        onBlur = {() => setEmailPlaceholder("Type your e-mail")}
-                        value = {email}
-                        onChange = {onHandleChangeEmail}
-                    />
-                    {emailError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "6.3rem", right: "2rem", color: "#f0323c"}}/>}
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "6rem", left: "1rem"}}>{emailError}</p>
-
-                <div className = "mt-6">
-                    <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "5.3rem"}}>Password</label>
-                    <input 
-                        type = "text"
-                        placeholder = {passwordPlaceholder}
-                        className = {!passwordError ? "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu" : "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu border-2 border-red-600"}
-                        style = {{left: "0.5rem", top: "5.6rem", borderWidth: "1px", width: "40rem"}}
-                        onFocus = {onFocusPassword}
-                        onBlur = {() => setPasswordPlaceholder("Type your password")}
-                        onChange = {onHandleChangePassword}
-                        value = {password}
-                    />
-                    {passwordError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "6.1rem", right: "2rem", color: "#f0323c"}}/>}
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "5.9rem", left: "1rem"}}>{passwordError}</p>
-
-                <div className = "mt-6">
-                    <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "5.3rem"}}>Password</label>
-                    <input 
-                        type = "text"
-                        placeholder = {rePasswordPlaceholder}
-                        className = {!rePasswordError ? "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu" : "h-11 relative rounded-3xl bg-transparent pl-2 font-ubuntu border-2 border-red-600"}
-                        style = {{left: "0.5rem", top: "5.6rem", borderWidth: "1px", width: "40rem"}}
-                        onFocus = {onFocusRePassword}
-                        onBlur = {() => setRePasswordPlaceholder("Re-type your password")}
-                        value = {rePassword}
-                        onChange = {onHandleChangeRePassword}
-                    />
-                    {rePasswordError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "6.1rem", right: "2rem", color: "#f0323c"}}/>}
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "5.9rem", left: "1rem"}}>{rePasswordError}</p>
-
-                <div className = "relative top-28 left-4">
-                    <input 
-                        type = "checkbox"
-                        className = "w-5 h-5"
-                        value = {checkbox}
-                        onChange = {(e) => onHandleCheckBox(e)}
-                    />
-                    <p className = "relative text-lg font-ubuntu text-white" style = {{bottom: "1.8rem", left: "1.8rem"}}>Accept with all license & conditions</p>
-                </div>
-                <p className = "relative text-lg text-red-600 font-bold font-ubuntu" style = {{top: "5.1rem", left: "1rem"}}>{checkboxError}</p>
-
-                <div className = "relative" style = {{left: "17rem", top: "7rem"}}>
-                    <button className = "w-32 h-12 bg-gradient-to-r from-blue-600 to-purple-600 to-pink-400 rounded-3xl text-white font-extrabold font-ubuntu" onClick = {handleSubmit}>Sign Up</button>
+            {/* register box */}
+            <div className = "flex h-[75rem] w-[70%] bg-white relative top-[10rem] left-[15%] rounded-[8px]">
+                {/* image beside the register box */}
+                <div className = "w-[50%] h-full rounded-tl-[8px] rounded-bl-[8px]">
+                    <img src = {RegisterBoxBackground} alt = "" className = "w-full h-full rounded-tl-[8px] rounded-bl-[8px]"/>
                 </div>
 
-                <div className = "relative text-center" style = {{top: "8.5rem"}}>
-                    <p className = "font-ubuntu text-white text-xl">Already have an account? 
-                        <Link to = "/login">
-                            <span className = "underline font-extrabold"> Sign in</span>
-                        </Link>
-                    </p>
+                {/* register form */}
+                <div className = "w-[50%] rounded-tr-[8px] rounded-br-[8px]">
+                    {/* title */}
+                    <p className = "text-center text-4xl font-bold text-[#052b33] mt-[2rem]">Register to <span className = "text-[#ebc94e]">FLMP</span></p>
+
+                    {/* firstname and lastname */}
+                    <div className = "flex">
+                        {/* lastname */}
+                        <div className = "">
+                            <div className = "">
+                                <p className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem", top: "1.5rem"}}>Lastname</p>
+                                <input 
+                                    type = "text"
+                                    placeholder = {lastnamePlaceholder}
+                                    className = {!lastnameError ? "h-9 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu left-[1rem] top-[2rem] w-[80%]" : "h-9 relative rounded-[15px] bg-white pl-2 font-ubuntu border-2 border-red-600 left-[1rem] top-[2rem] w-[80%]"}
+                                    style = {{borderWidth: "1px", borderStyle: "inset"}}
+                                    onFocus = {onFocusLastname}
+                                    onBlur = {() => setLastnamePlaceholder("Type your lastname")}
+                                    value = {lastname}
+                                    onChange = {onHandleChangeLastname}
+                                />
+                                {lastnameError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "2.3rem", right: "2.5rem", color: "#f0323c"}}/>}
+                            </div>
+                            <p className = "relative text-sm text-red-600 font-bold font-ubuntu" style = {{top: "2rem", left: "1rem"}}>{lastnameError}</p>
+                        </div>
+
+                        {/* firstname */}
+                        <div className = "">
+                            <div>
+                                <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "0rem", top: "1.5rem"}}>Firstname</label>
+                                <input 
+                                    type = "text"
+                                    placeholder = {firstnamePlaceholder}
+                                    className = {!lastnameError ? "h-9 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu left-[0rem] top-[2rem]" : "h-9 relative rounded-[15px] bg-white pl-2 font-ubuntu border-2 border-red-600 left-[0rem] top-[2rem]"}
+                                    style = {{borderWidth: "1px", borderStyle: "inset"}}
+                                    onFocus = {onFocusFirstname}
+                                    onBlur = {() => setFirstnamePlaceholder("Type your firstname")}
+                                    value = {firstname}
+                                    onChange = {onHandleChangeFirstname}
+                                />
+                                {firstnameError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "2.3rem", right: "3.1rem", color: "#f0323c"}}/>}
+                            </div>
+                            <p className = "relative text-sm text-red-600 font-bold font-ubuntu top-[2rem]">{firstnameError}</p>
+                        </div>
+                    </div>
+
+                    {/* username */}
+                    <div className = "relative top-[3rem]">
+                        <div>
+                            <p className = "font-ubuntu text-lg font-white float-left relative text-black font-bold left-[1rem]">Username</p>
+                            <input 
+                                type = "text"
+                                placeholder = {usernamePlaceholder}
+                                className = {!usernameError ? "h-9 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu top-[0.5rem] w-[90%] left-[1rem]" : "h-9 relative rounded-[15px] bg-white pl-2 font-ubuntu border-2 border-red-600 top-[0.5rem] w-[90%] left-[1rem]"}
+                                style = {{borderWidth: "1px", borderStyle: "inset"}}
+                                onFocus = {onFocusUsername}
+                                onBlur = {() => setUsernamePlaceholder("Type your username")}
+                                value = {username}
+                                onChange = {onHandleChangeUsername}
+                            />
+                            {usernameError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "0.8rem", right: "2.6rem", color: "#f0323c"}}/>}
+                        </div>
+                        <p className = "relative text-sm text-red-600 font-bold font-ubuntu top-[1rem] left-[1rem]">{usernameError}</p>
+                    </div>
+
+                    {/* email */}
+                    <div className = "relative top-[5rem]">
+                        <div className = "">
+                            <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold left-[1rem]">E-mail</label>
+                            <input 
+                                type = "text"
+                                placeholder = {emailPlaceholder}
+                                className = {!emailError ? "h-9 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu w-[90%] top-[2rem] left-[-2.2rem]": "h-9 relative rounded-[15px] bg-white pl-2 font-ubuntu border-2 border-red-600 w-[90%] top-[2rem] left-[-2.2rem]"}
+                                style = {{borderWidth: "1px", borderStyle: "inset"}}
+                                onFocus = {onFocusEmail}
+                                onBlur = {() => setEmailPlaceholder("Type your e-mail")}
+                                value = {email}
+                                onChange = {onHandleChangeEmail}
+                            />
+                            {emailError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "0rem", right: "2.7rem", color: "#f0323c"}}/>}
+                        </div>
+                        <p className = "relative text-sm text-red-600 font-bold font-ubuntu left-[1rem] top-[2rem]">{emailError}</p>
+                    </div>
+
+                    {/* password */}
+                    <div>
+                        <div className = "relative top-[8rem]">
+                            <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem"}}>Password</label>
+                            <input 
+                                type = "text"
+                                placeholder = {passwordPlaceholder}
+                                className = {!passwordError ? "h-9 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu w-[90%] left-[1rem] top-[0.5rem]" : "h-9 relative rounded-[15px] bg-white pl-2 font-ubuntu border-2 border-red-600 w-[90%] left-[1rem] top-[0.5rem]"}
+                                style = {{borderWidth: "1px"}}
+                                onFocus = {onFocusPassword}
+                                onBlur = {() => setPasswordPlaceholder("Type your password")}
+                                onChange = {onHandleChangePassword}
+                                value = {password}
+                            />
+                            {passwordError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "0.7rem", right: "2.7rem", color: "#f0323c"}}/>}
+                        </div>
+                        <p className = "relative text-sm text-red-600 font-bold font-ubuntu top-[8.5rem] left-[1rem]">{passwordError}</p>
+                    </div>
+
+                    {/* re-type password */}
+                    <div className = "relative top-[9.5rem]">
+                        <div className = "">
+                            <label className = "font-ubuntu text-lg font-white float-left relative text-black font-bold" style = {{left: "1rem"}}>Re-type password</label>
+                            <input 
+                                type = "text"
+                                placeholder = {rePasswordPlaceholder}
+                                className = {!rePasswordError ? "h-9 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu w-[90%] top-[0.5rem] left-[1rem]" : "h-9 relative rounded-[15px] bg-white pl-2 font-ubuntu border-2 border-red-600 w-[90%] top-[0.5rem] left-[1rem]"}
+                                style = {{borderWidth: "1px", borderStyle: "inset"}}
+                                onFocus = {onFocusRePassword}
+                                onBlur = {() => setRePasswordPlaceholder("Re-type your password")}
+                                value = {rePassword}
+                                onChange = {onHandleChangeRePassword}
+                            />
+                            {rePasswordError && <PiWarningOctagonFill className = "relative w-7 h-7 float-right" style = {{top: "0.7rem", right: "2.7rem", color: "#f0323c"}}/>}
+                        </div>
+                        <p className = "relative text-sm text-red-600 font-bold font-ubuntu top-[0.5rem] left-[1rem]">{passwordError}</p>
+                    </div>
+
+                    {/* checkbox */}
+                    <div className = "relative left-4 mt-[11rem]">
+                        <div className = "">
+                            <input 
+                                type = "checkbox"
+                                className = "w-5 h-5"
+                                value = {checkbox}
+                                onChange = {(e) => onHandleCheckBox(e)}
+                            />
+                            <p className = "relative text-lg font-ubuntu" style = {{bottom: "1.8rem", left: "1.8rem"}}>Accept with all license & conditions</p>
+                        </div>
+                        <p className = "relative text-sm text-red-600 font-bold font-ubuntu top-[-1.5rem]">{checkboxError}</p>
+                    </div>
+
+                    {/* sign up button */}
+                    <div className = "relative left-[38%]">
+                        <div className = "relative">
+                            <button className = "w-32 h-12 bg-[#ebc94e] rounded-3xl text-white font-extrabold font-ubuntu" onClick = {handleSubmit}>Sign Up</button>
+                        </div>
+                    </div>
+
+                    {/* direct to sign in */}
+                    <div className = "mt-[1rem]">
+                        <div className = "relative text-center">
+                            <p className = "font-ubuntu text-xl">Already have an account? 
+                                <Link to = "/login">
+                                    <span className = "underline font-extrabold"> Sign in</span>
+                                </Link>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

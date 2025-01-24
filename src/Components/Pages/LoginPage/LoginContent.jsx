@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import LoginBackground from './backgroundLogin.jpg';
-import FootballBackground from './footballBackground.jpg';
+import FootballBackground from './footballBackground.jpg'
 import './Login.css';
 import WebFont from 'webfontloader';
 import { FaUser } from 'react-icons/fa';
