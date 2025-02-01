@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useRef, useState } from 'react'
 import appLogo from './logo-no-background.png';
 import darkAppLogo from './darkLogoNobg.png';
 import './Navbar.css';
@@ -10,10 +10,12 @@ import { Link } from 'react-router-dom';
 import UserDropdown from '../Dropdowns/UserDropdown/UserDropdown';
 import { useThemeContext } from '../../Context/ThemeContext';
 
-const Navbar = ({onHandleChangeTheme, loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar}) => {
+const Navbar = ({onHandleChangeTheme, loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar, recentUsername}) => {
 
     const darkNavBarStyle = "bg-white border-gray-200 dark:bg-gray-900 max-h-24 fixed z-30 w-full";
     const lightNavBarStyle = "bg-white border-gray-200 dark:bg-white max-h-24 fixed z-30 w-full";
+
+    const dropdownRef = useRef(null);
 
     const {theme, darkColor, lightColor, setTheme} = useThemeContext();
 
@@ -24,6 +26,22 @@ const Navbar = ({onHandleChangeTheme, loginState, displayUserDropdown, handleCha
             }
         })
     }, [])
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                handleChangeUserDropdown();
+            }
+        };
+
+        if (displayUserDropdown === true) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    }, [displayUserDropdown]);
   return (
     <header>
         <nav className = {theme === lightColor ? lightNavBarStyle : darkNavBarStyle}>
@@ -91,15 +109,18 @@ const Navbar = ({onHandleChangeTheme, loginState, displayUserDropdown, handleCha
                 }
 
                 {/* login dropdown */}
-                {displayUserDropdown === true && 
-                    <div className = "absolute z-10 top-[7rem] right-[11rem]">
-                        <UserDropdown 
-                            disableLoginState = {disableLoginState} 
-                            disableDropdown = {disableDropdown}
-                            recentAvatar = {JSON.parse(recentAvatar)}
-                        />
-                    </div>
-                }
+                <div ref = {dropdownRef}>
+                    {displayUserDropdown === true && 
+                        <div className = "absolute z-10 top-[7rem] right-[11rem]">
+                            <UserDropdown 
+                                disableLoginState = {disableLoginState} 
+                                disableDropdown = {disableDropdown}
+                                recentAvatar = {JSON.parse(recentAvatar)}
+                                recentUsername = {recentUsername}
+                            />
+                        </div>
+                    }
+                </div>
 
                 {/* change theme button */}
                 {theme === darkColor ?
