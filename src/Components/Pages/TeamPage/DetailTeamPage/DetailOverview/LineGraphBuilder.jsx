@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import WebFont from 'webfontloader'
 
-const LineGraphBuilder = ({teamList, teamId}) => {
+const LineGraphBuilder = ({marketValue, teamId}) => {
     const data = [
-        {year: "2019", value: teamList[teamId-1]?.timeMarketValue[0]},
-        {year: "2020", value: teamList[teamId-1]?.timeMarketValue[1]},
-        {year: "2021", value: teamList[teamId-1]?.timeMarketValue[2]},
-        {year: "2022", value: teamList[teamId-1]?.timeMarketValue[3]},
-        {year: "2023", value: teamList[teamId-1]?.timeMarketValue[4]},
-        {year: "2024", value: teamList[teamId-1]?.timeMarketValue[5]},
+        {year: "2019", value: marketValue?.timeBased[0]},
+        {year: "2020", value: marketValue?.timeBased[1]},
+        {year: "2021", value: marketValue?.timeBased[2]},
+        {year: "2022", value: marketValue?.timeBased[3]},
+        {year: "2023", value: marketValue?.timeBased[4]},
+        {year: "2024", value: marketValue?.timeBased[5]},
     ]
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const LineGraphBuilder = ({teamList, teamId}) => {
         <Line type = "monotone" dataKey = "value" stroke = "#D91656" strokeWidth = {3}/>
       </LineChart>
       <div className = "relative" style = {{top: "2.6rem", left: "10rem", textAlign: "center", width: "20rem"}}>
-        <p className = "font-space-grotesk text-xl font-bold text-[#355F2E]">{`Market value of ${teamList[teamId-1]?.name} based on each year`}</p>
+        <p className = "font-space-grotesk text-xl font-bold text-[#355F2E]">{`Market value of ${marketValue?.teamName} based on each year`}</p>
       </div>
     </div>
   )

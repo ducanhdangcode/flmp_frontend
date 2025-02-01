@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Cell, Pie, PieChart, Tooltip} from 'recharts';
 import WebFont from 'webfontloader';
 
-const PieChartBuilder = ({teamList, teamId}) => {
+const PieChartBuilder = ({marketValue, teamId}) => {
     const [activeIndex, setActiveIndex] = useState(-1);
     const data = [
-        {position: 'Goalkeeper', value: teamList[teamId-1]?.detailMarketValue[0]},
-        {position: 'Defender', value: teamList[teamId-1]?.detailMarketValue[1]},
-        {position: 'Midfielder', value: teamList[teamId-1]?.detailMarketValue[2]},
-        {position: 'Attacker', value: teamList[teamId-1]?.detailMarketValue[3]}
+        {position: 'Goalkeeper', value: marketValue?.positionBased[0]},
+        {position: 'Defender', value: marketValue?.positionBased[1]},
+        {position: 'Midfielder', value: marketValue?.positionBased[2]},
+        {position: 'Attacker', value: marketValue?.positionBased[3]}
     ];
     const COLORS = ['#0088FE', '#00C49F', '#f7220a', '#FF8042'];
 
@@ -47,7 +47,7 @@ const PieChartBuilder = ({teamList, teamId}) => {
         <Tooltip formatter = {(value) => formatCurrency(value)}/>
       </PieChart>
       <div className = "relative" style = {{bottom: "5rem", left: "9rem", width: "20rem", textAlign: "center"}}>
-        <p className = "font-space-grotesk text-xl font-bold text-[#355F2E]">{`Market value of ${teamList[teamId-1]?.name} based on each position`}</p>
+        <p className = "font-space-grotesk text-xl font-bold text-[#355F2E]">{`Market value of ${marketValue?.teamName} based on each position`}</p>
       </div>
     </div>
   )

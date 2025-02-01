@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const REST_API_BASE_URL = "http://localhost:8080/api/players";
+const BASE_URL_PLAYERS = "/api/players";
 
-export const ListPlayer = () => axios.get(REST_API_BASE_URL);
+export const ListPlayer = () => axios.get(BASE_URL_PLAYERS);

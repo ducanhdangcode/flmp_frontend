@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const REST_API_BASE_URL = "http://localhost:8080/api/coaches";
+const BASE_URL_COACHES = "/api/coaches";
 
-export const ListCoach = () => axios.get(REST_API_BASE_URL);
+export const ListCoach = () => axios.get(BASE_URL_COACHES);

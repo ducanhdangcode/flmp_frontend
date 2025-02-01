@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const REST_API_BASE_URL = "http://localhost:8080/api/users";
+const BASE_URL_USERS = "/api/users";
 
 export const listUsers = () => {
-    return axios.get(REST_API_BASE_URL);
+    return axios.get(BASE_URL_USERS);
 }
 
-export const createUser = (user) => axios.post(REST_API_BASE_URL, user);
+export const createUser = (user) => axios.post(BASE_URL_USERS, user);
 
-export const updateUser = (userId, updatedUser) => axios.put(REST_API_BASE_URL + "/" + userId, updatedUser);
+export const updateUser = (userId, updatedUser) => axios.put(BASE_URL_USERS + "/" + userId, updatedUser);
