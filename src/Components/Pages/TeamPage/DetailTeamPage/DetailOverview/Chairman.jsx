@@ -2,7 +2,7 @@ import AOS from 'aos'
 import React, { useEffect } from 'react'
 import WebFont from 'webfontloader'
 
-const Chairman = ({teamId, teamList, teamChairman}) => {
+const Chairman = ({teamId, teamList}) => {
   useEffect(() => {
     WebFont.load({
       google: {
@@ -16,7 +16,7 @@ const Chairman = ({teamId, teamList, teamChairman}) => {
         <p className = "text-2xl font-ubuntu font-bold relative left-[2rem] text-[white] top-[0.4rem]">CHAIRMAN</p>
       </div>
       <div className='flex relative top-[-1rem]'>
-        <img src = {teamChairman} alt = "" className = "relative w-[40rem] h-[23rem]" style = {{borderRight: "1px solid white"}}/>
+        <img src = {teamList[teamId-1]?.chairmanImage} alt = "" className = "relative w-[40rem] h-[23rem]" style = {{borderRight: "1px solid white"}}/>
         <div className='block'>
             <div className = "bg-[#deded4] w-[55.6rem] text-center h-[4rem]" style = {{borderBottom: "1px solid white"}}>
               <p className = "text-4xl font-space-grotesk font-bold relative top-[0.2rem]">{teamList[teamId-1]?.chairmanName}</p>

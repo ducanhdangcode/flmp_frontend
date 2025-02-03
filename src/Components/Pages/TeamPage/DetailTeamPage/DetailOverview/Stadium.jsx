@@ -57,12 +57,9 @@ const Stadium = ({teamId}) => {
         <p className = "text-2xl font-ubuntu font-bold relative text-[white] left-[2rem] top-[0.3rem]">STADIUM</p>
       </div>
       <div className = "flex relative top-[0rem]">
-        {(teamId >= 1 && teamId <= 20) && 
-            <img src = {EPLStadiums[teamId - 1]} alt = "" className = "relative w-[38rem] h-[27.6rem]" style = {{top: "0rem"}}/>
-        }
-        {(teamId >= 21 && teamId <= 40) && 
-            <img src = {LaLigaStadiums[teamId - 21]} alt = "" className = "relative w-[38rem] h-[27.6rem]" style = {{top: "0rem"}}/>
-        }
+        <div>
+            <img src = {stadium?.imageLink} alt = "" className = "relative w-[38rem] h-[27.6rem]" style = {{top: "0rem"}}/>
+        </div>
         <div className = "block bg-green-500 relative h-[27.6rem] w-[32.2rem] top-[0rem]">
             <div className = "relative left-[0rem] top-[0rem]">
                 <div className = "bg-[white] left-[0rem] relative h-[5.52rem] text-center">

@@ -11,7 +11,7 @@ import TeamVideo from './TeamVideo';
 import { listUsers, updateUser } from '../../../../../APIService/UserService.';
 import MarketValue from './MarketValue';
 
-const DetailOverview = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideoTitles, teamKits, teamChairman, recentId, teamList}) => {
+const DetailOverview = ({teamId, teamVideoTitles, teamKits, teamChairman, teamList}) => {
     useEffect(() => {
         WebFont.load({
             google: {

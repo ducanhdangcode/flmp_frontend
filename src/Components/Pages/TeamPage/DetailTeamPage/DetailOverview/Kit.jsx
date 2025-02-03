@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import WebFont from 'webfontloader'
-const Kit = ({teamId, teamList, teamKits}) => {
+const Kit = ({teamId, teamList}) => {
   const kitType = [
     "Home Kit", 
     "Away Kit", 
@@ -20,7 +20,7 @@ const Kit = ({teamId, teamList, teamKits}) => {
         <p className = "text-2xl font-ubuntu font-bold relative text-[white] left-[2rem] top-[0.4rem]">2024/2025 KIT</p>
       </div>
       <div className = "relative flex">
-        {teamKits.map((kit, index) => {
+        {teamList[teamId-1]?.kitsImage.map((kit, index) => {
             return <div className = {index %2 === 0 ? "bg-[white] h-[30rem]" : "bg-[#deded4] h-[30rem]"} style = {{borderRight: "1px solid white"}}>
                 <div className = "relative rounded-2xl mr-48 left-[6rem] top-[3.5rem] bg-[#8c8484] w-[20rem] h-[21rem]">
                   <img src = {kit} alt = "" className = "relative" style = {{width: "20rem", height: "20rem"}}/>

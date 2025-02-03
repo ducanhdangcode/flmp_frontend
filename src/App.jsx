@@ -203,7 +203,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden" style = {{maxHeight: "400rem"}}>
+      <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
         <Helmet>
           <style>{`body {background-color: ${colorTheme};}`}</style>
         </Helmet>

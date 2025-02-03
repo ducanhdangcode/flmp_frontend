@@ -63,8 +63,9 @@ const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLog
     setSlideShowIndex(slideShowIndex === 0 ? slideShowLength : slideShowIndex - 1);
   }
   return (
-    <div className = "w-full relative top-24" style = {{height: "400rem", backgroundColor: theme === lightColor ? "#eaebe8" : darkColor}}>
-      <div>
+    <div className = "w-full relative" style = {{backgroundColor: theme === lightColor ? "#eaebe8" : darkColor}}>
+      {/* slide images of leagues */}
+      <div className = "mt-24">
         {slideShowImages.map((path, index) => {
             return slideShowIndex === index && (
               <img src = {path} alt = "" className = "w-full animate__animated animate__fadeInRight hover:cursor-pointer" style = {{height: "40rem"}}/>
@@ -73,18 +74,34 @@ const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLog
         <FaArrowAltCircleLeft className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", color: "gray"}} onClick = {toPreviousSlide}/>
         <FaArrowAltCircleRight className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", right: "1rem", color: "gray"}} onClick = {toNextSlide}/>
       </div>
-      <ListTeamEPL theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
 
-      <ListTeamLaLiga theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+      {/* list team EPL */}
+      <div className = "mt-24">
+        <ListTeamEPL theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+      </div>
+      
+      {/* list team la liga */}
+      <div className = "mt-24">
+        <ListTeamLaLiga theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>
+      </div>
+      
+      {/* list team bundesliga */}
+      <div className = "mt-24">
+        <ListTeamBundesliga theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
+      </div>
+      
+      {/* list team ligue 1 */}
+      <div className = "mt-24">
+        <ListTeamLigue1 theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
+      </div>
+      
+      {/* list team serie A */}
+      <div className = "mt-24">
+        <ListTeamSerieA theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
+      </div>
 
-      <ListTeamBundesliga theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
-
-      <ListTeamLigue1 theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
-
-      <ListTeamSerieA theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
-
-      <div className = "relative float-right" style = {{top: "45rem", right: "8rem"}} data-aos = "fade-left">
-        <p className = {theme === lightColor ? "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out" : "hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out text-white"} onMouseEnter = {() => setHoverSeeMoreTeam(true)} onMouseLeave = {() => setHoverSeeMoreTeam(false)}>See more teams</p>
+      <div className = "relative float-right" style = {{right: "8rem"}} data-aos = "fade-left">
+        <p className = {"hover:cursor-pointer text-3xl font-ubuntu underline hover:-translate-x-8 transition ease-in-out"} onMouseEnter = {() => setHoverSeeMoreTeam(true)} onMouseLeave = {() => setHoverSeeMoreTeam(false)}>See more teams</p>
         {hoverSeeMoreTeam === true && <FaArrowRight className = "w-8 h-8 relative" style = {theme === lightColor ? {bottom: "2.2rem", left: "12rem"} : {bottom: "2.2rem", left: "12rem", color: "white"}}/>}
       </div>
     </div>
