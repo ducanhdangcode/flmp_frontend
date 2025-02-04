@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import WebFont from 'webfontloader';
-import { listUsers, updateUser } from '../../../APIService/UserService.';
+import { getUserByUsername, listUsers, updateEmail, updateFirstname, updateLastname, updateUsername } from '../../../APIService/UserService.';
 import CropUserImage from '../CropImage/CropUserImage/CropUserImage';
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import UserFavorite from './UserFavorite';
 import { useThemeContext } from '../../../Context/ThemeContext';
+import { useUserContext } from '../../../Context/UserContext';
 
-const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recentFirstname, recentLastname, recentEmail, recentAvatar, setupRecentAvatar, setupRecentFirstname, setupRecentLastname, setupRecentEmail}) => {
+const UserProfile = ({recentAvatar, setupRecentAvatar}) => {
     // contex for theme
     const {theme, lightColor, darkColor, setTheme} = useThemeContext();
 
@@ -36,18 +37,7 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
     const [displayEditProgress, setDisplayEditProgress] = useState(false);
 
     // normalized data
-    const [username, setUsername] = useState(recentUsername);
-    const [password, setPassword] = useState(recentPassword);
-    const [email, setEmail] = useState(recentEmail);
-    const [firstname, setFirstname] = useState(recentFirstname);
-    const [lastname, setLastname] = useState(recentLastname);
-
-    const [userId, setUserId] = useState(0);
-
     const [avatar, setAvatar] = useState(recentAvatar);
-
-    const [storedUsername, setStoredUsername] = useState(recentUsername);
-    const [storedEmail, setStoredEmail] = useState(recentEmail);
 
     // error code
     const usernameDuplicateErrorCode = "Username has already taken.";
@@ -59,6 +49,16 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
     const [usernameEmptyError, setUsernameEmptyError] = useState("");
     const [emailInvalidError, setEmailInvalidError] = useState("");
 
+    // context of user
+    const {loginUsername, loginFirstname, loginLastname, loginEmail, setLoginUsername, setLoginFirstname, setLoginLastname, setLoginEmail} = useUserContext();
+
+    // input
+    const [username, setUsername] = useState(loginUsername);
+    const [recentUser, setRecentUser] = useState(null);
+    const [firstname, setFirstname] = useState(loginFirstname);
+    const [lastname, setLastname] = useState(loginLastname);
+    const [email, setEmail] = useState(loginEmail);
+
     useEffect(() => {
         WebFont.load({
             google: {
@@ -68,19 +68,14 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
     }, []);
 
     useEffect(() => {
-        setActiveId();
-    })
-
-    useEffect(() => {
-        setupActiveUser();
-    }, []);
-
-    useEffect(() => {
         localStorage.setItem('avatar', recentAvatar);
     });
 
     useEffect(() => {
-        setActiveAvatar();
+        getUserByUsername(loginUsername).then((response => {
+            setRecentUser(response.data);
+            setAvatar(response.data?.avatar);
+        }))
     }, [])
 
     const checkDuplicateUser = (usernameTarget) => {
@@ -97,50 +92,14 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
         return false;
     }
 
+    // check if user enter username
     const checkEmptyUsername = (username) => {
         return username.length === 0;
     }
 
+    // check format of email
     const checkValidEmail = (email) => {
         return email.substr(email.length - 10) === "@gmail.com";
-    }
-
-    const setupActiveUser = () => {
-        listUsers().then((response) => {
-            setUserList(response.data);
-        })
-
-        for (let i = 0; i < userList.length; ++i) {
-            if (userId === userList[i].id) {
-                setStoredUsername(userList[i]?.username);
-                setUsername(userList[i]?.username);
-                setFirstname(userList[i]?.firstname);
-                setLastname(userList[i]?.lastname);
-                setEmail(userList[i]?.email);
-                setStoredEmail(userList[i]?.email);
-                setUserId(userList[i]?.id);
-            }
-        }
-    }
-
-    const setActiveId = () => {
-        for (let i = 0; i < userList.length; ++i) {
-            if (recentUsername === userList[i].username && password === userList[i].password) {
-                setUserId(userList[i].id);
-            }
-        }
-    }
-
-    const setActiveAvatar = () => {
-        listUsers().then((response) => {
-            setUserList(response.data);
-        })
-
-        for (let i = 0; i < userList.length; ++i) {
-            if (username === userList[i].username && password === userList[i].password) {
-                setAvatar(userList[i].avatar);
-            }
-        }
     }
 
     const onImageChange = (e) => {
@@ -195,27 +154,39 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
         setEditFirstname(false);
         setEditLastname(false);
         setEditEmail(false);
-
-        setUsername(recentUsername);
     }
 
     const onSubmitEdit = (e) => {
         if (!checkDuplicateUser(username) && !checkEmptyUsername(username) && checkValidEmail(email)) {
             e.preventDefault();
-            let updatedUser = {username, password, email, firstname, lastname, avatar};
-                updateUser(userId, updatedUser).then((response) => {
-                    console.log(response.data);
-                    navigate("/user-profile");
-                }).catch(err => console.error(err));
+
+            // update
+            if (firstname !== loginFirstname) {
+                updateFirstname(loginUsername, firstname);
+                setLoginFirstname(firstname);
+                localStorage.setItem("login-firstname", firstname);
+            }
+            if (lastname !== loginLastname) {
+                updateLastname(loginUsername, lastname);
+                setLoginLastname(lastname);
+                localStorage.setItem("login-lastname", lastname);
+            }
+            if (email !== loginEmail) {
+                updateEmail(loginUsername, email);
+                setLoginEmail(email);
+                localStorage.setItem("login-email", email);
+            }
+            if (username !== loginUsername) {
+                updateUsername(loginUsername, username);
+                setLoginUsername(username);
+                localStorage.setItem("login-username", username);
+            }
+
+            // reset
             setEditUsername(false);
             setEditFirstname(false);
             setEditLastname(false);
             setEditEmail(false);
-
-            setupRecentUsername(username);
-            setupRecentFirstname(firstname);
-            setupRecentLastname(lastname);
-            setupRecentEmail(email);
             setupRecentAvatar(avatar);
             
             setDisplayEditProgress(true);
@@ -226,8 +197,6 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
                     setDisplayEditNoti(false);
                 }, 1500);
             }, 1500);
-
-            setStoredUsername(username);
         } 
 
         if (checkDuplicateUser(username)) {
@@ -235,8 +204,6 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
             setTimeout(() => {
                 setUsernameDuplicateError(false);
                 setEditUsername(false);
-                setupRecentUsername(storedUsername);
-                setUsername(storedUsername);
             }, 1500);
         }
 
@@ -245,8 +212,6 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
             setTimeout(() => {
                 setUsernameEmptyError("");
                 setEditUsername(false);
-                setupRecentUsername(storedUsername);
-                setUsername(storedUsername);
             }, 1500);
         }
 
@@ -255,8 +220,6 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
             setTimeout(() => {
                 setEmailInvalidError(false);
                 setEditEmail(false);
-                setupRecentEmail(storedEmail);
-                setEmail(storedEmail);
             }, 1500);
         }
     }
@@ -347,7 +310,7 @@ const UserProfile = ({recentUsername, recentPassword, setupRecentUsername, recen
         </div>
       </div>
       <div className = {theme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "50rem", height: "64rem", backgroundColor: theme === lightColor ? "#f5efed" : "#343a78", bottom: "40rem", left: "40rem"}} onClick = {onHandleDisable}>
-            <UserFavorite theme = {theme} lightColor = {lightColor} userList = {userList} userId = {userId}/>
+            <UserFavorite theme = {theme} lightColor = {lightColor} recentUser = {recentUser}/>
       </div>
     </div>
   )

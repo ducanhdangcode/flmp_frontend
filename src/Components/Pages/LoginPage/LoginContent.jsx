@@ -11,22 +11,34 @@ import { listUsers } from '../../../APIService/UserService.';
 import { PiWarningOctagonFill } from 'react-icons/pi';
 import { FaLock } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../../Context/UserContext';
 
-const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setupRecentUsername, setupRecentPassword, setupRecentFirstname, setupRecentLastname, setupRecentEmail, setupRecentAvatar, setupRecentId}) => {
+const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setupRecentUsername, setupRecentPassword}) => {
+  // placeholder for username and password
   const [usernamePlaceholder, setUsernamePlaceholder] = useState("Username");
   const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
+
+  // username and password that user type in
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // manage vision of password
   const [isHidden, setIsHidden] = useState(true);
+
+  // user list that being fetched
   const [userList, setUserList] = useState([]);
 
+  // navigate 
   const navigate = useNavigate();
 
+  // errors when login failed
   const loginErrorCode = "Your username or your password seem wrong!";
-  const loginSuccessCode = "Login successfully! Redirecting to home page...";
   const [loginError, setloginError] = useState("");
-  const [loginSuccess, setLoginSuccess] = useState("");
 
+  // context of user
+  const {setLoginUsername, setLoginFirstname, setLoginLastname, setLoginEmail} = useUserContext();
+
+  // change vision of password
   const onChangeViewPassword = () => {
     isHidden ? setIsHidden(false) : setIsHidden(true);
   }
@@ -43,25 +55,23 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
     getAllUsers();
   });
 
+  // fetch all users
   const getAllUsers = () => {
    listUsers().then((response) => {
     setUserList(response.data);
    }).catch(err => console.log(err))
-
-   for (let i = 0; i < userList.length; ++i) {
-    if (username === userList[i].username && password === userList[i].password) {
-      setupRecentFirstname(userList[i].firstname);
-      setupRecentLastname(userList[i].lastname);
-      setupRecentEmail(userList[i].email);
-      setupRecentAvatar(userList[i].avatar);
-      setupRecentId(userList[i].id);
-    }
-  }
   }
 
+  // check if user matched or not
   const checkUser = () => {
     for (let i = 0; i < userList.length; ++i) {
       if (username === userList[i].username && password === userList[i].password) {
+        setLoginFirstname(userList[i].firstname);
+        setLoginLastname(userList[i].lastname);
+        setLoginEmail(userList[i].email);
+        localStorage.setItem("login-firstname", userList[i].firstname);
+        localStorage.setItem("login-lastname", userList[i].lastname);
+        localStorage.setItem("login-email", userList[i].email);
         return true;
       }
     }
@@ -71,13 +81,16 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
 
   const handleSubmit = () => {
     if (checkUser()) {
+      // set state to logged in
       onHandleLoginStateSuccess();
-      setupRecentUsername(username);
-      setupRecentPassword(password);
+
+      // set properties
+      setLoginUsername(username);
+
+      // redirect to home page
       setTimeout(() => {
         navigate("/");
       }, 1500);
-      setLoginSuccess(loginSuccessCode);
     } else {
       setloginError(loginErrorCode);
       setUsername("");

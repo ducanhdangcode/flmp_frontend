@@ -25,7 +25,7 @@ import NottinghamForestLogo from '/FLMP/flmp_frontend/src/Image/EPL/nottinghamFo
 import { Link } from 'react-router-dom';
 
 
-const UserHiddenCard = ({userList, userId, index}) => {
+const UserHiddenCard = ({recentUser, index}) => {
   const TeamLogos = [ManchesterCityLogo, ManchesterUnitedLogo, LiverpoolLogo, ArsenalLogo, ChelseaLogo, TottenhamLogo, NewcastleLogo, AstonVillaLogo, BrightonLogo, BrentfordLogo, CrystalPalaceLogo, EvertonLogo, FulhamLogo, LeicesterCityLogo, IspwichTownLogo, SouthamptonLogo, WesthamLogo, WolverhamptonLogo, BournemouthLogo, NottinghamForestLogo];
   const TeamLogosWidth = [10,10,10,10,10,6,6,10,10,4.5,5,10,5,4.5,4.5,10,10,5,4,10];
   const TeamLogosHeight = [5,5,5,5,5,5,5,5,5,4.5,5,5,4.5,4.5,5,5,5,4.5,5,5];
@@ -41,10 +41,11 @@ const UserHiddenCard = ({userList, userId, index}) => {
   return (
     <div className = "w-32 h-36 border-dashed relative top-2 rounded-xl" style = {{backgroundColor: "#f0f6f7", borderColor: "gray", borderWidth: "2px", boxShadow: "0.3rem 0.3rem 0.5rem gray"}}>
       {/* <FaPlusCircle className = "relative w-12 h-12" style = {{top: "3rem", left: "2.5rem", color: "gray"}}/> */}
-      {userList[userId-1]?.favoriteTeams.length > index ? <img src = {TeamLogos[userList[userId-1]?.favoriteTeams[index]-1]} alt = "" className = "relative" style = {{top: `${TeamLogosTop[userList[userId-1]?.favoriteTeams[index]-1]}rem`, width: `${TeamLogosWidth[userList[userId-1]?.favoriteTeams[index]-1]}rem`, height: `${TeamLogosHeight[userList[userId-1]?.favoriteTeams[index]-1]}rem`, left: `${TeamLogosLeft[userList[userId-1]?.favoriteTeams[index]-1]}rem`}}/> : 
-      <Link to = "/team">
-        <FaPlusCircle className = "relative w-12 h-12" style = {{top: "3rem", left: "2.5rem", color: "gray"}}/>
-      </Link>}
+      {recentUser?.favoriteTeams.length > index ? 
+        <img src = {TeamLogos[recentUser?.favoriteTeams[index]-1]} alt = "" className = "relative" style = {{top: `${TeamLogosTop[recentUser?.favoriteTeams[index]-1]}rem`, width: `${TeamLogosWidth[recentUser?.favoriteTeams[index]-1]}rem`, height: `${TeamLogosHeight[recentUser?.favoriteTeams[index]-1]}rem`, left: `${TeamLogosLeft[recentUser?.favoriteTeams[index]-1]}rem`}}/> : 
+        <Link to = "/team">
+          <FaPlusCircle className = "relative w-12 h-12" style = {{top: "3rem", left: "2.5rem", color: "gray"}}/>
+        </Link>}
     </div>
   )
 }

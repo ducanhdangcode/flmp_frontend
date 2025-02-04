@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import UserDropdown from '../Dropdowns/UserDropdown/UserDropdown';
 import { useThemeContext } from '../../Context/ThemeContext';
 
-const Navbar = ({onHandleChangeTheme, loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar, recentUsername}) => {
+const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar, recentUsername}) => {
 
     const darkNavBarStyle = "bg-white border-gray-200 dark:bg-gray-900 max-h-24 fixed z-30 w-full";
     const lightNavBarStyle = "bg-white border-gray-200 dark:bg-white max-h-24 fixed z-30 w-full";

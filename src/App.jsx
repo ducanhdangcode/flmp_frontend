@@ -11,15 +11,16 @@ import WebFont from 'webfontloader';
 import UserProfile from './Components/Pages/UserProfilePage/UserProfile';
 import Team from './Components/Pages/TeamPage/Team';
 import DetailTeam from './Components/Pages/TeamPage/DetailTeam';
-import { updateUser } from './APIService/UserService.';
-import { ThemeProvider } from './Context/ThemeContext';
+import { ThemeProvider, useThemeContext } from './Context/ThemeContext';
+import { UserProvider } from './Context/UserContext';
 
 function App() {
+  // theme set up
   const lightColor = "#e9f2eb";
   const darkColor = "#0c0a30";
-
   const [colorTheme, setColorTheme] = useState(localStorage.getItem('color-theme'));
 
+  // login state to check if user is logged in or not
   const [loginState, setLoginState] = useState(localStorage.getItem('login-state'));
 
   const [recentUsername, setRecentUsername] = useState(localStorage.getItem('recent-username'));
@@ -36,7 +37,6 @@ function App() {
 
   const [teamId, setTeamId] = useState(localStorage.getItem('team-id'));
   const [teamLogo, setTeamLogo] = useState(localStorage.getItem("team-logo"));
-  const [teamVideoTitles, setTeamVideoTitles] = useState(JSON.parse(localStorage.getItem('team-video-title')));
 
   // style for detail team
   const [detailLogoWidth, setDetailLogoWidth] = useState(localStorage.getItem('detail-logo-width'));
@@ -44,12 +44,6 @@ function App() {
   const [detailLogoTop, setDetailLogoTop] = useState(localStorage.getItem('detail-logo-top'));
   const [detailLogoLeft, setDetailLogoLeft] = useState(localStorage.getItem('detail-logo-left'));
   const [detailNameBottom, setDetailNameBottom] = useState(localStorage.getItem('detail-name-bottom'));
-
-  // team kit
-  const [teamKits, setTeamKits] = useState(JSON.parse(localStorage.getItem('team-kits')));
-
-  // team chairman
-  const [teamChairman, setTeamChairman] = useState(localStorage.getItem('team-chairman'));
 
   useEffect(() => {
     WebFont.load({
@@ -60,7 +54,6 @@ function App() {
   })
 
   useEffect(() => {
-    localStorage.setItem('color-theme', colorTheme);
     localStorage.setItem('login-state', loginState);
     localStorage.setItem('recent-username', recentUsername);
     localStorage.setItem('recent-password', recentPassword);
@@ -77,10 +70,7 @@ function App() {
     localStorage.setItem('detail-logo-top', detailLogoTop);
     localStorage.setItem('detail-logo-left', detailLogoLeft);
     localStorage.setItem('detail-name-bottom', detailNameBottom);
-    localStorage.setItem('team-video-title', JSON.stringify(teamVideoTitles));
-    localStorage.setItem('team-kits', JSON.stringify(teamKits));
-    localStorage.setItem('team-chairman', teamChairman);
-  }, [colorTheme, loginState, recentUsername, recentPassword, mainUserImage, recentFirstname, recentLastname, recentEmail, recentAvatar, recentId, teamLogo, teamId, detailLogoHeight, detailLogoWidth, detailLogoLeft, detailLogoTop, detailNameBottom, teamVideoTitles, teamKits, teamChairman])
+  }, [loginState, recentUsername, recentPassword, mainUserImage, recentFirstname, recentLastname, recentEmail, recentAvatar, recentId, teamLogo, teamId, detailLogoHeight, detailLogoWidth, detailLogoLeft, detailLogoTop, detailNameBottom])
 
   const handleChangeUserDropdown = () => {
     displayUserDropdown === false ? setDisplayUserDropdown(true) : setDisplayUserDropdown(false);
@@ -112,11 +102,6 @@ function App() {
   const setupRecentPassword = (password) => {
     setRecentPassword(password);
     localStorage.setItem('recent-password', recentPassword);
-  }
-
-  const onHandleChangeTheme = () => {
-    colorTheme === lightColor ? setColorTheme(darkColor) : setColorTheme(lightColor);
-    localStorage.setItem('color-theme', colorTheme);
   }
 
   const disableLoginState = () => {
@@ -189,44 +174,34 @@ function App() {
     localStorage.setItem('detail-name-bottom', detailNameBottom);
   }
 
-  const setupTeamVideoTitles = (titles) => {
-    setTeamVideoTitles(titles);
-  } 
-
-  const setupTeamKits = (kits) => {
-    setTeamKits(kits);
-  }
-
-  const setupTeamChairman = (chairman) => {
-    setTeamChairman(chairman);
-  }
-
   return (
     <ThemeProvider>
-      <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
-        <Helmet>
-          <style>{`body {background-color: ${colorTheme};}`}</style>
-        </Helmet>
-        <Navbar colorTheme = {colorTheme} onHandleChangeTheme = {onHandleChangeTheme} lightColor = {lightColor} darkColor = {darkColor} loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
-        <div className = "" style = {{maxHeight: "400rem"}}>
-          <Routes>
-            <Route path = "/login" element = {<LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> }/>
+      <UserProvider>
+        <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
+          <Helmet>
+            <style>{`body {background-color: ${colorTheme};}`}</style>
+          </Helmet>
+          <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
+          <div className = "" style = {{maxHeight: "400rem"}}>
+            <Routes>
+              <Route path = "/login" element = {<LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> }/>
 
-            <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
+              <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
 
-            <Route path = "/register" element = {<Register />} />
+              <Route path = "/register" element = {<Register />} />
 
-            <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
+              <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
 
-            <Route path = "/team" element = {<Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom} setupTeamVideoTitles = {setupTeamVideoTitles} setupTeamKits = {setupTeamKits} setupTeamChairman = {setupTeamChairman}/>} />
+              <Route path = "/team" element = {<Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>} />
 
-            <Route path = "/team/:team_name" element = {<DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} teamVideoTitles = {teamVideoTitles} teamKits = {teamKits} teamChairman = {teamChairman} recentId = {recentId}/>}/>
-          </Routes>
+              <Route path = "/team/:team_name" element = {<DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} recentId = {recentId}/>}/>
+            </Routes>
+          </div>
+          <div className = "mt-[4rem]">
+            <Footer />
+          </div>
         </div>
-        <div className = "mt-[4rem]">
-          <Footer />
-        </div>
-      </div>
+      </UserProvider>
     </ThemeProvider>
   )
 }
