@@ -182,7 +182,7 @@ function App() {
             <style>{`body {background-color: ${colorTheme};}`}</style>
           </Helmet>
           <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
-          <div className = "" style = {{maxHeight: "400rem"}}>
+          <div className = "">
             <Routes>
               <Route path = "/login" element = {<LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> }/>
 

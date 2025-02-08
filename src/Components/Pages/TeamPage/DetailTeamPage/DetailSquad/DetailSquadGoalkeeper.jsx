@@ -4,7 +4,7 @@ import PlayerCard from './PlayerCard';
 
 const DetailSquadGoalkeeper = ({teamId, teamList, playerList}) => {
   return (
-    <div className = "relative w-full" style = {{top: "0rem"}}>
+    <div className = "relative w-full">
         <div className = "bg-[#112f54] h-[3rem]">
             <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] text-white">Goalkeepers</p>
         </div>

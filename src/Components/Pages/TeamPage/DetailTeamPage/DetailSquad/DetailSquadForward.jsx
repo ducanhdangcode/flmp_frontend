@@ -3,7 +3,7 @@ import PlayerCard from './PlayerCard'
 
 const DetailSquadForward = ({teamId, teamList, playerList}) => {
   return (
-    <div className = "relative w-full bg-[#c7daf2]" style = {{top: "3rem"}}>
+    <div className = "relative w-full">
         <div className = "h-[3rem] bg-[#112f54]">
             <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] text-white">Forwards</p>
         </div>

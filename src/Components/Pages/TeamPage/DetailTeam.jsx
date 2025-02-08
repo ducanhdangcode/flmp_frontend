@@ -19,6 +19,8 @@ const DetailTeam = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detail
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorite-team')));
   const [userlist, setUserlist] = useState([]);
 
+  const [FormationCoordinate, setFormationCoordinate] = useState([]);
+
   useEffect(() => {
       localStorage.setItem('favorite-team', JSON.stringify(favorites));
   }, [favorites])
@@ -32,6 +34,13 @@ const DetailTeam = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detail
           setUserlist(response.data);
       })
   }, [])
+
+  useEffect(() => {
+        fetch("/FormationCoordinate.json")
+            .then(response => response.json())
+            .then(json => setFormationCoordinate(json))
+            .catch(err => console.error(err));
+    }, [FormationCoordinate])
 
   const setupSelectedBar = (overviewChoice, fixturesChoice, resultChoice, newsChoice, squadChoice) => {
       setCheckSelectOverview(overviewChoice);
@@ -155,7 +164,7 @@ const handleRemoveFavoriteTeam = () => {
             </div>
         </div>
         {checkSelectOverview === "true" && <DetailOverview teamId={teamId} teamLogo={teamLogo} detailLogoHeight={detailLogoHeight} detailLogoWidth={detailLogoWidth} detailLogoTop={detailLogoTop} detailLogoLeft={detailLogoLeft} detailNameBottom={detailNameBottom} teamVideoTitles={teamVideoTitles} teamKits = {teamKits} teamChairman = {teamChairman} handleFavorite = {handleFavorite} recentId = {recentId} teamList = {teamList} />}
-        {checkSelectSquad === "true" && <DetailSquad teamId = {teamId} teamList = {teamList}/>}
+        {checkSelectSquad === "true" && <DetailSquad teamId = {teamId} teamList = {teamList} FormationCoordinate = {FormationCoordinate}/>}
     </div>
   )
 }

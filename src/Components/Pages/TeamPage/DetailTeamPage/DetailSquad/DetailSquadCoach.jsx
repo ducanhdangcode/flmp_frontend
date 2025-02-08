@@ -3,7 +3,7 @@ import ViewProfile from './ViewProfile'
 
 const DetailSquadCoach = ({teamId, teamList, coachList}) => {
   return (
-    <div className = "relative bg-[#c7daf2] h-[33rem]">
+    <div className = "relative">
         <div className = "bg-[#112f54] h-[3rem]">
             <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] top-[0.1rem] text-white">Head Coach</p>
         </div>

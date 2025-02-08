@@ -3,7 +3,7 @@ import PlayerCard from './PlayerCard'
 
 const DetailSquadDefender = ({teamId, teamList, playerList}) => {
   return (
-    <div className = "relative w-full bg-[#c7daf2]" style = {{top: "2rem"}}>
+    <div className = "relative w-full" style = {{}}>
         <div className = "h-[3rem] bg-[#112f54]">
             <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] text-white">Defenders</p>
         </div>
