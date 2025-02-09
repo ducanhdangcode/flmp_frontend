@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FaPlusCircle } from 'react-icons/fa';
 import WebFont from 'webfontloader';
 

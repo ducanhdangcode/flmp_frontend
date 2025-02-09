@@ -2,7 +2,106 @@ import React, { useEffect, useState } from 'react'
 import FootballField from './Football_field.svg';
 import { getFormationByTeamName } from '../../../../../../APIService/FormationService';
 
-const Formation = ({teamList, teamId, FormationCoordinate}) => {
+const Formation = ({teamList, teamId}) => {
+
+    const FormationCoordinate = [
+        {
+            type: "3-4-2-1",
+            coordinate: [
+                { x: 11.5, y: 21.5 },
+                { x: 5.5, y: 14 },
+                { x: 8, y: 17.5 },
+                { x: 11.5, y: 17.5 },
+                { x: 15, y: 17.5 },
+                { x: 17.5, y: 14 },
+                { x: 9.5, y: 14 },
+                { x: 13.5, y: 14 },
+                { x: 9.5, y: 9.5 },
+                { x: 13.5, y: 9.5 },
+                { x: 11.5, y: 6.5 }
+            ]
+        },
+        {
+            type: "3-4-3",
+            coordinate: [
+                { x: 11.5, y: 21.5 },
+                { x: 5.5, y: 14 },
+                { x: 8, y: 17.5 },
+                { x: 11.5, y: 17.5 },
+                { x: 15, y: 17.5 },
+                { x: 17.5, y: 14 },
+                { x: 9.5, y: 14 },
+                { x: 13.5, y: 14 },
+                { x: 8, y: 8 },
+                { x: 15, y: 8 },
+                { x: 11.5, y: 8 }
+            ]
+        },
+        {
+            type: "4-3-3",
+            coordinate: [
+                { x: 11.5, y: 21.5 },
+                { x: 5.5, y: 18 },
+                { x: 9.5, y: 18 },
+                { x: 13.5, y: 18 },
+                { x: 17.5, y: 18 },
+                { x: 7.5, y: 14 },
+                { x: 11.5, y: 14 },
+                { x: 15, y: 14 },
+                { x: 7.5, y: 9 },
+                { x: 15, y: 9 },
+                { x: 11.5, y: 9 }
+            ]
+        },
+        {
+            type: "4-2-3-1",
+            coordinate: [
+                { x: 11.5, y: 21.5 },
+                { x: 5.5, y: 18 },
+                { x: 9.5, y: 18 },
+                { x: 13.5, y: 18 },
+                { x: 17.5, y: 18 },
+                { x: 9.5, y: 14 },
+                { x: 13.5, y: 14 },
+                { x: 8, y: 10 },
+                { x: 11.5, y: 10 },
+                { x: 15, y: 10 },
+                { x: 11.5, y: 6.5 }
+            ]
+        },
+        {
+            type: "4-4-2",
+            coordinate: [
+                { x: 11.5, y: 21.5 },
+                { x: 5.5, y: 18 },
+                { x: 9.5, y: 18 },
+                { x: 13.5, y: 18 },
+                { x: 17.5, y: 18 },
+                { x: 5.5, y: 14 },
+                { x: 9.5, y: 14 },
+                { x: 13.5, y: 14 },
+                { x: 17.5, y: 14 },
+                { x: 9.5, y: 9 },
+                { x: 13.5, y: 9 }
+            ]
+        },
+        {
+            type: "4-1-4-1",
+            coordinate: [
+                { x: 11.5, y: 21.5 },
+                { x: 5.5, y: 18 },
+                { x: 9.5, y: 18 },
+                { x: 13.5, y: 18 },
+                { x: 17.5, y: 18 },
+                { x: 11.5, y: 15 },
+                { x: 5.5, y: 12 },
+                { x: 9.5, y: 12 },
+                { x: 13.5, y: 12 },
+                { x: 17.5, y: 12 },
+                { x: 11.5, y: 10 }
+            ]
+        }
+    ];
 
     const [formations, setFormations] = useState([]);
 
@@ -14,8 +113,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
     const drawFormation = (formationIndex, player, playerIndex) => {
         return (
-            <div className = {`w-[2rem] h-[2rem] rounded-[50%] absolute border-solid border-white border-[2px] top-[${FormationCoordinate[formationIndex].coordinate[playerIndex].y}rem] left-[${FormationCoordinate[formationIndex].coordinate[playerIndex].x}rem] hover:cursor-pointer`} style = {{backgroundColor: teamList[teamId-1]?.color}}>
-                <span className = "text-white font-bold ml-[0.3rem] relative top-[0.1rem]">{player?.number.toString().padStart(2, "0")}</span>
+            <div className = "">
+                <div className = {`w-[2rem] h-[2rem] rounded-[50%] border-solid border-white border-[2px]  hover:cursor-pointer`} style = {{backgroundColor: teamList[teamId-1]?.color, position: "absolute", top: `${FormationCoordinate[formationIndex].coordinate[playerIndex].y}rem`, left: `${FormationCoordinate[formationIndex].coordinate[playerIndex].x}rem`}}>
+                    <span className = "text-white font-bold relative top-[0.1rem] left-[0.3rem]">{player?.number.toString().padStart(2, "0")}</span>
+                </div>
             </div>
         )
     }
@@ -33,7 +134,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                             <div className = "relative top-[2rem] w-[25rem]">
                                 <img src = {FootballField} alt = "" className = "w-[25rem] h-[25rem] opacity-80"/>
                                 <div className = "relative bottom-[25rem]">
-                                    <div className = "relative">
+                                    <div className = "">
                                         {formation?.detailSquad.map((player, index) => {
                                             if (formation?.formationName === "3-4-2-1") {
                                                 return drawFormation(0, player, index);

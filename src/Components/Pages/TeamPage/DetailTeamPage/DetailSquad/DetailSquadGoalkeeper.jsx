@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { ListPlayer } from '../../../../../APIService/PlayerService';
+import React, {} from 'react'
 import PlayerCard from './PlayerCard';
 
 const DetailSquadGoalkeeper = ({teamId, teamList, playerList}) => {

@@ -40,7 +40,7 @@ const DetailTeam = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detail
             .then(response => response.json())
             .then(json => setFormationCoordinate(json))
             .catch(err => console.error(err));
-    }, [FormationCoordinate])
+    }, [])
 
   const setupSelectedBar = (overviewChoice, fixturesChoice, resultChoice, newsChoice, squadChoice) => {
       setCheckSelectOverview(overviewChoice);
