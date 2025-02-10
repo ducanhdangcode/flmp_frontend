@@ -16,6 +16,14 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
         }))
     }, []);
 
+    const disableChangeFormation = () => {
+        setChangeFormation("");
+    }
+
+    const handleChangeFormationDisplay = (newFormation) => {
+        setFormations(newFormation);
+    }
+
     const drawFormation = (typeFormationIndex, player, playerIndex, teamFormationIndex) => {
         return (
             <div className = "">
@@ -41,6 +49,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                 <div>
                                     <ChangeFormation 
                                         formation = {formation}
+                                        teamList = {teamList}
+                                        teamId = {teamId}
+                                        disableChangeFormation = {disableChangeFormation}
+                                        handleChangeFormationDisplay = {handleChangeFormationDisplay}
                                     />
                                 </div>
                             }
