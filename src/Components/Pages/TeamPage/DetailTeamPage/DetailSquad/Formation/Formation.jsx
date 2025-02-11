@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import FootballField from './Football_field.svg';
 import { getFormationByTeamName } from '../../../../../../APIService/FormationService';
 import ChangeFormation from './ChangeFormation';
+import CreateFormation from './CreateFormation';
+import { useUserContext } from '../../../../../../Context/UserContext';
 
 const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
@@ -9,6 +11,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
     const [changeFormation, setChangeFormation] = useState("");
 
+    const [createFormation, setCreateFormation] = useState("");
 
     useEffect(() => {
         getFormationByTeamName(teamList[teamId-1]?.name).then((response => {
@@ -20,11 +23,15 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
         setChangeFormation("");
     }
 
+    const disableCreateFormation = () => {
+        setCreateFormation("");
+    }
+
     const handleChangeFormationDisplay = (newFormation) => {
         setFormations(newFormation);
     }
 
-    const drawFormation = (typeFormationIndex, player, playerIndex, teamFormationIndex) => {
+    const drawFormation = (typeFormationIndex, player, playerIndex) => {
         return (
             <div className = "">
                 <div className = {`w-[2rem] h-[2rem] rounded-[50%] border-solid border-white border-[2px]  hover:cursor-pointer`} style = {{backgroundColor: teamList[teamId-1]?.color, position: "absolute", top: `${FormationCoordinate[typeFormationIndex].coordinate[playerIndex].y}rem`, left: `${FormationCoordinate[typeFormationIndex].coordinate[playerIndex].x}rem`}}
@@ -57,8 +64,20 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                 </div>
                             }
 
+                            {/* create formation */}
+                            {createFormation === formationIndex && 
+                                <div>
+                                    <CreateFormation 
+                                        formation = {formation}
+                                        teamList = {teamList}
+                                        teamId = {teamId}
+                                        disableCreateFormation = {disableCreateFormation}
+                                    />
+                                </div>
+                            }
+
                             {/* base formation */}
-                            {(changeFormation === "" || changeFormation !== formationIndex) && 
+                            {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex)) && 
                                 <div className = "flex">
                                     {/* minicourt and players */}
                                     <div className = "relative top-[2rem] w-[25rem]">
@@ -150,7 +169,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                         </div>
                         
                         {/* substitutions */}
-                        {(changeFormation === "" || changeFormation !== formationIndex) && 
+                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex)) && 
                             <div className = "relative bottom-[13rem] left-[4rem] h-[0rem] mt-[1rem]">
                                 <p className = "font-bold">Substitutions:</p>
                                 <div className = "flex flex-wrap mt-[0.5rem] w-[50rem]">
@@ -172,10 +191,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                         }
 
                         {/* some options */}
-                        {(changeFormation === "" || changeFormation !== formationIndex) && 
+                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex)) && 
                             <div className = "flex relative bottom-[4rem] h-[0rem]">
                                 <button className = "w-[8rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[4rem] bottom-[0rem] rounded-[5px]" onClick = {() => setChangeFormation(formationIndex)}>Change players</button>
-                                <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[7rem] bottom-[0rem] rounded-[5px]">Create own squad</button>
+                                <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[7rem] bottom-[0rem] rounded-[5px]" onClick = {() => setCreateFormation(formationIndex)}>Create own squad</button>
                                 <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[10rem] bottom-[0rem] rounded-[5px]">View your squad</button>
                             </div>
                         }
