@@ -4,6 +4,7 @@ import { getFormationByTeamName } from '../../../../../../APIService/FormationSe
 import ChangeFormation from './ChangeFormation';
 import CreateFormation from './CreateFormation';
 import { useUserContext } from '../../../../../../Context/UserContext';
+import PersonalFormation from './PersonalFormation';
 
 const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
@@ -12,6 +13,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
     const [changeFormation, setChangeFormation] = useState("");
 
     const [createFormation, setCreateFormation] = useState("");
+
+    const [viewPersonalFormation, setViewPersonalFormation] = useState("");
 
     useEffect(() => {
         getFormationByTeamName(teamList[teamId-1]?.name).then((response => {
@@ -25,6 +28,14 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
     const disableCreateFormation = () => {
         setCreateFormation("");
+    }
+
+    const disableViewPersonalFormation = () => {
+        setViewPersonalFormation("");
+    }
+
+    const applyViewPersonalFormation = (index) => {
+        setViewPersonalFormation(index);
     }
 
     const handleChangeFormationDisplay = (newFormation) => {
@@ -72,12 +83,25 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         teamList = {teamList}
                                         teamId = {teamId}
                                         disableCreateFormation = {disableCreateFormation}
+                                        applyViewPersonalFormation = {applyViewPersonalFormation}
+                                        formationIndex = {formationIndex}
+                                    />
+                                </div>
+                            }
+
+                            {/* personal formation */}
+                            {viewPersonalFormation === formationIndex && 
+                                <div>
+                                    <PersonalFormation 
+                                        drawFormation = {drawFormation}
+                                        teamList = {teamList}
+                                        teamId = {teamId}
                                     />
                                 </div>
                             }
 
                             {/* base formation */}
-                            {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex)) && 
+                            {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex)) && 
                                 <div className = "flex">
                                     {/* minicourt and players */}
                                     <div className = "relative top-[2rem] w-[25rem]">
@@ -169,7 +193,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                         </div>
                         
                         {/* substitutions */}
-                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex)) && 
+                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex)) && 
                             <div className = "relative bottom-[13rem] left-[4rem] h-[0rem] mt-[1rem]">
                                 <p className = "font-bold">Substitutions:</p>
                                 <div className = "flex flex-wrap mt-[0.5rem] w-[50rem]">
@@ -191,11 +215,11 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                         }
 
                         {/* some options */}
-                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex)) && 
+                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex)) && 
                             <div className = "flex relative bottom-[4rem] h-[0rem]">
                                 <button className = "w-[8rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[4rem] bottom-[0rem] rounded-[5px]" onClick = {() => setChangeFormation(formationIndex)}>Change players</button>
                                 <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[7rem] bottom-[0rem] rounded-[5px]" onClick = {() => setCreateFormation(formationIndex)}>Create own squad</button>
-                                <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[10rem] bottom-[0rem] rounded-[5px]">View your squad</button>
+                                <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[10rem] bottom-[0rem] rounded-[5px]" onClick = {() => setViewPersonalFormation(formationIndex)}>View your squad</button>
                             </div>
                         }
 
