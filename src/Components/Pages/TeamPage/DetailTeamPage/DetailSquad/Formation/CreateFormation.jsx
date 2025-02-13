@@ -2,23 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { getUserByUsername, updatePersonalFormation } from '../../../../../../APIService/UserService.';
 import { useUserContext } from '../../../../../../Context/UserContext';
 
-const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, handleChangeGroupIndex}) => {
+const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, user, setupFilteredFormations}) => {
     const [personalMainSquad, setPersonalMainSquad] = useState([]);
     const [personalSubSquad, setPersonalSubSquad] = useState([]);
-
-    const [recentUser, setRecentUser] = useState(null);
 
     const {loginUsername} = useUserContext();
     
     useEffect(() => {
       InitPersonalMainSquad();
       InitPersonalSubSquad();
-    }, [])
-
-    useEffect(() => {
-        getUserByUsername(loginUsername).then((response) => {
-            setRecentUser(response.data);
-        }).catch(err => console.errror(err));
     }, [])
 
     // init main squad
@@ -87,7 +79,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
     }
 
     // handle apply the personal squad
-    const ApplyPersonalSquad = () => {
+    const ApplyPersonalSquad = async () => {
         const PersonalFormationPayload = {
             "teamName": teamList[teamId-1]?.name,
             "formationName": formation?.formationName,
@@ -95,11 +87,13 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
             "substitutions": personalSubSquad,
             "formationDescription": ""
         }
-        updatePersonalFormation(recentUser?.id, PersonalFormationPayload);
+        await updatePersonalFormation(user?.id, PersonalFormationPayload);
         getUserByUsername(loginUsername).then((response) => {
+            setupFilteredFormations(formation, response.data);
             handleChangeActivePersonalFormationIndex(response.data.personalFormations.length);
+            // handleChangeGroupIndex(response.data.personalFormations.length);
+
         })
-        handleChangeGroupIndex();
 
         disableCreateFormation();
         applyViewPersonalFormation(formationIndex);

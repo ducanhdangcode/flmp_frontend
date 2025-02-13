@@ -26,6 +26,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
     const [startPaginationIndex, setStartPaginationIndex] = useState(0);
     const PaginationRange = 3;
 
+    const [filteredFormations, setFilteredFormations] = useState([]);
+
     useEffect(() => {
         getFormationByTeamName(teamList[teamId-1]?.name).then((response => {
             setFormations(response.data);
@@ -106,6 +108,16 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
             </div>
         )
     }
+
+    const setupFilteredFormations = (formation, recentUser) => {
+        let filteredFormationTmp = [];
+        recentUser?.personalFormations.map((personalFormation) => {
+            if (personalFormation?.teamName === formation?.teamName && personalFormation?.formationName === formation?.formationName) {
+                filteredFormationTmp.push(personalFormation);
+            }
+        })
+        setFilteredFormations(filteredFormationTmp);
+    }
   return (
     <div className = "relative">
         <div className = "bg-[#112f54] h-[3rem]">
@@ -141,6 +153,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         formationIndex = {formationIndex}
                                         handleChangeActivePersonalFormationIndex = {handleChangeActivePersonalFormationIndex}
                                         handleChangeGroupIndex = {handleChangeGroupIndex}
+                                        user = {user}
+                                        setupFilteredFormations = {setupFilteredFormations}
                                     />
                                 </div>
                             }
@@ -158,6 +172,9 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         handleSetPreviousActiveIndex = {handleSetPreviousActiveIndex}
                                         startPaginationIndex = {startPaginationIndex}
                                         handleChangeGroupIndex = {handleChangeGroupIndex}
+                                        disableViewPersonalFormation = {disableViewPersonalFormation}
+                                        formation = {formation}
+                                        filteredFormations = {filteredFormations}
                                     />
                                 </div>
                             }
@@ -281,7 +298,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                             <div className = "flex relative bottom-[4rem] h-[0rem]">
                                 <button className = "w-[8rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[4rem] bottom-[0rem] rounded-[5px]" onClick = {() => setChangeFormation(formationIndex)}>Change players</button>
                                 <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[7rem] bottom-[0rem] rounded-[5px]" onClick = {() => setCreateFormation(formationIndex)}>Create own squad</button>
-                                <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[10rem] bottom-[0rem] rounded-[5px]" onClick = {() => setViewPersonalFormation(formationIndex)}>View your squad</button>
+                                <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[10rem] bottom-[0rem] rounded-[5px]" onClick = {() => {
+                                    setViewPersonalFormation(formationIndex);
+                                    setupFilteredFormations(formation, user);
+                                }}>View your squad</button>
                             </div>
                         }
 

@@ -4,7 +4,7 @@ import { useUserContext } from '../../../../../../Context/UserContext';
 import { getUserByUsername } from '../../../../../../APIService/UserService.';
 import SpeficPersonalFormation from './SpeficPersonalFormation';
 
-const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, handleChangeGroupIndex}) => {
+const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, handleChangeGroupIndex, disableViewPersonalFormation, formation, filteredFormations}) => {
     const {loginUsername} = useUserContext();
     const [user, setUser] = useState(null);
 
@@ -12,6 +12,9 @@ const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalForma
         getUserByUsername(loginUsername).then((response) => {
             setUser(response.data);
         }).catch(err => console.error(err));
+
+        console.log("active index after apply: " + activePersonalFormationIndex);
+        console.log("filter formations: " + filteredFormations);
     });
   return (
     <div>
@@ -27,6 +30,9 @@ const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalForma
             handleSetPreviousActiveIndex = {handleSetPreviousActiveIndex}
             startPaginationIndex = {startPaginationIndex}
             handleChangeGroupIndex = {handleChangeGroupIndex}
+            disableViewPersonalFormation = {disableViewPersonalFormation}
+            formation = {formation}
+            filteredFormations = {filteredFormations}
         />
       </div>
     </div>
