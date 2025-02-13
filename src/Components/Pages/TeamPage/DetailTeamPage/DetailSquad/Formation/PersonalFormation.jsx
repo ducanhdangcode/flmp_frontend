@@ -4,7 +4,7 @@ import { useUserContext } from '../../../../../../Context/UserContext';
 import { getUserByUsername } from '../../../../../../APIService/UserService.';
 import SpeficPersonalFormation from './SpeficPersonalFormation';
 
-const PersonalFormation = ({drawFormation, teamList, teamId}) => {
+const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, handleChangeGroupIndex}) => {
     const {loginUsername} = useUserContext();
     const [user, setUser] = useState(null);
 
@@ -19,9 +19,14 @@ const PersonalFormation = ({drawFormation, teamList, teamId}) => {
         <SpeficPersonalFormation 
             user = {user}
             drawFormation = {drawFormation}
-            personalFormationIndex = {0}
             teamList = {teamList}
             teamId = {teamId}
+            activePersonalFormationIndex = {activePersonalFormationIndex}
+            handleChangeActivePersonalFormationIndex = {handleChangeActivePersonalFormationIndex}
+            handleSetNextActiveIndex = {handleSetNextActiveIndex}
+            handleSetPreviousActiveIndex = {handleSetPreviousActiveIndex}
+            startPaginationIndex = {startPaginationIndex}
+            handleChangeGroupIndex = {handleChangeGroupIndex}
         />
       </div>
     </div>

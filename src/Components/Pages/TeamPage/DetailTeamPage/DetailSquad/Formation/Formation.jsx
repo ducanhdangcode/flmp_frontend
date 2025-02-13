@@ -5,6 +5,7 @@ import ChangeFormation from './ChangeFormation';
 import CreateFormation from './CreateFormation';
 import { useUserContext } from '../../../../../../Context/UserContext';
 import PersonalFormation from './PersonalFormation';
+import { getUserByUsername } from '../../../../../../APIService/UserService.';
 
 const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
@@ -16,10 +17,23 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
     const [viewPersonalFormation, setViewPersonalFormation] = useState("");
 
+    const [activePersonalFormationIndex, setActivePersonalFormationIndex] = useState(1);
+
+    const {loginUsername} = useUserContext();
+
+    const [user, setUser] = useState(null);
+
+    const [startPaginationIndex, setStartPaginationIndex] = useState(0);
+    const PaginationRange = 3;
+
     useEffect(() => {
         getFormationByTeamName(teamList[teamId-1]?.name).then((response => {
             setFormations(response.data);
-        }))
+        })).catch(err => console.error(err));
+
+        getUserByUsername(loginUsername).then((response) => {
+            setUser(response.data);
+        }).catch(err => console.error(err));
     }, []);
 
     const disableChangeFormation = () => {
@@ -41,6 +55,46 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
     const handleChangeFormationDisplay = (newFormation) => {
         setFormations(newFormation);
     }
+
+    const handleChangeActivePersonalFormationIndex = (activeIndex) => {
+        setActivePersonalFormationIndex(activeIndex);
+    }
+
+    const handleSetNextActiveIndex = () => {
+        setActivePersonalFormationIndex(prev => {
+            const newIndex = prev + 1;
+            
+            if (newIndex <= user?.personalFormations.length) {
+                handleChangeGroupIndex(newIndex);  // Pass newIndex directly
+                return newIndex;
+            }
+            return prev;
+        });
+    };
+    
+    const handleSetPreviousActiveIndex = () => {
+        setActivePersonalFormationIndex(prev => {
+            const newIndex = prev - 1;
+    
+            if (newIndex >= 1) {
+                handleChangeGroupIndex(newIndex);  // Pass newIndex directly
+                return newIndex;
+            }
+            return prev;
+        });
+    };
+
+    const handleChangeGroupIndex = (newIndex) => {
+        setStartPaginationIndex(prev => {
+            if (newIndex > prev + PaginationRange) {
+                return newIndex - 1;
+            }
+            if (newIndex <= prev) {
+                return prev - 3;
+            }
+            return prev;
+        });
+    };
 
     const drawFormation = (typeFormationIndex, player, playerIndex) => {
         return (
@@ -85,6 +139,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         disableCreateFormation = {disableCreateFormation}
                                         applyViewPersonalFormation = {applyViewPersonalFormation}
                                         formationIndex = {formationIndex}
+                                        handleChangeActivePersonalFormationIndex = {handleChangeActivePersonalFormationIndex}
+                                        handleChangeGroupIndex = {handleChangeGroupIndex}
                                     />
                                 </div>
                             }
@@ -96,6 +152,12 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         drawFormation = {drawFormation}
                                         teamList = {teamList}
                                         teamId = {teamId}
+                                        activePersonalFormationIndex = {activePersonalFormationIndex}
+                                        handleChangeActivePersonalFormationIndex = {handleChangeActivePersonalFormationIndex}
+                                        handleSetNextActiveIndex = {handleSetNextActiveIndex}
+                                        handleSetPreviousActiveIndex = {handleSetPreviousActiveIndex}
+                                        startPaginationIndex = {startPaginationIndex}
+                                        handleChangeGroupIndex = {handleChangeGroupIndex}
                                     />
                                 </div>
                             }

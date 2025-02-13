@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getUserByUsername, updatePersonalFormation } from '../../../../../../APIService/UserService.';
 import { useUserContext } from '../../../../../../Context/UserContext';
 
-const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex}) => {
+const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, handleChangeGroupIndex}) => {
     const [personalMainSquad, setPersonalMainSquad] = useState([]);
     const [personalSubSquad, setPersonalSubSquad] = useState([]);
 
@@ -96,6 +96,11 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
             "formationDescription": ""
         }
         updatePersonalFormation(recentUser?.id, PersonalFormationPayload);
+        getUserByUsername(loginUsername).then((response) => {
+            handleChangeActivePersonalFormationIndex(response.data.personalFormations.length);
+        })
+        handleChangeGroupIndex();
+
         disableCreateFormation();
         applyViewPersonalFormation(formationIndex);
     }
