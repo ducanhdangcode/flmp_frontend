@@ -3,10 +3,18 @@ import { getUserByUsername, updatePersonalFormation } from '../../../../../../AP
 import { useUserContext } from '../../../../../../Context/UserContext';
 
 const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, user, setupFilteredFormations}) => {
+    // initial personal main squad and substitutions
     const [personalMainSquad, setPersonalMainSquad] = useState([]);
     const [personalSubSquad, setPersonalSubSquad] = useState([]);
 
+    // recent username
     const {loginUsername} = useUserContext();
+
+    // error string of user when create
+    const lackPlayerMessage = "Please fill all the players to apply formations";
+
+    // state to handle error
+    const [lackError, setLackError] = useState(false);
     
     useEffect(() => {
       InitPersonalMainSquad();
@@ -80,23 +88,32 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
 
     // handle apply the personal squad
     const ApplyPersonalSquad = async () => {
-        const PersonalFormationPayload = {
-            "teamName": teamList[teamId-1]?.name,
-            "formationName": formation?.formationName,
-            "mainSquad": personalMainSquad, 
-            "substitutions": personalSubSquad,
-            "formationDescription": ""
+        if (personalMainSquad.length < 18) {
+            setLackError(true);
+        } else {
+            const PersonalFormationPayload = {
+                "teamName": teamList[teamId-1]?.name,
+                "formationName": formation?.formationName,
+                "mainSquad": personalMainSquad, 
+                "substitutions": personalSubSquad,
+                "formationDescription": ""
+            }
+            await updatePersonalFormation(user?.id, PersonalFormationPayload);
+            getUserByUsername(loginUsername).then((response) => {
+                setupFilteredFormations(formation, response.data);
+                handleChangeActivePersonalFormationIndex(response.data.personalFormations.length);
+                // handleChangeGroupIndex(response.data.personalFormations.length);
+    
+            })
+    
+            disableCreateFormation();
+            applyViewPersonalFormation(formationIndex);
         }
-        await updatePersonalFormation(user?.id, PersonalFormationPayload);
-        getUserByUsername(loginUsername).then((response) => {
-            setupFilteredFormations(formation, response.data);
-            handleChangeActivePersonalFormationIndex(response.data.personalFormations.length);
-            // handleChangeGroupIndex(response.data.personalFormations.length);
+    }
 
-        })
-
-        disableCreateFormation();
-        applyViewPersonalFormation(formationIndex);
+    // handle reset all errors
+    const handleResetAllErrors = () => {
+        setLackError(false);
     }
   return (
     <div>
@@ -124,6 +141,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player number"
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNumberMainSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>
@@ -132,6 +150,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player name"
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNameMainSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>{player.position}</td>
@@ -146,6 +165,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player number"
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNumberMainSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>
@@ -154,6 +174,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player name"
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNameMainSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>{player.position}</td>
@@ -176,6 +197,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player number" 
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNumberSubSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>
@@ -184,6 +206,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player name"
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNameSubSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>{player.position}</td>
@@ -198,6 +221,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player number" 
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNumberSubSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>
@@ -206,6 +230,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
                                     placeholder = "Player name"
                                     className = "w-full text-center bg-gray-200 text-black"
                                     onChange = {e => AddPlayerNameSubSquad(index, e.target.value)}
+                                    onFocus = {handleResetAllErrors}
                                 />
                             </td>
                             <td>{player.position}</td>
@@ -218,8 +243,16 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
 
       {/* options */}
       <div className = "flex">
+        {/* apply and cancel button */}
         <button className = "w-[10rem] h-[2rem] bg-green-500 text-white rounded-[5px] font-bold relative left-[2rem] top-[1.5rem]" onClick = {ApplyPersonalSquad}>Apply</button>
         <button className = "w-[10rem] h-[2rem] bg-red-500 text-white rounded-[5px] font-bold relative left-[4rem] top-[1.5rem]" onClick = {disableCreateFormation}>Cancel</button>
+        
+        {/* error when user create */}
+        {lackError === true && 
+            <div className = "font-bold relative left-[8rem] top-[1.6rem] text-red-500">
+                <p>{lackPlayerMessage}</p>
+            </div>
+        }
       </div>
     </div>
   )
