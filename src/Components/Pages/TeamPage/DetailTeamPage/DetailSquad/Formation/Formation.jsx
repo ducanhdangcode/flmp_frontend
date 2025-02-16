@@ -62,6 +62,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
         setActivePersonalFormationIndex(activeIndex);
     }
 
+    const handleChangeCreateFormation = (formationIndex) => {
+        setCreateFormation(formationIndex);
+    }
+
     const handleSetNextActiveIndex = () => {
         setActivePersonalFormationIndex(prev => {
             const newIndex = prev + 1;
@@ -175,6 +179,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         disableViewPersonalFormation = {disableViewPersonalFormation}
                                         formation = {formation}
                                         filteredFormations = {filteredFormations}
+                                        formationIndex = {formationIndex}
+                                        handleChangeCreateFormation = {handleChangeCreateFormation}
                                     />
                                 </div>
                             }
