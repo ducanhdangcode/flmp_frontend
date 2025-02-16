@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getUserByUsername, updatePersonalFormation } from '../../../../../../APIService/UserService.';
 import { useUserContext } from '../../../../../../Context/UserContext';
+import {ToastContainer, toast} from 'react-toastify';
 
 const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, user, setupFilteredFormations}) => {
     // initial personal main squad and substitutions
@@ -12,6 +13,9 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
 
     // error string of user when create
     const lackPlayerMessage = "Please fill all the players to apply formations";
+
+    // error string of duplicate number
+    const duplicateNumberMessage = "Cannot duplicate the shirt number. Try again!";
 
     // state to handle error
     const [lackError, setLackError] = useState(false);
@@ -86,10 +90,53 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
         )
     }
 
+    // handle check duplicate number
+    const CheckDuplicateNumber = () => {
+        const seenNumber = new Set();
+
+        for (const player of personalMainSquad) {
+            if (seenNumber.has(player.number)) {
+                return true;
+            }
+            seenNumber.add(player.number);
+        }
+
+        for (const subPlayer of personalSubSquad) {
+            if (seenNumber.has(subPlayer.number)) {
+                return true;
+            }
+            seenNumber.add(subPlayer.number);
+        }
+
+        return false;
+    }
+
     // handle apply the personal squad
     const ApplyPersonalSquad = async () => {
-        if (personalMainSquad.length < 18) {
-            setLackError(true);
+        if (personalMainSquad.length + personalSubSquad.length < 18) {
+            toast(lackPlayerMessage, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                className: "bg-red-500 text-white font-bold p-4 rounded-lg shadow-lg",
+                progressClassName: "bg-white",
+            });
+        } else if (CheckDuplicateNumber()) {
+            toast(duplicateNumberMessage, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                className: "bg-red-500 text-white font-bold p-4 rounded-lg shadow-lg",
+                progressClassName: "bg-white",
+            })
         } else {
             const PersonalFormationPayload = {
                 "teamName": teamList[teamId-1]?.name,
@@ -246,14 +293,8 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
         {/* apply and cancel button */}
         <button className = "w-[10rem] h-[2rem] bg-green-500 text-white rounded-[5px] font-bold relative left-[2rem] top-[1.5rem]" onClick = {ApplyPersonalSquad}>Apply</button>
         <button className = "w-[10rem] h-[2rem] bg-red-500 text-white rounded-[5px] font-bold relative left-[4rem] top-[1.5rem]" onClick = {disableCreateFormation}>Cancel</button>
-        
-        {/* error when user create */}
-        {lackError === true && 
-            <div className = "font-bold relative left-[8rem] top-[1.6rem] text-red-500">
-                <p>{lackPlayerMessage}</p>
-            </div>
-        }
       </div>
+      <ToastContainer />
     </div>
   )
 }
