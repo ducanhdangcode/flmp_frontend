@@ -6,7 +6,7 @@ import { MdViewAgenda } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, disableViewPersonalFormation, filteredFormations}) => {
+const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, disableViewPersonalFormation, filteredFormations, handleEnableChangePersonalFormation, formationIndex}) => {
   return (
     <div>
         <div className = "flex">
@@ -103,7 +103,10 @@ const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activeP
             {/* change player */}
             <button className = "flex w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold">
                 <span><RiExchangeFill className = "w-[1.5rem] h-[1.5rem] relative left-[0.2rem] top-[0.2rem]"/></span>
-                <span className = "relative left-[0.5rem] top-[0.2rem]">Change players</span>
+                <span className = "relative left-[0.5rem] top-[0.2rem]" onClick = {() => {
+                    disableViewPersonalFormation();
+                    handleEnableChangePersonalFormation(formationIndex);
+                }}>Change players</span>
             </button>
 
             {/* delete squad */}

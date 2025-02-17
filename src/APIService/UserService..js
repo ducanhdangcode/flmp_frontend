@@ -21,3 +21,5 @@ export const updateLastname = (username, updatedLastname) => axios.put(BASE_URL_
 export const updateEmail = (username, updatedEmail) => axios.put(BASE_URL_USERS + `/${username}/update?email=${updatedEmail}`);
 
 export const updatePersonalFormation = (userId, payload) => axios.put(BASE_URL_USERS + `/${userId}/update-formations`, payload);
+
+export const updatePersonalSpecifiedFormation = (userId, formationIndex, payload) => axios.put(BASE_URL_USERS + `/${userId}/update-specified-formation/${formationIndex}`, payload);

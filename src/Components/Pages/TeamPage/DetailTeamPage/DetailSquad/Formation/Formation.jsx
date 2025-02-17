@@ -6,6 +6,8 @@ import CreateFormation from './CreateFormation';
 import { useUserContext } from '../../../../../../Context/UserContext';
 import PersonalFormation from './PersonalFormation';
 import { getUserByUsername } from '../../../../../../APIService/UserService.';
+import ChangePersonalFormation from './ChangePersonalFormation';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
@@ -16,6 +18,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
     const [createFormation, setCreateFormation] = useState("");
 
     const [viewPersonalFormation, setViewPersonalFormation] = useState("");
+
+    const [changePersonalFormation, setChangePersonalFormation] = useState("");
 
     const [activePersonalFormationIndex, setActivePersonalFormationIndex] = useState(1);
 
@@ -50,6 +54,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
         setViewPersonalFormation("");
     }
 
+    const disableChangePersonalFormation = () => {
+        setChangePersonalFormation("");
+    }
+
     const applyViewPersonalFormation = (index) => {
         setViewPersonalFormation(index);
     }
@@ -64,6 +72,10 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
 
     const handleChangeCreateFormation = (formationIndex) => {
         setCreateFormation(formationIndex);
+    }
+
+    const handleEnableChangePersonalFormation = (formationIndex) => {
+        setChangePersonalFormation(formationIndex);
     }
 
     const handleSetNextActiveIndex = () => {
@@ -181,12 +193,29 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         filteredFormations = {filteredFormations}
                                         formationIndex = {formationIndex}
                                         handleChangeCreateFormation = {handleChangeCreateFormation}
+                                        handleEnableChangePersonalFormation = {handleEnableChangePersonalFormation}
                                     />
                                 </div>
                             }
 
+                            {/* change personal formation */}
+                            {changePersonalFormation === formationIndex && 
+                                <ChangePersonalFormation 
+                                    teamList = {teamList}
+                                    teamId = {teamId}
+                                    filteredFormations = {filteredFormations}
+                                    activePersonalFormationIndex = {activePersonalFormationIndex}
+                                    user = {user}
+                                    formationIndex = {formationIndex}
+                                    disableChangePersonalFormation = {disableChangePersonalFormation}
+                                    applyViewPersonalFormation = {applyViewPersonalFormation}
+                                    setupFilteredFormations = {setupFilteredFormations}
+                                    formation = {formation}
+                                />
+                            }
+
                             {/* base formation */}
-                            {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex)) && 
+                            {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex) && (changePersonalFormation === "" || changePersonalFormation !== formationIndex)) && 
                                 <div className = "flex">
                                     {/* minicourt and players */}
                                     <div className = "relative top-[2rem] w-[25rem]">
@@ -278,7 +307,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                         </div>
                         
                         {/* substitutions */}
-                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex)) && 
+                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex) && (changePersonalFormation === "" || changePersonalFormation !== formationIndex)) && 
                             <div className = "relative bottom-[13rem] left-[4rem] h-[0rem] mt-[1rem]">
                                 <p className = "font-bold">Substitutions:</p>
                                 <div className = "flex flex-wrap mt-[0.5rem] w-[50rem]">
@@ -300,13 +329,15 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                         }
 
                         {/* some options */}
-                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex)) && 
+                        {((changeFormation === "" || changeFormation !== formationIndex) && (createFormation === "" || createFormation !== formationIndex) && (viewPersonalFormation === "" || viewPersonalFormation !== formationIndex) && (changePersonalFormation === "" || changePersonalFormation !== formationIndex)) && 
                             <div className = "flex relative bottom-[4rem] h-[0rem]">
                                 <button className = "w-[8rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[4rem] bottom-[0rem] rounded-[5px]" onClick = {() => setChangeFormation(formationIndex)}>Change players</button>
                                 <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[7rem] bottom-[0rem] rounded-[5px]" onClick = {() => setCreateFormation(formationIndex)}>Create own squad</button>
                                 <button className = "w-[10rem] h-[2rem] bg-[#ebc94e] text-white font-bold relative left-[10rem] bottom-[0rem] rounded-[5px]" onClick = {() => {
                                     setViewPersonalFormation(formationIndex);
-                                    setupFilteredFormations(formation, user);
+                                    getUserByUsername(loginUsername).then((response) => {
+                                        setupFilteredFormations(formation, response.data);
+                                    })
                                 }}>View your squad</button>
                             </div>
                         }
