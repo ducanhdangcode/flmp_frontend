@@ -6,7 +6,7 @@ import SpeficPersonalFormation from './SpeficPersonalFormation';
 import { MdViewAgenda } from 'react-icons/md';
 import { IoMdAddCircle } from "react-icons/io";
 
-const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, handleChangeGroupIndex, disableViewPersonalFormation, formation, filteredFormations, formationIndex, handleChangeCreateFormation, handleEnableChangePersonalFormation}) => {
+const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, handleChangeGroupIndex, disableViewPersonalFormation, formation, filteredFormations, formationIndex, handleChangeCreateFormation, handleEnableChangePersonalFormation, setupFilteredFormations, applyViewPersonalFormation}) => {
     const {loginUsername} = useUserContext();
     const [user, setUser] = useState(null);
 
@@ -38,6 +38,8 @@ const PersonalFormation = ({drawFormation, teamList, teamId, activePersonalForma
               filteredFormations = {filteredFormations}
               handleEnableChangePersonalFormation = {handleEnableChangePersonalFormation}
               formationIndex = {formationIndex}
+              setupFilteredFormations = {setupFilteredFormations}
+              applyViewPersonalFormation = {applyViewPersonalFormation}
           />
         </div> : 
         <div className = "relative left-[15%] top-[12rem]">

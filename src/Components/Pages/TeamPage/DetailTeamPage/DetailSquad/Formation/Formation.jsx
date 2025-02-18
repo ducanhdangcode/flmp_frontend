@@ -194,6 +194,8 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                         formationIndex = {formationIndex}
                                         handleChangeCreateFormation = {handleChangeCreateFormation}
                                         handleEnableChangePersonalFormation = {handleEnableChangePersonalFormation}
+                                        setupFilteredFormations = {setupFilteredFormations}
+                                        applyViewPersonalFormation = {applyViewPersonalFormation}
                                     />
                                 </div>
                             }
