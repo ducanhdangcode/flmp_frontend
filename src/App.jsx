@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import Footer from './Components/Footer/Footer';
 import HomeContent from './Components/Pages/HomePage/HomeContent/HomeContent';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, ScrollRestoration } from 'react-router-dom';
 import LoginPage from './Components/Pages/LoginPage/LoginPage';
 import Register from './Components/Pages/RegisterPage/Register';
 import WebFont from 'webfontloader';
@@ -13,6 +13,7 @@ import Team from './Components/Pages/TeamPage/Team';
 import DetailTeam from './Components/Pages/TeamPage/DetailTeam';
 import { ThemeProvider, useThemeContext } from './Context/ThemeContext';
 import { UserProvider } from './Context/UserContext';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 
 function App() {
   // theme set up
@@ -184,7 +185,15 @@ function App() {
           <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
           <div className = "">
             <Routes>
-              <Route path = "/login" element = {<LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> }/>
+              <Route 
+                  path = "/login" 
+                  element = {
+                    <>
+                      <ScrollToTop />
+                      <LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> 
+                    </>
+                  }
+              />
 
               <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
 
@@ -192,9 +201,25 @@ function App() {
 
               <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
 
-              <Route path = "/team" element = {<Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>} />
+              <Route 
+                path = "/team" 
+                element = {
+                  <>
+                    <ScrollToTop />
+                    <Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>
+                  </>
+                } 
+              />
 
-              <Route path = "/team/:team_name" element = {<DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} recentId = {recentId}/>}/>
+              <Route 
+                path = "/team/:team_name" 
+                element = {
+                  <>
+                    <ScrollToTop />
+                    <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} recentId = {recentId}/>
+                  </>
+                }
+              />
             </Routes>
           </div>
           <div className = "mt-[4rem]">
