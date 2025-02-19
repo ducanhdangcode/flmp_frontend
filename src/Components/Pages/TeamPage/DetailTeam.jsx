@@ -5,6 +5,8 @@ import { listUsers, updateUser } from '../../../APIService/UserService.';
 import { FaStar } from 'react-icons/fa6';
 import DetailSquad from './DetailTeamPage/DetailSquad/DetailSquad';
 import ScrollToTop from '../../ScrollToTop/ScrollToTop';
+import Spinner from '../../Spinners/Spinner';
+import { useSpinnerContext } from '../../../Context/SpinnerContext';
 
 const DetailTeam = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, teamVideoTitles, teamKits, teamChairman, handleFavorite, recentId}) => {
     const [storedTeamLogo, setStoredTeamLogo] = useState(teamLogo);
@@ -21,6 +23,8 @@ const DetailTeam = ({teamId, teamLogo, detailLogoHeight, detailLogoWidth, detail
     const [userlist, setUserlist] = useState([]);
 
     const [FormationCoordinate, setFormationCoordinate] = useState([]);
+
+    const {displaySpinner, setDisplaySpinner} = useSpinnerContext();
 
     useEffect(() => {
         localStorage.setItem('favorite-team', JSON.stringify(favorites));
@@ -150,7 +154,14 @@ const handleRemoveFavoriteTeam = () => {
                     <div className = {!checkSelectNews ? "text-center font-ubuntu text-xl hover:border-b-4 hover: border-b-black hover:cursor-pointer" : "text-center font-ubuntu text-xl border-b-4 border-b-blue-600 hover:cursor-pointer"} style = {{width: "10rem", height: "2.5rem"}} onClick = {() => setupSelectedBar("", "", "", "true", "")}>
                         <p>News</p>
                     </div>
-                    <div className = {!checkSelectSquad ? "text-center font-ubuntu text-xl hover:border-b-4 hover: border-b-black hover:cursor-pointer" : "text-center font-ubuntu text-xl border-b-4 border-b-blue-600 hover:cursor-pointer"} style = {{width: "10rem", height: "2.5rem"}} onClick = {() => setupSelectedBar("", "", "", "", "true")}>
+                    <div className = {!checkSelectSquad ? "text-center font-ubuntu text-xl hover:border-b-4 hover: border-b-black hover:cursor-pointer" : "text-center font-ubuntu text-xl border-b-4 border-b-blue-600 hover:cursor-pointer"} style = {{width: "10rem", height: "2.5rem"}} onClick = {() => {
+                        setupSelectedBar("", "", "", "");
+                        setDisplaySpinner(true);
+                        setTimeout(() => {
+                            setupSelectedBar("", "", "", "", "true");
+                            setDisplaySpinner(false);
+                        }, 1000);
+                    }}>
                         <p>Squad</p>
                     </div>
                 </div>
@@ -175,6 +186,12 @@ const handleRemoveFavoriteTeam = () => {
                 <>
                     <DetailSquad teamId = {teamId} teamList = {teamList} FormationCoordinate = {FormationCoordinate}/>
                 </>
+            }
+
+            {displaySpinner === true && 
+                <div className = "">
+                    <Spinner />
+                </div>
             }
         </div>
     </div>

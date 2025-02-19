@@ -14,6 +14,8 @@ import DetailTeam from './Components/Pages/TeamPage/DetailTeam';
 import { ThemeProvider, useThemeContext } from './Context/ThemeContext';
 import { UserProvider } from './Context/UserContext';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+import { SpinnerProvider, useSpinnerContext } from './Context/SpinnerContext';
+import Spinner from './Components/Spinners/Spinner';
 
 function App() {
   // theme set up
@@ -82,10 +84,8 @@ function App() {
   }
 
   const onHandleLoginStateSuccess = () => {
-    if (!loginState) {
-      setLoginState("success");
-    }
-    localStorage.setItem('login-state', loginState);
+    setLoginState("success");
+    localStorage.setItem('login-state', "success");
   }
 
   const onHandleLoginStateFailed = () => {
@@ -106,7 +106,8 @@ function App() {
   }
 
   const disableLoginState = () => {
-    setLoginState(false);
+    setLoginState("failed");
+    localStorage.setItem('login-state', "failed");
     disableDropdown();
   }
 
@@ -176,58 +177,60 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <UserProvider>
-        <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
-          <Helmet>
-            <style>{`body {background-color: ${colorTheme};}`}</style>
-          </Helmet>
-          <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
-          <div className = "">
-            <Routes>
-              <Route 
-                  path = "/login" 
+    <SpinnerProvider>
+      <ThemeProvider>
+        <UserProvider>
+          <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
+            <Helmet>
+              <style>{`body {background-color: ${colorTheme};}`}</style>
+            </Helmet>
+            <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
+            <div className = "">
+              <Routes>
+                <Route 
+                    path = "/login" 
+                    element = {
+                      <>
+                        <ScrollToTop />
+                        <LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> 
+                      </>
+                    }
+                />
+
+                <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
+
+                <Route path = "/register" element = {<Register />} />
+
+                <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
+
+                <Route 
+                  path = "/team" 
                   element = {
                     <>
                       <ScrollToTop />
-                      <LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> 
+                      <Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>
+                    </>
+                  } 
+                />
+
+                <Route 
+                  path = "/team/:team_name" 
+                  element = {
+                    <>
+                      <ScrollToTop />
+                      <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} recentId = {recentId}/>
                     </>
                   }
-              />
-
-              <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
-
-              <Route path = "/register" element = {<Register />} />
-
-              <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
-
-              <Route 
-                path = "/team" 
-                element = {
-                  <>
-                    <ScrollToTop />
-                    <Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>
-                  </>
-                } 
-              />
-
-              <Route 
-                path = "/team/:team_name" 
-                element = {
-                  <>
-                    <ScrollToTop />
-                    <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} recentId = {recentId}/>
-                  </>
-                }
-              />
-            </Routes>
+                />
+              </Routes>
+            </div>
+            <div className = "mt-[4rem]">
+              <Footer />
+            </div>
           </div>
-          <div className = "mt-[4rem]">
-            <Footer />
-          </div>
-        </div>
-      </UserProvider>
-    </ThemeProvider>
+        </UserProvider>
+      </ThemeProvider>
+    </SpinnerProvider>
   )
 }
 

@@ -86,7 +86,7 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                 </div>
 
                 {/* login area */}
-                {!loginState ? 
+                {loginState === "failed" ? 
                     (<Link to = "/login">
                         <div className = "flex mt-[2rem] ml-[0.5rem]">
                             <div>

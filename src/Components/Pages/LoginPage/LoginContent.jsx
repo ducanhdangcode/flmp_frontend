@@ -12,6 +12,7 @@ import { PiWarningOctagonFill } from 'react-icons/pi';
 import { FaLock } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../../Context/UserContext';
+import { toast, ToastContainer } from 'react-toastify';
 
 const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setupRecentUsername, setupRecentPassword}) => {
   // placeholder for username and password
@@ -86,6 +87,17 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
 
       // set properties
       setLoginUsername(username);
+      toast("Login successfully", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        className: "bg-green-500 text-white font-bold p-4 rounded-lg shadow-lg",
+        progressClassName: "bg-white",
+      })
 
       // redirect to home page
       setTimeout(() => {
@@ -193,6 +205,7 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
           </div>
         </div>
       </div>
+      <ToastContainer />
     </form>
   )
 }
