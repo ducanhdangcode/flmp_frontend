@@ -4,17 +4,17 @@ import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import Footer from './Components/Footer/Footer';
 import HomeContent from './Components/Pages/HomePage/HomeContent/HomeContent';
-import { Route, Routes, ScrollRestoration } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import LoginPage from './Components/Pages/LoginPage/LoginPage';
 import Register from './Components/Pages/RegisterPage/Register';
 import WebFont from 'webfontloader';
 import UserProfile from './Components/Pages/UserProfilePage/UserProfile';
 import Team from './Components/Pages/TeamPage/Team';
 import DetailTeam from './Components/Pages/TeamPage/DetailTeam';
-import { ThemeProvider, useThemeContext } from './Context/ThemeContext';
+import { ThemeProvider} from './Context/ThemeContext';
 import { UserProvider } from './Context/UserContext';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
-import { SpinnerProvider, useSpinnerContext } from './Context/SpinnerContext';
+import { SpinnerProvider, useSpinnerContext} from './Context/SpinnerContext';
 import Spinner from './Components/Spinners/Spinner';
 
 function App() {
@@ -26,13 +26,6 @@ function App() {
   // login state to check if user is logged in or not
   const [loginState, setLoginState] = useState(localStorage.getItem('login-state'));
 
-  const [recentUsername, setRecentUsername] = useState(localStorage.getItem('recent-username'));
-  const [recentPassword, setRecentPassword] = useState(localStorage.getItem('recent-password'));
-  const [recentFirstname, setRecentFirstname] = useState(localStorage.getItem('recent-firstname'));
-  const [recentLastname, setRecentLastname] = useState(localStorage.getItem('recent-lastname'));
-  const [recentEmail, setRecentEmail] = useState(localStorage.getItem('recent-email'));
-  const [recentAvatar, setRecentAvatar] = useState(localStorage.getItem('recent-avatar'));
-  const [recentId, setRecentId] = useState(localStorage.getItem('recent-id'));
 
   const [mainUserImage, setMainUserImage] = useState(localStorage.getItem('user-image'));
 
@@ -48,6 +41,9 @@ function App() {
   const [detailLogoLeft, setDetailLogoLeft] = useState(localStorage.getItem('detail-logo-left'));
   const [detailNameBottom, setDetailNameBottom] = useState(localStorage.getItem('detail-name-bottom'));
 
+  // spinner context
+  const {displaySpinner, setDisplaySpinner} = useSpinnerContext();
+
   useEffect(() => {
     WebFont.load({
       google: {
@@ -58,14 +54,6 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('login-state', loginState);
-    localStorage.setItem('recent-username', recentUsername);
-    localStorage.setItem('recent-password', recentPassword);
-    localStorage.setItem('user-image', mainUserImage);
-    localStorage.setItem('recent-firstname', recentFirstname);
-    localStorage.setItem('recent-lastname', recentLastname);
-    localStorage.setItem('recent-email', recentEmail);
-    localStorage.setItem('recent-avatar', recentAvatar);
-    localStorage.setItem('recent-id', recentId);
     localStorage.setItem('team-logo', teamLogo);
     localStorage.setItem('team-id', teamId);
     localStorage.setItem('detail-logo-width', detailLogoWidth);
@@ -73,7 +61,7 @@ function App() {
     localStorage.setItem('detail-logo-top', detailLogoTop);
     localStorage.setItem('detail-logo-left', detailLogoLeft);
     localStorage.setItem('detail-name-bottom', detailNameBottom);
-  }, [loginState, recentUsername, recentPassword, mainUserImage, recentFirstname, recentLastname, recentEmail, recentAvatar, recentId, teamLogo, teamId, detailLogoHeight, detailLogoWidth, detailLogoLeft, detailLogoTop, detailNameBottom])
+  }, [loginState, mainUserImage, teamLogo, teamId, detailLogoHeight, detailLogoWidth, detailLogoLeft, detailLogoTop, detailNameBottom])
 
   const handleChangeUserDropdown = () => {
     displayUserDropdown === false ? setDisplayUserDropdown(true) : setDisplayUserDropdown(false);
@@ -95,16 +83,6 @@ function App() {
     localStorage.setItem('login-state', loginState);
   }
 
-  const setupRecentUsername = (username) => {
-    setRecentUsername(username);
-    localStorage.setItem('recent-username', recentUsername);
-  }
-
-  const setupRecentPassword = (password) => {
-    setRecentPassword(password);
-    localStorage.setItem('recent-password', recentPassword);
-  }
-
   const disableLoginState = () => {
     setLoginState("failed");
     localStorage.setItem('login-state', "failed");
@@ -114,31 +92,6 @@ function App() {
   const onChangeMainUserImage = (val) => {
     setMainUserImage(val);
     localStorage.setItem('user-image', mainUserImage);
-  }
-
-  const setupRecentFirstname = (firstname) => {
-    setRecentFirstname(firstname);
-    localStorage.setItem('recent-firstname', recentFirstname);
-  }
-
-  const setupRecentLastname = (lastname) => {
-    setRecentLastname(lastname);
-    localStorage.setItem('recent-lastname', recentLastname);
-  }
-
-  const setupRecentEmail = (email) => {
-    setRecentEmail(email);
-    localStorage.setItem('recent-email', recentEmail);
-  }
-
-  const setupRecentAvatar = (avatar) => {
-    setRecentAvatar(avatar);
-    localStorage.setItem('recent-avatar', recentAvatar);
-  }
-
-  const setupRecentId = (id) => {
-    setRecentId(id);
-    localStorage.setItem('recent-id', recentId);
   }
 
   const setupTeamId = (id) => {
@@ -177,60 +130,70 @@ function App() {
   }
 
   return (
-    <SpinnerProvider>
-      <ThemeProvider>
-        <UserProvider>
-          <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
-            <Helmet>
-              <style>{`body {background-color: ${colorTheme};}`}</style>
-            </Helmet>
-            <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown} recentAvatar = {recentAvatar} recentUsername = {recentUsername}/>
-            <div className = "">
-              <Routes>
-                <Route 
-                    path = "/login" 
+    <div>
+      {displaySpinner === false ? 
+        <ThemeProvider>
+          <UserProvider>
+            <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
+              <Helmet>
+                <style>{`body {background-color: ${colorTheme};}`}</style>
+              </Helmet>
+              <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown}/>
+              <div className = "">
+                <Routes>
+                  <Route 
+                      path = "/login" 
+                      element = {
+                        <>
+                          <ScrollToTop />
+                          <LoginPage 
+                            loginState = {loginState} 
+                            onHandleLoginStateSuccess = {onHandleLoginStateSuccess} 
+                            onHandleLoginStateFailed = {onHandleLoginStateFailed} 
+                          /> 
+                        </>
+                      }
+                  />
+    
+                  <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
+    
+                  <Route path = "/register" element = {<Register />} />
+    
+                  <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} teamId = {teamId}/>} />
+    
+                  <Route 
+                    path = "/team" 
                     element = {
                       <>
                         <ScrollToTop />
-                        <LoginPage loginState = {loginState} onHandleLoginStateSuccess = {onHandleLoginStateSuccess} onHandleLoginStateFailed = {onHandleLoginStateFailed} setupRecentUsername = {setupRecentUsername} setupRecentPassword = {setupRecentPassword} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} setupRecentAvatar = {setupRecentAvatar} setupRecentId = {setupRecentId}/> 
+                        <Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>
+                      </>
+                    } 
+                  />
+    
+                  <Route 
+                    path = "/team/:team_name" 
+                    element = {
+                      <>
+                        <ScrollToTop />
+                        <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom}/>
                       </>
                     }
-                />
-
-                <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
-
-                <Route path = "/register" element = {<Register />} />
-
-                <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} setupRecentUsername = {setupRecentUsername} recentFirstname = {recentFirstname} recentLastname = {recentLastname} recentEmail = {recentEmail} recentAvatar = {recentAvatar} recentId = {recentId} setupRecentAvatar = {setupRecentAvatar} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupRecentFirstname = {setupRecentFirstname} setupRecentLastname = {setupRecentLastname} setupRecentEmail = {setupRecentEmail} teamId = {teamId}/>} />
-
-                <Route 
-                  path = "/team" 
-                  element = {
-                    <>
-                      <ScrollToTop />
-                      <Team colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>
-                    </>
-                  } 
-                />
-
-                <Route 
-                  path = "/team/:team_name" 
-                  element = {
-                    <>
-                      <ScrollToTop />
-                      <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} recentId = {recentId}/>
-                    </>
-                  }
-                />
-              </Routes>
+                  />
+                </Routes>
+              </div>
+              <div className = "mt-[4rem]">
+                <Footer />
+              </div>
             </div>
-            <div className = "mt-[4rem]">
-              <Footer />
-            </div>
-          </div>
-        </UserProvider>
-      </ThemeProvider>
-    </SpinnerProvider>
+          </UserProvider>
+        </ThemeProvider> : 
+        //spinner
+        <div className = "w-full h-full bg-white">
+          <Spinner />
+        </div>
+      }
+    </div>
   )
 }
 

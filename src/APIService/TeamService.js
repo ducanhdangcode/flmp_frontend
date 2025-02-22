@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL_TEAMS = "/api/teams";
+const BASE_URL_TEAMS = `/api/teams`;
 
 export const ListTeams = () => axios.get("/api/teams");
 

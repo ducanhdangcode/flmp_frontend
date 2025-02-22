@@ -7,14 +7,15 @@ import { FaUser } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
 import { Link} from 'react-router-dom';
-import { listUsers } from '../../../APIService/UserService.';
+import { getUserByUsername, listUsers, updateUser, userLogin } from '../../../APIService/UserService.';
 import { PiWarningOctagonFill } from 'react-icons/pi';
 import { FaLock } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../../Context/UserContext';
 import { toast, ToastContainer } from 'react-toastify';
+import { useSpinnerContext } from '../../../Context/SpinnerContext';
 
-const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setupRecentUsername, setupRecentPassword}) => {
+const LoginContent = ({onHandleLoginStateSuccess}) => {
   // placeholder for username and password
   const [usernamePlaceholder, setUsernamePlaceholder] = useState("Username");
   const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
@@ -26,18 +27,17 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
   // manage vision of password
   const [isHidden, setIsHidden] = useState(true);
 
-  // user list that being fetched
-  const [userList, setUserList] = useState([]);
-
   // navigate 
   const navigate = useNavigate();
 
-  // errors when login failed
-  const loginErrorCode = "Your username or your password seem wrong!";
-  const [loginError, setloginError] = useState("");
-
   // context of user
   const {setLoginUsername, setLoginFirstname, setLoginLastname, setLoginEmail} = useUserContext();
+
+  // user token
+  const {setUserToken, setAvatar} = useUserContext();
+
+  // spinner
+  const {displaySpinner, setDisplaySpinner} = useSpinnerContext();
 
   // change vision of password
   const onChangeViewPassword = () => {
@@ -52,73 +52,87 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
     })
   }, [])
 
-  useEffect(() => {
-    getAllUsers();
-  });
+  const handleSetAvatar = (username) => {
+    getUserByUsername(username).then((response) => {
+      setAvatar(response.data?.avatar);
+      localStorage.setItem("login-user-avatar", response.data?.avatar);
+    })
+  } 
 
-  // fetch all users
-  const getAllUsers = () => {
-   listUsers().then((response) => {
-    setUserList(response.data);
-   }).catch(err => console.log(err))
+  const updateUserInfo = (username) => {
+    getUserByUsername(username).then((response) => {
+      setLoginEmail(response.data.email);
+      setLoginFirstname(response.data.firstname);
+      setLoginLastname(response.data.lastname);
+    }).catch(err => console.error(err));
   }
 
-  // check if user matched or not
-  const checkUser = () => {
-    for (let i = 0; i < userList.length; ++i) {
-      if (username === userList[i].username && password === userList[i].password) {
-        setLoginFirstname(userList[i].firstname);
-        setLoginLastname(userList[i].lastname);
-        setLoginEmail(userList[i].email);
-        localStorage.setItem("login-firstname", userList[i].firstname);
-        localStorage.setItem("login-lastname", userList[i].lastname);
-        localStorage.setItem("login-email", userList[i].email);
-        return true;
-      }
-    }
-    return false;
-  }
+  const handleLogin = async () => {
+    try {
+      const response = await userLogin(username, password);
+      console.log("Login user: ", response.data);
 
+      // update user info for utilities
+      setLoginUsername(username);
+      updateUserInfo();
 
-  const handleSubmit = () => {
-    if (checkUser()) {
-      // set state to logged in
+      // token
+      setUserToken(response.data.token);
+      localStorage.setItem("user-token", response.data.token);
+
+      // set state -> login success
       onHandleLoginStateSuccess();
 
-      // set properties
-      setLoginUsername(username);
-      toast("Login successfully", {
+      // display toast
+      toast("Login successfully!", {
         position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            className: "bg-green-500 text-white font-bold p-4 rounded-lg shadow-lg",
+            progressClassName: "bg-white",
+      })
+
+      // wait 1s to display spinner
+      setTimeout(() => {
+        setDisplaySpinner(true);
+      }, 1000);
+
+      // wait 1.5s to navigate to home page
+      setTimeout(() => {
+        handleSetAvatar(username, response.data.token);
+        navigate("/");
+        setDisplaySpinner(false);
+      }, 1500);
+    } catch (err) {
+      if (err.response) {
+        console.log(err.response.data);
+      }
+      //display error toast
+      toast("Wrong username or password!", {
+        autoClose: 1500,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        className: "bg-green-500 text-white font-bold p-4 rounded-lg shadow-lg",
+        className: "bg-red-500 text-white font-bold p-4 rounded-lg shadow-lg",
         progressClassName: "bg-white",
       })
-
-      // redirect to home page
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
-    } else {
-      setloginError(loginErrorCode);
       setUsername("");
       setPassword("");
-      onHandleLoginStateFailed();
     }
   }
 
   const onFocusUsername = () => {
     setUsernamePlaceholder("");
-    setloginError("");
   }
 
   const onFocusPassword = () => {
     setPasswordPlaceholder("");
-    setloginError("");
   }
 
   return (
@@ -143,7 +157,7 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
                   id = "login_input"
                   type = "text"
                   placeholder = {usernamePlaceholder}
-                  className = {!loginError ? "w-[75%] h-11 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu text-[black] border-[2px] mt-[6rem] ml-[15%]" : "w-[75%] h-11 relative rounded-[15px] bg-white pl-2 font-ubuntu text-[black] border-[3px] mt-[6rem] ml-[15%] border-red-500"}
+                  className = "w-[75%] h-11 relative rounded-[15px] border-orange-200 bg-white pl-2 font-ubuntu text-[black] border-[2px] mt-[6rem] ml-[15%]" 
                   style = {{borderWidth: "2px", borderStyle: "inset"}}
                   onFocus = {onFocusUsername}
                   onBlur = {() => setUsernamePlaceholder("Username")}
@@ -152,9 +166,6 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
               />
               <div>
                 <FaUser className = "w-7 h-7 relative bottom-[2.4rem] ml-[1.5rem]" style = {{color: "black"}}/>
-                {loginError && 
-                  <PiWarningOctagonFill className = "w-7 h-7 relative float-right bottom-[4rem] right-[3rem]" style = {{color: "#f0323c"}}/>
-                }
               </div>
             </div>
 
@@ -164,7 +175,7 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
                   id = "login_input"
                   type = {isHidden ? "password" : "text"}
                   placeholder = {passwordPlaceholder}
-                  className = {!loginError ? "w-[75%] h-11 relative rounded-[15px] bg-white pl-2 font-ubuntu border-orange-200 mt-[0rem] ml-[15%]" : "w-[75%] h-11 relative rounded-[15px] bg-white pl-2 font-ubuntu mt-[0rem] ml-[15%] border-red-500"}
+                  className = "w-[75%] h-11 relative rounded-[15px] bg-white pl-2 font-ubuntu border-orange-200 mt-[0rem] ml-[15%]"
                   style = {{borderWidth: "2px", borderStyle: "inset"}}
                   onFocus = {onFocusPassword}
                   onBlur = {() => setPasswordPlaceholder("Password")}
@@ -175,13 +186,10 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
                 <FaLock className = "w-7 h-7" />
               </span>
               <span>
-                {!loginError ? 
-                  (isHidden ? 
+                {(isHidden ? 
                     <FaEye className = "w-7 h-7 relative hover:cursor-pointer float-right bottom-[4rem] right-[3.5rem]" style = {{color: "black"}}onClick = {onChangeViewPassword}/> : 
                     <FaEyeSlash className = "w-7 h-7 relative hover:cursor-pointer float-right bottom-[4rem] right-[3.5rem]" style = {{color: "black"}} onClick = {onChangeViewPassword}/>
-                  ) : 
-                  <PiWarningOctagonFill className = "w-7 h-7 relative float-right bottom-[4rem] right-[3rem]" style = {{color: "#f0323c"}}/>
-                }
+                  )}
               </span>
             </div>
 
@@ -189,12 +197,7 @@ const LoginContent = ({onHandleLoginStateSuccess, onHandleLoginStateFailed, setu
             <p className = "text-center relative text-lg float-right bottom-[0.5rem] mr-[1.5rem]">Forgot password?</p>
 
             {/* login button */}
-            <button className = "bg-[#ebc94e] w-[30%] h-12 relative rounded-[10px] text-[white] text-2xl font-bold ml-[35%] mt-[1rem]" onClick = {handleSubmit}>Login</button>
-
-            {/* errors */}
-            {loginError && 
-              <p className = "font-ubuntu text-lg relative font-bold text-red-600 ml-[2rem] mt-[1.5rem]">{loginError}</p>
-            }
+            <button className = "bg-[#ebc94e] w-[30%] h-12 relative rounded-[10px] text-[white] text-2xl font-bold ml-[35%] mt-[1rem]" onClick = {handleLogin}>Login</button>
 
             {/* register suggestion */}
             <p className = "text-center relative text-xl mt-[1rem]">Doesn't have an account?

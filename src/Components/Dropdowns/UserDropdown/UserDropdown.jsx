@@ -5,9 +5,12 @@ import { FaSignOutAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import WebFont from 'webfontloader';
 import { getUserByUsername } from '../../../APIService/UserService.'
+import { useUserContext } from '../../../Context/UserContext'
 
-const UserDropdown = ({disableLoginState, disableDropdown, recentAvatar, recentUsername}) => {
+const UserDropdown = ({disableLoginState, disableDropdown}) => {
   const [user, setUser] = useState(null);
+
+  const {loginUsername, userToken} = useUserContext()
 
   useEffect(() => {
     WebFont.load({
@@ -18,10 +21,10 @@ const UserDropdown = ({disableLoginState, disableDropdown, recentAvatar, recentU
   }, [])
 
   useEffect(() => {
-    getUserByUsername(recentUsername).then(response => {
+    getUserByUsername(loginUsername).then(response => {
       setUser(response.data);
-      console.log(recentUsername);
     }).catch(err => console.error(err))
+    console.log(loginUsername);
   }, []);
   
   return (
@@ -33,7 +36,7 @@ const UserDropdown = ({disableLoginState, disableDropdown, recentAvatar, recentU
       {/* user profile */}
       <Link to = "/user-profile">
         <div className = "flex pt-[1rem] pl-[1rem] border-solid border-b-[1px] border-b-gray-500 pb-3" onClick = {disableDropdown}>
-            <img src = {recentAvatar} alt = "" className = "w-[3rem] h-[3rem] rounded-[50%] border-solid border-[3px] border-[#e80560]" />
+            <img src = {user?.avatar} alt = "" className = "w-[3rem] h-[3rem] rounded-[50%] border-solid border-[3px] border-[#e80560]" />
             <div className = "flex ml-[0.5rem] mt-[2rem]">
               {user?.roles.map((role) => {
                   return (

@@ -1,6 +1,9 @@
 import axios from "axios";
+import getUserApi from "./AxiosInstance/axiosInstance";
 
-const BASE_URL_USERS = "/api/users";
+const BASE_URL_USERS = "api/user";
+
+const BASE_URL_AUTH = "/auth"
 
 export const listUsers = () => {
     return axios.get(BASE_URL_USERS);
@@ -10,7 +13,9 @@ export const createUser = (user) => axios.post(BASE_URL_USERS, user);
 
 export const updateUser = (userId, updatedUser) => axios.put(BASE_URL_USERS + "/" + userId, updatedUser);
 
-export const getUserByUsername = (username) => axios.get(BASE_URL_USERS + `/${username}`);
+export const getUserByUsername = (username) => {
+    return getUserApi.get(`${username}`);
+}
 
 export const updateUsername = (username, updatedUsername) => axios.put(BASE_URL_USERS + `/${username}/update?username=${updatedUsername}`);
 
@@ -25,3 +30,8 @@ export const updatePersonalFormation = (userId, payload) => axios.put(BASE_URL_U
 export const updatePersonalSpecifiedFormation = (userId, formationIndex, payload) => axios.put(BASE_URL_USERS + `/${userId}/update-specified-formation/${formationIndex}`, payload);
 
 export const deletePersonalSpecifiedFormation = (userId, formationIndex) => axios.delete(BASE_URL_USERS + `/${userId}/delete-specified-formation/${formationIndex}`);
+
+export const userLogin = (username, password) => axios.post(BASE_URL_AUTH + "/login", {
+    username, 
+    password
+});

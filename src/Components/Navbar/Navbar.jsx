@@ -9,8 +9,10 @@ import {FaMoon} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import UserDropdown from '../Dropdowns/UserDropdown/UserDropdown';
 import { useThemeContext } from '../../Context/ThemeContext';
+import { getUserByUsername } from '../../APIService/UserService.';
+import { useUserContext } from '../../Context/UserContext';
 
-const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown, recentAvatar, recentUsername}) => {
+const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown}) => {
 
     const darkNavBarStyle = "bg-white border-gray-200 dark:bg-gray-900 max-h-24 fixed z-30 w-full";
     const lightNavBarStyle = "bg-white border-gray-200 dark:bg-white max-h-24 fixed z-30 w-full";
@@ -18,6 +20,10 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
     const dropdownRef = useRef(null);
 
     const {theme, darkColor, lightColor, setTheme} = useThemeContext();
+
+    const {loginUsername, userToken, avatar} = useUserContext();
+
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         WebFont.load({
@@ -103,7 +109,7 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                     </Link>) : 
                     (
                         <div>
-                            <img src = {JSON.parse(recentAvatar)} alt = "User Logo" className = "w-12 h-12 border-[#e80560] mt-6 hover:cursor-pointer ml-[5rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown}/>
+                            <img src = {JSON.parse(avatar)} alt = "User Logo" className = "w-12 h-12 border-[#e80560] mt-6 hover:cursor-pointer ml-[5rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown}/>
                         </div>
                     )
                 }
@@ -115,8 +121,6 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                             <UserDropdown 
                                 disableLoginState = {disableLoginState} 
                                 disableDropdown = {disableDropdown}
-                                recentAvatar = {JSON.parse(recentAvatar)}
-                                recentUsername = {recentUsername}
                             />
                         </div>
                     }

@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+import { SpinnerProvider } from './Context/SpinnerContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-        <ScrollToTop />
-        <App />
+        <SpinnerProvider>
+          <ScrollToTop />
+          <App />
+        </SpinnerProvider>
       </BrowserRouter>
   </React.StrictMode>
 );

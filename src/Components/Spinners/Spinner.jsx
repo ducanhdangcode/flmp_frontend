@@ -4,7 +4,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 const Spinner = () => {
   return (
     <div className = "w-full bg-white">
-        <div className = "pt-[8rem] ml-[45%] relative bottom-[3rem]">
+        <div className = "pt-[8rem] ml-[50%] mt-[15%] relative bottom-[3rem]">
             <FadeLoader 
                 width = {3}
                 height = {3}
