@@ -64,6 +64,9 @@ const LoginContent = ({onHandleLoginStateSuccess}) => {
       setLoginEmail(response.data.email);
       setLoginFirstname(response.data.firstname);
       setLoginLastname(response.data.lastname);
+      localStorage.setItem("login-email", response.data.email);
+      localStorage.setItem("login-firstname", response.data.firstname);
+      localStorage.setItem("login-lastname", response.data.lastname);
     }).catch(err => console.error(err));
   }
 
@@ -74,7 +77,7 @@ const LoginContent = ({onHandleLoginStateSuccess}) => {
 
       // update user info for utilities
       setLoginUsername(username);
-      updateUserInfo();
+      updateUserInfo(username);
 
       // token
       setUserToken(response.data.token);

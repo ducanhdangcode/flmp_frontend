@@ -1,12 +1,12 @@
 import axios from "axios";
 import getUserApi from "./AxiosInstance/axiosInstance";
 
-const BASE_URL_USERS = "api/user";
+const BASE_URL_USERS = "api/users";
 
 const BASE_URL_AUTH = "/auth"
 
 export const listUsers = () => {
-    return axios.get(BASE_URL_USERS);
+    return getUserApi.get("");
 }
 
 export const createUser = (user) => axios.post(BASE_URL_USERS, user);
@@ -14,16 +14,28 @@ export const createUser = (user) => axios.post(BASE_URL_USERS, user);
 export const updateUser = (userId, updatedUser) => axios.put(BASE_URL_USERS + "/" + userId, updatedUser);
 
 export const getUserByUsername = (username) => {
-    return getUserApi.get(`${username}`);
+    return getUserApi.get(`/${username}`);
 }
 
-export const updateUsername = (username, updatedUsername) => axios.put(BASE_URL_USERS + `/${username}/update?username=${updatedUsername}`);
+export const updateUsername = (username, updatedUsername) => {
+    return getUserApi.put(`/${username}/update?username=${updatedUsername}`)
+}
 
-export const updateFirstname = (username, updatedFirstname) => axios.put(BASE_URL_USERS + `/${username}/update?firstname=${updatedFirstname}`);
+export const updateFirstname = (username, updatedFirstname) => {
+    return getUserApi.put(`/${username}/update?firstname=${updatedFirstname}`)
+}
 
-export const updateLastname = (username, updatedLastname) => axios.put(BASE_URL_USERS + `/${username}/update?lastname=${updatedLastname}`);
+export const updateLastname = (username, updatedLastname) => {
+    return getUserApi.put(`/${username}/update?lastname=${updatedLastname}`)
+}
 
-export const updateEmail = (username, updatedEmail) => axios.put(BASE_URL_USERS + `/${username}/update?email=${updatedEmail}`);
+export const updateEmail = (username, updatedEmail) => {
+    return getUserApi.put(`/${username}/update?email=${updatedEmail}`)
+}
+
+export const updateAvatar = (userId, updatedAvatar) => {
+    return getUserApi.put(`/${userId}/update-avatar`, updatedAvatar);
+}
 
 export const updatePersonalFormation = (userId, payload) => axios.put(BASE_URL_USERS + `/${userId}/update-formations`, payload);
 

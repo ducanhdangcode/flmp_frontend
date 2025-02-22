@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import WebFont from 'webfontloader';
-import { getUserByUsername, listUsers, updateEmail, updateFirstname, updateLastname, updateUsername } from '../../../APIService/UserService.';
+import { getUserByUsername, listUsers, updateAvatar, updateEmail, updateFirstname, updateLastname, updateUsername } from '../../../APIService/UserService.';
 import CropUserImage from '../CropImage/CropUserImage/CropUserImage';
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -36,9 +36,6 @@ const UserProfile = ({recentAvatar, setupRecentAvatar}) => {
     const [displayEditNoti, setDisplayEditNoti] = useState(false);
     const [displayEditProgress, setDisplayEditProgress] = useState(false);
 
-    // normalized data
-    const [avatar, setAvatar] = useState(recentAvatar);
-
     // error code
     const usernameDuplicateErrorCode = "Username has already taken.";
     const usernameEmptyErrorCode = "Username cannot be empty.";
@@ -58,6 +55,10 @@ const UserProfile = ({recentAvatar, setupRecentAvatar}) => {
     const [firstname, setFirstname] = useState(loginFirstname);
     const [lastname, setLastname] = useState(loginLastname);
     const [email, setEmail] = useState(loginEmail);
+
+    const {avatar, setAvatar} = useUserContext();
+
+    const [currentAvatar, setCurrentAvatar] = useState(avatar);
 
     useEffect(() => {
         WebFont.load({
@@ -135,8 +136,8 @@ const UserProfile = ({recentAvatar, setupRecentAvatar}) => {
                 imgCroppedArea.height
             );
             const dataURL = canvasElement.toDataURL("image/jpeg");
-            setAvatar(JSON.stringify(dataURL));
-            localStorage.setItem('avatar', avatar);
+            setCurrentAvatar(JSON.stringify(dataURL));
+            localStorage.setItem('login-user-avatar', JSON.stringify(dataURL));
         }
         setNewWindow(false);
         setEditAvatar(true);
@@ -181,13 +182,18 @@ const UserProfile = ({recentAvatar, setupRecentAvatar}) => {
                 setLoginUsername(username);
                 localStorage.setItem("login-username", username);
             }
+            if (currentAvatar !== avatar) {
+                updateAvatar(recentUser?.id, currentAvatar);
+                setAvatar(currentAvatar);
+                localStorage.setItem("login-user-avatar", currentAvatar);
+            }
 
             // reset
             setEditUsername(false);
             setEditFirstname(false);
             setEditLastname(false);
             setEditEmail(false);
-            setupRecentAvatar(avatar);
+            setAvatar(localStorage.getItem("login-user-avatar"));
             
             setDisplayEditProgress(true);
             setTimeout(() => {
@@ -236,7 +242,7 @@ const UserProfile = ({recentAvatar, setupRecentAvatar}) => {
   return (
     <div className = "w-full relative top-24" style = {{height: "74rem", backgroundColor: theme === lightColor ?  "#c4bab9" : "#0a0f3b"}}>
       <div className = {theme === lightColor ? "relative rounded-2xl shadow-gray-shadow" : "relative rounded-2xl shadow-dark-shadow"} style = {{width: "30rem", height: "45rem", backgroundColor: theme === lightColor ? "#f5efed" : "#343a78", left: "5rem", top: "15rem"}}>
-        <img src = {JSON.parse(avatar)} alt = "User Icon" className = "w-20 h-20 relative" style = {{borderRadius: "50%", left: "12.5rem", top: "2rem", borderWidth: "3px", borderColor: "red"}}/>
+        <img src = {JSON.parse(currentAvatar)} alt = "User Icon" className = "w-20 h-20 relative" style = {{borderRadius: "50%", left: "12.5rem", top: "2rem", borderWidth: "3px", borderColor: "red"}}/>
         <button className = {theme === lightColor ? "font-ubuntu font-xl relative font-bold underline" : "font-ubuntu font-xl relative font-bold underline text-white"} style = {{top: "3rem", left: "10.7rem"}} onClick = {onClickInputChange}>Change user image</button>
         <input 
             type = "file"
