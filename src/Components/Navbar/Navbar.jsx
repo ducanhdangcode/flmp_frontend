@@ -11,6 +11,7 @@ import UserDropdown from '../Dropdowns/UserDropdown/UserDropdown';
 import { useThemeContext } from '../../Context/ThemeContext';
 import { getUserByUsername } from '../../APIService/UserService.';
 import { useUserContext } from '../../Context/UserContext';
+import DefaultAvatar from './defaultAvatar.png';
 
 const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown}) => {
 
@@ -48,6 +49,12 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
             document.removeEventListener("mousedown", handleClickOutside);
         }
     }, [displayUserDropdown]);
+
+    useEffect(() => {
+        getUserByUsername(loginUsername).then((response) => {
+            setUser(response.data);
+        })
+    }, []);
   return (
     <header>
         <nav className = {theme === lightColor ? lightNavBarStyle : darkNavBarStyle}>
@@ -109,7 +116,7 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                     </Link>) : 
                     (
                         <div>
-                            <img src = {JSON.parse(avatar)} alt = "User Logo" className = "w-12 h-12 border-[#e80560] mt-6 hover:cursor-pointer ml-[5rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown}/>
+                            <img src = {user?.avatar ? JSON.parse(user?.avatar) : DefaultAvatar} alt = "User Logo" className = "w-12 h-12 border-[#e80560] mt-6 hover:cursor-pointer ml-[5rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown}/>
                         </div>
                     )
                 }

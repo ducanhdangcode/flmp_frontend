@@ -157,7 +157,15 @@ function App() {
     
                   <Route path = "/" element = {<HomeContent colorTheme={colorTheme} lightColor={lightColor} darkColor={darkColor} disableDropdown = {disableDropdown}/>} />
     
-                  <Route path = "/register" element = {<Register />} />
+                  <Route 
+                    path = "/register" 
+                    element = {
+                      <>
+                        <ScrollToTop />
+                        <Register />
+                      </>
+                    } 
+                  />
     
                   <Route path = "/user-profile" element = {<UserProfile recentUsername = {localStorage.getItem('recent-username')} recentPassword = {localStorage.getItem('recent-password')} mainUserImage = {mainUserImage} onChangeMainUserImage = {onChangeMainUserImage} colorTheme = {colorTheme} lightColor = {lightColor} darkColor = {darkColor} teamId = {teamId}/>} />
     

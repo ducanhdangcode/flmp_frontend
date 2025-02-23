@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import WebFont from 'webfontloader';
 import { getUserByUsername } from '../../../APIService/UserService.'
 import { useUserContext } from '../../../Context/UserContext'
+import DefaultAvatar from './defaultAvatar.png';
 
 const UserDropdown = ({disableLoginState, disableDropdown}) => {
   const [user, setUser] = useState(null);
@@ -37,7 +38,7 @@ const UserDropdown = ({disableLoginState, disableDropdown}) => {
       {/* user profile */}
       <Link to = "/user-profile">
         <div className = "flex pt-[1rem] pl-[1rem] border-solid border-b-[1px] border-b-gray-500 pb-3" onClick = {disableDropdown}>
-            <img src = {JSON.parse(avatar)} alt = "" className = "w-[3rem] h-[3rem] rounded-[50%] border-solid border-[3px] border-[#e80560]" />
+            <img src = {user?.avatar ? JSON.parse(user?.avatar) : DefaultAvatar} alt = "" className = "w-[3rem] h-[3rem] rounded-[50%] border-solid border-[3px] border-[#e80560]" />
             <div className = "flex ml-[0.5rem] mt-[2rem]">
               {user?.roles.map((role) => {
                   return (

@@ -47,3 +47,18 @@ export const userLogin = (username, password) => axios.post(BASE_URL_AUTH + "/lo
     username, 
     password
 });
+
+export const userRegister = (username, password, email, firstname, lastname) => {
+    const registerPayload = {
+        "username": username,
+        "password": password, 
+        "email": email,
+        "firstname": firstname,
+        "lastname": lastname,
+        "avatar": "",
+        "favoriteTeams": [],
+        "roles": ["New User"], 
+        "personalFormations": []
+    }
+    return axios.post(BASE_URL_AUTH + "/register", registerPayload);
+}
