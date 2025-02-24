@@ -1,5 +1,6 @@
 import axios from 'axios';
+import baseApi from './AxiosInstance/axiosInstance';
 
 const BASE_URL_PLAYERS = "/api/players";
 
-export const ListPlayer = () => axios.get(BASE_URL_PLAYERS);
+export const ListPlayer = () => baseApi.get("/players");

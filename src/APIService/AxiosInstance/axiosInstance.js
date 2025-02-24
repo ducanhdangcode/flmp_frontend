@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const getUserApi = axios.create({
-    baseURL: "http://localhost:8080/api/users",
+const baseApi = axios.create({
+    baseURL: "http://localhost:8080/api",
     headers: {
         "Content-Type": "application/json"
     }
 })
 
-getUserApi.interceptors.request.use(
+baseApi.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("user-token"); // Get token from localStorage
         if (token) {
@@ -21,4 +21,4 @@ getUserApi.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-export default getUserApi
+export default baseApi;
