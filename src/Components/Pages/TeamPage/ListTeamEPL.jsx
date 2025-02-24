@@ -34,9 +34,14 @@ import TeamCard from './TeamCard';
 import AOS from 'aos';
 import { Link } from 'react-router-dom';
 import { useThemeContext } from '../../../Context/ThemeContext';
+import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
 
-const ListTeamEPL = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom}) => {
+const ListTeamEPL = ({}) => {
   const {theme, lightColor, darkColor} = useThemeContext();
+
+  // team header context
+  const {setStoredTeamLogo, setTeamId, setDetailLogoHeight, setDetailLogoWidth, setDetailLogoTop, setDetailLogoLeft, setDetailNameBottom} = useTeamHeaderContext();
+
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -65,13 +70,22 @@ const ListTeamEPL = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDe
   const NottinghamForestId = 20;
 
   const handleClick = (id, logo, height, width, top, left, nameBottom) => {
-    setupTeamLogo(logo);
-    setupTeamId(id);
-    setupDetailLogoHeight(height);
-    setupDetailLogoWidth(width);
-    setupDetailLogoTop(top);
-    setupDetailLogoLeft(left);
-    setupDetailNameBottom(nameBottom);
+    setStoredTeamLogo(logo);
+    setTeamId(id);
+    setDetailLogoHeight(height);
+    setDetailLogoWidth(width);
+    setDetailLogoTop(top);
+    setDetailLogoLeft(left);
+    setDetailNameBottom(nameBottom);
+
+    // local storage
+    localStorage.setItem("team-logo", logo);
+    localStorage.setItem("team-id", id);
+    localStorage.setItem("detail-logo-height", height);
+    localStorage.setItem("detail-logo-width", width);
+    localStorage.setItem("detail-logo-top", top);
+    localStorage.setItem("detail-logo-left", left);
+    localStorage.setItem("detail-name-bottom", nameBottom);
   }
 
   return (

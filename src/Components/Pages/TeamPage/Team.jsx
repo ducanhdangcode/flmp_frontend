@@ -23,12 +23,16 @@ import AOS from 'aos';
 import { FaArrowRight } from 'react-icons/fa';
 import { useThemeContext } from '../../../Context/ThemeContext';
 import Breadcrumb from '../../BreadCrumb/Breadcrumb';
+import { ListTeams } from '../../../APIService/TeamService';
+import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
 
 const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom}) => {
   const slideShowImages = [PremierLeagueBackground, LaligaBackground, BundesligaBackground, SerieABackground, Ligue1Background, LigaPortugalBackground];
   const [slideShowIndex, setSlideShowIndex] = useState(0);
   const slideShowLength = slideShowImages.length -1;
   const [hoverSeeMoreTeam, setHoverSeeMoreTeam] = useState(false);
+
+  const {setTeamList} = useTeamHeaderContext();
 
   // context for theme
   const {theme, lightColor, darkColor} = useThemeContext();
@@ -55,6 +59,13 @@ const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLog
       clearInterval(sliderRun);
     }
   }, [slideShowIndex]);
+  
+  useEffect(() => {
+    ListTeams().then((response) => {
+        setTeamList(response.data);
+        localStorage.setItem("team-list", response.data);
+    }).catch(err => console.error(err));
+  }, [])
 
   const toNextSlide = () => {
     setSlideShowIndex(slideShowIndex === slideShowLength ? 0 : slideShowIndex + 1);

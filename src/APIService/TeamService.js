@@ -8,3 +8,7 @@ export const ListTeams = () => baseApi.get("/teams");
 export const UpdateTeam = (teamId, updatedTeam) => {
     baseApi.put(`/teams/${teamId}`, updatedTeam);
 }
+
+export const updateFavoriteState = (teamId, favoriteState) => {
+    baseApi.put(`/teams/${teamId}/update-favorite-state`, favoriteState);
+}
