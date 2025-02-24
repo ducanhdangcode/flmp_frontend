@@ -22,6 +22,7 @@ import AOS from 'aos';
 
 import { FaArrowRight } from 'react-icons/fa';
 import { useThemeContext } from '../../../Context/ThemeContext';
+import Breadcrumb from '../../BreadCrumb/Breadcrumb';
 
 const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLogoWidth, setupDetailLogoTop, setupDetailLogoLeft, setupDetailNameBottom}) => {
   const slideShowImages = [PremierLeagueBackground, LaligaBackground, BundesligaBackground, SerieABackground, Ligue1Background, LigaPortugalBackground];
@@ -73,6 +74,10 @@ const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLog
         })}
         <FaArrowAltCircleLeft className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", color: "gray"}} onClick = {toPreviousSlide}/>
         <FaArrowAltCircleRight className = "absolute w-16 h-16 z-10 opacity-60 hover:cursor-pointer hover:opacity-90" style = {{top: "20rem", right: "1rem", color: "gray"}} onClick = {toNextSlide}/>
+      </div>
+
+      <div className = "relative left-[3rem] top-[3rem]">
+        <Breadcrumb />
       </div>
 
       {/* list team EPL */}
