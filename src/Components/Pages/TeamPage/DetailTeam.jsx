@@ -6,25 +6,26 @@ import ScrollToTop from '../../ScrollToTop/ScrollToTop';
 import CustomSpinner from '../../Spinners/CustomSpinner';
 import TeamHeader from './DetailTeamPage/DetailTeamHeader/TeamHeader';
 import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
+import { useParams } from 'react-router-dom';
 
-const DetailTeam = ({teamVideoTitles, teamKits, teamChairman, handleFavorite, recentId}) => {
+const DetailTeam = ({teamVideoTitles, teamKits, teamChairman, handleFavorite, recentId, customSpinner, setupCustomSpinner}) => {
 
     const [FormationCoordinate, setFormationCoordinate] = useState([]);
 
-    const [customSpinner, setCustomSpinner] = useState(false);
+    const {team_name} = useParams();
 
     const {teamList, teamId, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, checkSelectOverview, checkSelectFixtures, checkSelectResult, checkSelectNews, checkSelectSquad, setupSelectedBar, handleAddFavoriteTeam, handleRemoveFavoriteTeam, setTeamList} = useTeamHeaderContext();
 
     useEffect(() => {
         setupActiveTeam();
-    }, [teamList])
+    }, [teamList, team_name])
 
     useEffect(() => {
-            fetch("/FormationCoordinate.json")
-                .then(response => response.json())
-                .then(json => setFormationCoordinate(json))
-                .catch(err => console.error(err));
-        }, [])
+        fetch("/FormationCoordinate.json")
+            .then(response => response.json())
+            .then(json => setFormationCoordinate(json))
+            .catch(err => console.error(err));
+    }, [team_name])
 
   const setupActiveTeam = () => {
       ListTeams().then((response) => {
@@ -33,10 +34,6 @@ const DetailTeam = ({teamVideoTitles, teamKits, teamChairman, handleFavorite, re
           localStorage.setItem("team-list", response.data);
       }).catch(err => console.error(err));
   }
-
-    const setupCustomSpinner = (choice) => {
-        setCustomSpinner(choice);
-    }
   return (
     <div>
         <ScrollToTop />

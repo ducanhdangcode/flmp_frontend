@@ -14,9 +14,10 @@ import DetailTeam from './Components/Pages/TeamPage/DetailTeam';
 import { ThemeProvider} from './Context/ThemeContext';
 import { UserProvider } from './Context/UserContext';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
-import { SpinnerProvider, useSpinnerContext} from './Context/SpinnerContext';
+import { useSpinnerContext} from './Context/SpinnerContext';
 import Spinner from './Components/Spinners/Spinner';
 import { TeamHeaderProvider } from './Context/TeamHeaderContext';
+import PlayerProfile from './Components/Pages/PlayerProfilePage/PlayerProfile';
 
 function App() {
   // theme set up
@@ -44,6 +45,9 @@ function App() {
 
   // spinner context
   const {displaySpinner, setDisplaySpinner} = useSpinnerContext();
+
+  // custom spinner
+  const [customSpinner, setCustomSpinner] = useState(false);
 
   useEffect(() => {
     WebFont.load({
@@ -130,6 +134,10 @@ function App() {
     localStorage.setItem('detail-name-bottom', detailNameBottom);
   }
 
+  const setupCustomSpinner = (choice) => {
+    setCustomSpinner(choice);
+  }
+
   return (
     <div>
       {displaySpinner === false ? 
@@ -186,7 +194,17 @@ function App() {
                       element = {
                         <>
                           <ScrollToTop />
-                          <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom}/>
+                          <DetailTeam teamId = {teamId} teamLogo = {teamLogo} detailLogoHeight = {detailLogoHeight} detailLogoWidth = {detailLogoWidth} detailLogoTop = {detailLogoTop} detailLogoLeft = {detailLogoLeft} detailNameBottom = {detailNameBottom} customSpinner={customSpinner} setupCustomSpinner={setupCustomSpinner}/>
+                        </>
+                      }
+                    />
+
+                    <Route 
+                      path = "/team/:team_name/:player_name"
+                      element = {
+                        <>
+                          <ScrollToTop />
+                          <PlayerProfile />
                         </>
                       }
                     />

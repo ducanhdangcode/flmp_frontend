@@ -1,8 +1,14 @@
 import React from 'react'
 import ViewProfile from './ViewProfile'
+import { Link } from 'react-router-dom';
 
 const PlayerCard = ({teamId, teamList, player, statisticTitle1, statisticTitle2, statisticTitle3, statisticTitle4, statistic1, statistic2, statistic3, statistic4, name, shirtNumber, position, nationality, nationalityImageLink}) => {
   const leftViewProfile = [4.5,2.8,3.2,3];
+  const toSlug = (text) => {
+    if (text) {
+      return text.toLowerCase().replace(/\s+/g, '-'); 
+    }
+  };  
   return (
     <div className = "relative" style = {{width: "20rem", height: "25rem", backgroundColor: "white", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem ${teamList[teamId-1]?.color}`, top: "4rem", right: "9.6rem", marginRight: "2rem", marginBottom: "3rem"}}>
         <div className = "flex">
@@ -34,7 +40,9 @@ const PlayerCard = ({teamId, teamList, player, statisticTitle1, statisticTitle2,
                 <img src = {nationalityImageLink} alt = "" className = "absolute" style = {{width: "3rem", height: "2rem"}} />
                 <p className = "font-ubuntu text-lg absolute w-[5rem]" style = {{left: "3.5rem"}}>{nationality}</p>
                 <div className = "absolute" style = {{left: "10.3rem"}}>
-                    <ViewProfile />
+                    <Link to = {`/team/${toSlug(player?.team)}/${toSlug(player?.name)}`}>
+                      <ViewProfile />
+                    </Link>
                 </div>
             </div>
         </div>
