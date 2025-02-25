@@ -3,7 +3,7 @@ import { getUserByUsername, updatePersonalFormation } from '../../../../../../AP
 import { useUserContext } from '../../../../../../Context/UserContext';
 import {ToastContainer, toast} from 'react-toastify';
 
-const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, user, setupFilteredFormations}) => {
+const CreateFormation = ({formation, team, teamId, disableCreateFormation, applyViewPersonalFormation, formationIndex, handleChangeActivePersonalFormationIndex, user, setupFilteredFormations}) => {
     // initial personal main squad and substitutions
     const [personalMainSquad, setPersonalMainSquad] = useState([]);
     const [personalSubSquad, setPersonalSubSquad] = useState([]);
@@ -139,7 +139,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
             })
         } else {
             const PersonalFormationPayload = {
-                "teamName": teamList[teamId-1]?.name,
+                "teamName": team?.name,
                 "formationName": formation?.formationName,
                 "mainSquad": personalMainSquad, 
                 "substitutions": personalSubSquad,
@@ -166,7 +166,7 @@ const CreateFormation = ({formation, teamList, teamId, disableCreateFormation, a
     <div>
       <table className = "font-changa">
         <thead className = "text-white">
-            <tr className = "h-[2.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+            <tr className = "h-[2.5rem]" style = {{backgroundColor: team?.color}}>
                 <th className = "w-[18.5rem] pb-[0.2rem]">Shirt number</th>
                 <th className = "w-[18.5rem] pb-[0.2rem]">Name</th>
                 <th className = "w-[18rem] pb-[0.2rem]">Position</th>

@@ -9,7 +9,7 @@ import { deletePersonalSpecifiedFormation, getUserByUsername } from '../../../..
 import { useUserContext } from '../../../../../../Context/UserContext';
 import { toast, ToastContainer } from 'react-toastify';
 
-const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, disableViewPersonalFormation, formation, filteredFormations, handleEnableChangePersonalFormation, formationIndex, setupFilteredFormations, applyViewPersonalFormation}) => {
+const SpeficPersonalFormation = ({user, drawFormation, team, teamId, activePersonalFormationIndex, handleChangeActivePersonalFormationIndex, handleSetNextActiveIndex, handleSetPreviousActiveIndex, startPaginationIndex, disableViewPersonalFormation, formation, filteredFormations, handleEnableChangePersonalFormation, formationIndex, setupFilteredFormations, applyViewPersonalFormation}) => {
     const [displayDeleteNoti, setDisplayDeleteNoti] = useState(false);
 
     const {loginUsername} = useUserContext();
@@ -83,7 +83,7 @@ const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activeP
                                 return (
                                     <div className = "flex">
                                         {/* player number */}
-                                        <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+                                        <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: team?.color}}>
                                             <span className = "text-white font-bold ml-[0.4rem] relative top-[0.25rem]">{player?.number.toString().padStart(2, "0")}</span>
                                         </div>
 
@@ -104,7 +104,7 @@ const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activeP
                                 return (
                                     <div className = "flex">
                                         {/* player number */}
-                                        <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+                                        <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: team?.color}}>
                                             <span className = "text-white font-bold ml-[0.4rem] relative top-[0.25rem]">{player?.number.toString().padStart(2, "0")}</span>
                                         </div>
 
@@ -127,7 +127,7 @@ const SpeficPersonalFormation = ({user, drawFormation, teamList, teamId, activeP
                     {filteredFormations[activePersonalFormationIndex-1]?.substitutions.map((player, index) => {
                         return (
                             <div className = "flex mr-[2rem]">
-                                <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] hover:cursor-pointer" style = {{backgroundColor: teamList[teamId-1]?.color}} 
+                                <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] hover:cursor-pointer" style = {{backgroundColor: team?.color}} 
                                 >
                                     <span className = "text-white font-bold ml-[0.4rem] relative top-[0.25rem]">{player?.number.toString().padStart(2, "0")}</span>
                                 </div>

@@ -1,35 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import WebFont from 'webfontloader'
 
-import EtihadStadium from '/FLMP/flmp_frontend/src/Image/Stadium/etihadStadium.jpg';
-import OldTraffordStadium from '/FLMP/flmp_frontend/src/Image/Stadium/OldTrafford.jpg';
-import LiverpoolStadium from '/FLMP/flmp_frontend/src/Image/Stadium/AnfieldStadium.jpg';
-import ArsenalStadium from '/FLMP/flmp_frontend/src/Image/Stadium/ArsenalStadium.png';
-import ChelseaStadium from '/FLMP/flmp_frontend/src/Image/Stadium/ChelseaStadium.jpg';
-import TottenhamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/tottenhamStadium.png';
-import NewcastleStadium from '/FLMP/flmp_frontend/src/Image/Stadium/newcastleStadium.png';
-import AstonVillaStadium from '/FLMP/flmp_frontend/src/Image/Stadium/astonVillaStadium.jpg';
-import BrightonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/brightonStadium.jpg';
-import BrentfordStadium from '/FLMP/flmp_frontend/src/Image/Stadium/brentfordStadium.png';
-import CrystalPalaceStadium from '/FLMP/flmp_frontend/src/Image/Stadium/crystalPalaceStadium.jpg';
-import EvertonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/evertonStadium.png';
-import FulhamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/fulhamStadium.jpg';
-import LeicesterCityStadium from '/FLMP/flmp_frontend/src/Image/Stadium/leicesterStadium.jpg';
-import IpswichTownStadium from '/FLMP/flmp_frontend/src/Image/Stadium/ipswichTownStadium.jpg';
-import SouthamptonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/southamptonStadium.jpg';
-import WesthamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/westhamStadium.jpg';
-import WolverhamptonStadium from '/FLMP/flmp_frontend/src/Image/Stadium/wolverhamptonStadium.jpg';
-import BournemouthStadium from '/FLMP/flmp_frontend/src/Image/Stadium/bournemouthStadium.jpg';
-import NottinghamStadium from '/FLMP/flmp_frontend/src/Image/Stadium/nottinghamStadium.jpg';
-
-// la liga stadium
-import RealMadridStadium from '../../../../../Image/Stadium/LaLiga/RealMadridStadium.jpg';
-
 import { RiArmchairFill } from 'react-icons/ri';
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { RiMoneyEuroCircleFill } from 'react-icons/ri';
-import AOS from 'aos';
 import { getStadiumById } from '../../../../../APIService/StadiumService';
 
 const Stadium = ({teamId}) => {
@@ -47,10 +22,6 @@ const Stadium = ({teamId}) => {
             setStadium(response.data);
         }).catch(err => console.error(err));
     }, []);
-
-    const EPLStadiums = [EtihadStadium, OldTraffordStadium, LiverpoolStadium, ArsenalStadium, ChelseaStadium, TottenhamStadium, NewcastleStadium, AstonVillaStadium, BrightonStadium, BrentfordStadium, CrystalPalaceStadium, EvertonStadium, FulhamStadium, LeicesterCityStadium, IpswichTownStadium, SouthamptonStadium, WesthamStadium, WolverhamptonStadium, BournemouthStadium, NottinghamStadium];
-
-    const LaLigaStadiums = [RealMadridStadium];
   return (
     <div className = "absolute top-[47.9rem]">
       <div className = "bg-[#000B58] w-[70.2rem] h-[3rem]">

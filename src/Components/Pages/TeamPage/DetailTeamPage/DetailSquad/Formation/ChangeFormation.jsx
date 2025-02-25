@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getFormationByTeamName, updateFormationSquad } from '../../../../../../APIService/FormationService';
 
-const ChangeFormation = ({formation, teamList, teamId, disableChangeFormation, handleChangeFormationDisplay}) => {
+const ChangeFormation = ({formation, team, teamId, disableChangeFormation, handleChangeFormationDisplay}) => {
     const [formationSquad, setFormationSquad] = useState([]);
     const [formationSubstitutions, setFormationSubstitutions] = useState([]);
     const [tableKey, setTableKey] = useState(0);
@@ -86,7 +86,7 @@ const ChangeFormation = ({formation, teamList, teamId, disableChangeFormation, h
         }
         updateFormationSquad(formation?.id, payload);
 
-        getFormationByTeamName(teamList[teamId-1]?.name).then((response) => {
+        getFormationByTeamName(team?.name).then((response) => {
             handleChangeFormationDisplay(response.data);
         })
         disableChangeFormation();
@@ -96,7 +96,7 @@ const ChangeFormation = ({formation, teamList, teamId, disableChangeFormation, h
       <table className = "font-changa" key = {tableKey}>
 
         <thead className = "text-white">
-            <tr className = "h-[2.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+            <tr className = "h-[2.5rem]" style = {{backgroundColor: team?.color}}>
                 <th className = "w-[18.5rem] pb-[0.2rem]">Shirt number</th>
                 <th className = "w-[18.5rem] pb-[0.2rem]">Name</th>
                 <th className = "w-[18rem] pb-[0.2rem]">Position</th>

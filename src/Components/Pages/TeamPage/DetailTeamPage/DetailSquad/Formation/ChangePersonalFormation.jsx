@@ -3,7 +3,7 @@ import { getUserByUsername, updatePersonalSpecifiedFormation } from '../../../..
 import { useUserContext } from '../../../../../../Context/UserContext';
 import { toast, ToastContainer } from 'react-toastify';
 
-const ChangePersonalFormation = ({teamList, teamId, filteredFormations, activePersonalFormationIndex, user, formationIndex, disableChangePersonalFormation, applyViewPersonalFormation, setupFilteredFormations, formation}) => {
+const ChangePersonalFormation = ({team, teamId, filteredFormations, activePersonalFormationIndex, user, formationIndex, disableChangePersonalFormation, applyViewPersonalFormation, setupFilteredFormations, formation}) => {
     const [personalMainSquad, setPersonalMainSquad] = useState([]);
     const [personalSubSquad, setPersonalSubSquad] = useState([]);
     const [tableKey, setTableKey] = useState(0);
@@ -102,7 +102,7 @@ const ChangePersonalFormation = ({teamList, teamId, filteredFormations, activePe
     <div>
         <table className = "font-changa" key = {tableKey}>
             <thead className = "text-white">
-                <tr className = "h-[2.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+                <tr className = "h-[2.5rem]" style = {{backgroundColor: team?.color}}>
                     <th className = "w-[18.5rem] pb-[0.2rem]">Shirt number</th>
                     <th className = "w-[18.5rem] pb-[0.2rem]">Name</th>
                     <th className = "w-[18rem] pb-[0.2rem]">Position</th>

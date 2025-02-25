@@ -9,7 +9,7 @@ import { getUserByUsername } from '../../../../../../APIService/UserService.';
 import ChangePersonalFormation from './ChangePersonalFormation';
 import { ToastContainer, toast } from 'react-toastify';
 
-const Formation = ({teamList, teamId, FormationCoordinate}) => {
+const Formation = ({team, teamId, FormationCoordinate}) => {
 
     const [formations, setFormations] = useState([]);
 
@@ -33,7 +33,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
     const [filteredFormations, setFilteredFormations] = useState([]);
 
     useEffect(() => {
-        getFormationByTeamName(teamList[teamId-1]?.name).then((response => {
+        getFormationByTeamName(team?.name).then((response => {
             setFormations(response.data);
         })).catch(err => console.error(err));
 
@@ -117,7 +117,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
     const drawFormation = (typeFormationIndex, player, playerIndex) => {
         return (
             <div className = "">
-                <div className = {`w-[2rem] h-[2rem] rounded-[50%] border-solid border-white border-[2px]  hover:cursor-pointer`} style = {{backgroundColor: teamList[teamId-1]?.color, position: "absolute", top: `${FormationCoordinate[typeFormationIndex].coordinate[playerIndex].y}rem`, left: `${FormationCoordinate[typeFormationIndex].coordinate[playerIndex].x}rem`}}
+                <div className = {`w-[2rem] h-[2rem] rounded-[50%] border-solid border-white border-[2px]  hover:cursor-pointer`} style = {{backgroundColor: team?.color, position: "absolute", top: `${FormationCoordinate[typeFormationIndex].coordinate[playerIndex].y}rem`, left: `${FormationCoordinate[typeFormationIndex].coordinate[playerIndex].x}rem`}}
                 >
                     <span className = "text-white font-bold relative top-[0.1rem] left-[0.3rem]">{player?.number.toString().padStart(2, "0")}</span>
                 </div>
@@ -149,7 +149,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                 <div>
                                     <ChangeFormation 
                                         formation = {formation}
-                                        teamList = {teamList}
+                                        team = {team}
                                         teamId = {teamId}
                                         disableChangeFormation = {disableChangeFormation}
                                         handleChangeFormationDisplay = {handleChangeFormationDisplay}
@@ -162,7 +162,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                 <div>
                                     <CreateFormation 
                                         formation = {formation}
-                                        teamList = {teamList}
+                                        team = {team}
                                         teamId = {teamId}
                                         disableCreateFormation = {disableCreateFormation}
                                         applyViewPersonalFormation = {applyViewPersonalFormation}
@@ -180,7 +180,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                 <div>
                                     <PersonalFormation 
                                         drawFormation = {drawFormation}
-                                        teamList = {teamList}
+                                        team = {team}
                                         teamId = {teamId}
                                         activePersonalFormationIndex = {activePersonalFormationIndex}
                                         handleChangeActivePersonalFormationIndex = {handleChangeActivePersonalFormationIndex}
@@ -203,7 +203,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                             {/* change personal formation */}
                             {changePersonalFormation === formationIndex && 
                                 <ChangePersonalFormation 
-                                    teamList = {teamList}
+                                    team = {team}
                                     teamId = {teamId}
                                     filteredFormations = {filteredFormations}
                                     activePersonalFormationIndex = {activePersonalFormationIndex}
@@ -252,7 +252,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                                     return (
                                                         <div className = "flex">
                                                             {/* note for player */}
-                                                            <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+                                                            <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: team?.color}}>
                                                                 <span className = "text-white font-bold ml-[0.4rem] relative top-[0.25rem]">{player?.number.toString().padStart(2, "0")}</span>
                                                             </div>
 
@@ -273,7 +273,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                                     return (
                                                         <div className = "flex">
                                                             {/* note for player */}
-                                                            <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: teamList[teamId-1]?.color}}>
+                                                            <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] mt-[1.5rem] right-[1.5rem]" style = {{backgroundColor: team?.color}}>
                                                                 <span className = "text-white font-bold ml-[0.4rem] relative top-[0.25rem]">{player?.number.toString().padStart(2, "0")}</span>
                                                             </div>
 
@@ -316,7 +316,7 @@ const Formation = ({teamList, teamId, FormationCoordinate}) => {
                                     {formation?.substitutions.map((player, index) => {
                                         return (
                                             <div className = "flex mr-[2rem]">
-                                                <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] hover:cursor-pointer" style = {{backgroundColor: teamList[teamId-1]?.color}} 
+                                                <div className = "w-[2.2rem] h-[2.2rem] rounded-[50%] relative border-solid border-white border-[2px] hover:cursor-pointer" style = {{backgroundColor: team?.color}} 
                                                 >
                                                     <span className = "text-white font-bold ml-[0.4rem] relative top-[0.25rem]">{player?.number.toString().padStart(2, "0")}</span>
                                                 </div>

@@ -1,17 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../BreadCrumb/Breadcrumb'
-import { useParams } from 'react-router-dom'
-import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
+import { usePlayerContext } from '../../../Context/PlayerContext';
+import { getPlayerByName } from '../../../APIService/PlayerService';
 
 const PlayerProfile = () => {
-  const playerName = useParams();
-  const {teamList, teamId} = useTeamHeaderContext();
+  const {playerName} = usePlayerContext();
+  const [player, setPlayer] = useState(null);
+
+  useEffect(() => {
+    getPlayerByName(playerName).then((response) => {
+      setPlayer(response.data);
+    }).catch(err => console.error(err));
+  }, []);
   return (
     <div className = "mt-[6rem]">
+      {/* breadcrumb */}
       <div className = "relative left-[2rem] top-[1rem]">
         <Breadcrumb 
           pageName={"Player Profile"}
         />
+      </div>
+
+      {/* header */}
+      <div className = "mt-[2rem] relative left-[2rem] bg-gray-300 w-[50%] h-[18rem] rounded-[5px] flex">
+        {/* image */}
+        <img src = {player?.imageLink} alt = "" className = "w-[25%] h-[15rem] relative left-[1rem] top-[1.5rem]"/>
+
+        {/* shirt number */}
+        <p className = "absolute right-[0.5rem] top-0 font-alfa text-5xl">{`${player?.shirtNumber.toString().padStart(2, "0")}`}</p>
+
+        {/* other information */}
+        <div className = "relative left-[2.5rem] top-[1.2rem]">
+          {/* name */}
+          <p className = "font-alfa font-bold text-2xl">{player?.name}</p>
+          <div className = "flex relative top-[0.5rem]">
+            {/* first col */}
+            <div className = "font-ubuntu">
+              {/* date of birth */}
+              <p>Date of birth: <span className = "font-bold">{player?.birthDate}</span></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,13 +1,13 @@
 import React from 'react'
 import ViewProfile from './ViewProfile'
 
-const DetailSquadCoach = ({teamId, teamList, coachList}) => {
+const DetailSquadCoach = ({teamId, team, coachList}) => {
   return (
     <div className = "relative">
         <div className = "bg-[#112f54] h-[3rem]">
             <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] top-[0.1rem] text-white">Head Coach</p>
         </div>
-        <div className = "relative left-[2rem] top-[2rem]" style = {{width: "23rem", height: "25rem", backgroundColor: "white", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem ${teamList[teamId-1]?.color}`}}>
+        <div className = "relative left-[2rem] top-[2rem]" style = {{width: "23rem", height: "25rem", backgroundColor: "white", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem ${team?.color}`}}>
             <div className = "flex">
                 <div className = "relative" style = {{width: "8rem", height: "16rem", backgroundColor: "#c4bcc3", borderTopLeftRadius: "11px"}}>
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "0.5rem"}}>Total Matches</p>
@@ -17,7 +17,7 @@ const DetailSquadCoach = ({teamId, teamList, coachList}) => {
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "1.5rem"}}>Point per match</p>
                     <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "1.5rem"}}>{coachList[teamId-1]?.pointPerMatch}</p>
                 </div>
-                <div className = "relative" style = {{width: "15rem", height: "16rem", backgroundColor:`${teamList[teamId-1]?.color}`, borderTopRightRadius: "11px"}}>
+                <div className = "relative" style = {{width: "15rem", height: "16rem", backgroundColor:`${team?.color}`, borderTopRightRadius: "11px"}}>
                     <img src = {coachList[teamId-1]?.imageLink} alt = "" className = "" style = {{width: "15rem", height: "16rem", borderTopRightRadius: "11px"}} />
                 </div>
             </div>

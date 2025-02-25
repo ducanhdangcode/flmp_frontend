@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import WebFont from 'webfontloader';
 
 
-const Trophies = ({teamId, teamList}) => {
+const Trophies = ({teamId, team}) => {
     const PremierLeagueTeamTrophies = [
         "UEFA Champions League", 
         "Premier League", 
@@ -50,7 +50,7 @@ const Trophies = ({teamId, teamList}) => {
                         if (index < 6) {
                             return <div className = {index % 2 === 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid white", borderRight: "1px solid white"}}>
                                 <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
-                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
+                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{team?.trophies[index]}</p>
                             </div>
                         }
                     })}
@@ -61,7 +61,7 @@ const Trophies = ({teamId, teamList}) => {
                         if (index >= 6) {
                             return <div className = {index % 2 !== 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid white"}}>
                                 <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
-                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
+                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{team?.trophies[index]}</p>
                             </div>
                         }
                     })}
@@ -76,7 +76,7 @@ const Trophies = ({teamId, teamList}) => {
                         if (index < 6) {
                             return <div className = {index % 2 === 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid black", borderRight: "1px solid black"}}>
                                 <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
-                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
+                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{team?.trophies[index]}</p>
                             </div>
                         }
                     })}
@@ -87,7 +87,7 @@ const Trophies = ({teamId, teamList}) => {
                         if (index >= 6) {
                             return <div className = {index % 2 !== 0 ? "bg-[white] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]" : "bg-[#d6d6d4] flex h-[3.65rem] bottom-[0.5rem] left-[0.5rem]"} style = {{borderBottom: "1px solid black"}}>
                                 <p className = "font-space-grotesk text-2xl relative left-[0.5rem] top-[0.7rem] font-bold">{trophy}</p>
-                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{teamList[teamId-1]?.trophies[index]}</p>
+                                <p className = "font-space-grotesk text-3xl absolute left-[30rem] mt-[0.3rem] font-bold">{team?.trophies[index]}</p>
                             </div>
                         }
                     })}

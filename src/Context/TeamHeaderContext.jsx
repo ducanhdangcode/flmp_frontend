@@ -6,7 +6,6 @@ import { updateFavoriteState } from "../APIService/TeamService";
 const TeamHeaderContext = createContext();
 
 export const TeamHeaderProvider = ({children}) => {
-    const [teamList, setTeamList] = useState(localStorage.getItem("team-list"));
     const [teamId, setTeamId] = useState(localStorage.getItem("team-id"));
     const [storedTeamLogo, setStoredTeamLogo] = useState(localStorage.getItem("team-logo"));
     const [detailLogoWidth, setDetailLogoWidth] = useState(localStorage.getItem("detail-logo-width"));
@@ -23,7 +22,6 @@ export const TeamHeaderProvider = ({children}) => {
     const {loginUsername} = useUserContext();
 
     useEffect(() => {
-        localStorage.setItem("team-list", teamList);
         localStorage.setItem("team-id", teamId);
         localStorage.setItem("team-logo", storedTeamLogo);
         localStorage.setItem("detail-logo-width", detailLogoWidth);
@@ -31,7 +29,7 @@ export const TeamHeaderProvider = ({children}) => {
         localStorage.setItem("detail-logo-top", detailLogoTop);
         localStorage.setItem("detail-logo-left", detailLogoLeft);
         localStorage.setItem("detail-name-bottom", detailNameBottom);
-    }, [teamList, teamId, storedTeamLogo, detailLogoWidth, detailLogoHeight, detailLogoTop, detailLogoLeft, detailNameBottom]);
+    }, [teamId, storedTeamLogo, detailLogoWidth, detailLogoHeight, detailLogoTop, detailLogoLeft, detailNameBottom]);
 
     const setupSelectedBar = (overviewChoice, fixturesChoice, resultChoice, newsChoice, squadChoice) => {
         setCheckSelectOverview(overviewChoice);
@@ -58,8 +56,6 @@ export const TeamHeaderProvider = ({children}) => {
     return (
         <TeamHeaderContext.Provider
             value = {{
-                teamList,
-                setTeamList, 
                 teamId, 
                 setTeamId, 
                 storedTeamLogo, 
