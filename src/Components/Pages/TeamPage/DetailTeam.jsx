@@ -16,9 +16,13 @@ const DetailTeam = ({teamVideoTitles, teamKits, teamChairman, handleFavorite, re
 
     const location = useLocation();
 
-    const {teamId, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, checkSelectOverview, checkSelectFixtures, checkSelectResult, checkSelectNews, checkSelectSquad, setupSelectedBar, handleAddFavoriteTeam, handleRemoveFavoriteTeam} = useTeamHeaderContext();
+    const {teamId, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, checkSelectOverview, checkSelectFixtures, checkSelectResult, checkSelectNews, checkSelectSquad, setupSelectedBar, handleAddFavoriteTeam, handleRemoveFavoriteTeam, setypSelectedBar} = useTeamHeaderContext();
 
     const [team, setTeam] = useState(null);
+
+    useEffect(() => {
+        setupSelectedBar("true", "", "", "", "");
+    }, []);
 
     useEffect(() => {
         getTeamById(teamId).then((response) => {
@@ -31,7 +35,7 @@ const DetailTeam = ({teamVideoTitles, teamKits, teamChairman, handleFavorite, re
             .then(response => response.json())
             .then(json => setFormationCoordinate(json))
             .catch(err => console.error(err));
-    }, [location, FormationCoordinate])
+    }, [])
   return (
     <div>
         <ScrollToTop />

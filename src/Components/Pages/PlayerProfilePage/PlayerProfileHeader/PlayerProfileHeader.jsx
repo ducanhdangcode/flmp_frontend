@@ -36,7 +36,7 @@ const PlayerProfileHeader = ({player, storedTeamLogo, detailLogoHeight, detailLo
               </div>
 
               {/* second col */}
-              <div className = "font-ubuntu relative top-[1.5rem] left-[5rem]">
+              <div className = "font-ubuntu relative top-[1.5rem] left-[4rem]">
                 {/* position */}
                 <p>Position: <b>{player?.detailPosition}</b></p>
                 {/* other position */}
