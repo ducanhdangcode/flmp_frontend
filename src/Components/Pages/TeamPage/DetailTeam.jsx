@@ -16,7 +16,7 @@ const DetailTeam = ({teamVideoTitles, teamKits, teamChairman, handleFavorite, re
 
     const location = useLocation();
 
-    const {teamId, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, checkSelectOverview, checkSelectFixtures, checkSelectResult, checkSelectNews, checkSelectSquad, setupSelectedBar, handleAddFavoriteTeam, handleRemoveFavoriteTeam, setypSelectedBar} = useTeamHeaderContext();
+    const {teamId, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoTop, detailLogoLeft, detailNameBottom, checkSelectOverview, checkSelectFixtures, checkSelectResult, checkSelectNews, checkSelectSquad, setupSelectedBar, handleAddFavoriteTeam, handleRemoveFavoriteTeam} = useTeamHeaderContext();
 
     const [team, setTeam] = useState(null);
 
