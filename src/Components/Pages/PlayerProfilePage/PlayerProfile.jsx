@@ -20,6 +20,8 @@ const PlayerProfile = () => {
   const [selectedSeason, setSelectedSeason] = useState("24-25");
   const [seasonStat, setSeasonStat] = useState([]);
 
+  const [dataError, setDataError] = useState("");
+
   useEffect(() => {
     getPlayerByName(playerName).then((response) => {
       setPlayer(response.data);
@@ -40,10 +42,20 @@ const PlayerProfile = () => {
         setSeasonStat(response.data);
         console.log("stat season: ", response.data);
     }).catch(err => console.error(err));
-  }, [selectedSeason])
+  }, [])
 
   const setupSelectedSeason = (season) => {
     setSelectedSeason(season);
+  }
+
+  const changeStatBySeason = () => {
+      setDataError("");
+      getStatBySeason(playerName, selectedSeason).then((response) => {
+          setSeasonStat(response.data);
+          console.log("stat season: ", response.data);
+      }).catch(err => {
+        setDataError("No data found!")
+      });
   }
   return (
     <div className = "mt-[6rem]">
@@ -92,6 +104,8 @@ const PlayerProfile = () => {
           player = {player}
           setupSelectedSeason = {setupSelectedSeason}
           seasonStat = {seasonStat}
+          changeStatBySeason = {changeStatBySeason}
+          dataError = {dataError}
         />
       </div>
     </div>

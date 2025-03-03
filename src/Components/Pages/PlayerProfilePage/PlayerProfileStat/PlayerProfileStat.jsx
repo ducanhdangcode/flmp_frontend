@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GoalkeeperTableStat from './GoalkeeperTableStat'
 import OtherPlayerTableStat from './OtherPlayerTableStat'
+import WebFont from 'webfontloader'
 
-const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat}) => {
-    
+const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatBySeason, dataError}) => {
+    useEffect(() => {
+        WebFont.load({
+            google: {
+                families: ["Ubuntu", "Changa", "Roboto Condensed", "Alfa Slab One", "Space Grotesk"]
+            }
+        })
+    }, [])
   return (
     <div>
         {/* filter option */}
@@ -14,20 +21,27 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat}) => {
                 <option value = "23-24">23/24</option>
                 <option value = "22-23">22/23</option>
             </select>
-            <button className = "w-[5rem] h-[1.5rem] bg-[#09048a] text-white font-ubuntu relative top-[0.75rem] left-[32%]">Show</button>
+            <button className = "w-[5rem] h-[1.5rem] bg-[#09048a] text-white font-ubuntu relative top-[0.75rem] left-[32%]" onClick = {changeStatBySeason}>Show</button>
         </div>
 
         {/* stats table */}
-        {player?.position === "Goalkeeper" ? 
-            <div className = "mt-[1rem]">
-                <GoalkeeperTableStat /> 
+        {dataError === "" ? 
+            <div>
+                {player?.position === "Goalkeeper" ? 
+                    <div className = "mt-[1rem]">
+                        <GoalkeeperTableStat 
+                            seasonStat = {seasonStat}
+                        /> 
+                    </div> : 
+                    <div className = "mt-[1rem]">
+                        <OtherPlayerTableStat 
+                            player = {player}
+                            seasonStat = {seasonStat}
+                        />
+                    </div>
+                }
             </div> : 
-            <div className = "mt-[1rem]">
-                <OtherPlayerTableStat 
-                    player = {player}
-                    seasonStat = {seasonStat}
-                />
-            </div>
+            <div className = "font-space-grotesk text-red-500 relative left-[40%] top-[1rem] text-xl font-bold">{dataError}</div>
         }
     </div>
   )
