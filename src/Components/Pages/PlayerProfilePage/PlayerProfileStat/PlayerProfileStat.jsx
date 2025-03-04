@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import GoalkeeperTableStat from './GoalkeeperTableStat'
 import OtherPlayerTableStat from './OtherPlayerTableStat'
 import WebFont from 'webfontloader'
+import GoalkeeperStatTableByTeam from './PlayerStatByTeam/GoalkeeperStatTableByTeam'
+import OtherPlayerStatTableByTeam from './PlayerStatByTeam/OtherPlayerStatTableByTeam'
 
-const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatBySeason, dataError}) => {
+const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatBySeason, dataError, allStatsGroupByTeam}) => {
     useEffect(() => {
         WebFont.load({
             google: {
@@ -24,7 +26,7 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatB
             <button className = "w-[5rem] h-[1.5rem] bg-[#09048a] text-white font-ubuntu relative top-[0.75rem] left-[32%]" onClick = {changeStatBySeason}>Show</button>
         </div>
 
-        {/* stats table */}
+        {/* stats table filtered by season */}
         {dataError === "" ? 
             <div>
                 {player?.position === "Goalkeeper" ? 
@@ -43,6 +45,20 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatB
             </div> : 
             <div className = "font-space-grotesk text-red-500 relative left-[40%] top-[1rem] text-xl font-bold">{dataError}</div>
         }
+
+        {/* stats table filtered by team */}
+        <div>
+            {player?.position === "Goalkeeper" ?
+                <div>
+                    <GoalkeeperStatTableByTeam />
+                </div> : 
+                <div>
+                    <OtherPlayerStatTableByTeam 
+                        allStatsGroupByTeam = {allStatsGroupByTeam}
+                    />
+                </div>
+            }
+        </div>
     </div>
   )
 }

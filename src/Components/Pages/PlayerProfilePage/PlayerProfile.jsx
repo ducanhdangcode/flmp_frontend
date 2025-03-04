@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../BreadCrumb/Breadcrumb'
 import { usePlayerContext } from '../../../Context/PlayerContext';
-import { getPlayerByName, getPlayerContractByTeamName, getStatBySeason } from '../../../APIService/PlayerService';
+import { getAllPlayerStats, getPlayerByName, getPlayerContractByTeamName, getStatBySeason } from '../../../APIService/PlayerService';
 import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
 import { getTeamById } from '../../../APIService/TeamService';
 import PlayerProfileHeader from './PlayerProfileHeader/PlayerProfileHeader';
@@ -22,6 +22,10 @@ const PlayerProfile = () => {
 
   const [dataError, setDataError] = useState("");
 
+  const [allStats, setAllStats] = useState([]);
+
+  const [allStatsGroupByTeam, setAllStatsGroupByTeam] = useState([]);
+
   useEffect(() => {
     getPlayerByName(playerName).then((response) => {
       setPlayer(response.data);
@@ -40,7 +44,14 @@ const PlayerProfile = () => {
   useEffect(() => {
     getStatBySeason(playerName, selectedSeason).then((response) => {
         setSeasonStat(response.data);
-        console.log("stat season: ", response.data);
+    }).catch(err => console.error(err));
+  }, [])
+
+  useEffect(() => {
+    getAllPlayerStats(playerName).then((response) => {
+        setAllStats(response.data);
+        setAllStatsGroupByTeam(groupByTeam(response.data));
+        console.log(response.data);
     }).catch(err => console.error(err));
   }, [])
 
@@ -57,6 +68,33 @@ const PlayerProfile = () => {
         setDataError("No data found!")
       });
   }
+
+  const groupByTeam = (stats) => {
+      const teamStats = {};
+
+      stats.forEach(stat => {
+          if (!teamStats[stat.teamName]) {
+              teamStats[stat.teamName] = {
+                  teamName: stat.teamName,
+                  appearances: 0,
+                  goals: 0,
+                  assists: 0,
+                  yellowCards: 0,
+                  redCards: 0,
+                  minutePlayed: 0,
+              };
+          }
+
+          teamStats[stat.teamName].appearances += stat.appearances;
+          teamStats[stat.teamName].goals += stat.goals;
+          teamStats[stat.teamName].assists += stat.assists;
+          teamStats[stat.teamName].yellowCards += stat.yellowCards;
+          teamStats[stat.teamName].redCards += stat.redCards;
+          teamStats[stat.teamName].minutePlayed += stat.minutePlayed;
+      });
+
+      return Object.values(teamStats);
+  };
   return (
     <div className = "mt-[6rem]">
       {/* breadcrumb */}
@@ -106,6 +144,7 @@ const PlayerProfile = () => {
           seasonStat = {seasonStat}
           changeStatBySeason = {changeStatBySeason}
           dataError = {dataError}
+          allStatsGroupByTeam = {allStatsGroupByTeam}
         />
       </div>
     </div>
