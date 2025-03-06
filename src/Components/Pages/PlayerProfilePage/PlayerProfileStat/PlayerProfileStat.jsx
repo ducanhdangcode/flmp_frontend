@@ -4,6 +4,7 @@ import OtherPlayerTableStat from './OtherPlayerTableStat'
 import WebFont from 'webfontloader'
 import GoalkeeperStatTableByTeam from './PlayerStatByTeam/GoalkeeperStatTableByTeam'
 import OtherPlayerStatTableByTeam from './PlayerStatByTeam/OtherPlayerStatTableByTeam'
+import PlayerRating from './PlayerRating/PlayerRating'
 
 const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatBySeason, dataError, allStatsGroupByTeam}) => {
     useEffect(() => {
@@ -60,6 +61,13 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatB
                     />
                 </div>
             }
+        </div>
+
+        {/* player rating */}
+        <div className = "mt-[1rem]">
+            <PlayerRating 
+                player = {player}
+            />
         </div>
     </div>
   )
