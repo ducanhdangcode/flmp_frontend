@@ -82,6 +82,8 @@ const PlayerProfile = () => {
                   yellowCards: 0,
                   redCards: 0,
                   minutePlayed: 0,
+                  saves: 0,
+                  cleanSheets: 0
               };
           }
 
@@ -91,6 +93,8 @@ const PlayerProfile = () => {
           teamStats[stat.teamName].yellowCards += stat.yellowCards;
           teamStats[stat.teamName].redCards += stat.redCards;
           teamStats[stat.teamName].minutePlayed += stat.minutePlayed;
+          teamStats[stat.teamName].saves += stat.saves;
+          teamStats[stat.teamName].cleanSheets += stat.cleanSheets;
       });
 
       return Object.values(teamStats);

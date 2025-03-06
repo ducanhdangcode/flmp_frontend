@@ -50,7 +50,9 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatB
         <div>
             {player?.position === "Goalkeeper" ?
                 <div>
-                    <GoalkeeperStatTableByTeam />
+                    <GoalkeeperStatTableByTeam 
+                        allStatsGroupByTeam = {allStatsGroupByTeam}
+                    />
                 </div> : 
                 <div>
                     <OtherPlayerStatTableByTeam 
