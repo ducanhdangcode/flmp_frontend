@@ -5,6 +5,7 @@ import WebFont from 'webfontloader'
 import GoalkeeperStatTableByTeam from './PlayerStatByTeam/GoalkeeperStatTableByTeam'
 import OtherPlayerStatTableByTeam from './PlayerStatByTeam/OtherPlayerStatTableByTeam'
 import PlayerRating from './PlayerRating/PlayerRating'
+import PlayerPriorityPosition from './PlayerPriorityPosition/PlayerPriorityPosition'
 
 const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatBySeason, dataError, allStatsGroupByTeam}) => {
     useEffect(() => {
@@ -63,11 +64,20 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatB
             }
         </div>
 
-        {/* player rating */}
-        <div className = "mt-[1rem]">
-            <PlayerRating 
-                player = {player}
-            />
+        <div className = "flex">
+            {/* player rating */}
+            <div className = "mt-[1rem] w-[45%]">
+                <PlayerRating 
+                    player = {player}
+                />
+            </div>
+            
+            {/* player priority position */}
+            <div className = "mt-[1rem] w-[45%] relative left-[3.2%]">
+                <PlayerPriorityPosition 
+                    player = {player}
+                />
+            </div>
         </div>
     </div>
   )
