@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useEffect, useState } from 'react';
 import Footer from './Components/Footer/Footer';
 import HomeContent from './Components/Pages/HomePage/HomeContent/HomeContent';
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes, useLocation} from 'react-router-dom';
 import LoginPage from './Components/Pages/LoginPage/LoginPage';
 import Register from './Components/Pages/RegisterPage/Register';
 import WebFont from 'webfontloader';
@@ -19,6 +19,8 @@ import Spinner from './Components/Spinners/Spinner';
 import { TeamHeaderProvider } from './Context/TeamHeaderContext';
 import PlayerProfile from './Components/Pages/PlayerProfilePage/PlayerProfile';
 import { PlayerProvider } from './Context/PlayerContext';
+import AdminPage from './Components/Pages/AdminPage/AdminPage';
+import AdminUserDashboard from './Components/Pages/AdminPage/AdminUserDashboard/AdminUserDashboard';
 
 function App() {
   // theme set up
@@ -49,6 +51,9 @@ function App() {
 
   // custom spinner
   const [customSpinner, setCustomSpinner] = useState(false);
+
+  // location
+  const location = useLocation();
 
   useEffect(() => {
     WebFont.load({
@@ -146,11 +151,34 @@ function App() {
           <UserProvider>
             <TeamHeaderProvider>
               <PlayerProvider>
+                <Routes>
+                  <Route
+                    path = "/admin"
+                    element = {
+                      <>
+                        <ScrollToTop />
+                        <AdminPage />
+                      </>
+                    }
+                  />
+
+                  <Route 
+                    path = "/admin/user"
+                    element = {
+                      <>
+                        <ScrollToTop />
+                        <AdminUserDashboard />
+                      </>
+                    }
+                  />
+                </Routes>
                 <div className = "relative w-screen top-0 overflow-x-clip block overflow-y-hidden">
                   <Helmet>
                     <style>{`body {background-color: ${colorTheme};}`}</style>
                   </Helmet>
-                  <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown}/>
+                  {!location.pathname.match("/admin") && 
+                    <Navbar loginState = {loginState} displayUserDropdown = {displayUserDropdown} handleChangeUserDropdown = {handleChangeUserDropdown} disableLoginState = {disableLoginState} disableDropdown={disableDropdown}/>
+                  }
                   <div className = "">
                     <Routes>
                       <Route 
@@ -212,7 +240,7 @@ function App() {
                       />
                     </Routes>
                   </div>
-                  <div className = "mt-[4rem]">
+                  <div className = "">
                     <Footer />
                   </div>
                 </div>
