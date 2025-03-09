@@ -1,0 +1,9 @@
+#service-input::placeholder {
+    position: absolute;
+    top: 0;
+}
+
+#service-input {
+    text-align: left;
+    vertical-align: top;
+}

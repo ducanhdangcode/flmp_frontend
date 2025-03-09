@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminNavbar from '../AdminNavbar/AdminNavbar'
-import AdminUserSidebar from './AdminUserSidebar'
+import AdminGetUserByUsername from './Services/AdminGetUserByUsername'
 
 const AdminUserDashboard = () => {
   return (
@@ -16,9 +16,11 @@ const AdminUserDashboard = () => {
         </div>
 
         {/* content */}
-        <div>
-            {/* sidebar */}
-            <AdminUserSidebar />
+        <div className = "flex">
+            {/* content */}
+            <div className = "w-full h-full bg-gray-100">
+                <AdminGetUserByUsername />
+            </div>
         </div>
     </div>
   )
