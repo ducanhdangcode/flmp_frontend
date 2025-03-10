@@ -240,7 +240,7 @@ function App() {
                       />
                     </Routes>
                   </div>
-                  <div className = "mt-[1rem]">
+                  <div className = "">
                     <Footer />
                   </div>
                 </div>

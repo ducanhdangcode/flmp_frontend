@@ -17,7 +17,8 @@ module.exports = {
       'agdasima': ['Agdasima'], 
       'space-grotesk': ['Space Grotesk'], 
       'noticia-text': ['Noticia Text'],
-      'alfa': ['Alfa Slab One']
+      'alfa': ['Alfa Slab One'], 
+      'code': ['Source Code Pro']
     }, boxShadow: {
       'blue-shadow': '0 0.5em 0.5em -0.4em blue',
       'yellow-shadow': '0 0.5em 0.5em -0.4em yellow', 

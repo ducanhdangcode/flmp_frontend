@@ -1,10 +1,11 @@
 import React from 'react'
 import AdminNavbar from '../AdminNavbar/AdminNavbar'
 import AdminGetUserByUsername from './Services/AdminGetUserByUsername'
+import AdminUpdateUserByUsername from './Services/AdminUpdateUserByUsername'
 
 const AdminUserDashboard = () => {
   return (
-    <div>
+    <div className = "pb-[1rem]">
         {/* navbar */}
         <div>
             <AdminNavbar />
@@ -16,10 +17,17 @@ const AdminUserDashboard = () => {
         </div>
 
         {/* content */}
-        <div className = "flex">
+        <div className = "">
             {/* content */}
             <div className = "w-full h-full bg-gray-100">
-                <AdminGetUserByUsername />
+                {/* get user by username */}
+                <div>
+                    <AdminGetUserByUsername />
+                </div>
+                {/* update user by username */}
+                <div className = "">
+                    <AdminUpdateUserByUsername />
+                </div>
             </div>
         </div>
     </div>
