@@ -31,7 +31,7 @@ const HomeContent = ({disableDropdown}) => {
     color: theme === lightColor ? "black" : "white"
   }
   return (
-    <main className = "w-full" onClick = {disableDropdown}>
+    <main className = "w-full pb-[2rem]" onClick = {disableDropdown}>
       {/* first section */}
       <div className = "mr-0 ml-0 relative top-24">
         <div className = "w-full relative h-[30rem]" style = {{backgroundColor: theme === lightColor ? "#cfcac4" : "#252166"}} data-aos = "fade-right">
