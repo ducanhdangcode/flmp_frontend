@@ -16,6 +16,9 @@ const AdminUpdateUserByUsername = () => {
     const [inputLastname, setInputLastname] = useState("");
     const [inputEmail, setInputEmail] = useState("");
 
+    // status
+    const [status, setStatus] = useState("");
+
     // response string
     const [responseString, setResponseString] = useState("");
 
@@ -45,24 +48,28 @@ const AdminUpdateUserByUsername = () => {
             if (inputUsername !== "") {
                 updateUsername(pathUsername, inputUsername).then((response) => {
                     setRequestURLs([...requestURLs, response.request.responseURL]);
+                    setStatus(`${response.status} ${response.statusText}`);
                 });
                 setResponseString("Updated successfully");
             }
             if (inputFirstname !== "") {
                 updateFirstname(pathUsername, inputFirstname).then((response) => {
                     setRequestURLs([...requestURLs, response.request.responseURL]);
+                    setStatus(`${response.status} ${response.statusText}`);
                 });
                 setResponseString("Updated successfully");
             }
             if (inputLastname !== "") {
                 updateLastname(pathUsername, inputLastname).then((response) => {
                     setRequestURLs([...requestURLs, response.request.responseURL]);
+                    setStatus(`${response.status} ${response.statusText}`);
                 });
                 setResponseString("Updated successfully");
             }
             if (inputEmail !== "") {
                 updateEmail(pathUsername, inputEmail).then((response) => {
                     setRequestURLs([...requestURLs, response.request.responseURL]);
+                    setStatus(`${response.status} ${response.statusText}`);
                 });
                 setResponseString("Updated successfully");
             }
@@ -124,6 +131,7 @@ const AdminUpdateUserByUsername = () => {
                     pathUsername={pathUsername}
                     responseString={responseString}
                     requestURLs={requestURLs}
+                    status={status}
                 />
             </motion.div>
         }
@@ -270,7 +278,7 @@ const ServiceInput = ({inputUsername, setInputUsername, inputFirstname, setInput
     )
 }
 
-const ServiceResponse = ({inputUsername, pathUsername, responseString, requestURLs}) => {
+const ServiceResponse = ({inputUsername, pathUsername, responseString, requestURLs, status}) => {
     return (
         <div className = "w-[92vw] bg-[#ebd494] rounded-[8px] pb-[1rem]">
             {/* title */}
@@ -302,7 +310,7 @@ const ServiceResponse = ({inputUsername, pathUsername, responseString, requestUR
                 </div>
                 {/* content */}
                 <div className = "flex mt-[0.5rem] w-[94%]">
-                <p className = "w-[20%] text-lg font-changa ml-[3%]">200</p>
+                <p className = "w-[20%] text-lg font-changa ml-[3%]">{status}</p>
                     <div className = "ml-[10%] w-[67%]">
                         <p className = "font-changa">Response body</p>
                         <div className = "w-full bg-gray-800 mt-[0.5rem] text-white">

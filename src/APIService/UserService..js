@@ -66,3 +66,5 @@ export const userRegister = (username, password, email, firstname, lastname) => 
 export const addFavoriteTeam = (userId, favoriteTeamId) => baseApi.put(`/users/${userId}/add-favorite-team/${favoriteTeamId}`);
 
 export const removeFavoriteTeam = (userId, favoriteTeamId) => baseApi.put(`/users/${userId}/remove-favorite-team/${favoriteTeamId}`);
+
+export const deleteUserById = (userId) => baseApi.delete(`/users/${userId}`);
