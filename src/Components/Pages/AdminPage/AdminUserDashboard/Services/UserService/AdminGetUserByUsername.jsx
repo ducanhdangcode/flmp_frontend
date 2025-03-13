@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion';
-import { getUserByUsername } from '../../../../../APIService/UserService.';
-import ServiceHeaderTemplates from '../Templates/ServiceHeaderTemplates';
+import { getUserByUsername } from '../../../../../../APIService/UserService.';
+import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates';
 
 const AdminGetUserByUsername = () => {
     const [displayService, setDisplayService] = useState(false);
@@ -47,7 +47,7 @@ const AdminGetUserByUsername = () => {
             fillColor={"#b3d3fc"}
             borderColor={"#076aeb"}
             method = {"GET"}
-            path = {`api/users/{username}`}
+            path = {`/api/users/{username}`}
             description={"Get user by username"}
         />
 

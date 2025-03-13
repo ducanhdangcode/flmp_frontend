@@ -14,3 +14,5 @@ export const updateFavoriteState = (teamId, favoriteState) => {
 }
 
 export const getTeamById = (teamId) => baseApi.get(`/teams/${teamId}`);
+
+export const createNewTeam = (payload) => baseApi.post(`/teams`, payload);

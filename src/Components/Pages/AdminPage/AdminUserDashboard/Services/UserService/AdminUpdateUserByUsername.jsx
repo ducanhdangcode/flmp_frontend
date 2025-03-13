@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import ServiceHeaderTemplates from '../Templates/ServiceHeaderTemplates';
+import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates';
 import {motion} from 'framer-motion';
-import { updateEmail, updateFirstname, updateLastname, updateUsername } from '../../../../../APIService/UserService.';
+import { updateEmail, updateFirstname, updateLastname, updateUsername } from '../../../../../../APIService/UserService.';
 
 const AdminUpdateUserByUsername = () => {
     const [displayService, setDisplayService] = useState(false);

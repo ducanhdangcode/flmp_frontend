@@ -1,19 +1,27 @@
 import React from 'react'
 import Logo from './darkLogoNobg.png';
+import { Link } from 'react-router-dom';
 
 const AdminNavbar = () => {
   return (
     <div>
         {/* nav bar */}
         <div className = "w-full h-[5rem] bg-white flex">
-            <img src = {Logo} alt = "" className = "w-[12%] h-[4rem] relative left-[1%] top-[0.5rem]" />
+            <Link to = "/admin" className = "">
+                <img src = {Logo} alt = "" className = "w-full h-[4rem] relative left-[1%] top-[0.5rem]" />
+            </Link>
             <div className = "flex relative left-[4%] top-[1.7rem] font-roboto w-full">
-                <div className = "text-xl font-bold hover:cursor-pointer">
-                    <p>USER</p>
-                </div>
-                <div className = "text-xl font-bold relative left-[5%] hover:cursor-pointer">
-                    <p>TEAMS</p>
-                </div>
+                {/* link to admin user dashboard */}
+                <Link to = "/admin/user">
+                    <div className = "text-xl font-bold hover:cursor-pointer">
+                        <p>USER</p>
+                    </div>
+                </Link>
+                <Link to = "/admin/team">
+                    <div className = "text-xl font-bold relative left-[100%] hover:cursor-pointer">
+                        <p>TEAMS</p>
+                    </div>
+                </Link>
                 <div className = "text-xl font-bold relative left-[10%] hover:cursor-pointer">
                     <p>PLAYERS</p>
                 </div>

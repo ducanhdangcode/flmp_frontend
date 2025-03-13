@@ -1,8 +1,9 @@
 import React from 'react'
-import AdminNavbar from '../AdminNavbar/AdminNavbar'
-import AdminGetUserByUsername from './Services/AdminGetUserByUsername'
-import AdminUpdateUserByUsername from './Services/AdminUpdateUserByUsername'
-import AdminDeleteUserById from './Services/AdminDeleteUserById'
+import AdminNavbar from '../../../AdminNavbar/AdminNavbar'
+import AdminDeleteUserById from './AdminDeleteUserById'
+import AdminUpdateUserByUsername from './AdminUpdateUserByUsername'
+import AdminGetUserByUsername from './AdminGetUserByUsername'
+
 
 const AdminUserDashboard = () => {
   return (

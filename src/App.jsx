@@ -20,7 +20,8 @@ import { TeamHeaderProvider } from './Context/TeamHeaderContext';
 import PlayerProfile from './Components/Pages/PlayerProfilePage/PlayerProfile';
 import { PlayerProvider } from './Context/PlayerContext';
 import AdminPage from './Components/Pages/AdminPage/AdminPage';
-import AdminUserDashboard from './Components/Pages/AdminPage/AdminUserDashboard/AdminUserDashboard';
+import AdminUserDashboard from './Components/Pages/AdminPage/AdminUserDashboard/Services/UserService/AdminUserDashboard';
+import AdminTeamDashboard from './Components/Pages/AdminPage/AdminUserDashboard/Services/TeamService/AdminTeamDashboard';
 
 function App() {
   // theme set up
@@ -168,6 +169,16 @@ function App() {
                       <>
                         <ScrollToTop />
                         <AdminUserDashboard />
+                      </>
+                    }
+                  />
+
+                  <Route 
+                    path = "/admin/team"
+                    element = {
+                      <>
+                        <ScrollToTop />
+                        <AdminTeamDashboard />
                       </>
                     }
                   />

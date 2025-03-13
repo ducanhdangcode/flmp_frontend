@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import ServiceHeaderTemplates from '../Templates/ServiceHeaderTemplates'
+import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates'
 import {motion} from 'framer-motion';
-import { deleteUserById } from '../../../../../APIService/UserService.';
+import { deleteUserById } from '../../../../../../APIService/UserService.';
 
 const AdminDeleteUserById = () => {
     const [displayService, setDisplayService] = useState(false);
@@ -46,7 +46,7 @@ const AdminDeleteUserById = () => {
             fillColor = "#f5aeb2"
             borderColor={"#e63e47"}
             method = {"DELETE"}
-            path = {"api/users/{id}"}
+            path = {"/api/users/{id}"}
             description={"Delete user by ID"}
       />
 

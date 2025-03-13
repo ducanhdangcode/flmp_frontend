@@ -21,14 +21,26 @@ const DetailOverview = ({teamId, teamVideoTitles, teamKits, teamChairman, team})
     }, [])
   return (
     <>
-        <div className = "w-full" style = {{backgroundColor: "white", height: "157rem", borderTop: "2px solid gray"}}>
-            <TeamVideo teamId={teamId} team={team} teamVideoTitles={teamVideoTitles}/>
+        <div className = "w-full block" style = {{backgroundColor: "white", height: "161rem", borderTop: "2px solid gray"}}>
+            <div>
+                <TeamVideo teamId={teamId} team={team} teamVideoTitles={teamVideoTitles}/>
+            </div>
             <div className = "absolute z-0" style = {{width: "25.4rem", height: "56rem", top: "23.1rem", right: "0.3rem", backgroundColor: "#6d6f70"}}></div>
-            <Trophies teamId = {teamId} team={team}/>
-            <Stadium teamId = {teamId} team={team}/>
-            <Kit teamId={teamId} team={team} teamKits = {teamKits}/>
-            <Chairman teamId={teamId} team={team} teamChairman={teamChairman} />
-            <MarketValue team = {team} teamId = {teamId}/>
+            <div className = "relative bottom-[0.1rem]">
+                <Trophies teamId = {teamId} team={team}/>
+            </div>
+            <div>
+                <Stadium teamId = {teamId} team={team}/>
+            </div>
+            <div>
+                <Kit teamId={teamId} team={team} teamKits = {teamKits}/>
+            </div>
+            <div>
+                <Chairman teamId={teamId} team={team} teamChairman={teamChairman} />
+            </div>
+            <div>
+                <MarketValue team = {team} teamId = {teamId}/>
+            </div>
         </div>
     </>
     )

@@ -39,9 +39,11 @@ const AdminHomeContent = () => {
             <div className = "w-[40%] h-[35rem] bg-gray-200 rounded-[10px] relative left-[15%]">
                 <img src = {Asset2} alt = "" className = "w-full h-[70%] rounded-tl-[10px] rounded-tr-[10px]" />
                 <p className = "font-ubuntu text-lg w-[96%] relative left-[2%] top-[2%] font-bold">At FLMP Admin Dashboard, you can manage the Teams: stats, fixtures, squads,.... You can change the team detail such as stadium, market value, logo,...</p>
-                <button className = "h-[2rem] bg-[#ebc94e] text-white font-ubuntu font-bold px-[2rem] float-right relative top-[2rem] right-[2rem] rounded-[8px]">
-                    Go to team dashboard
-                </button>
+                <Link to = "/admin/team">
+                    <button className = "h-[2rem] bg-[#ebc94e] text-white font-ubuntu font-bold px-[2rem] float-right relative top-[2rem] right-[2rem] rounded-[8px]">
+                        Go to team dashboard
+                    </button>
+                </Link>
             </div>
         </div>
 
