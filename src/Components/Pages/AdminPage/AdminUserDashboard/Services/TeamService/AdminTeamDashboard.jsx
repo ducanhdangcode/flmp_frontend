@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminNavbar from '../../../AdminNavbar/AdminNavbar'
 import AdminCreateTeam from './AdminCreateTeam'
+import AdminGetAllTeams from './AdminGetAllTeams'
 
 const AdminTeamDashboard = () => {
   return (
@@ -20,7 +21,14 @@ const AdminTeamDashboard = () => {
             {/* content */}
             <div className = "w-full h-full bg-gray-100">
                 {/* create team */}
-                <AdminCreateTeam />
+                <div>
+                    <AdminCreateTeam />
+                </div>
+
+                {/* get all teams */}
+                <div>
+                    <AdminGetAllTeams />
+                </div>
             </div>
         </div>
     </div> 
