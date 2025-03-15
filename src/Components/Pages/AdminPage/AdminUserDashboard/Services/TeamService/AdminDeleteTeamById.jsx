@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
-import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates'
-import {motion} from 'framer-motion';
-import { deleteUserById } from '../../../../../../APIService/UserService.';
+import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates';
+import {motion} from 'framer-motion'
+import { deleteTeamByID } from '../../../../../../APIService/TeamService';
 
-const AdminDeleteUserById = () => {
+const AdminDeleteTeamById = () => {
     const [displayService, setDisplayService] = useState(false);
     const [displayResponse, setDisplayResponse] = useState(false);
 
     const [inputId, setInputId] = useState(0);
 
-    const [status, setStatus] = useState("");
-
     const [responseString, setResponseString] = useState("");
+    const [status, setStatus] = useState("");
 
     const handleSetupDisplayService = (choice) => {
         setDisplayService(choice);
@@ -28,30 +27,30 @@ const AdminDeleteUserById = () => {
 
     const handleExecute = () => {
         setDisplayResponse(true);
-        deleteUserById(inputId).then((response) => {
-            setResponseString("Delete user successfully");
+        deleteTeamByID(inputId).then((response) => {
+            setResponseString("Delete team successfully");
             setStatus(`${response.status} ${response.statusText}`);
         }).catch(err => {
-            setResponseString("Cannot delete the user with the given Id");
+            setResponseString("Cannot delete the team with the given Id");
             setStatus(`${err.status} ${err.statusText}`);
         });
     }
   return (
     <div>
-      {/* header */}
-      <ServiceHeaderTemplates 
+        {/* header */}
+        <ServiceHeaderTemplates 
             handleSetupDisplayService={handleSetupDisplayService}
             handleSetupDisplayResponse={handleSetupDisplayResponse}
             displayService={displayService}
             fillColor = "#f5aeb2"
             borderColor={"#e63e47"}
             method = {"DELETE"}
-            path = {"/api/users/{id}"}
-            description={"Delete user by ID"}
-      />
+            path = {"/api/teams/delete-by-id/{id}"}
+            description={"Delete team by ID"}
+        />
 
-      {/* service input */}
-      {displayService === true && 
+        {/* service input */}
+        {displayService === true && 
         <motion.div
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -65,10 +64,10 @@ const AdminDeleteUserById = () => {
                 setInputId={setInputId}
             />
         </motion.div>
-      }
+        }
 
-      {/* service response */}
-      {displayResponse === true && 
+        {/* service response */}
+        {displayResponse === true && 
         <motion.div
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -81,7 +80,7 @@ const AdminDeleteUserById = () => {
                 status={status}
             />
         </motion.div>
-      }
+        }
     </div>
   )
 }
@@ -106,7 +105,7 @@ const ServiceInput = ({inputId, setInputId, handleClear, handleExecute}) => {
                 {/* input */}
                 <div className = "flex relative left-[2vw] w-[94%] mt-[1rem]">
                     {/* value */}
-                    <p className = "font-changa font-bold text-lg relative left-[0.5vw] w-[20%]">user ID</p>
+                    <p className = "font-changa font-bold text-lg relative left-[0.5vw] w-[20%]">team ID</p>
                     {/* value */}
                     <div className = "w-[30%]">
                         <textarea
@@ -119,7 +118,7 @@ const ServiceInput = ({inputId, setInputId, handleClear, handleExecute}) => {
                         </textarea>
                     </div>
                     {/* description */}
-                    <p className = "font-changa relative left-[0.5vw] w-[20%]">ID of the user that you want to delete</p>
+                    <p className = "font-changa relative left-[0.5vw] w-[20%]">ID of the team that you want to delete</p>
                     {/* parameter type */}
                     <p className = "font-changa relative left-[0.5vw] w-[20%]">path</p>
                     {/* data type */}
@@ -183,4 +182,4 @@ const ServiceResponse = ({inputId, responseString, status}) => {
     )
 }
 
-export default AdminDeleteUserById
+export default AdminDeleteTeamById

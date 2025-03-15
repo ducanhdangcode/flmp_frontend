@@ -1,7 +1,4 @@
-import axios from "axios";
 import baseApi from "./AxiosInstance/axiosInstance";
-
-const BASE_URL_TEAMS = `/api/teams`;
 
 export const getAllTeamsWithPagination = (page, size) => baseApi.get(`/teams?page=${page}&size=${size}`);
 
@@ -18,3 +15,7 @@ export const updateFavoriteState = (teamId, favoriteState) => {
 export const getTeamById = (teamId) => baseApi.get(`/teams/${teamId}`);
 
 export const createNewTeam = (payload) => baseApi.post(`/teams`, payload);
+
+export const getTeamByTeamName = (teamName) => baseApi.get(`/teams/get-by-name/${teamName}`);
+
+export const deleteTeamByID = (teamId) => baseApi.delete(`/teams/delete-by-id/${teamId}`);

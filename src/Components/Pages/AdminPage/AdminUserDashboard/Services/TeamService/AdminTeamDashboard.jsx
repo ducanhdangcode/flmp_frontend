@@ -2,6 +2,8 @@ import React from 'react'
 import AdminNavbar from '../../../AdminNavbar/AdminNavbar'
 import AdminCreateTeam from './AdminCreateTeam'
 import AdminGetAllTeams from './AdminGetAllTeams'
+import AdminGetTeamByName from './AdminGetTeamByName'
+import AdminDeleteTeamById from './AdminDeleteTeamById'
 
 const AdminTeamDashboard = () => {
   return (
@@ -28,6 +30,16 @@ const AdminTeamDashboard = () => {
                 {/* get all teams */}
                 <div>
                     <AdminGetAllTeams />
+                </div>
+
+                {/* get team by team name */}
+                <div>
+                    <AdminGetTeamByName />
+                </div>
+
+                {/* delete team by team ID */}
+                <div>
+                    <AdminDeleteTeamById />
                 </div>
             </div>
         </div>

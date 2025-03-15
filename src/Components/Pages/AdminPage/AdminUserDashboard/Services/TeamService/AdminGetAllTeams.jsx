@@ -22,7 +22,9 @@ const AdminGetAllTeams = () => {
     }
 
     const handleClear = () => {
-
+        setDisplayResponse(false);
+        setInputPageNumber("");
+        setInputPageSize("");
     }
 
     const handleExecute = () => {
