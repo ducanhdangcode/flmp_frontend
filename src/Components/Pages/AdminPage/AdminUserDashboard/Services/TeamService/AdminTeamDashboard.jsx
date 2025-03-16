@@ -4,6 +4,7 @@ import AdminCreateTeam from './AdminCreateTeam'
 import AdminGetAllTeams from './AdminGetAllTeams'
 import AdminGetTeamByName from './AdminGetTeamByName'
 import AdminDeleteTeamById from './AdminDeleteTeamById'
+import AdminGetStadiumByTeamName from './AdminGetStadiumByTeamName'
 
 const AdminTeamDashboard = () => {
   return (
@@ -40,6 +41,11 @@ const AdminTeamDashboard = () => {
                 {/* delete team by team ID */}
                 <div>
                     <AdminDeleteTeamById />
+                </div>
+
+                {/* get stadium by team name */}
+                <div>
+                    <AdminGetStadiumByTeamName />
                 </div>
             </div>
         </div>
