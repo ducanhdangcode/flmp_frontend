@@ -144,6 +144,7 @@ function App() {
   const setupCustomSpinner = (choice) => {
     setCustomSpinner(choice);
   }
+  
 
   return (
     <div>
