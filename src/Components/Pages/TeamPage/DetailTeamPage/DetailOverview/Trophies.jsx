@@ -15,15 +15,15 @@ const Trophies = ({teamId, team}) => {
 
   return (
     <div className = "bg-[white]" style = {{left: "0rem", width: "70.2rem"}}>
-        <div className = "bg-[#000B58] w-[70.2rem]">
-            <p className = "text-2xl font-ubuntu font-bold relative text-white py-[0.5rem]" style = {{left: "2rem"}}>TROPHIES WON</p>
+        <div className = "bg-hardGreen w-[70.2rem]">
+            <p className = "text-[26px] font-teko font-bold relative text-white py-[0.4rem] top-[0.2rem]" style = {{left: "2rem"}}>TROPHIES WON</p>
         </div>
         {/* trophies */}
         <div className = "w-[70.2rem]">
             {team?.trophies.map((trophy, index) => {
                 if (index % 2 === 0) {
                     return (
-                        <div className = "w-full bg-gray-300 border-solid border-b-[1px] border-b-gray-500 flex">
+                        <div className = "w-full bg-easeGreen border-solid border-b-[1px] border-b-gray-500 flex">
                             <div className = "w-[50%] border-solid border-r-[1px] border-r-gray-500">
                                 <p className = "py-[0.2rem] font-ubuntu text-lg font-bold pl-[5%]">{trophy?.titleName}</p>
                             </div>
@@ -34,7 +34,7 @@ const Trophies = ({teamId, team}) => {
                     )
                 } else {
                     return (
-                        <div className = "w-full bg-white border-solid border-b-[1px] border-b-gray-500 flex">
+                        <div className = "w-full bg-easeWhite border-solid border-b-[1px] border-b-gray-500 flex">
                             <div className = "w-[50%] border-solid border-r-[1px] border-r-gray-500">
                                 <p className = "py-[0.2rem] font-ubuntu text-lg font-bold pl-[5%]">{trophy?.titleName}</p>
                             </div>

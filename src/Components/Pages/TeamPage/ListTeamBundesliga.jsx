@@ -37,7 +37,7 @@ const ListTeamBundesliga = ({}) => {
   }, [])
   return (
     <div>
-        <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#c8ccc0" : darkColor, height: "60rem"}} data-aos = "zoom-out-up">
+        <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#C7DB9C" : darkColor, height: "60rem"}} data-aos = "zoom-out-up">
             <img src = {theme === lightColor ? BundesligaLogo : BundesligaLogoWhite} alt = "Premier League Logo" className = {theme === lightColor ? "w-72 h-40 relative" : "w-60 h-32 relative"} style = {theme === lightColor ? {left: "4rem", top: "2rem"} : {left: "6rem", top: "2rem"}}/>
             <div className = "relative top-16 flex" style = {{flexFlow: "row wrap"}}>
                 <TeamCard TeamLogo = {BayernMunichLogo} TeamName = {"Bayern Munich"} addStyle={{top: "0.8rem", left: "0.8rem", height: "4.5rem", width: "4.5rem"}} addStyleText = {{left: "2rem", top: "1.8rem"}} colorTheme = {theme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#b33d39"} hoverImage={BundesligaPattern} hoverTeamLogo={BayernMunichLogo} hoverStyle={{top: "0.8rem", left: "0.8rem", height: "4.5rem", width: "4.5rem"}} hoverStyleText={{left: "2rem", top: "1.8rem", color: "white"}}/>

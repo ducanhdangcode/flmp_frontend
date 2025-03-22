@@ -36,7 +36,7 @@ const ListTeamLigue1 = ({}) => {
     })
   }, [])
   return (
-    <div className = "relative" style = {{backgroundColor: theme === lightColor ? "" : "#171447", height: "60rem"}} data-aos = "zoom-out-up">
+    <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#41644A" : "#171447", height: "60rem"}} data-aos = "zoom-out-up">
         <img src = {theme === lightColor ? Ligue1Logo : Ligue1LogoWhite} alt = "Ligue 1 Logo" className = {theme === lightColor ? "w-72 h-40 relative" : "w-52 h-44 relative"} style = {theme === lightColor ? {left: "4rem", top: "2rem"} : {left: "6rem", top: "2rem"}}/>
         <div className = "relative top-16 flex" style = {{flexFlow: "row wrap"}}>
             <TeamCard TeamLogo = {PSGLogo} TeamName = {"Paris Saint-Germain"} addStyle={{top: "0.8rem", left: "1rem", height: "4.5rem", width: "4.5rem"}} addStyleText = {{left: "2rem", top: "2rem"}} colorTheme = {theme} lightColor = {lightColor} darkColor = {darkColor} hoverColor = {"#0f2657"} hoverImage={Ligue1Pattern} hoverTeamLogo={PSGLogo} hoverStyle={{top: "0.8rem", left: "1rem", height: "4.5rem", width: "4.5rem"}} hoverStyleText={{left: "2rem", top: "2rem", color: "white"}}/>

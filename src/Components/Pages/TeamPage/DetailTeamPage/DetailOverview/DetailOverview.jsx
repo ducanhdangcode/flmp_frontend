@@ -25,7 +25,7 @@ const DetailOverview = ({teamId, teamVideoTitles, teamKits, teamChairman, team})
             <div>
                 <TeamVideo teamId={teamId} team={team} teamVideoTitles={teamVideoTitles}/>
             </div>
-            <div className = "absolute z-0" style = {{width: "25.4rem", height: "56rem", top: "23.1rem", right: "0.3rem", backgroundColor: "#6d6f70"}}></div>
+            <div className = "absolute z-0 bg-greenFootball" style = {{width: "25.4rem", height: "56rem", top: "23.1rem", right: "0.3rem"}}></div>
             <div className = "relative bottom-[0.1rem]">
                 <Trophies teamId = {teamId} team={team}/>
             </div>

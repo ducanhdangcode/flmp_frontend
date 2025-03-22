@@ -31,10 +31,10 @@ const HomeContent = ({disableDropdown}) => {
     color: theme === lightColor ? "black" : "white"
   }
   return (
-    <main className = "w-full pb-[2rem]" onClick = {disableDropdown}>
+    <main className = "w-full pb-[5rem]" onClick = {disableDropdown}>
       {/* first section */}
       <div className = "mr-0 ml-0 relative top-24">
-        <div className = "w-full relative h-[30rem]" style = {{backgroundColor: theme === lightColor ? "#cfcac4" : "#252166"}} data-aos = "fade-right">
+        <div className = "w-full relative h-[30rem]" style = {{backgroundColor: theme === lightColor ? "#FAF1E6" : "#252166"}} data-aos = "fade-right">
           <div className = "ml-80">
             <h2 className = {theme === lightColor ? "text-center relative top-11 font-titillium text-4xl font-bold mr-4": "text-center relative top-11 font-titillium text-4xl font-bold mr-4 text-white"}>Provide information about players all around the world.</h2>
 
@@ -49,7 +49,7 @@ const HomeContent = ({disableDropdown}) => {
         </div>
 
         {/* second section */}
-        <div className = "w-full" data-aos = "fade-left" style = {{height: "30rem", backgroundColor: theme === darkColor ? "#171447" : ""}}>
+        <div className = "w-full" data-aos = "fade-left" style = {{height: "30rem", backgroundColor: theme === darkColor ? "#171447" : "#CAE0BC"}}>
           <h2 className = "text-center font-titillium text-4xl font-bold relative top-11 right-44" style = {{color: theme === lightColor ? "black" : "white"}}>Provide information about 20+ leagues around the world.</h2>
 
           <p className = "text-left relative top-16 font-titillium text-lg" style = {{width: "55rem", left: "9.5rem", color: theme === lightColor ? "black" : "white"}}>FLMP will provide you all the information and news about many leagues around the world such as: Premier League, League 1, La Liga,.... You can get the scoreboard, history and other news of the league with quick response and legit access.</p>
@@ -62,7 +62,7 @@ const HomeContent = ({disableDropdown}) => {
         </div>
 
         {/* third section */}
-        <div className = "w-full" style = {{backgroundColor: theme === lightColor ? "#cfcac4" : "#252166", height: "30rem"}} data-aos = "fade-right">
+        <div className = "w-full" style = {{backgroundColor: theme === lightColor ? "#FAF1E6" : "#252166", height: "30rem"}} data-aos = "fade-right">
           <img src = {TransferBg} alt = "Transfer Cards Logo" className = "h-96 w-96 rounded-2xl shadow-2xl ml-24 float-left relative mt-[3.5rem]"/>
           <div className = "ml-80">
             <p className = "pt-14 font-titillium text-4xl font-bold relative left-[3rem] w-[100rem]" style={{color: theme === lightColor ? "black" : "white"}}>Provide information about remarkable transfer news.</p>
@@ -75,7 +75,7 @@ const HomeContent = ({disableDropdown}) => {
         </div>
 
         {/* fourth section */}
-        <div className = "w-full" style = {{height: "32.5rem", backgroundColor: theme === darkColor ? "#171447" : ""}} data-aos = "fade-left">
+        <div className = "w-full" style = {{height: "32.5rem", backgroundColor: theme === darkColor ? "#171447" : "#CAE0BC"}} data-aos = "fade-left">
           <img src = {StatsBg} alt = "Statistic Cards Logo" className = "h-96 w-96 rounded-2xl shadow-2xl mr-24 float-right relative mt-[3.5rem]" />
           <div>
             <p className = "ml-[14rem] font-titillium text-4xl font-bold relative top-11" style = {{color: theme === lightColor ? "black" : "white"}}>Provide the statistics of players, leagues, awards,....</p>

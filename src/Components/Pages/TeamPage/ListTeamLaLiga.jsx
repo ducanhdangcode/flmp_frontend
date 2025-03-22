@@ -70,7 +70,7 @@ const ListTeamLaLiga = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setu
     setupTeamChairman(chairman);
   }
   return (
-    <div className = "relative" style = {{backgroundColor: theme === lightColor ? "" : "#171447", height: "60rem"}} data-aos = "zoom-out-up">
+    <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#41644A" : "#171447", height: "60rem"}} data-aos = "zoom-out-up">
       <img src = {LaligaLogo} alt = "La Liga Logo" className = "w-72 h-32 relative" style = {{left: "4rem", top: "2rem"}}/>
       <div className = "relative top-16 flex" style = {{flexFlow: "row wrap"}}>
         <Link to = "/team/real-madrid">

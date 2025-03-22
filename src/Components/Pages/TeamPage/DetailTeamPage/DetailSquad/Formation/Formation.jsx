@@ -136,13 +136,13 @@ const Formation = ({team, teamId, FormationCoordinate}) => {
     }
   return (
     <div className = "relative">
-        <div className = "bg-[#112f54] h-[3rem]">
-            <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] top-[0.1rem] text-white">Formations</p>
+        <div className = "bg-hardGreen">
+            <p className = "font-teko text-3xl font-bold relative left-[2rem] top-[0.1rem] text-white py-[0.4rem]">Formations</p>
         </div>
         <div className = "">
             {formations.map((formation, formationIndex) => {
                 return (
-                    <div className = "w-full overflow-y-clip">
+                    <div className = "w-full overflow-y-clip bg-easeGreen">
                         <div className = "flex h-[40rem]">
                             {/* change formation */}
                             {changeFormation === formationIndex && 
@@ -293,10 +293,10 @@ const Formation = ({team, teamId, FormationCoordinate}) => {
                             {/* feedback about formation */}
                             <div className = "absolute right-[0.9rem]">
                                 {/* title */}
-                                <div className = "bg-[#16301d] h-[2.5rem] w-[40rem]">
+                                <div className = "bg-greenFootball h-[2.5rem] w-[40rem]">
                                     <p className = "text-center text-xl text-white font-bold relative top-[0.2rem]">{`${formation?.coachFormation}'s ${formation?.formationName}`}</p>
                                 </div>
-                                <div className = "bg-[#d1cdcd] w-[40rem] h-[39rem]">
+                                <div className = "bg-easeWhite w-[40rem] h-[39rem]">
                                     {formation?.formationDescription.split("\n").map((line, index) => {
                                         return (
                                             <div className = "ml-[1rem] relative top-[0.5rem]">

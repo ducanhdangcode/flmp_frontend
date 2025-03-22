@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react'
 import appLogo from './logo-no-background.png';
-import darkAppLogo from './darkLogoNobg.png';
 import './Navbar.css';
 import WebFont from 'webfontloader';
 import { FaSearch } from 'react-icons/fa';
@@ -16,7 +15,7 @@ import DefaultAvatar from './defaultAvatar.png';
 const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disableLoginState, disableDropdown}) => {
 
     const darkNavBarStyle = "bg-white border-gray-200 dark:bg-gray-900 max-h-24 fixed z-30 w-full";
-    const lightNavBarStyle = "bg-white border-gray-200 dark:bg-white max-h-24 fixed z-30 w-full";
+    const lightNavBarStyle = "border-gray-200 bg-greenFootball max-h-24 fixed z-30 w-full";
 
     const dropdownRef = useRef(null);
 
@@ -61,27 +60,27 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
             <div className = "flex">
                 {/* logo */}
                 <Link to = "/">
-                    <img className = "w-44 h-20 ml-5 mt-2 mb-2 inline-block" src = {theme === darkColor ? appLogo : darkAppLogo} alt = "FLMP Logo"/>
+                    <img className = "w-44 h-20 ml-5 mt-2 mb-2 inline-block" src = {appLogo} alt = "FLMP Logo"/>
                 </Link>
                 {/* options */}
                 <div>
                     <ul>
                         <Link to = "/team">
                             <li className = "float-left relative left-10">
-                                {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 font-roboto">TEAMS</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">TEAMS</p>}
+                                <p className = "block text-center text-white mt-[2rem] text-[25px] hover:opacity-100 font-teko font-bold">TEAMS</p>
                             </li>
                         </Link>
                         <li className = "float-left relative left-20">
-                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100">LEAGUES</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">LEAGUES</p>}
+                            <p className = "block text-center text-white mt-[2rem] text-[25px] hover:opacity-100 font-teko font-bold">LEAGUES</p>
                         </li>
                         <li className = "float-left relative" style = {{left: "7.5rem"}}>
-                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100">TRANSFER MARKET</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100">TRANSFER MARKET</p>}
+                            <p className = "block text-center text-white mt-[2rem] text-[25px] hover:opacity-100 font-teko font-bold">TRANSFERS</p>
                         </li>
                         <li className = "float-left relative" style = {{left: "10rem"}}>
-                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 ">STATISTICS</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100 ">STATISTICS</p>}
+                            <p className = "block text-center text-white mt-[2rem] text-[25px] hover:opacity-100 font-teko font-bold">STATISTICS</p>
                         </li>
                         <li className = "float-left relative" style = {{left: "12.5rem"}}>
-                            {theme === darkColor ? <p className = "block text-center text-white mt-8 text-xl opacity-60 hover:opacity-100 ">ABOUT US</p> : <p className = "block text-center text-black mt-8 text-xl font-semibold opacity-100 hover:opacity-100 ">ABOUT US</p>}
+                            <p className = "block text-center text-white mt-[2rem] text-[25px] hover:opacity-100 font-teko font-bold">ABOUT US</p>
                         </li>
                     </ul>
                 </div>
@@ -116,7 +115,7 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                     </Link>) : 
                     (
                         <div>
-                            <img src = {user?.avatar ? JSON.parse(user?.avatar) : DefaultAvatar} alt = "User Logo" className = "w-12 h-12 border-[#e80560] mt-6 hover:cursor-pointer ml-[5rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown}/>
+                            <img src = {user?.avatar ? JSON.parse(user?.avatar) : DefaultAvatar} alt = "User Logo" className = "w-12 h-12 border-[yellow] mt-6 hover:cursor-pointer ml-[5rem]" style = {{borderRadius: "50%", borderWidth: "3px"}} onClick = {handleChangeUserDropdown}/>
                         </div>
                     )
                 }
@@ -139,7 +138,7 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                         setTheme(lightColor);
                         localStorage.setItem("theme", lightColor);
                     }}/> : 
-                    <FaMoon className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[3rem]" style = {{color: "black"}} onClick = {() => {
+                    <FaMoon className = "w-9 h-9 mt-8 hover:cursor-pointer absolute right-[3rem]" style = {{color: "white"}} onClick = {() => {
                         setTheme(darkColor);
                         localStorage.setItem("theme", darkColor);
                     }}/>

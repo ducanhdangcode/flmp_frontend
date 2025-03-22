@@ -90,7 +90,7 @@ const ListTeamEPL = ({}) => {
 
   return (
     <div>
-      <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#c8ccc0" : "", height: "60rem"}} data-aos = "zoom-out-up">
+      <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#C7DB9C" : "", height: "60rem"}} data-aos = "zoom-out-up">
           <img src = {theme === lightColor ? EPLLogo : EPLLogoWhite} alt = "Premier League Logo" className = {theme === lightColor ? "w-72 h-32 relative" : "w-96 h-64 relative"} style = {{left: "4rem", top: "2rem"}}/>
           <div className = {theme === lightColor ? "relative top-16 flex" : "relative top-0 flex"} style = {{flexFlow: "row wrap"}}>
             <Link to = "/team/manchester-city">

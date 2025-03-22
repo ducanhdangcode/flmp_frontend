@@ -4,7 +4,7 @@ import { createContext } from "react";
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({children}) => {
-    const lightColor = "#e9f2eb";
+    const lightColor = "#255F38";
     const darkColor = "#0c0a30";
     const [theme, setTheme] = useState(localStorage.getItem("theme"));
 

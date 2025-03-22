@@ -22,7 +22,7 @@ const Footer = () => {
         })
     })
   return (
-    <div className = "w-full overflow-y-hidden overflow-x-clip relative" style = {{backgroundColor: "#041a36", height: "75rem"}}>
+    <div className = "w-full overflow-y-hidden overflow-x-clip relative" style = {{backgroundColor: "#27391C", height: "75rem"}}>
         <div className = "mb-0">
             <div>
                 <img src = {WebLogo} alt = "Web Logo" className = "h-28 w-40 ml-40 mt-8 pt-8"/>

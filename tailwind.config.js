@@ -7,7 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      colors: {
+        greenFootball: "#1F7D53", 
+        easeGreen: "#CAE0BC", 
+        easeWhite: "#FAF1E6", 
+        hardGreen: "#27391C", 
+        easeYellow: "#F8ED8C", 
+        moreEaseYellow: "#edebca"
+      }
     }, fontFamily: {
       'roboto': ['Roboto Condensed'],
       'titillium': ['Titillium Web'],
@@ -18,7 +25,8 @@ module.exports = {
       'space-grotesk': ['Space Grotesk'], 
       'noticia-text': ['Noticia Text'],
       'alfa': ['Alfa Slab One'], 
-      'code': ['Source Code Pro']
+      'code': ['Source Code Pro'], 
+      'teko': ['Teko']
     }, boxShadow: {
       'blue-shadow': '0 0.5em 0.5em -0.4em blue',
       'yellow-shadow': '0 0.5em 0.5em -0.4em yellow', 

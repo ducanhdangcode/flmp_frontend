@@ -17,9 +17,9 @@ const PlayerCard = ({teamId, team, player, statisticTitle1, statisticTitle2, sta
         localStorage.setItem("player-name", playerName);
     }
     return (
-      <div className = "relative" style = {{width: "20rem", height: "25rem", backgroundColor: "white", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem ${team?.color}`, top: "4rem", right: "9.6rem", marginRight: "2rem", marginBottom: "3rem"}}>
+      <div className = "relative" style = {{width: "20rem", height: "25rem", backgroundColor: "white", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem #1F7D53`, top: "4rem", right: "9.6rem", marginRight: "2rem", marginBottom: "3rem"}}>
           <div className = "flex">
-              <div className = "relative" style = {{width: "8rem", height: "16rem", backgroundColor: "#c4bcc3", borderTopLeftRadius: "11px"}}>
+              <div className = "relative bg-easeGreen" style = {{width: "8rem", height: "16rem", borderTopLeftRadius: "11px"}}>
                 <p className = "text-sm font-noticia-text font-bold relative" style = {{textAlign: "center", top: "0.2rem"}}>{statisticTitle1}</p>
                 <p className = "text-2xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "0.1rem"}}>{statistic1}</p>
                 <p className = "text-sm font-noticia-text font-bold relative" style = {{textAlign: "center", top: "0.3rem"}}>{statisticTitle2}</p>

@@ -37,7 +37,7 @@ const ListTeamSerieA = ({}) => {
     })
   }, [])
   return (
-    <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#c8ccc0" : "", height: "65rem"}} data-aos = "zoom-out-up">
+    <div className = "relative" style = {{backgroundColor: theme === lightColor ? "#C7DB9C" : "", height: "65rem"}} data-aos = "zoom-out-up">
         <img src = {SerieALogo} alt = "Serie A Logo" className = "w-36 h-48 relative" style = {{left: "8rem", top: "2rem"}}/>
         <div className = "relative top-16 flex" style = {{flexFlow: "row wrap"}}>
             <TeamCard TeamLogo = {NapoliLogo} TeamName = {"SSC Napoli"} addStyle={{top: "0.8rem", left: "1rem", height: "4.5rem", width: "4.5rem"}} addStyleText = {{left: "2rem", top: "2rem"}} colorTheme = {theme} lightColor = {lightColor} darkColor = {darkColor} hoverColor={"#0eaae3"} hoverImage={SerieAPattern} hoverTeamLogo={NapoliLogo} hoverStyle={{top: "0.8rem", left: "1rem", height: "4.5rem", width: "4.5rem"}} hoverStyleText={{left: "2rem", top: "2rem"}}/>

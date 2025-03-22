@@ -75,7 +75,7 @@ const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLog
     setSlideShowIndex(slideShowIndex === 0 ? slideShowLength : slideShowIndex - 1);
   }
   return (
-    <div className = "w-full relative" style = {{backgroundColor: theme === lightColor ? "#eaebe8" : darkColor}}>
+    <div className = "w-full relative pb-[5rem]" style = {{backgroundColor: theme === lightColor ? "#eaebe8" : darkColor}}>
       {/* slide images of leagues */}
       <div className = "mt-24">
         {slideShowImages.map((path, index) => {
@@ -97,22 +97,22 @@ const Team = ({setupTeamId, setupTeamLogo, setupDetailLogoHeight, setupDetailLog
       </div>
       
       {/* list team la liga */}
-      <div className = "mt-24">
+      <div className = "">
         <ListTeamLaLiga theme = {theme} lightColor = {lightColor} darkColor = {darkColor} setupTeamId = {setupTeamId} setupTeamLogo = {setupTeamLogo} setupDetailLogoHeight = {setupDetailLogoHeight} setupDetailLogoWidth = {setupDetailLogoWidth} setupDetailLogoTop = {setupDetailLogoTop} setupDetailLogoLeft = {setupDetailLogoLeft} setupDetailNameBottom = {setupDetailNameBottom}/>
       </div>
       
       {/* list team bundesliga */}
-      <div className = "mt-24">
+      <div className = "">
         <ListTeamBundesliga theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
       </div>
       
       {/* list team ligue 1 */}
-      <div className = "mt-24">
+      <div className = "">
         <ListTeamLigue1 theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
       </div>
       
       {/* list team serie A */}
-      <div className = "mt-24">
+      <div className = "">
         <ListTeamSerieA theme = {theme} lightColor = {lightColor} darkColor = {darkColor}/>
       </div>
 

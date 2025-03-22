@@ -4,8 +4,8 @@ import PlayerCard from './PlayerCard'
 const DetailSquadMidfielder = ({teamId, team, playerList}) => {
   return (
     <div className = "relative w-full">
-        <div className = "h-[3rem] bg-[#112f54]">
-            <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] text-white">Midfielders</p>
+        <div className = "bg-hardGreen">
+            <p className = "font-teko text-3xl font-bold relative left-[2rem] text-white py-[0.4rem] top-[0.1rem]">Midfielders</p>
         </div>
         <div className = "flex relative left-[12.5rem] bottom-[2.5rem]" style = {{flexFlow: "row wrap"}}>
             {playerList.map((player) => {

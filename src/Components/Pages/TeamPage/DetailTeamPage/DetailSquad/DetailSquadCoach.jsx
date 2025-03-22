@@ -4,12 +4,12 @@ import ViewProfile from './ViewProfile'
 const DetailSquadCoach = ({teamId, team, coachList}) => {
   return (
     <div className = "relative">
-        <div className = "bg-[#112f54] h-[3rem]">
-            <p className = "font-ubuntu text-3xl font-bold relative left-[2rem] top-[0.1rem] text-white">Head Coach</p>
+        <div className = "bg-hardGreen">
+            <p className = "font-teko text-3xl font-bold relative left-[2rem] text-white">Head Coach</p>
         </div>
-        <div className = "relative left-[2rem] top-[2rem]" style = {{width: "23rem", height: "25rem", backgroundColor: "white", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem ${team?.color}`}}>
+        <div className = "relative left-[2rem] top-[2rem] bg-moreEaseYellow" style = {{width: "23rem", height: "25rem", borderRadius: "11px", boxShadow: `0.3rem 0.3rem 0.4rem #1F7D53`}}>
             <div className = "flex">
-                <div className = "relative" style = {{width: "8rem", height: "16rem", backgroundColor: "#c4bcc3", borderTopLeftRadius: "11px"}}>
+                <div className = "relative bg-easeGreen" style = {{width: "8rem", height: "16rem", borderTopLeftRadius: "11px"}}>
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "0.5rem"}}>Total Matches</p>
                     <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "0.5rem"}}>{coachList[teamId-1]?.totalMatches}</p>
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "1rem"}}>This season</p>
