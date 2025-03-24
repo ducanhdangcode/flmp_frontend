@@ -63,11 +63,11 @@ const PlayerPriorityPosition = ({player}) => {
   return (
     <div>
         {/* header */}
-        <div className = "w-full h-[2rem] bg-[#060433] font-ubuntu text-lg text-white font-bold text-center">
+        <div className = "w-full h-[2rem] bg-hardGreen font-teko text-2xl text-white font-bold text-center">
             <p>Player Positions</p>
         </div>
         {/* content */}
-        <div className = "w-full h-[30rem] bg-gray-300 flex">
+        <div className = "w-full h-[30rem] bg-easeGreen flex">
             <div className = "relative top-[2rem] left-[5%]">
                 <div className = "flex">
                     <div className = "rounded-[50%] bg-red-500 border-solid border-[3px] border-black w-[3rem] h-[3rem] text-center" ></div>

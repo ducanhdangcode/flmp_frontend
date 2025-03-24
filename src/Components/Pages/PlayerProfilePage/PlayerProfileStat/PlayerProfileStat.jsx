@@ -25,7 +25,7 @@ const PlayerProfileStat = ({player, setupSelectedSeason, seasonStat, changeStatB
                 <option value = "23-24">23/24</option>
                 <option value = "22-23">22/23</option>
             </select>
-            <button className = "w-[5rem] h-[1.5rem] bg-[#09048a] text-white font-ubuntu relative top-[0.75rem] left-[32%]" onClick = {changeStatBySeason}>Show</button>
+            <button className = "w-[5rem] h-[1.5rem] bg-greenFootball text-white text-xl font-bold relative top-[0.75rem] left-[32%] font-teko" onClick = {changeStatBySeason}><span className = "relative bottom-[0.1rem]">Show</span></button>
         </div>
 
         {/* stats table filtered by season */}

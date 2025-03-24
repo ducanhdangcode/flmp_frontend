@@ -5,10 +5,10 @@ const PlayerRating = ({player}) => {
   return (
     <div>
       {/* header */}
-      <div className = "w-full h-[2rem] bg-[#060433] font-ubuntu text-lg text-white font-bold text-center">
+      <div className = "w-full h-[2rem] bg-hardGreen font-teko text-2xl text-white font-bold text-center">
           <p>Player Rating</p>
       </div>
-      <div className = "w-full h-[30rem] bg-gray-300">
+      <div className = "w-full h-[30rem] bg-easeGreen">
         <div className = "relative top-[2rem]">
           <ResponsiveContainer width="100%" height={350}>
             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={player?.playerRatings}>

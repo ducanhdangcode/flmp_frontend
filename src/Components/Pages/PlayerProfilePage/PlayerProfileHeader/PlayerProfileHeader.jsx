@@ -1,22 +1,22 @@
 import React from 'react'
 
-const PlayerProfileHeader = ({player, storedTeamLogo, detailLogoHeight, detailLogoWidth, currentContract, currentTeam}) => {
+const PlayerProfileHeader = ({player, storedTeamLogo, detailLogoHeight, detailLogoWidth, currentContract, currentTeam, detailLogoLeft}) => {
   return (
     <div>
       <div className = "flex">
         {/* player info */}
-        <div className = "mt-[2rem] relative left-[2rem] bg-gray-300 w-[50%] h-[18rem] rounded-[5px] flex">
+        <div className = "mt-[2rem] relative left-[2rem] bg-mediumGreen w-[50%] h-[18rem] rounded-[5px] flex">
           {/* image */}
           <img src = {player?.imageLink} alt = "" className = "w-[25%] h-[15rem] relative left-[1rem] top-[1.5rem]"/>
 
           {/* shirt number */}
-          <p className = "absolute right-[0.5rem] top-0 font-alfa text-5xl">{`${player?.shirtNumber.toString().padStart(2, "0")}`}</p>
+          <p className = "absolute right-[0.5rem] top-0 font-teko text-5xl font-bold">{`${player?.shirtNumber.toString().padStart(2, "0")}`}</p>
 
           {/* other information */}
           <div className = "relative left-[2.5rem] top-[1.2rem]">
             {/* name */}
             <p className = "font-alfa font-bold text-2xl">{player?.name}</p>
-            <div className = "flex relative top-[0.5rem] bg-[#ededed] h-[12.5rem] right-[1rem] w-[35vw] rounded-[5px]">
+            <div className = "flex relative top-[0.5rem] bg-easeGreen h-[12.5rem] right-[1rem] w-[35vw] rounded-[5px]">
               {/* first col */}
               <div className = "font-ubuntu relative top-[1.5rem] left-[1rem]">
                 {/* date of birth */}
@@ -51,15 +51,14 @@ const PlayerProfileHeader = ({player, storedTeamLogo, detailLogoHeight, detailLo
         </div>
 
         {/* team contract info */}
-        <div className = "w-[40%] h-[18rem] bg-gray-300 mt-[2rem] left-[5rem] relative rounded-[5px] flex">
+        <div className = "w-[40%] h-[18rem] bg-mediumGreen mt-[2rem] left-[5rem] relative rounded-[5px] flex">
           {/* current club logo */}
-          <div>
+          <div style={{marginLeft: `${detailLogoLeft/2}rem`}} className = "top-[1rem] relative">
             <img src = {storedTeamLogo} className = "relative right-[2rem] top-[2rem]" alt = "" style = {{width: `${detailLogoWidth/1.2}rem`, height: `${detailLogoHeight/1.2}rem`}} />
-            <p className = "relative top-[3rem] left-[2.3rem] font-changa text-lg font-bold">{currentTeam?.name}</p>
           </div>
 
           {/* contract info */}
-          <div className = "w-[55%] h-[15rem] bg-[#ededed] relative right-[2rem] top-[1.5rem] rounded-[7px] font-ubuntu">
+          <div className = "w-[55%] h-[15rem] bg-easeGreen relative right-[2rem] top-[1.5rem] rounded-[7px] font-ubuntu" style = {{marginLeft: `${detailLogoLeft/2}rem`}}>
             <div className = "mt-[1.5rem]">
               <p className = "text-lg relative left-[1rem]">Join club at: <b>{currentContract?.startContractDate}</b></p>
               <p className = "text-lg relative left-[1rem] top-[1rem]">Contract expires at: <b>{currentContract?.endContractDate}</b></p>

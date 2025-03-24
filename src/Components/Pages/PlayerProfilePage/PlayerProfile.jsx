@@ -6,6 +6,7 @@ import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
 import { getTeamById } from '../../../APIService/TeamService';
 import PlayerProfileHeader from './PlayerProfileHeader/PlayerProfileHeader';
 import PlayerProfileStat from './PlayerProfileStat/PlayerProfileStat';
+import PlayerProfileTransfers from './PlayerProfileTransfers/PlayerProfileTransfers';
 
 const PlayerProfile = () => {
   const {playerName} = usePlayerContext();
@@ -13,7 +14,7 @@ const PlayerProfile = () => {
   const [currentTeam, setCurrentTeam] = useState(null);
   const [currentContract, setCurrentContract] = useState(null);
 
-  const {storedTeamLogo, detailLogoWidth, detailLogoHeight, teamId} = useTeamHeaderContext();
+  const {storedTeamLogo, detailLogoWidth, detailLogoHeight, teamId, detailLogoLeft} = useTeamHeaderContext();
 
   const [viewOption, setViewOption] = useState("stat");
 
@@ -21,8 +22,6 @@ const PlayerProfile = () => {
   const [seasonStat, setSeasonStat] = useState([]);
 
   const [dataError, setDataError] = useState("");
-
-  const [allStats, setAllStats] = useState([]);
 
   const [allStatsGroupByTeam, setAllStatsGroupByTeam] = useState([]);
 
@@ -49,7 +48,6 @@ const PlayerProfile = () => {
 
   useEffect(() => {
     getAllPlayerStats(playerName).then((response) => {
-        setAllStats(response.data);
         setAllStatsGroupByTeam(groupByTeam(response.data));
         console.log(response.data);
     }).catch(err => console.error(err));
@@ -100,7 +98,7 @@ const PlayerProfile = () => {
       return Object.values(teamStats);
   };
   return (
-    <div className = "mt-[6rem]">
+    <div className = "mt-[6rem] pb-[2rem]">
       {/* breadcrumb */}
       <div className = "relative left-[2rem] top-[1rem]">
         <Breadcrumb 
@@ -116,41 +114,51 @@ const PlayerProfile = () => {
         detailLogoHeight = {detailLogoHeight}
         currentContract = {currentContract}
         currentTeam = {currentTeam}
+        detailLogoLeft = {detailLogoLeft}
       />
 
       {/* options */}
-      <div className = "flex relative left-[2rem] mt-[2rem] font-roboto font-bold text-lg text-white hover:cursor-pointer">
-        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e]" style = {{backgroundColor: viewOption === "stat" ? "#3d3b6e" : "#060433"}} onClick = {() => setViewOption("stat")}>
+      <div className = "flex relative left-[2rem] mt-[2rem] font-roboto font-bold text-lg text-white hover:cursor-pointer ">
+        <div className = "h-[2rem] px-[5%] font-teko text-xl" style = {{backgroundColor: viewOption === "stat" ? "#27391C" : "#CAE0BC", color: viewOption === 'stat' ? 'white' : 'black'}} onClick = {() => setViewOption("stat")}>
           <p className = "relative top-[0.2rem]">STATS</p>
         </div>
-        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e]" style = {{backgroundColor: viewOption === "marketValue" ? "#3d3b6e" : "#060433"}} onClick = {() => setViewOption("marketValue")}>
+        <div className = "h-[2rem] px-[5%] font-teko text-xl" style = {{backgroundColor: viewOption === "marketValue" ? "#27391C" : "#CAE0BC", color: viewOption === 'marketValue' ? 'white' : 'black'}} onClick = {() => setViewOption("marketValue")}>
           <p className = "relative top-[0.2rem]">MARKET VALUE</p>
         </div>
-        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e]" style = {{backgroundColor: viewOption === "transfers" ? "#3d3b6e" : "#060433"}} onClick = {() => setViewOption("transfers")}>
+        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e] font-teko text-xl" style = {{backgroundColor: viewOption === "transfers" ? "#27391C" : "#CAE0BC", color: viewOption === 'transfers' ? 'white' : 'black'}} onClick = {() => setViewOption("transfers")}>
           <p className = "relative top-[0.2rem]">TRANSFERS</p>
         </div>
-        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e]" style = {{backgroundColor: viewOption === "rumours" ? "#3d3b6e" : "#060433"}} onClick = {() => setViewOption("rumours")}>
+        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e] font-teko text-xl" style = {{backgroundColor: viewOption === "rumours" ? "#27391C" : "#CAE0BC", color: viewOption === 'rumours' ? 'white': 'black'}} onClick = {() => setViewOption("rumours")}>
           <p className = "relative top-[0.2rem]">RUMOURS</p>
         </div>
-        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e]" style = {{backgroundColor: viewOption === "nationalTeam" ? "#3d3b6e" : "#060433"}} onClick = {() => setViewOption("nationalTeam")}>
+        <div className = "h-[2rem] px-[5%] hover:bg-[#3d3b6e] font-teko text-xl" style = {{backgroundColor: viewOption === "nationalTeam" ? "#27391C" : "#CAE0BC", color: viewOption === 'nationalTeam' ? 'white' : 'black'}} onClick = {() => setViewOption("nationalTeam")}>
           <p className = "relative top-[0.2rem]">NATIONAL TEAM</p>
         </div>
-        <div className = "h-[2rem] px-[5.5%] hover:bg-[#3d3b6e]" style = {{backgroundColor: viewOption === "news" ? "#3d3b6e" : "#060433"}} onClick = {() => setViewOption("news")}>
+        <div className = "h-[2rem] px-[5.5%] hover:bg-[#3d3b6e] font-teko text-xl" style = {{backgroundColor: viewOption === "news" ? "#27391C" : "#CAE0BC", color: viewOption === 'news' ? 'white' : 'black'}} onClick = {() => setViewOption("news")}>
           <p className = "relative top-[0.2rem]">NEWS</p>
         </div>
       </div>
 
       {/* stats */}
-      <div className = "relative left-[2rem] mt-[0.5rem]">
-        <PlayerProfileStat 
-          player = {player}
-          setupSelectedSeason = {setupSelectedSeason}
-          seasonStat = {seasonStat}
-          changeStatBySeason = {changeStatBySeason}
-          dataError = {dataError}
-          allStatsGroupByTeam = {allStatsGroupByTeam}
+      {viewOption === 'stat' && 
+        <div className = "relative left-[2rem] mt-[0.5rem]">
+          <PlayerProfileStat 
+            player = {player}
+            setupSelectedSeason = {setupSelectedSeason}
+            seasonStat = {seasonStat}
+            changeStatBySeason = {changeStatBySeason}
+            dataError = {dataError}
+            allStatsGroupByTeam = {allStatsGroupByTeam}
+          />
+        </div>
+      }
+
+      {/* transfer */}
+      {viewOption === 'transfers' && 
+        <PlayerProfileTransfers 
+            player = {player}
         />
-      </div>
+      }
     </div>
   )
 }

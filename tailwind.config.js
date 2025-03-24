@@ -13,7 +13,8 @@ module.exports = {
         easeWhite: "#FAF1E6", 
         hardGreen: "#27391C", 
         easeYellow: "#F8ED8C", 
-        moreEaseYellow: "#edebca"
+        moreEaseYellow: "#edebca", 
+        mediumGreen: "#16C47F"
       }
     }, fontFamily: {
       'roboto': ['Roboto Condensed'],

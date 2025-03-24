@@ -7,7 +7,7 @@ const TeamHeader = ({storedTeamLogo, detailLogoWidth, detailLogoHeight, detailLo
         <div className = "relative w-full bg-easeGreen" style = {{top: "0rem", height: "23rem"}}>
             <img src = {storedTeamLogo} alt = "" className = "relative" style = {{width: `${detailLogoWidth}rem`, height: `${detailLogoHeight}rem`, top: `${detailLogoTop}rem`, left: `${detailLogoLeft}rem`}}/>
             {team && <p className = "relative font-teko font-bold" style = {{left: "22rem", bottom: "8.5rem", fontSize: "6rem"}}>{team?.name.toUpperCase()}</p>}
-            <div className = "relative flex" style = {{bottom: `${detailNameBottom}rem`, left: "6rem"}}>
+            <div className = "absolute flex" style = {{bottom: '0rem', left: "6rem"}}>
                 <div className = {!checkSelectOverview ? "text-center font-ubuntu text-xl hover:border-b-4 hover: border-b-black hover:cursor-pointer" : "text-center font-ubuntu text-xl border-b-4 border-b-greenFootball hover:cursor-pointer"} style = {{width: "10rem", height: "2.5rem"}} onClick = {() => setupSelectedBar("true", "", "", "", "")}>
                     <p>Overview</p>
                 </div>

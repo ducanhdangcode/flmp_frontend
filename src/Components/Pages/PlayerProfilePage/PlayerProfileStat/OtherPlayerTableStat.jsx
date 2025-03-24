@@ -17,7 +17,7 @@ const OtherPlayerTableStat = ({player, seasonStat}) => {
     <div>
         <table className = "mt-[1rem]">
             <thead>
-                <tr className = "h-[2rem] border-solid border-b-[1px] border-b-gray-500 bg-gray-300 font-space-grotesk">
+                <tr className = "h-[2rem] border-solid border-b-[1px] border-b-gray-500 bg-mediumGreen font-space-grotesk">
                     <th className = "w-[12.75rem] border-solid border-r-[1px] border-r-gray-500">
                         <p className = "relative top-[0.1rem]">Competitions</p>
                     </th>
@@ -45,7 +45,7 @@ const OtherPlayerTableStat = ({player, seasonStat}) => {
                 {seasonStat.map((stat) => {
                     return (
                         <>
-                            <tr className = "h-[2rem] bg-white text-center border-solid border-b-[1px] border-b-gray-500 font-space-grotesk">
+                            <tr className = "h-[2rem] bg-easeWhite text-center border-solid border-b-[1px] border-b-gray-500 font-space-grotesk">
                                 <td className = "w-[12.75rem] border-solid border-r-[1px] border-r-gray-500 h-[2rem]">
                                     <img src = {stat?.leagueLogo} alt = "" className = "w-[1.5rem] h-[1.5rem] absolute left-[0rem]" />
                                     <p className = "relative left-[0rem]">{stat?.leagueName}</p>
@@ -72,7 +72,7 @@ const OtherPlayerTableStat = ({player, seasonStat}) => {
                         </>
                     )
                 })}
-                <tr className = "h-[2rem] border-solid border-b-[1px] border-b-gray-500 bg-gray-200 text-center font-space-grotesk">
+                <tr className = "h-[2rem] border-solid border-b-[1px] border-b-gray-500 bg-mediumGreen text-center font-space-grotesk">
                     <td className = "w-[12.75rem] border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{`Total stats:`}</td>
                     <td className = "w-[12.75rem] border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{totalStats.appearances > 0 ? totalStats.appearances : "-"}</td>
                     <td className = "w-[12.75rem] border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{totalStats.goals > 0 ? totalStats.goals : "-"}</td>

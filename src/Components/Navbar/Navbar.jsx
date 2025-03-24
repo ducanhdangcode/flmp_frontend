@@ -103,12 +103,12 @@ const Navbar = ({loginState, displayUserDropdown, handleChangeUserDropdown, disa
                         <div className = "flex mt-[2rem] ml-[0.5rem]">
                             <div>
                                 <Link to = "/login">
-                                    <p className = {`font-roboto text-xl font-bold ${theme === lightColor ? "" : "text-white"}`}>Login</p>
+                                    <p className = "font-teko text-xl font-bold text-white relative top-[0.2rem]">Login</p>
                                 </Link>
                             </div>
-                            <div>
+                            <div className = "relative left-[40%] top-[0.2rem]">
                                 <Link to = "/register">
-                                    <p className = {`font-roboto text-xl font-bold ml-[2.5rem] ${theme === lightColor ? "" : "text-white"}`}>Register</p>
+                                    <p className = "font-teko text-xl font-bold text-white">Register</p>
                                 </Link>
                             </div>
                         </div>
