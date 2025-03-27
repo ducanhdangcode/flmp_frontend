@@ -7,6 +7,7 @@ import { getTeamById } from '../../../APIService/TeamService';
 import PlayerProfileHeader from './PlayerProfileHeader/PlayerProfileHeader';
 import PlayerProfileStat from './PlayerProfileStat/PlayerProfileStat';
 import PlayerProfileTransfers from './PlayerProfileTransfers/PlayerProfileTransfers';
+import PlayerProfileMarketValue from './PlayerProfileMarketValue/PlayerProfileMarketValue';
 
 const PlayerProfile = () => {
   const {playerName} = usePlayerContext();
@@ -156,6 +157,13 @@ const PlayerProfile = () => {
       {/* transfer */}
       {viewOption === 'transfers' && 
         <PlayerProfileTransfers 
+            player = {player}
+        />
+      }
+
+      {/* market value */}
+      {viewOption === 'marketValue' && 
+        <PlayerProfileMarketValue 
             player = {player}
         />
       }

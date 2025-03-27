@@ -13,7 +13,7 @@ const PlayerProfileTransfers = ({player}) => {
         </div>
 
         {/* transfer youth clubs */}
-        <div className = "mt-[1.5rem]">
+        <div className = "mt-[2.5rem]">
             <PlayerProfileTransfersYouthClub 
               player={player}
             />
