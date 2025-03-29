@@ -13,3 +13,5 @@ export const getPlayerContractByTeamName = (playerName, teamName) => baseApi.get
 export const getStatBySeason = (playerName, seasonName) => baseApi.get(`/players/name/${playerName}/get-stat-by-season/${seasonName}`);
 
 export const getAllPlayerStats = (playerName) => baseApi.get(`/players/name/${playerName}/get-all-stats`);
+
+export const getDetailMatchStatsByCompetitionName = (playerName, competitionName) => baseApi.get(`/players/name/${playerName}/get-match-stat-competition/${competitionName}`);
