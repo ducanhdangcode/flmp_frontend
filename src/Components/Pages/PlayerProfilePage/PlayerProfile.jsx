@@ -10,6 +10,7 @@ import PlayerProfileTransfers from './PlayerProfileTransfers/PlayerProfileTransf
 import PlayerProfileMarketValue from './PlayerProfileMarketValue/PlayerProfileMarketValue';
 import PlayerProfileRumours from './PlayerProfileRumours/PlayerProfileRumours';
 import PlayerProfileNationalTeam from './PlayerProfileNationalTeam/PlayerProfileNationalTeam';
+import PlayerProfileNews from './PlayerProfileNews/PlayerProfileNews';
 
 const PlayerProfile = () => {
   const {playerName} = usePlayerContext();
@@ -181,6 +182,13 @@ const PlayerProfile = () => {
       {viewOption === 'nationalTeam' && 
         <PlayerProfileNationalTeam 
             player = {player}
+        />
+      }
+
+      {/* news */}
+      {viewOption === 'news' && 
+        <PlayerProfileNews 
+          player = {player}
         />
       }
     </div>
