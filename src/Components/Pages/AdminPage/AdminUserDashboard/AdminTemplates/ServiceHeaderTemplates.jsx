@@ -27,7 +27,8 @@ const ServiceHeaderTemplates = ({handleSetupDisplayService, handleSetupDisplayRe
                     <MdKeyboardArrowUp className = "w-[3rem] h-[3rem]" onClick = {() => {
                         handleSetupDisplayService(false);
                         handleSetupDisplayResponse(false);
-                    }}/>
+                    }}
+                    />
                 }
             </div>
         </div>

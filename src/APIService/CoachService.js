@@ -4,3 +4,5 @@ import baseApi from './AxiosInstance/axiosInstance';
 const BASE_URL_COACHES = "/api/coaches";
 
 export const ListCoach = () => baseApi.get("/coaches");
+
+export const getCoachByTeamName = (teamName) => baseApi.get(`/coaches/get-by-team-name/${teamName}`);

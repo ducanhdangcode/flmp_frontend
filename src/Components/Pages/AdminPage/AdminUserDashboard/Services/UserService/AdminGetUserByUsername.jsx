@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion';
 import { getUserByUsername } from '../../../../../../APIService/UserService.';
-import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates';
+import ServiceHeaderTemplates from '../../AdminTemplates/ServiceHeaderTemplates';
 
 const AdminGetUserByUsername = () => {
     const [displayService, setDisplayService] = useState(false);

@@ -7,6 +7,7 @@ const TeamHeaderContext = createContext();
 
 export const TeamHeaderProvider = ({children}) => {
     const [teamId, setTeamId] = useState(localStorage.getItem("team-id"));
+    const [teamName, setTeamName] = useState(localStorage.getItem('team-name'));
     const [storedTeamLogo, setStoredTeamLogo] = useState(localStorage.getItem("team-logo"));
     const [detailLogoWidth, setDetailLogoWidth] = useState(localStorage.getItem("detail-logo-width"));
     const [detailLogoHeight, setDetailLogoHeight] = useState(localStorage.getItem("detail-logo-height"));
@@ -29,7 +30,8 @@ export const TeamHeaderProvider = ({children}) => {
         localStorage.setItem("detail-logo-top", detailLogoTop);
         localStorage.setItem("detail-logo-left", detailLogoLeft);
         localStorage.setItem("detail-name-bottom", detailNameBottom);
-    }, [teamId, storedTeamLogo, detailLogoWidth, detailLogoHeight, detailLogoTop, detailLogoLeft, detailNameBottom]);
+        localStorage.setItem('team-name', teamName);
+    }, [teamId, storedTeamLogo, detailLogoWidth, detailLogoHeight, detailLogoTop, detailLogoLeft, detailNameBottom, teamName]);
 
     const setupSelectedBar = (overviewChoice, fixturesChoice, resultChoice, newsChoice, squadChoice) => {
         setCheckSelectOverview(overviewChoice);
@@ -58,6 +60,8 @@ export const TeamHeaderProvider = ({children}) => {
             value = {{
                 teamId, 
                 setTeamId, 
+                teamName, 
+                setTeamName,
                 storedTeamLogo, 
                 setStoredTeamLogo, 
                 detailLogoWidth, 

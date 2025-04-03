@@ -22,6 +22,7 @@ import { PlayerProvider } from './Context/PlayerContext';
 import AdminPage from './Components/Pages/AdminPage/AdminPage';
 import AdminUserDashboard from './Components/Pages/AdminPage/AdminUserDashboard/Services/UserService/AdminUserDashboard';
 import AdminTeamDashboard from './Components/Pages/AdminPage/AdminUserDashboard/Services/TeamService/AdminTeamDashboard';
+import CoachProfile from './Components/Pages/CoachProfilePage/CoachProfile';
 
 function App() {
   // theme set up
@@ -247,6 +248,16 @@ function App() {
                           <>
                             <ScrollToTop />
                             <PlayerProfile />
+                          </>
+                        }
+                      />
+
+                      <Route 
+                        path = "/team/:team_name/coach/:coach_name"
+                        element = {
+                          <>
+                            <ScrollToTop />
+                            <CoachProfile />
                           </>
                         }
                       />

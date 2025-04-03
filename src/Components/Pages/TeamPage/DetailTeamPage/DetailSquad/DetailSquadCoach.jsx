@@ -1,7 +1,13 @@
 import React from 'react'
 import ViewProfile from './ViewProfile'
+import { Link } from 'react-router-dom'
 
-const DetailSquadCoach = ({teamId, team, coachList}) => {
+const DetailSquadCoach = ({teamId, team, coach}) => {
+    const toSlug = (text) => {
+        if (text) {
+          return text.toLowerCase().replace(/\s+/g, '-'); 
+        }
+      };
   return (
     <div className = "relative">
         <div className = "bg-hardGreen">
@@ -11,27 +17,29 @@ const DetailSquadCoach = ({teamId, team, coachList}) => {
             <div className = "flex">
                 <div className = "relative bg-easeGreen" style = {{width: "8rem", height: "16rem", borderTopLeftRadius: "11px"}}>
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "0.5rem"}}>Total Matches</p>
-                    <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "0.5rem"}}>{coachList[teamId-1]?.totalMatches}</p>
+                    <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "0.5rem"}}>{coach?.totalMatches}</p>
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "1rem"}}>This season</p>
-                    <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "1rem"}}>{coachList[teamId-1]?.currentMatches}</p>
+                    <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "1rem"}}>{coach?.currentMatches}</p>
                     <p className = "text-base font-noticia-text font-bold relative" style = {{textAlign: "center", top: "1.5rem"}}>Point per match</p>
-                    <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "1.5rem"}}>{coachList[teamId-1]?.pointPerMatch}</p>
+                    <p className = "text-3xl font-alfa font-bold relative" style = {{textAlign: "center", color: "#2e0629", top: "1.5rem"}}>{coach?.pointPerMatch}</p>
                 </div>
                 <div className = "relative" style = {{width: "15rem", height: "16rem", backgroundColor:`${team?.color}`, borderTopRightRadius: "11px"}}>
-                    <img src = {coachList[teamId-1]?.imageLink} alt = "" className = "" style = {{width: "15rem", height: "16rem", borderTopRightRadius: "11px"}} />
+                    <img src = {coach?.imageLink} alt = "" className = "" style = {{width: "15rem", height: "16rem", borderTopRightRadius: "11px"}} />
                 </div>
             </div>
 
             <div className = "block" style = {{height: "9rem"}}>
                 <div className = "relative" style = {{left: "1rem", top: "0.5rem"}}>
-                    <p className = "text-3xl font-alfa font-bold relative">{coachList[teamId-1]?.name}</p>
+                    <p className = "text-3xl font-alfa font-bold relative">{coach?.name}</p>
                     <p className = "text-lg font-noticia-text font-bold relative" style = {{bottom: "0.2rem"}}>Manager</p>
                 </div>
                 <div className = "relative flex" style = {{top: "2rem", left: "1rem"}}>
-                    <img src = {coachList[teamId-1]?.nationalityImage} alt = "" className = "" style = {{width: "3rem", height: "2rem"}} />
-                    <p className = "font-ubuntu text-lg relative" style = {{left: "0.5rem"}}>{coachList[teamId-1]?.nationality}</p>
+                    <img src = {coach?.nationalityImage} alt = "" className = "" style = {{width: "3rem", height: "2rem"}} />
+                    <p className = "font-ubuntu text-lg relative" style = {{left: "0.5rem"}}>{coach?.nationality}</p>
                     <div className = "absolute" style = {{left: "13rem"}}>
-                        <ViewProfile />
+                        <Link to = {`/team/${toSlug(team?.name)}/coach/${toSlug(coach?.name)}`}>
+                            <ViewProfile />
+                        </Link>
                     </div>
                 </div>
             </div>

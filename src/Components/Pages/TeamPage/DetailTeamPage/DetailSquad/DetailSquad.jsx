@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ListCoach } from '../../../../../APIService/CoachService'
+import { getCoachByTeamName, ListCoach } from '../../../../../APIService/CoachService'
 import WebFont from 'webfontloader';
 import DetailSquadCoach from './DetailSquadCoach';
 import DetailSquadGoalkeeper from './DetailSquadGoalkeeper';
@@ -10,7 +10,7 @@ import DetailSquadForward from './DetailSquadForward';
 import Formation from './Formation/Formation';
 
 const DetailSquad = ({teamId, team, FormationCoordinate}) => {
-    const [coachList, setCoachList] = useState([]);
+    const [coach, setCoach] = useState(null);
     const [playerList, setPlayerList] = useState([]);
 
     useEffect(() => {
@@ -27,14 +27,14 @@ const DetailSquad = ({teamId, team, FormationCoordinate}) => {
         })
     }, [])
     useEffect(() => {
-        ListCoach().then((response) => {
-            setCoachList(response.data);
-        })
+        getCoachByTeamName(team?.name).then((response) => {
+            setCoach(response.data);
+        }).catch(err => console.error(err));
     }, [])
   return (
     <div className = "w-full relative" style = {{backgroundColor: "#dfe2e8"}}>
         <div>
-            <DetailSquadCoach teamId = {teamId} team = {team} coachList = {coachList} />
+            <DetailSquadCoach teamId = {teamId} team = {team} coach = {coach}/>
         </div>
         <div className = "mt-[5rem]">
             <DetailSquadGoalkeeper teamId = {teamId} team = {team} playerList = {playerList}/>

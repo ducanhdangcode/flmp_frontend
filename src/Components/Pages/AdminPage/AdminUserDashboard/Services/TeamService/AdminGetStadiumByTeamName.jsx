@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ServiceHeaderTemplates from '../../Templates/ServiceHeaderTemplates';
+import ServiceHeaderTemplates from '../../AdminTemplates/ServiceHeaderTemplates';
 import {motion} from 'framer-motion'
 import { getStadiumByTeamName } from '../../../../../../APIService/StadiumService';
 
