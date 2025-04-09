@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import CoachProfileHeader from './CoachProfileHeader/CoachProfileHeader'
 import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
-import { getCoachByTeamName, getCoachGroupedStatbyCompetition, getContractByTeamName } from '../../../APIService/CoachService';
+import { getCoachByTeamName, getCoachGroupedStatbyCompetition, getCoachStatsByLeagueType, getContractByTeamName } from '../../../APIService/CoachService';
 import CoachProfileDropdown from './CoachProfileDropdown/CoachProfileDropdown';
 import CoachProfileNationalLeagueStat from './CoachProfileStat/CoachProfileNationalLeagueStat';
 
@@ -11,8 +11,9 @@ const CoachProfile = () => {
     const [coach, setCoach] = useState(null);
     const [currentContract, setCurrentContract] = useState(null);
 
-    // stats
-    const [groupedCompetitionStats, setGroupedCompetitionStats] = useState([]);
+    // stats grouped
+    const [groupedCompetitionStatsNationalLeagues, setGroupedCompetitionStatsNationalLeagues] = useState([]);
+    const [groupedCompetitionStatDomesticCups, setGroupedCompetitionStatDomesticCups] = useState([]);
 
     // state to handle dropdown
     const [displayDropdown, setDisplayDropdown] = useState("");
@@ -21,8 +22,13 @@ const CoachProfile = () => {
     // state to display stat option
     const [displayStatOption, setDisplayStatOption] = useState("");
 
+    // stats 
+    const [nationalLeaguesStats, setNationalLeaguesStats] = useState([]);
+    const [domesticCupsLeagueStats, setDomesticCupsLeagueStats] = useState([]);
+
     // competition name national leagues set
     const [competitionNameNationalLeaguesSet, setCompetitionNameNationalLeagueSet]  = useState(new Set());
+    const [competitionNameDomesticCupsSet, setCompetitionNameDomesticCupsSet] = useState(new Set());
 
     useEffect(() => {
         getCoachByTeamName(teamName).then((response) => {
@@ -31,13 +37,27 @@ const CoachProfile = () => {
                 setCurrentContract(contractResponse.data);
             }).catch(err => console.error(err));
 
-            getCoachGroupedStatbyCompetition(response.data.name).then((groupedStat) => {
-                setGroupedCompetitionStats(groupedStat.data);
+            getCoachGroupedStatbyCompetition(response.data.name, 'National leagues').then((groupedStat) => {
+                setGroupedCompetitionStatsNationalLeagues(groupedStat.data);
             }).catch(err => console.error(err));
 
-            response.data?.detailStats.map((stat) => {
-                setCompetitionNameNationalLeagueSet(prevSet => new Set([...prevSet, stat.competitionName]))
-            })
+            getCoachGroupedStatbyCompetition(response.data.name, 'Domestic cups').then((domesticGrouped) => {
+                setGroupedCompetitionStatDomesticCups(domesticGrouped.data);
+            }).catch(err => console.error(err));
+
+            getCoachStatsByLeagueType(response.data.name, 'National leagues').then((nationalLeaguesStat) => {
+                setNationalLeaguesStats(nationalLeaguesStat.data);
+                nationalLeaguesStat.data.map((stat) => {
+                    setCompetitionNameNationalLeagueSet(prevSet => new Set([...prevSet, stat.competitionName]))
+                })
+            }).catch(err => console.error(err));
+
+            getCoachStatsByLeagueType(response.data.name, 'Domestic cups').then((domesticCupsStat) => {
+                setDomesticCupsLeagueStats(domesticCupsStat.data);
+                domesticCupsStat.data.map((stat) => {
+                    setCompetitionNameDomesticCupsSet(prevSet => new Set([...prevSet, stat.competitionName]))
+                })
+            }).catch(err => console.error(err));
         }).catch(err => console.error(err));
     })
 
@@ -103,9 +123,24 @@ const CoachProfile = () => {
                 <div className = "mt-[1.5rem] relative left-[2rem]">
                     <CoachProfileNationalLeagueStat 
                         coach = {coach}
-                        groupedCompetitionStats = {groupedCompetitionStats}
-                        competitionNameNationalLeaguesSet = {competitionNameNationalLeaguesSet}
+                        groupedCompetitionStats = {groupedCompetitionStatsNationalLeagues}
+                        competitionNameSets = {competitionNameNationalLeaguesSet}
+                        coachStats = {nationalLeaguesStats}
+                        title = {'NATIONAL LEAGUES'}
                     />  
+                </div>
+            }
+
+            {/* stats domestic cups */}
+            {displayStatOption === "Domestic cups" && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileNationalLeagueStat 
+                        coach = {coach}
+                        groupedCompetitionStats = {groupedCompetitionStatDomesticCups}
+                        competitionNameSets={competitionNameDomesticCupsSet}
+                        coachStats={domesticCupsLeagueStats}
+                        title = {'DOMESTIC CUPS'}
+                    />
                 </div>
             }
       </div>

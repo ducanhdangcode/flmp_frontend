@@ -9,4 +9,6 @@ export const getCoachByTeamName = (teamName) => baseApi.get(`/coaches/get-by-tea
 
 export const getContractByTeamName = (coachName, teamName) => baseApi.get(`/coaches/${coachName}/get-contract-by-team-name/${teamName}`);
 
-export const getCoachGroupedStatbyCompetition = (coachName) => baseApi.get(`/coaches/${coachName}/get-grouped-stats-by-competition`);
+export const getCoachGroupedStatbyCompetition = (coachName, leagueType) => baseApi.get(`/coaches/${coachName}/get-grouped-stats-by-competition/${leagueType}`);
+
+export const getCoachStatsByLeagueType = (coachName, leagueType) => baseApi.get(`/coaches/${coachName}/get-coach-stats-by-league-type/${leagueType}`);

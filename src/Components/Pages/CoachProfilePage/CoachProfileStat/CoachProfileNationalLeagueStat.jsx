@@ -1,11 +1,11 @@
 import React from 'react'
 
-const CoachProfileNationalLeagueStat = ({groupedCompetitionStats, competitionNameNationalLeaguesSet, coach}) => {
+const CoachProfileNationalLeagueStat = ({groupedCompetitionStats, competitionNameSets, coach, coachStats, title}) => {
   return (
     <div>
         {/* header */}
         <div className = "w-[93%] bg-hardGreen text-center py-[0.5rem]">
-            <p className = "font-teko text-white font-bold text-xl relative top-[0.1rem]">PERFORMANCE DETAIL: NATIONAL LEAGUES</p>
+            <p className = "font-teko text-white font-bold text-xl relative top-[0.1rem]">{`PERFORMANCE DETAIL: ${title}`}</p>
         </div>
 
         {/* table */}
@@ -60,11 +60,11 @@ const CoachProfileNationalLeagueStat = ({groupedCompetitionStats, competitionNam
                     <th className = "w-[10%] border-solid border-r-[1px] border-r-gray-500">Lose</th>
                     <th className = "w-[10%] border-solid border-r-[1px] border-r-gray-500">Points</th>
                     <th className = "w-[10%] border-solid border-r-[1px] border-r-gray-500">PPM</th>
-                    <th className = "w-[10%] border-solid border-r-[1px] border-r-gray-500">Placement</th>
+                    <th className = "w-[10%] border-solid border-r-[1px] border-r-gray-500">{title === 'NATIONAL LEAGUES' ? 'Placement' : 'Achieved Round'}</th>
                 </tr>
             </thead>
-            {[...competitionNameNationalLeaguesSet].map((name) => {
-                const filterStats = coach?.detailStats.filter(stat => stat.competitionName === name);
+            {[...competitionNameSets].map((name) => {
+                const filterStats = coachStats.filter(stat => stat.competitionName === name);
                 return (
                     <tbody>
                         <tr className = "h-[2rem] bg-easeGreen text-center border-solid border-b-[1px] border-b-gray-500 font-space-grotesk">
@@ -91,7 +91,7 @@ const CoachProfileNationalLeagueStat = ({groupedCompetitionStats, competitionNam
                                     <td className = "border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{stat?.lose}</td>
                                     <td className = "border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{stat?.win * 3 + stat?.draw}</td>
                                     <td className = "border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{((stat?.win * 3 + stat?.draw)/stat?.matchCount).toFixed(2)}</td>
-                                    <td className = "border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{stat?.placement}</td>
+                                    <td className = "border-solid border-r-[1px] border-r-gray-500 h-[2rem]">{title === 'NATIONAL LEAGUES' ? stat?.placement : stat?.achievedRound}</td>
                                 </tr>
                             )
                         })}
