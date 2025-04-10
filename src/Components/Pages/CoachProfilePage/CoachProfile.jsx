@@ -14,6 +14,7 @@ const CoachProfile = () => {
     // stats grouped
     const [groupedCompetitionStatsNationalLeagues, setGroupedCompetitionStatsNationalLeagues] = useState([]);
     const [groupedCompetitionStatDomesticCups, setGroupedCompetitionStatDomesticCups] = useState([]);
+    const [groupedCompetitionsStatEurope, setGroupedCompetitionStatEurope] = useState([]);
 
     // state to handle dropdown
     const [displayDropdown, setDisplayDropdown] = useState("");
@@ -25,10 +26,12 @@ const CoachProfile = () => {
     // stats 
     const [nationalLeaguesStats, setNationalLeaguesStats] = useState([]);
     const [domesticCupsLeagueStats, setDomesticCupsLeagueStats] = useState([]);
+    const [europeLeagueStats, setEuropeLeagueStats] = useState([]);
 
     // competition name national leagues set
     const [competitionNameNationalLeaguesSet, setCompetitionNameNationalLeagueSet]  = useState(new Set());
     const [competitionNameDomesticCupsSet, setCompetitionNameDomesticCupsSet] = useState(new Set());
+    const [compeititonNameEuropeSet, setCompetitionNameEuropeSet] = useState(new Set());
 
     useEffect(() => {
         getCoachByTeamName(teamName).then((response) => {
@@ -45,6 +48,10 @@ const CoachProfile = () => {
                 setGroupedCompetitionStatDomesticCups(domesticGrouped.data);
             }).catch(err => console.error(err));
 
+            getCoachGroupedStatbyCompetition(response.data.name, 'Europe').then((europeGrouped) => {
+                setGroupedCompetitionStatEurope(europeGrouped.data);
+            }).catch(err => console.error(err));
+
             getCoachStatsByLeagueType(response.data.name, 'National leagues').then((nationalLeaguesStat) => {
                 setNationalLeaguesStats(nationalLeaguesStat.data);
                 nationalLeaguesStat.data.map((stat) => {
@@ -58,6 +65,13 @@ const CoachProfile = () => {
                     setCompetitionNameDomesticCupsSet(prevSet => new Set([...prevSet, stat.competitionName]))
                 })
             }).catch(err => console.error(err));
+
+            getCoachStatsByLeagueType(response.data.name, 'Europe').then((europeStats) => {
+                setEuropeLeagueStats(europeStats.data);
+                europeStats.data.map((stat) => {
+                    setCompetitionNameEuropeSet(prevSet => new Set([...prevSet, stat.competitionName]))
+                })
+            })
         }).catch(err => console.error(err));
     })
 
@@ -140,6 +154,19 @@ const CoachProfile = () => {
                         competitionNameSets={competitionNameDomesticCupsSet}
                         coachStats={domesticCupsLeagueStats}
                         title = {'DOMESTIC CUPS'}
+                    />
+                </div>
+            }
+
+            {/* stats europe cups */}
+            {displayStatOption === 'Europe' && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileNationalLeagueStat 
+                        coach={coach}
+                        groupedCompetitionStats={groupedCompetitionsStatEurope}
+                        competitionNameSets={compeititonNameEuropeSet}
+                        coachStats={europeLeagueStats}
+                        title = {'EUROPE'}
                     />
                 </div>
             }
