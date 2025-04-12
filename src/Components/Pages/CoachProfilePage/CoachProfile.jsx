@@ -5,6 +5,7 @@ import { useTeamHeaderContext } from '../../../Context/TeamHeaderContext';
 import { getCoachByTeamName, getCoachGroupedStatbyCompetition, getCoachStatsByLeagueType, getContractByTeamName } from '../../../APIService/CoachService';
 import CoachProfileDropdown from './CoachProfileDropdown/CoachProfileDropdown';
 import CoachProfileNationalLeagueStat from './CoachProfileStat/CoachProfileNationalLeagueStat';
+import CoachProfileHistory from './CoachProfileHistory/CoachProfileHistory';
 
 const CoachProfile = () => {
     const {teamName, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoLeft} = useTeamHeaderContext();
@@ -22,6 +23,9 @@ const CoachProfile = () => {
 
     // state to display stat option
     const [displayStatOption, setDisplayStatOption] = useState("");
+
+    // state to display option
+    const [displayOption, setDisplayOption] = useState("");
 
     // stats 
     const [nationalLeaguesStats, setNationalLeaguesStats] = useState([]);
@@ -73,7 +77,7 @@ const CoachProfile = () => {
                 })
             })
         }).catch(err => console.error(err));
-    })
+    }, [])
 
     const setupDisplayStatOption = (option) => {
         setDisplayStatOption(option);
@@ -96,28 +100,40 @@ const CoachProfile = () => {
                 <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen relative" onMouseOver={() => {
                     setDisplayDropdown("stats");
                     setDropdownOptions(['National leagues', 'Domestic cups', 'Europe'])
+                    setDisplayOption("")
                 }} onMouseLeave = {() => setDisplayDropdown("")}>
                     <p className = "font-teko text-xl font-bold text-white relative top-[0.15rem] hover:text-black">STATS</p>
                     {displayDropdown !== "stats" ? <IoMdArrowDropdown className = "absolute right-[5rem] top-[0.2rem] w-[1.5rem] h-[1.5rem]" style = {{color: "white"}}/> : <IoMdArrowDropup className = "absolute right-[5rem] top-[0.2rem] w-[1.5rem] h-[1.5rem]"/>}
                 </div>
-                <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen">
+                <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen" onClick = {() => {
+                    setDisplayOption("History")
+                    setDisplayStatOption("")
+                }}>
                     <p className = "font-teko text-xl font-bold text-white relative top-[0.15rem] hover:text-black">HISTORY</p>
                 </div>
                 <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen relative" onMouseOver={() => {
                     setDisplayDropdown("records");
                     setDropdownOptions(['Record against clubs', 'Record against managers'])
+                    setDisplayOption("")
                 }}>
-                    <p className = "font-teko text-xl font-bold text-white relative top-[0.15rem] hover:text-black">PERSONAL RECORD</p>
+                    <p className = "font-teko text-xl font-bold text-white relative top-[0.15rem] hover:text-black" onClick = {() => {
+                        setDisplayOption("PersonalRecord")
+                        setDisplayStatOption("")
+                    }}>PERSONAL RECORD</p>
                     {displayDropdown !== "records" ? <IoMdArrowDropdown className = "absolute right-[2rem] top-[0.2rem] w-[1.5rem] h-[1.5rem]" style = {{color: "white"}}/> : <IoMdArrowDropup className = "absolute right-[2rem] top-[0.2rem] w-[1.5rem] h-[1.5rem]"/>}
                 </div>
                 <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen relative" onMouseOver={() => {
                     setDisplayDropdown('career');
                     setDropdownOptions(['Debuts', 'Special Matches'])
+                    setDisplayOption("")
                 }}>
                     <p className = "font-teko text-xl font-bold text-white relative top-[0.15rem] hover:text-black">MANAGER CAREER</p>
                     {displayDropdown !== 'career' ? <IoMdArrowDropdown className = "absolute right-[2rem] top-[0.2rem] w-[1.5rem] h-[1.5rem]" style = {{color: "white"}}/> : <IoMdArrowDropup className = "absolute right-[2rem] top-[0.2rem] w-[1.5rem] h-[1.5rem]"/>}
                 </div>
-                <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen">
+                <div className = "w-[20%] hover:cursor-pointer bg-hardGreen hover:bg-easeGreen" onClick =  {() => {
+                    setDisplayOption("News")
+                    setDisplayStatOption("")
+                }}>
                     <p className = "font-teko text-xl font-bold text-white relative top-[0.15rem] hover:text-black">NEWS</p>
                 </div>
             </div>
@@ -167,6 +183,14 @@ const CoachProfile = () => {
                         competitionNameSets={compeititonNameEuropeSet}
                         coachStats={europeLeagueStats}
                         title = {'EUROPE'}
+                    />
+                </div>
+            }
+
+            {displayOption === 'History' && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileHistory 
+                        coach = {coach}
                     />
                 </div>
             }
