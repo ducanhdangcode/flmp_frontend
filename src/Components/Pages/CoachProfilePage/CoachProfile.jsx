@@ -6,6 +6,7 @@ import { getCoachByTeamName, getCoachGroupedStatbyCompetition, getCoachStatsByLe
 import CoachProfileDropdown from './CoachProfileDropdown/CoachProfileDropdown';
 import CoachProfileNationalLeagueStat from './CoachProfileStat/CoachProfileNationalLeagueStat';
 import CoachProfileHistory from './CoachProfileHistory/CoachProfileHistory';
+import CoachProfileRecordAgainstClub from './CoachProfileRecords/CoachProfileRecordAgainstClub';
 
 const CoachProfile = () => {
     const {teamName, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoLeft} = useTeamHeaderContext();
@@ -190,6 +191,14 @@ const CoachProfile = () => {
             {displayOption === 'History' && 
                 <div className = "mt-[1.5rem] relative left-[2rem]">
                     <CoachProfileHistory 
+                        coach = {coach}
+                    />
+                </div>
+            }
+
+            {displayStatOption === 'Record against clubs' && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileRecordAgainstClub 
                         coach = {coach}
                     />
                 </div>

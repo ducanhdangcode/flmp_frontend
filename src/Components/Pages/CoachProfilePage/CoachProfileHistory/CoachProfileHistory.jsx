@@ -4,8 +4,8 @@ const CoachProfileHistory = ({coach}) => {
   return (
     <div>
         {/* header */}
-        <div className = "w-[93%] bg-hardGreen text-center py-[0.5rem] mt-[2.5rem]">
-            <p className = "font-teko text-white font-bold text-xl relative top-[0.1rem]">HISTORY</p>
+        <div className = "w-[93%] bg-easeGreen text-center py-[0.5rem] mt-[2.5rem]">
+            <p className = "font-teko font-bold text-xl relative top-[0.1rem]">HISTORY</p>
         </div>
 
         {/* table */}
