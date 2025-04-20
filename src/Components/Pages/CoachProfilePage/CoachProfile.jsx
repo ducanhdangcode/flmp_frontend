@@ -7,6 +7,7 @@ import CoachProfileDropdown from './CoachProfileDropdown/CoachProfileDropdown';
 import CoachProfileNationalLeagueStat from './CoachProfileStat/CoachProfileNationalLeagueStat';
 import CoachProfileHistory from './CoachProfileHistory/CoachProfileHistory';
 import CoachProfileRecordAgainstClub from './CoachProfileRecords/CoachProfileRecordAgainstClub';
+import CoachProfileRecordAgainstManager from './CoachProfileRecords/CoachProfileRecordAgainstManager';
 
 const CoachProfile = () => {
     const {teamName, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoLeft} = useTeamHeaderContext();
@@ -199,6 +200,14 @@ const CoachProfile = () => {
             {displayStatOption === 'Record against clubs' && 
                 <div className = "mt-[1.5rem] relative left-[2rem]">
                     <CoachProfileRecordAgainstClub 
+                        coach = {coach}
+                    />
+                </div>
+            }
+
+            {displayStatOption === 'Record against managers' && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileRecordAgainstManager 
                         coach = {coach}
                     />
                 </div>
