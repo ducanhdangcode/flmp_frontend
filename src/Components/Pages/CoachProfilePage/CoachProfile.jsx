@@ -8,6 +8,7 @@ import CoachProfileNationalLeagueStat from './CoachProfileStat/CoachProfileNatio
 import CoachProfileHistory from './CoachProfileHistory/CoachProfileHistory';
 import CoachProfileRecordAgainstClub from './CoachProfileRecords/CoachProfileRecordAgainstClub';
 import CoachProfileRecordAgainstManager from './CoachProfileRecords/CoachProfileRecordAgainstManager';
+import CoachProfileDebutCareer from './CoachProfileCareer/CoachProfileDebutCareer';
 
 const CoachProfile = () => {
     const {teamName, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoLeft} = useTeamHeaderContext();
@@ -38,6 +39,9 @@ const CoachProfile = () => {
     const [competitionNameNationalLeaguesSet, setCompetitionNameNationalLeagueSet]  = useState(new Set());
     const [competitionNameDomesticCupsSet, setCompetitionNameDomesticCupsSet] = useState(new Set());
     const [compeititonNameEuropeSet, setCompetitionNameEuropeSet] = useState(new Set());
+
+    // league type debut career set
+    const [leagueTypeDebutCareers, setLeagueTypeDebutCareers] = useState(new Set());
 
     useEffect(() => {
         getCoachByTeamName(teamName).then((response) => {
@@ -77,6 +81,10 @@ const CoachProfile = () => {
                 europeStats.data.map((stat) => {
                     setCompetitionNameEuropeSet(prevSet => new Set([...prevSet, stat.competitionName]))
                 })
+            })
+
+            response.data.debutCareers.map((career) => {
+                setLeagueTypeDebutCareers(prevSet => new Set([...prevSet, career?.leagueType]));
             })
         }).catch(err => console.error(err));
     }, [])
@@ -209,6 +217,15 @@ const CoachProfile = () => {
                 <div className = "mt-[1.5rem] relative left-[2rem]">
                     <CoachProfileRecordAgainstManager 
                         coach = {coach}
+                    />
+                </div>
+            }
+
+            {displayStatOption === 'Debuts' && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileDebutCareer 
+                        coach = {coach}
+                        leagueTypeDebutCareers = {leagueTypeDebutCareers}
                     />
                 </div>
             }
