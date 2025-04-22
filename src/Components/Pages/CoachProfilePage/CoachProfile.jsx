@@ -9,6 +9,7 @@ import CoachProfileHistory from './CoachProfileHistory/CoachProfileHistory';
 import CoachProfileRecordAgainstClub from './CoachProfileRecords/CoachProfileRecordAgainstClub';
 import CoachProfileRecordAgainstManager from './CoachProfileRecords/CoachProfileRecordAgainstManager';
 import CoachProfileDebutCareer from './CoachProfileCareer/CoachProfileDebutCareer';
+import CoachProfileSpecialMatchCareer from './CoachProfileCareer/CoachProfileSpecialMatchCareer';
 
 const CoachProfile = () => {
     const {teamName, storedTeamLogo, detailLogoHeight, detailLogoWidth, detailLogoLeft} = useTeamHeaderContext();
@@ -42,6 +43,9 @@ const CoachProfile = () => {
 
     // league type debut career set
     const [leagueTypeDebutCareers, setLeagueTypeDebutCareers] = useState(new Set());
+
+    // type special match career set
+    const [specialMatchCareerType, setSpecialMatchCareerType] = useState(new Set());
 
     useEffect(() => {
         getCoachByTeamName(teamName).then((response) => {
@@ -85,6 +89,10 @@ const CoachProfile = () => {
 
             response.data.debutCareers.map((career) => {
                 setLeagueTypeDebutCareers(prevSet => new Set([...prevSet, career?.leagueType]));
+            })
+
+            response.data.specialMatchCareers.map((career) => {
+                setSpecialMatchCareerType(prevSet => new Set([...prevSet, career?.type]));
             })
         }).catch(err => console.error(err));
     }, [])
@@ -226,6 +234,15 @@ const CoachProfile = () => {
                     <CoachProfileDebutCareer 
                         coach = {coach}
                         leagueTypeDebutCareers = {leagueTypeDebutCareers}
+                    />
+                </div>
+            }
+
+            {displayStatOption === 'Special Matches' && 
+                <div className = "mt-[1.5rem] relative left-[2rem]">
+                    <CoachProfileSpecialMatchCareer 
+                        coach = {coach}
+                        specialMatchCareerType = {specialMatchCareerType}
                     />
                 </div>
             }
